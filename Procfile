@@ -1,1 +1,1 @@
-web: java -jar target/artifactId.jar
+web: java -jar target/eventex.jar

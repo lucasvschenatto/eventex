@@ -27,7 +27,7 @@
     </dependencies>
     
     <build>
-        <finalName>eventex</finalName>
+        <finalName>${project.artifactId}</finalName>
         <sourceDirectory>src</sourceDirectory>
         <testSourceDirectory>test</testSourceDirectory>
         <resources>

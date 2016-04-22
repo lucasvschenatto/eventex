@@ -1,9 +1,23 @@
 package main;
 
+import static spark.Spark.delete;
 import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
+
+import main.persistence.inmemory.InMemoryUserRepository;
+import main.persistence.inmemory.InMemoryEventRepository;
+import main.routes.CreateEventRoute;
+import main.routes.DeleteEventRoute;
+import main.routes.Dependencies;
+import main.routes.LoginRoute;
+import main.routes.LogoutRoute;
+import main.routes.EventsSummaryRoute;
+import main.routes.ReadUserRoute;
+import main.routes.RegisterRoute;
+import main.security.JasyptEncryptor;
+import spark.*;
 
 public class Main {
 
@@ -14,7 +28,7 @@ public class Main {
 	private void startSparkServer() {
 		setUpPort();
 		setUpStaticFiles();
-//		setUpRoutes();
+		setUpRoutes();
 	}		 
 
     private void setUpPort() {
@@ -26,11 +40,39 @@ public class Main {
 			envPort = 8080;
 		}
 		port(envPort);
-        port(Integer.parseInt(System.getenv("PORT")));
     }
 
     private void setUpStaticFiles() {
         externalStaticFileLocation("resources/public");
+    }
+    
+    private void setUpRoutes() {
+    	Dependencies dependencies = buildDependencies();
+        get("/read-user", new ReadUserRoute(dependencies));
+        post("/login", new LoginRoute(dependencies));
+        post("/logout", new LogoutRoute(dependencies));
+        post("/register", new RegisterRoute(dependencies));
+        get("/events", new EventsSummaryRoute(dependencies));
+        post("/events", new CreateEventRoute(dependencies));
+        delete("/events/:id", new DeleteEventRoute(dependencies));
+        post("/", (req, res)->{
+        	System.out.println("post");
+        	System.out.println(req.toString());
+        	return null;
+        });
+        get("/", (req, res)->{
+        	System.out.println("get");
+        	System.out.println(req.toString());
+        	return null;
+        });
+    }
+
+    private Dependencies buildDependencies() {
+        Dependencies dependencies = new Dependencies();
+        dependencies.setEncryptor(new JasyptEncryptor());
+        dependencies.setUserRepository(new InMemoryUserRepository());
+        dependencies.setEventRepository(new InMemoryEventRepository());
+        return dependencies;
     }
 
 }

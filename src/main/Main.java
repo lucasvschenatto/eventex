@@ -43,7 +43,8 @@ public class Main {
     }
 
     private void setUpStaticFiles() {
-        externalStaticFileLocation("resources/public");
+//        externalStaticFileLocation("resources/public");
+    	externalStaticFileLocation("html");
     }
     
     private void setUpRoutes() {

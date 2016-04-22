@@ -1,4 +1,4 @@
-package eventex;
+package main.domain;
 
 public class Adress {
 

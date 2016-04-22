@@ -17,7 +17,6 @@ import main.routes.EventsSummaryRoute;
 import main.routes.ReadUserRoute;
 import main.routes.RegisterRoute;
 import main.security.JasyptEncryptor;
-import spark.*;
 
 public class Main {
 
@@ -56,16 +55,6 @@ public class Main {
         get("/events", new EventsSummaryRoute(dependencies));
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
-        post("/", (req, res)->{
-        	System.out.println("post");
-        	System.out.println(req.toString());
-        	return null;
-        });
-        get("/", (req, res)->{
-        	System.out.println("get");
-        	System.out.println(req.toString());
-        	return null;
-        });
     }
 
     private Dependencies buildDependencies() {

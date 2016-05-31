@@ -1,5 +1,7 @@
 package main.domain.event.activity;
 
-public class ActivityRepository {
+import main.domain.Repository;
+
+public interface ActivityRepository extends Repository<Activity>{
 
 }

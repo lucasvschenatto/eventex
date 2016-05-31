@@ -1,10 +1,10 @@
 package main.domain.event;
 
+import main.domain.Date;
 import main.domain.Repository;
 import main.domain.RepositoryTest;
 import main.domain.Text;
 import main.domain.event.Event;
-import main.domain.event.EventRepository;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -13,14 +13,14 @@ import org.junit.Test;
 public abstract class EventRepositoryTest extends RepositoryTest<Event> {
     private static final Text NAME1 = new Text("Name 1");
     private static final Text DESCRIPTION1 = new Text("Description 1");
-    private static final Text DATE1 = new Text("2010-01-01");
-    private static final Text TIME1 = new Text("11:01:01");
+    private static final Date DATE1 = new Date("2010-01-01");
+    private static final Time TIME1 = new Time("11:01:01");
     private static final Text PLACE1 = new Text("Place 1");
     private static final Text ADDRESS1 = new Text("Address 1");
     private static final Text NAME2 = new Text("Name 2");
     private static final Text DESCRIPTION2 = new Text("Description 2");
-    private static final Text DATE2 = new Text("2020-02-02");
-    private static final Text TIME2 = new Text("12:02:02");
+    private static final Date DATE2 = new Date("2020-02-02");
+    private static final Time TIME2 = new Time("12:02:02");
     private static final Text PLACE2 = new Text("Place 2");
     private static final Text ADDRESS2 = new Text("Address 2");
     private EventRepository repository;

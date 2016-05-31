@@ -1,15 +1,17 @@
 package main.domain.event.creating;
 
+import main.domain.Date;
 import main.domain.Text;
 import main.domain.event.Event;
 import main.domain.event.EventRepository;
+import main.domain.event.Time;
 
 public class CreateEventUseCase {
     private final EventRepository repository;
     private final Text name;
     private final Text description;
-    private final Text date;
-    private final Text time;
+    private final Date date;
+    private final Time time;
     private final Text place;
     private final Text address;
     private final CreateEventResponse response;
@@ -18,8 +20,8 @@ public class CreateEventUseCase {
         this.repository = repository;
         name = new Text(request.name);
         description = new Text(request.description);
-        date = new Text(request.date);
-        time = new Text(request.time);
+        date = new Date(request.date);
+        time = new Time(request.time);
         place = new Text(request.place);
         address = new Text(request.address);
         this.response = response;

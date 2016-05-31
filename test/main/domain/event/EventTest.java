@@ -1,5 +1,6 @@
 package main.domain.event;
 
+import main.domain.Date;
 import main.domain.EntityTest;
 import main.domain.Text;
 import main.domain.event.Event;
@@ -16,8 +17,8 @@ public class EventTest extends EntityTest<Event> {
         Event event = makeNewSubject();
         event.setName(new Text("name"));
         event.setDescription(new Text("description"));
-        event.setDate(new Text("1900-01-01"));
-        event.setTime(new Text("6:59:59"));
+        event.setDate(new Date("1900-01-01"));
+        event.setTime(new Time("6:59:59"));
         event.setPlace(new Text("place"));
         event.setAddress(new Text("address"));
         return event;
@@ -37,8 +38,8 @@ public class EventTest extends EntityTest<Event> {
     public void newEventtHasEmptyAttributes() {
         assertEquals(Text.EMPTY, subject.getName());
         assertEquals(Text.EMPTY, subject.getDescription());
-        assertEquals(Text.EMPTY, subject.getDate());
-        assertEquals(Text.EMPTY,subject.getTime());
+        assertEquals(Date.MIN, subject.getDate());
+        assertEquals(Time.MIN,subject.getTime());
         assertEquals(Text.EMPTY,subject.getPlace());
         assertEquals(Text.EMPTY,subject.getAddress());
     }

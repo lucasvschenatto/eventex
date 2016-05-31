@@ -1,21 +1,22 @@
 package main.domain.event;
 
+import main.domain.Date;
 import main.domain.Entity;
 import main.domain.Text;
 
 public class Event extends Entity {
     protected Text name;
     protected Text description;
-    protected Text date;
-    protected Text time;
+    protected Date date;
+    protected Time time;
     protected Text place;
     protected Text address;
 
     public Event() {
-        this("", Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY);
+        this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, Text.EMPTY);
     }
 
-    protected Event(String id, Text name, Text description, Text date, Text time, Text place, Text address) {
+    protected Event(String id, Text name, Text description, Date date, Time time, Text place, Text address) {
         super(id);
         this.id = id;
         this.name = name;
@@ -46,19 +47,19 @@ public class Event extends Entity {
 		this.description = description;
 	}
 
-	public Text getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Text date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
-	public Text getTime() {
+	public Time getTime() {
 		return time;
 	}
 
-	public void setTime(Text time) {
+	public void setTime(Time time) {
 		this.time = time;
 	}
 

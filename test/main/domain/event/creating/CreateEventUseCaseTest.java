@@ -14,15 +14,15 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class CreateEventUseCaseTest {
-    private static final String VALID_NAME = "Valid name";
-    private static final String VALID_DESCRIPTION = "Valid description";
-    private static final String VALID_DATE = "1999-01-01";
-    private static final String VALID_TIME = "01:01:01";
-    private static final String VALID_PLACE = "Valid place";
-    private static final String VALID_ADDRESS = "Valid address";
-    private CreateEventRequest request;
-    private CreateEventResponse response;
-    private EventRepository repository;
+	protected static final String VALID_NAME = "Valid name";
+	protected static final String VALID_DESCRIPTION = "Valid description";
+	protected static final String VALID_DATE = "1999-01-01";
+	protected static final String VALID_TIME = "01:01:01";
+	protected static final String VALID_PLACE = "Valid place";
+	protected static final String VALID_ADDRESS = "Valid address";
+	protected CreateEventRequest request;
+	protected CreateEventResponse response;
+	protected EventRepository repository;
 
     private void givenEventInformation(String name, String description, String date, String time, String place, String address) {
         request = new CreateEventRequest();

@@ -13,14 +13,14 @@ public class EventTest extends EntityTest<Event> {
     }
 
     protected Event makeSubjectWithData() {
-        Event product = makeNewSubject();
-        product.setName(new Text("name"));
-        product.setDescription(new Text("description"));
-        product.setDate(new Text("1900-01-01"));
-        product.setTime(new Text("6:59:59"));
-        product.setPlace(new Text("place"));
-        product.setAddress(new Text("address"));
-        return product;
+        Event event = makeNewSubject();
+        event.setName(new Text("name"));
+        event.setDescription(new Text("description"));
+        event.setDate(new Text("1900-01-01"));
+        event.setTime(new Text("6:59:59"));
+        event.setPlace(new Text("place"));
+        event.setAddress(new Text("address"));
+        return event;
     }
 
     protected void assertSameData(Event entity, Event copy) {

@@ -4,18 +4,18 @@ import main.domain.Entity;
 import main.domain.Text;
 
 public class Event extends Entity {
-    private Text name;
-    private Text description;
-    private Text date;
-    private Text time;
-    private Text place;
-    private Text address;
+    protected Text name;
+    protected Text description;
+    protected Text date;
+    protected Text time;
+    protected Text place;
+    protected Text address;
 
     public Event() {
         this("", Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY);
     }
 
-    private Event(String id, Text name, Text description, Text date, Text time, Text place, Text address) {
+    protected Event(String id, Text name, Text description, Text date, Text time, Text place, Text address) {
         super(id);
         this.id = id;
         this.name = name;

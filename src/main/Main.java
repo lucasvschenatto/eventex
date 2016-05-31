@@ -3,8 +3,11 @@ package main;
 import static spark.Spark.delete;
 import static spark.Spark.get;
 import static spark.Spark.post;
+import static spark.Spark.put;
 import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
+
+import java.util.Set;
 
 import main.persistence.inmemory.InMemoryUserRepository;
 import main.persistence.inmemory.InMemoryEventRepository;
@@ -34,7 +37,7 @@ public class Main {
     	int envPort;
     	try{
 // HEROKU configura a porta que deve usar através de variável de ambiente
-			envPort = Integer.parseInt(System.getenv("PORT"));			
+			envPort = Integer.parseInt(System.getenv("PORT"));
 		}catch(NumberFormatException e){
 			envPort = 8080;
 		}

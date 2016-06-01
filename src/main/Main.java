@@ -54,9 +54,11 @@ public class Main {
         post("/login", new LoginRoute(dependencies));
         post("/logout", new LogoutRoute(dependencies));
         post("/register", new RegisterRoute(dependencies));
+        
         get("/events", new EventsSummaryRoute(dependencies));
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
+        
         get("/activities", new ActivitiesSummaryRoute(dependencies));
         post("/activities", new CreateActivityRoute(dependencies));
         delete("/activities/:id", new DeleteActivityRoute(dependencies));

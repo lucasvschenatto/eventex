@@ -3,7 +3,7 @@ package main.domain.event;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import main.domain.event.Price;
+import main.domain.Price;
 
 public class PriceTest {
     @Test

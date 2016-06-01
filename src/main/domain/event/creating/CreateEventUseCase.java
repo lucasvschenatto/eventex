@@ -4,9 +4,9 @@ import main.domain.CEP;
 import main.domain.Date;
 import main.domain.Numeric;
 import main.domain.Text;
+import main.domain.Time;
 import main.domain.event.Event;
 import main.domain.event.EventRepository;
-import main.domain.event.Time;
 
 public class CreateEventUseCase {
     private final EventRepository repository;
@@ -15,13 +15,13 @@ public class CreateEventUseCase {
     private final Date date;
     private final Time time;
     private final Text place;
-    protected final Text street;
-	protected final Numeric number;
-	protected final Text complement;
-	protected final Text neighborhood;
-	protected final Text city;
-	protected final Text state;
-	protected final CEP cep;
+    private final Text street;
+	private final Numeric number;
+	private final Text complement;
+	private final Text neighborhood;
+	private final Text city;
+	private final Text state;
+	private final CEP cep;
     private final CreateEventResponse response;
 
     public CreateEventUseCase(EventRepository repository, CreateEventRequest request, CreateEventResponse response) {

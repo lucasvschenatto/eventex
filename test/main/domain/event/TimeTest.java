@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.domain.event.Time;
+import main.domain.Time;
 
 public class TimeTest {
 

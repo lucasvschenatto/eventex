@@ -16,10 +16,10 @@ public class ReadEventsSummaryUseCase {
 
     public void execute() {
         for (Event event : repository.getAll())
-            response.add(makeProductSummary(event));
+            response.add(makeEventSummary(event));
     }
 
-    private EventSummary makeProductSummary(Event event) {
+    private EventSummary makeEventSummary(Event event) {
         EventSummary summary = new EventSummary();
         summary.id = event.getId();
         summary.name = event.getName().toString();

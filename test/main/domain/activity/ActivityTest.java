@@ -1,4 +1,4 @@
-package main.domain.event.activity;
+package main.domain.activity;
 
 import static org.junit.Assert.*;
 
@@ -10,8 +10,9 @@ import main.domain.EntityTest;
 import main.domain.Numeric;
 import main.domain.Quantity;
 import main.domain.Text;
-import main.domain.event.Time;
-import main.domain.event.activity.Activity;
+import main.domain.Time;
+import main.domain.activity.Activity;
+import main.domain.activity.Minutes;
 
 public class ActivityTest extends EntityTest<Activity>{
 

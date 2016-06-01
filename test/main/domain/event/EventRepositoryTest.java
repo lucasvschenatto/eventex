@@ -6,6 +6,7 @@ import main.domain.Numeric;
 import main.domain.Repository;
 import main.domain.RepositoryTest;
 import main.domain.Text;
+import main.domain.Time;
 import main.domain.event.Event;
 
 import static org.junit.Assert.*;
@@ -127,7 +128,7 @@ public abstract class EventRepositoryTest extends RepositoryTest<Event> {
         assertFalse(events.iterator().hasNext());
     }
 
-    @Test
+	@Test@SuppressWarnings("unused")
     public void givenTwoEvents_itReturnsTheTwo() {
         repository.save(new Event());
         repository.save(new Event());

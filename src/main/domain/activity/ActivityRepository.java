@@ -1,4 +1,4 @@
-package main.domain.event.activity;
+package main.domain.activity;
 
 import main.domain.Repository;
 

@@ -1,7 +1,7 @@
 package main.persistence.inmemory;
 
-import main.domain.event.activity.ActivityRepository;
-import main.domain.event.activity.ActivityRepositoryTest;
+import main.domain.activity.ActivityRepository;
+import main.domain.activity.ActivityRepositoryTest;
 
 public class InMemoryActivityRepositoryTest extends ActivityRepositoryTest{
 	protected ActivityRepository getRepository() {

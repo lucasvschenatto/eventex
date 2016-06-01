@@ -5,6 +5,7 @@ import main.domain.Date;
 import main.domain.Entity;
 import main.domain.Numeric;
 import main.domain.Text;
+import main.domain.Time;
 
 public class Event extends Entity {
     protected Text name;

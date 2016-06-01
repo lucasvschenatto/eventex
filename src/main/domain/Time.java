@@ -1,4 +1,4 @@
-package main.domain.event;
+package main.domain;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;

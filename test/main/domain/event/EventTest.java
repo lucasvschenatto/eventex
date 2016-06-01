@@ -5,6 +5,7 @@ import main.domain.Date;
 import main.domain.EntityTest;
 import main.domain.Numeric;
 import main.domain.Text;
+import main.domain.Time;
 import main.domain.event.Event;
 
 import static org.junit.Assert.assertEquals;

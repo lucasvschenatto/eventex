@@ -1,4 +1,4 @@
-package main.domain.event.activity;
+package main.domain.activity;
 
 import main.domain.CEP;
 import main.domain.Date;
@@ -6,8 +6,8 @@ import main.domain.Entity;
 import main.domain.Numeric;
 import main.domain.Quantity;
 import main.domain.Text;
+import main.domain.Time;
 import main.domain.event.Event;
-import main.domain.event.Time;
 
 public class Activity extends Event{
 

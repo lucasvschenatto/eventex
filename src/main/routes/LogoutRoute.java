@@ -6,11 +6,11 @@ import spark.Response;
 import spark.Route;
 
 public class LogoutRoute implements Route {
-    private Dependencies dependencies;
+//    private Dependencies dependencies;
     private Gson converter;
 
     public LogoutRoute(Dependencies dependencies) {
-        this.dependencies = dependencies;
+//        this.dependencies = dependencies;
         this.converter = new Gson();
     }
 

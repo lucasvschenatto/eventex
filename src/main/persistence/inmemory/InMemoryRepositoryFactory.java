@@ -1,8 +1,8 @@
 package main.persistence.inmemory;
 
 import main.domain.account.UserRepository;
+import main.domain.activity.ActivityRepository;
 import main.domain.event.EventRepository;
-import main.domain.event.activity.ActivityRepository;
 
 public abstract class InMemoryRepositoryFactory {
 	private static InMemoryActivityRepository activity;

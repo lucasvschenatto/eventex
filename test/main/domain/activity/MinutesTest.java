@@ -1,8 +1,10 @@
-package main.domain.event.activity;
+package main.domain.activity;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import main.domain.activity.Minutes;
 
 public class MinutesTest {
 
@@ -10,6 +12,10 @@ public class MinutesTest {
     public void givenAnDurationAsString_itShouldConvertBackToIt() {
         assertEquals(10, new Minutes("10").toInteger());
     }
+	@Test
+	public void givenAnDurationAsString_itShouldReturnSameString(){
+		assertEquals("10", new Minutes("10").toString());
+	}
 	@Test
     public void givenAnInvalidIntegerString_itShouldConvertToZero() {
         assertEquals(0, new Minutes("not a number").toInteger());

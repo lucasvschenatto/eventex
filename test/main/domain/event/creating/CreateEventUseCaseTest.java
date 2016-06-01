@@ -1,9 +1,6 @@
 package main.domain.event.creating;
 
 import main.domain.event.EventRepository;
-import main.domain.event.creating.CreateEventRequest;
-import main.domain.event.creating.CreateEventResponse;
-import main.domain.event.creating.CreateEventUseCase;
 import main.domain.event.reading.EventSummary;
 import main.domain.event.reading.ReadEventsSummaryUseCase;
 import main.persistence.inmemory.InMemoryEventRepository;
@@ -14,21 +11,21 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class CreateEventUseCaseTest {
-	protected static final String VALID_NAME = "Valid name";
-	protected static final String VALID_DESCRIPTION = "Valid description";
-	protected static final String VALID_DATE = "1999-01-01";
-	protected static final String VALID_TIME = "01:01:01";
-	protected static final String VALID_PLACE = "Valid place";
-	protected static final String VALID_STREET = "Valid street";
-	protected static final String VALID_NUMBER = "510";
-	protected static final String VALID_COMPLEMENT = "valid complement";
-	protected static final String VALID_NEIGHBORHOOD = "Valid neighborhood";
-	protected static final String VALID_CITY = "Valid city";
-	protected static final String VALID_STATE = "Valid state";
-	protected static final String VALID_CEP = "10000-123";
-	protected CreateEventRequest request;
-	protected CreateEventResponse response;
-	protected EventRepository repository;
+	private static final String VALID_NAME = "Valid name";
+	private static final String VALID_DESCRIPTION = "Valid description";
+	private static final String VALID_DATE = "1999-01-01";
+	private static final String VALID_TIME = "01:01:01";
+	private static final String VALID_PLACE = "Valid place";
+	private static final String VALID_STREET = "Valid street";
+	private static final String VALID_NUMBER = "510";
+	private static final String VALID_COMPLEMENT = "valid complement";
+	private static final String VALID_NEIGHBORHOOD = "Valid neighborhood";
+	private static final String VALID_CITY = "Valid city";
+	private static final String VALID_STATE = "Valid state";
+	private static final String VALID_CEP = "10000-123";
+	private CreateEventRequest request;
+	private CreateEventResponse response;
+	private EventRepository repository;
 
     private void givenEventInformation(String name, String description, String date, String time, String place, 
     		String street, String number, String complement, String neighborhood, String city, String state, String cep) {
@@ -47,7 +44,7 @@ public class CreateEventUseCaseTest {
         request.cep = cep;
     }
 
-    public void whenCreatingTheProduct() {
+    private void whenCreatingTheEvent() {
         new CreateEventUseCase(repository, request, response).execute();
     }
 
@@ -116,7 +113,7 @@ public class CreateEventUseCaseTest {
     public void givenNullName_itIsInvalid() {
         givenEventInformation(null, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
-        whenCreatingTheProduct();
+        whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
     }
@@ -125,7 +122,7 @@ public class CreateEventUseCaseTest {
     public void givenEmptyName_itIsInvalid() {
         givenEventInformation("", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
-        whenCreatingTheProduct();
+        whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
     }
@@ -134,7 +131,7 @@ public class CreateEventUseCaseTest {
     public void givenNameWithOnlySpaces_itIsInvalid() {
         givenEventInformation("   ", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
-        whenCreatingTheProduct();
+        whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
     }
@@ -143,7 +140,7 @@ public class CreateEventUseCaseTest {
     public void givenNullDescription_itIsInvalid() {
         givenEventInformation(VALID_NAME, null, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
-        whenCreatingTheProduct();
+        whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
     }
@@ -152,7 +149,7 @@ public class CreateEventUseCaseTest {
     public void givenEmptyDescription_itIsInvalid() {
         givenEventInformation(VALID_NAME, "", VALID_DATE, VALID_TIME, VALID_PLACE,
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
-        whenCreatingTheProduct();
+        whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
     }
@@ -161,7 +158,7 @@ public class CreateEventUseCaseTest {
     public void givenDescriptionWithOnlySpaces_itIsInvalid() {
         givenEventInformation(VALID_NAME, "  ", VALID_DATE, VALID_TIME, VALID_PLACE,
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
-        whenCreatingTheProduct();
+        whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
     }
@@ -250,7 +247,7 @@ public class CreateEventUseCaseTest {
     public void givenAllValidInput_theEventMustBeCreated() {
         givenEventInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
-        whenCreatingTheProduct();
+        whenCreatingTheEvent();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
         andItShouldNotReturnErrors();
@@ -260,7 +257,7 @@ public class CreateEventUseCaseTest {
     public void givenNameAndDescriptionSurroundedBySpaces_theEventIsCreatedWithTheTextsTrimmed() {
         givenEventInformation("  Valid name  ", "  Valid description  ", VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
-        whenCreatingTheProduct();
+        whenCreatingTheEvent();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
         andItShouldNotReturnErrors();

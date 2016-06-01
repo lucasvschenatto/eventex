@@ -1,4 +1,4 @@
-package main.domain.event;
+package main.domain;
 
 public class Price {
     public static final Price ZERO = new Price("0");

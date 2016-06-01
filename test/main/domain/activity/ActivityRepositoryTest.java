@@ -1,4 +1,4 @@
-package main.domain.event.activity;
+package main.domain.activity;
 
 import main.domain.CEP;
 import main.domain.Date;
@@ -7,7 +7,10 @@ import main.domain.Quantity;
 import main.domain.Repository;
 import main.domain.RepositoryTest;
 import main.domain.Text;
-import main.domain.event.Time;
+import main.domain.Time;
+import main.domain.activity.Activity;
+import main.domain.activity.ActivityRepository;
+import main.domain.activity.Minutes;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -151,7 +154,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertFalse(activities.iterator().hasNext());
     }
 
-    @Test
+    @Test@SuppressWarnings("unused")
     public void givenTwoActivities_itReturnsTheTwo() {
         repository.save(new Activity());
         repository.save(new Activity());

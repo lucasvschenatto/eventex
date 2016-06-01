@@ -1,4 +1,4 @@
-package main.domain.event.activity;
+package main.domain.activity;
 
 public class Minutes {
 	public static final Minutes ZERO = new Minutes("0");
@@ -19,6 +19,10 @@ public class Minutes {
 	}
 	public boolean isValid() {
 		return wasParsed && value >= 0;
+	}
+	
+	public String toString(){
+		return Integer.toString(value);
 	}
 	
 	public boolean equals(Object other){

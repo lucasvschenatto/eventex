@@ -3,16 +3,14 @@ package main;
 import static spark.Spark.delete;
 import static spark.Spark.get;
 import static spark.Spark.post;
-import static spark.Spark.put;
 import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
 
-import java.util.Set;
-
-import main.persistence.inmemory.InMemoryUserRepository;
-import main.persistence.inmemory.InMemoryEventRepository;
 import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.routes.ActivitiesSummaryRoute;
+import main.routes.CreateActivityRoute;
 import main.routes.CreateEventRoute;
+import main.routes.DeleteActivityRoute;
 import main.routes.DeleteEventRoute;
 import main.routes.Dependencies;
 import main.routes.LoginRoute;
@@ -59,11 +57,15 @@ public class Main {
         get("/events", new EventsSummaryRoute(dependencies));
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
+        get("/activities", new ActivitiesSummaryRoute(dependencies));
+        post("/activities", new CreateActivityRoute(dependencies));
+        delete("/activities/:id", new DeleteActivityRoute(dependencies));
     }
 
     private Dependencies buildDependencies() {
         Dependencies dependencies = new Dependencies();
         dependencies.setEncryptor(new JasyptEncryptor());
+        dependencies.setActivityRepository(InMemoryRepositoryFactory.getActivityRepository());
         dependencies.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
         dependencies.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
         return dependencies;

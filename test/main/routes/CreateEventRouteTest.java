@@ -1,16 +1,25 @@
 package main.routes;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
 
 public class CreateEventRouteTest extends RouteTest {
-    @Test@Ignore
+    @Test
     public void integration() throws Exception {
-        assertRouteResponse("POST", "/products", "{}",
-                "{\"success\":false," +
-                        "\"invalidName\":true," +
-                        "\"invalidDescription\":true," +
-                        "\"invalidPrice\":true," +
-                        "\"invalidUnitsInStock\":true}");
+        assertRouteResponse("POST", "/events", "{}",
+                "{" +
+        		"\"success\":false," +
+        		"\"invalidName\":true," +
+        		"\"invalidDescription\":true," +
+        		"\"invalidDate\":true," +
+        		"\"invalidTime\":true," +
+        		"\"invalidPlace\":true," +
+        		"\"invalidStreet\":true," +
+        		"\"invalidNumber\":true," +
+        		"\"invalidComplement\":true," +
+        		"\"invalidNeighborhood\":true," +
+        		"\"invalidCity\":true," +
+        		"\"invalidState\":true," +
+        		"\"invalidCEP\":true" +
+                "}");
     }
 }

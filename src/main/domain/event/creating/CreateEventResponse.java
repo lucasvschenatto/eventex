@@ -7,5 +7,11 @@ public class CreateEventResponse {
     public boolean invalidDate;
     public boolean invalidTime;
     public boolean invalidPlace;
-    public boolean invalidAddress;
+	public boolean invalidStreet;
+	public boolean invalidNumber;
+	public boolean invalidComplement;
+	public boolean invalidNeighborhood;
+	public boolean invalidCity;
+	public boolean invalidState;
+	public boolean invalidCEP;
 }

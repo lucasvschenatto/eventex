@@ -1,10 +1,9 @@
 package main.routes;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
 
 public class LogoutRouteTest extends RouteTest {
-    @Test@Ignore
+    @Test
     public void integration() throws Exception {
         assertRouteResponse("POST", "/logout", "null");
     }

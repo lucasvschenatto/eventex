@@ -5,6 +5,7 @@ import java.text.ParseException;
 import javax.swing.text.MaskFormatter;
 
 public class CEP {
+	public static final CEP ZERO = new CEP("00000-000");
 	private String value;
 	private boolean parsed;
 

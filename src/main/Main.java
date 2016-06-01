@@ -11,6 +11,7 @@ import java.util.Set;
 
 import main.persistence.inmemory.InMemoryUserRepository;
 import main.persistence.inmemory.InMemoryEventRepository;
+import main.persistence.inmemory.InMemoryRepositoryFactory;
 import main.routes.CreateEventRoute;
 import main.routes.DeleteEventRoute;
 import main.routes.Dependencies;
@@ -63,8 +64,8 @@ public class Main {
     private Dependencies buildDependencies() {
         Dependencies dependencies = new Dependencies();
         dependencies.setEncryptor(new JasyptEncryptor());
-        dependencies.setUserRepository(new InMemoryUserRepository());
-        dependencies.setEventRepository(new InMemoryEventRepository());
+        dependencies.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
+        dependencies.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
         return dependencies;
     }
 

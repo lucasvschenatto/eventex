@@ -4,10 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import main.domain.CEP;
 import main.domain.Date;
 import main.domain.EntityTest;
+import main.domain.Numeric;
+import main.domain.Quantity;
 import main.domain.Text;
-import main.domain.event.Quantity;
 import main.domain.event.Time;
 import main.domain.event.activity.Activity;
 
@@ -24,7 +26,13 @@ public class ActivityTest extends EntityTest<Activity>{
 		activity.setDate(new Date("1900-01-01"));
 		activity.setTime(new Time("6:59:59"));
 		activity.setPlace(new Text("place"));
-		activity.setAddress(new Text("address"));
+		activity.setStreet(new Text("street"));
+		activity.setNumber(new Numeric("1"));
+		activity.setComplement(new Text("complement"));
+		activity.setNeighborhood(new Text("neighborhood"));
+		activity.setCity(new Text("city"));
+		activity.setState(new Text("state"));
+		activity.setCEP(new CEP("11111-111"));
 		activity.setSpots(new Quantity("15"));
 		activity.setDuration(new Minutes("3"));
 		activity.setPoints(new Quantity("400"));

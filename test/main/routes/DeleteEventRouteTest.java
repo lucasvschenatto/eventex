@@ -1,11 +1,10 @@
 package main.routes;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
 
 public class DeleteEventRouteTest extends RouteTest {
-    @Test@Ignore
+    @Test
     public void integration() throws Exception {
-        assertRouteResponse("DELETE", "/products/id", "null");
+        assertRouteResponse("DELETE", "/events/id", "null");
     }
 }

@@ -1,7 +1,9 @@
 package main.domain.event;
 
+import main.domain.CEP;
 import main.domain.Date;
 import main.domain.Entity;
+import main.domain.Numeric;
 import main.domain.Text;
 
 public class Event extends Entity {
@@ -10,13 +12,19 @@ public class Event extends Entity {
     protected Date date;
     protected Time time;
     protected Text place;
-    protected Text address;
+    protected Text street;
+	protected Numeric number;
+	protected Text complement;
+	protected Text neighborhood;
+	protected Text city;
+	protected Text state;
+	protected CEP cep;
 
     public Event() {
-        this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, Text.EMPTY);
+        this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, Text.EMPTY, Numeric.ZERO, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, CEP.ZERO);
     }
 
-    protected Event(String id, Text name, Text description, Date date, Time time, Text place, Text address) {
+    protected Event(String id, Text name, Text description, Date date, Time time, Text place, Text street, Numeric number, Text complement, Text neighborhood, Text city, Text state, CEP cep) {
         super(id);
         this.id = id;
         this.name = name;
@@ -24,11 +32,17 @@ public class Event extends Entity {
         this.date = date;
         this.time = time;
         this.place = place;
-        this.address = address;
+        this.street = street;
+		this.number = number;
+		this.complement = complement;
+		this.neighborhood = neighborhood;
+		this.city = city;
+		this.state = state;
+		this.cep = cep;
     }
 
     public Entity copy() {
-        return new Event(id, name, description, date, time, place, address);
+        return new Event(id, name, description, date, time, place, street, number, complement, neighborhood, city, state, cep);
     }
 
     public Text getName() {
@@ -71,11 +85,53 @@ public class Event extends Entity {
 		this.place = place;
 	}
 
-	public Text getAddress() {
-		return address;
+	public Text getStreet() {
+		return street;
 	}
 
-	public void setAddress(Text address) {
-		this.address = address;
+	public Numeric getNumber() {
+		return number;
+	}
+
+	public Text getComplement() {
+		return complement;
+	}
+
+	public Text getNeighborhood() {
+		return neighborhood;
+	}
+
+	public Text getCity() {
+		return city;
+	}
+
+	public Text getState() {
+		return state;
+	}
+
+	public CEP getCEP() {
+		return cep;
+	}
+
+	public void setStreet(Text street) {
+		this.street = street;
+	}
+	public void setNumber(Numeric number) {
+		this.number = number;
+	}
+	public void setComplement(Text complement){
+		this.complement = complement;
+	}
+	public void setNeighborhood(Text neighborhood){
+		this.neighborhood = neighborhood;
+	}
+	public void setCity(Text city){
+		this.city = city;
+	}
+	public void setState(Text state){
+		this.state = state;
+	}
+	public void setCEP(CEP cep){
+		this.cep = cep;
 	}
 }

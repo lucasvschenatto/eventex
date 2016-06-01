@@ -45,7 +45,8 @@ public abstract class RouteTest {
     }
 
     private HttpURLConnection makeConnection(String path) throws IOException {
-        return (HttpURLConnection) new URL("http://localhost:" + PORT + path).openConnection();
+    	String validPort = PORT != null? PORT: "8080";
+        return (HttpURLConnection) new URL("http://localhost:" + validPort + path).openConnection();
     }
 
     private void writeRequestHeader(String method, HttpURLConnection connection) throws ProtocolException {

@@ -1,9 +1,9 @@
-package main.domain.event;
+package main.domain;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import main.domain.event.Quantity;
+import main.domain.Quantity;
 
 public class QuantityTest {
     @Test

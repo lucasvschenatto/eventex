@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import main.domain.Booleanic;
 import main.domain.CEP;
 import main.domain.Date;
 import main.domain.EntityTest;
@@ -37,6 +38,8 @@ public class ActivityTest extends EntityTest<Activity>{
 		activity.setSpots(new Quantity("15"));
 		activity.setDuration(new Minutes("3"));
 		activity.setPoints(new Quantity("400"));
+		activity.setGroupDiscount(new Booleanic("true"));
+		activity.setVoucher(new Booleanic("true"));
 		return activity;
 	}
 
@@ -45,6 +48,8 @@ public class ActivityTest extends EntityTest<Activity>{
 		assertEquals(entity.getSpots(),copy.getSpots());
         assertEquals(entity.getMinutes(),copy.getMinutes());
         assertEquals(entity.getPoints(),copy.getPoints());
+        assertEquals(entity.getGroupDiscount(),copy.getGroupDiscount());
+        assertEquals(entity.getVoucher(),copy.getVoucher());
 	}
 
 	@Test
@@ -52,5 +57,7 @@ public class ActivityTest extends EntityTest<Activity>{
         assertEquals(Quantity.ZERO,subject.getSpots());
         assertEquals(Minutes.ZERO,subject.getMinutes());
         assertEquals(Quantity.ZERO,subject.getPoints());
+        assertEquals(Booleanic.FALSE,subject.getGroupDiscount());
+        assertEquals(Booleanic.FALSE,subject.getVoucher());
 	}
 }

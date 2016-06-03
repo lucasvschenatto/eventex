@@ -10,6 +10,11 @@ public class NumericTest {
     public void givenAnIntegerAsString_itShouldConvertBackToIt() {
         assertEquals(10, new Numeric("10").toInteger());
     }
+	
+	@Test
+    public void givenAnIntegerAsString_itShouldConvertToSameString() {
+		assertEquals("10", new Numeric("10").toString());
+	}
 
     @Test
     public void givenAnInvalidIntegerString_itShouldConvertToZero() {

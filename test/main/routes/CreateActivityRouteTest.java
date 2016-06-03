@@ -13,6 +13,8 @@ public class CreateActivityRouteTest extends RouteTest {
         		"\"invalidSpots\":true," +
         		"\"invalidDuration\":true," +
         		"\"invalidPoints\":true," +
+        		"\"invalidGroupDiscount\":false," +
+        		"\"invalidVoucher\":false," +
         		"\"success\":false," +
         		"\"invalidName\":true," +
         		"\"invalidDescription\":true," +

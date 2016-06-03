@@ -12,6 +12,11 @@ public class QuantityTest {
     }
 
     @Test
+    public void givenAnIntegerAsString_itShouldConvertToSameString() {
+    	assertEquals("10", new Quantity("10").toString());
+    }
+
+    @Test
     public void givenAnInvalidIntegerString_itShouldConvertToZero() {
         assertEquals(0, new Quantity("not a number").toInteger());
     }

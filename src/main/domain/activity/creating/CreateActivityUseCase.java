@@ -1,5 +1,6 @@
 package main.domain.activity.creating;
 
+import main.domain.Booleanic;
 import main.domain.CEP;
 import main.domain.Date;
 import main.domain.Numeric;
@@ -27,6 +28,8 @@ public class CreateActivityUseCase {
 	private final Quantity spots;
 	private final Minutes duration;
 	private final Quantity points;
+	private final Booleanic groupDiscount;
+	private final Booleanic voucher;
     private final CreateActivityResponse response;
     
     public CreateActivityUseCase(ActivityRepository repository, CreateActivityRequest request, CreateActivityResponse response){
@@ -46,6 +49,8 @@ public class CreateActivityUseCase {
         spots = new Quantity(request.spots);
         duration = new Minutes(request.duration);
         points = new Quantity(request.points);
+        groupDiscount = new Booleanic(request.groupDiscount);
+        voucher = new Booleanic(request.voucher);
         this.response = response;
     }
     
@@ -60,7 +65,8 @@ public class CreateActivityUseCase {
         return name.isValid() && description.isValid() && date.isValid() && time.isValid() && place.isValid() &&
         		street.isValid() && number.isValid() && complement.isValid() && neighborhood.isValid() &&
         		city.isValid() && state.isValid() && cep.isValid() &&
-        		spots.isValid() && duration.isValid() && points.isValid();
+        		spots.isValid() && duration.isValid() && points.isValid() &&
+        		groupDiscount.isValid() && voucher.isValid();
     }
     
     private void create(){
@@ -85,6 +91,8 @@ public class CreateActivityUseCase {
         activity.setSpots(spots);
         activity.setDuration(duration);
         activity.setPoints(points);
+        activity.setGroupDiscount(groupDiscount);
+        activity.setVoucher(voucher);
         return activity;
     }
     
@@ -104,6 +112,8 @@ public class CreateActivityUseCase {
         response.invalidSpots = !spots.isValid();
         response.invalidDuration = !duration.isValid();
         response.invalidPoints = !points.isValid();
+        response.invalidGroupDiscount = !groupDiscount.isValid();
+        response.invalidGroupDiscount = !voucher.isValid();
     }
 
 }

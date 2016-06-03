@@ -19,7 +19,8 @@ public class ReadActivityUseCaseTest {
 	
 	private void givenActivity(String name, String description, String date, String time, String place, 
     		String street, String number, String complement, String neighborhood, String city, String state, String cep,
-    		String spots, String duration, String points) {
+    		String spots, String duration, String points, 
+    		String groupDiscount, String voucher) {
         CreateActivityRequest request = new CreateActivityRequest();
         request.name = name;
         request.description = description;
@@ -36,6 +37,8 @@ public class ReadActivityUseCaseTest {
         request.spots = spots;
         request.duration = duration;
         request.points = points;
+        request.groupDiscount = groupDiscount;
+        request.voucher = voucher;
         CreateActivityResponse response = new CreateActivityResponse();
         new CreateActivityUseCase(repository,request,response).execute();
     }
@@ -50,7 +53,8 @@ public class ReadActivityUseCaseTest {
 	
 	private void andItMustPresentAtIndex(int index, String id, String name, String description, String date, String time, String place, 
     		String street, String number, String complement, String neighborhood, String city, String state, String cep,
-    		String spots, String duration, String points) {
+    		String spots, String duration, String points, 
+    		String groupDiscount, String voucher) {
 		ActivitySummary summary = response.get(index);
 		assertEquals(id, summary.id);
         assertEquals(name, summary.name);
@@ -68,6 +72,8 @@ public class ReadActivityUseCaseTest {
         assertEquals(spots, summary.spots);
         assertEquals(duration, summary.duration);
         assertEquals(points, summary.points);
+        assertEquals(groupDiscount, summary.groupDiscount);
+        assertEquals(voucher, summary.voucher);
 	}
 	
 	@Before
@@ -84,12 +90,12 @@ public class ReadActivityUseCaseTest {
 	
 	@Test
 	public void givenAnActivity_itMustBeReturnedInTheSummary(){
-		givenActivity("name 1", "description 1", "2011-01-01", "01:01:01", "place 1", "street 1", "100", "ap. 11", "downtown 1", "city 1", "state 1", "10000-111", "101","31","1100");
-		givenActivity("name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", "200", "ap. 22", "downtown 2", "city 2", "state 2", "20000-222", "202","32","2200");
+		givenActivity("name 1", "description 1", "2011-01-01", "01:01:01", "place 1", "street 1", "100", "ap. 11", "downtown 1", "city 1", "state 1", "10000-111", "101","31","1100", "true", "true");
+		givenActivity("name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", "200", "ap. 22", "downtown 2", "city 2", "state 2", "20000-222", "202","32","2200", "false", "false");
 		whenReadingSummaries();
 		thenTheSizeMustBe(2);
-		andItMustPresentAtIndex(0, "1", "name 1", "description 1", "2011-01-01", "01:01:01", "place 1", "street 1", "100", "ap. 11", "downtown 1", "city 1", "state 1", "10000-111", "101","31","1100");
-		andItMustPresentAtIndex(1, "2", "name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", "200", "ap. 22", "downtown 2", "city 2", "state 2", "20000-222", "202","32","2200");
+		andItMustPresentAtIndex(0, "1", "name 1", "description 1", "2011-01-01", "01:01:01", "place 1", "street 1", "100", "ap. 11", "downtown 1", "city 1", "state 1", "10000-111", "101","31","1100", "true", "true");
+		andItMustPresentAtIndex(1, "2", "name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", "200", "ap. 22", "downtown 2", "city 2", "state 2", "20000-222", "202","32","2200", "false", "false");
 	}
 
 }

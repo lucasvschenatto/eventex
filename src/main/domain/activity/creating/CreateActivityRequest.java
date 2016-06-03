@@ -6,4 +6,6 @@ public class CreateActivityRequest extends CreateEventRequest{
 	public String spots;
 	public String duration;
 	public String points;
+	public String groupDiscount;
+	public String voucher;
 }

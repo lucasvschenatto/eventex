@@ -6,4 +6,6 @@ public class CreateActivityResponse extends CreateEventResponse{
 	public boolean invalidSpots;
 	public boolean invalidDuration;
 	public boolean invalidPoints;
+	public boolean invalidGroupDiscount;
+	public boolean invalidVoucher;
 }

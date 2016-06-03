@@ -37,6 +37,8 @@ public class ReadActivitiesSummaryUseCase {
         summary.spots = activity.getSpots().toString();
         summary.duration = activity.getMinutes().toString();
         summary.points= activity.getPoints().toString();
+        summary.groupDiscount = activity.getGroupDiscount().toString();
+        summary.voucher = activity.getVoucher().toString();
 		return summary;
 	}
 

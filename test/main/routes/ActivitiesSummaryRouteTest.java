@@ -2,6 +2,7 @@ package main.routes;
 
 import org.junit.Test;
 
+import main.domain.Booleanic;
 import main.domain.CEP;
 import main.domain.Date;
 import main.domain.Numeric;
@@ -32,6 +33,8 @@ public class ActivitiesSummaryRouteTest extends RouteTest {
         activity.setCity(new Text("city"));
         activity.setState(new Text("state"));
         activity.setCEP(new CEP("11111-111"));
+        activity.setGroupDiscount(new Booleanic("true"));
+        activity.setVoucher(new Booleanic("false"));
         
         InMemoryRepositoryFactory.getActivityRepository().save(activity);
         
@@ -40,6 +43,8 @@ public class ActivitiesSummaryRouteTest extends RouteTest {
         		"\"spots\":\"500\"," +
         		"\"duration\":\"90\"," +
         		"\"points\":\"100\"," +
+        		"\"groupDiscount\":\"true\"," +
+        		"\"voucher\":\"false\"," +
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"name\":\"Name 1\"," +
                 "\"description\":\"Description 1\"," +

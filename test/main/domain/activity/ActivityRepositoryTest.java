@@ -1,5 +1,6 @@
 package main.domain.activity;
 
+import main.domain.Booleanic;
 import main.domain.CEP;
 import main.domain.Date;
 import main.domain.Numeric;
@@ -32,6 +33,8 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
     private static final Quantity SPOTS1 = new Quantity("10");
     private static final Minutes MINUTES1= new Minutes("11");
     private static final Quantity POINTS1 = new Quantity("100");
+    private static final Booleanic GROUP_DISCOUNT1 = new Booleanic("false");
+    private static final Booleanic VOUCHER1 = new Booleanic("false");
     
     private static final Text NAME2 = new Text("Name 2");
     private static final Text DESCRIPTION2 = new Text("Description 2");
@@ -48,7 +51,9 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
     private static final Quantity SPOTS2 = new Quantity("20");
     private static final Minutes MINUTES2= new Minutes("22");
     private static final Quantity POINTS2 = new Quantity("200");
-	private ActivityRepository repository;
+	private static final Booleanic GROUP_DISCOUNT2 = new Booleanic("true");
+    private static final Booleanic VOUCHER2 = new Booleanic("true");
+    private ActivityRepository repository;
 	
 	protected abstract ActivityRepository getRepository();
 	
@@ -79,6 +84,8 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         activity.setSpots(SPOTS1);
         activity.setDuration(MINUTES1);
         activity.setPoints(POINTS1);
+        activity.setGroupDiscount(GROUP_DISCOUNT1);
+        activity.setVoucher(VOUCHER1);
         return activity;
 	}
 
@@ -99,6 +106,8 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
 		activity.setSpots(SPOTS2);
 		activity.setDuration(MINUTES2);
 		activity.setPoints(POINTS2);
+		activity.setGroupDiscount(GROUP_DISCOUNT2);
+		activity.setVoucher(VOUCHER2);
 	}
 
 	@Override
@@ -119,6 +128,8 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertEquals(original.getSpots(),saved.getSpots());
         assertEquals(original.getMinutes(),saved.getMinutes());
         assertEquals(original.getPoints(),saved.getPoints());
+        assertEquals(original.getGroupDiscount(),saved.getGroupDiscount());
+        assertEquals(original.getVoucher(),saved.getVoucher());
         
 	}
 
@@ -140,6 +151,8 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertNotEquals(original.getSpots(),saved.getSpots());
         assertNotEquals(original.getMinutes(),saved.getMinutes());
         assertNotEquals(original.getPoints(),saved.getPoints());
+        assertNotEquals(original.getGroupDiscount(),saved.getGroupDiscount());
+        assertNotEquals(original.getVoucher(),saved.getVoucher());
 	}
 	
 	@Before

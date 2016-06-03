@@ -28,13 +28,15 @@ public class CreateActivityUseCaseTest{
 	private static final String VALID_SPOTS = "15";
 	private static final String VALID_DURATION = "60";
 	private static final String VALID_POINTS = "400";
+	private static final String VALID_GROUP_DISCOUNT = "true";
+	private static final String VALID_VOUCHER = "false";
 	private CreateActivityRequest request;
 	private CreateActivityResponse response;
 	private ActivityRepository repository;
 	
 	private void givenActivityInformation(String name, String description, String date, String time, String place, 
     		String street, String number, String complement, String neighborhood, String city, String state, String cep,
-    		String spots, String duration, String points) {
+    		String spots, String duration, String points, String groupDiscount, String voucher) {
         request = new CreateActivityRequest();
         request.name = name;
         request.description = description;
@@ -51,6 +53,8 @@ public class CreateActivityUseCaseTest{
         request.spots = spots;
         request.duration = duration;
         request.points = points;
+        request.groupDiscount = groupDiscount;
+        request.voucher = voucher;
     }
 	
 	public void whenCreatingTheActivity(){
@@ -79,6 +83,8 @@ public class CreateActivityUseCaseTest{
         if (response.invalidSpots) list.add("invalidSpots");
         if (response.invalidDuration) list.add("invalidDuration");
         if (response.invalidPoints) list.add("invalidPoints");
+        if (response.invalidGroupDiscount) list.add("invalidGroupDiscount");
+        if (response.invalidVoucher) list.add("invalidVoucher");
         return list.toArray(new String[list.size()]);
     }
 	
@@ -89,7 +95,8 @@ public class CreateActivityUseCaseTest{
 	
 	private void thenItShouldBeCreatedWithTheData(String name, String description, String date, String time, String place, 
     		String street, String number, String complement, String neighborhood, String city, String state, String cep,
-    		String spots, String duration, String points) {
+    		String spots, String duration, String points,
+    		String groupDiscount, String voucher) {
         assertTrue(response.success);
         ActivitySummary summary = getSummaries().get(0);
         assertEquals(name, summary.name);
@@ -107,6 +114,8 @@ public class CreateActivityUseCaseTest{
         assertEquals(spots,summary.spots);
         assertEquals(duration,summary.duration);
         assertEquals(points,summary.points);
+        assertEquals(groupDiscount, summary.groupDiscount);
+        assertEquals(voucher, summary.voucher);
     }
 	
 	private ArrayList<ActivitySummary> getSummaries() {
@@ -129,11 +138,11 @@ public class CreateActivityUseCaseTest{
     public void givenAllValidInput_theActivityMustBeCreated() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         andItShouldNotReturnErrors();
 	}
 	
@@ -141,11 +150,11 @@ public class CreateActivityUseCaseTest{
     public void givenNameAndDescriptionSurroundedBySpaces_theActivityIsCreatedWithTheTextsTrimmed() {
 		givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
 		whenCreatingTheActivity();
 		thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         andItShouldNotReturnErrors();
 	}
 
@@ -154,7 +163,7 @@ public class CreateActivityUseCaseTest{
     public void givenNullName_itIsInvalid() {
         givenActivityInformation(null, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -164,7 +173,7 @@ public class CreateActivityUseCaseTest{
     public void givenEmptyName_itIsInvalid() {
         givenActivityInformation("", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -174,7 +183,7 @@ public class CreateActivityUseCaseTest{
     public void givenNameWithOnlySpaces_itIsInvalid() {
         givenActivityInformation("   ", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -184,7 +193,7 @@ public class CreateActivityUseCaseTest{
     public void givenNullDescription_itIsInvalid() {
         givenActivityInformation(VALID_NAME, null, VALID_DATE, VALID_TIME, VALID_PLACE, 
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -194,7 +203,7 @@ public class CreateActivityUseCaseTest{
     public void givenEmptyDescription_itIsInvalid() {
         givenActivityInformation(VALID_NAME, "", VALID_DATE, VALID_TIME, VALID_PLACE,
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -204,10 +213,9 @@ public class CreateActivityUseCaseTest{
     public void givenDescriptionWithOnlySpaces_itIsInvalid() {
         givenActivityInformation(VALID_NAME, "  ", VALID_DATE, VALID_TIME, VALID_PLACE,
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
-        		VALID_SPOTS, VALID_DURATION, VALID_POINTS);
+        		VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
     }
-
 }

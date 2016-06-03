@@ -19,14 +19,14 @@ public class Numeric {
         return wasParsed && value >= 0;
     }
 
-    public String toString() {
-        return String.valueOf(toInteger());
-    }
-
     public int toInteger() {
         return value;
     }
-
+    
+    public String toString(){
+    	return Integer.toString(value);
+    }
+    
     public boolean equals(Object other) {
         return other instanceof Numeric && equalsPhysicalNumber((Numeric) other);
     }

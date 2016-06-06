@@ -45,7 +45,7 @@ public class ReadEventsSummaryUseCaseTest {
     }
 
     private void andItMustPresentAtIndex(int index, String id, String name, String description, String date, String time, String place, 
-    		String street, String number, String complement, String neighborhood, String city, String state, String cep) {
+    		String street, int number, String complement, String neighborhood, String city, String state, String cep) {
         EventSummary summary = response.get(index);
         assertEquals(id, summary.id);
         assertEquals(name, summary.name);
@@ -80,7 +80,7 @@ public class ReadEventsSummaryUseCaseTest {
         givenEvent("name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", "200", "ap. 22", "downtown 2", "city 2", "state 2", "20000-222");
         whenReadingSummaries();
         thenTheSizeMustBe(2);
-        andItMustPresentAtIndex(0, "1", "name 1", "description 1", "2011-01-01", "01:01:01", "place 1", "street 1", "100", "ap. 11", "downtown 1", "city 1", "state 1", "10000-111");
-        andItMustPresentAtIndex(1, "2", "name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", "200", "ap. 22", "downtown 2", "city 2", "state 2", "20000-222");
+        andItMustPresentAtIndex(0, "1", "name 1", "description 1", "2011-01-01", "01:01:01", "place 1", "street 1", 100, "ap. 11", "downtown 1", "city 1", "state 1", "10000-111");
+        andItMustPresentAtIndex(1, "2", "name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", 200, "ap. 22", "downtown 2", "city 2", "state 2", "20000-222");
     }
 }

@@ -12,7 +12,7 @@ public class CEP {
 	public CEP(String value) {
 		try {
 			if(value == null) throw new NullPointerException();
-			this.value = new MaskFormatter("#####-###").valueToString(value);
+			this.value = new MaskFormatter("#####-###").valueToString(value.trim());
 			parsed = true;
 		} catch (ParseException | NullPointerException ignored) {
 			this.value = "00000-000";

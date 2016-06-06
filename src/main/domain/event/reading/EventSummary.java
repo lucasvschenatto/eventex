@@ -8,7 +8,7 @@ public class EventSummary {
     public String time;
     public String place;
 	public String street;
-	public String number;
+	public int    number;
 	public String complement;
 	public String neighborhood;
 	public String city;

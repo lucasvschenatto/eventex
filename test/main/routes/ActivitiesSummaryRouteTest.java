@@ -11,12 +11,31 @@ import main.domain.Text;
 import main.domain.Time;
 import main.domain.activity.Activity;
 import main.domain.activity.Minutes;
+import main.domain.event.Event;
 import main.persistence.inmemory.InMemoryRepositoryFactory;
 
 public class ActivitiesSummaryRouteTest extends RouteTest {
     @Test
     public void integration() throws Exception {
+    	Event event = new Event();
+        event.setId("aeuou13542xxx9testk9");
+        event.setName(new Text("Name 1"));
+        event.setDescription(new Text("Description 1"));
+        event.setDate(new Date("1900-01-01"));
+        event.setTime(new Time("06:59:59"));
+        event.setPlace(new Text("place"));
+        event.setStreet(new Text("street"));
+        event.setNumber(new Numeric("1"));
+        event.setComplement(new Text("complement"));
+        event.setNeighborhood(new Text("neighborhood"));
+        event.setCity(new Text("city"));
+        event.setState(new Text("state"));
+        event.setCEP(new CEP("11111-111"));
+    	
         Activity activity = new Activity();
+        activity.setEventId(new Text("aeuou13542xxx9testk9"));
+        activity.setGroupDiscount(new Booleanic("true"));
+        activity.setVoucher(new Booleanic("false"));
         activity.setSpots(new Quantity("500"));
         activity.setDuration(new Minutes("90"));
         activity.setPoints(new Quantity("100"));
@@ -33,18 +52,18 @@ public class ActivitiesSummaryRouteTest extends RouteTest {
         activity.setCity(new Text("city"));
         activity.setState(new Text("state"));
         activity.setCEP(new CEP("11111-111"));
-        activity.setGroupDiscount(new Booleanic("true"));
-        activity.setVoucher(new Booleanic("false"));
         
         InMemoryRepositoryFactory.getActivityRepository().save(activity);
+        InMemoryRepositoryFactory.getEventRepository().save(event);
         
         assertRouteResponse("GET", "/activities",
                 "[{" +
-        		"\"spots\":\"500\"," +
-        		"\"duration\":\"90\"," +
-        		"\"points\":\"100\"," +
-        		"\"groupDiscount\":\"true\"," +
-        		"\"voucher\":\"false\"," +
+                "\"eventId\":\"aeuou13542xxx9testk9\"," +
+        		"\"spots\":500," +
+        		"\"duration\":90," +
+        		"\"points\":100," +
+        		"\"groupDiscount\":true," +
+        		"\"voucher\":false," +
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"name\":\"Name 1\"," +
                 "\"description\":\"Description 1\"," +
@@ -52,7 +71,7 @@ public class ActivitiesSummaryRouteTest extends RouteTest {
                 "\"time\":\"06:59:59\"," +
                 "\"place\":\"place\"," +
                 "\"street\":\"street\"," +
-                "\"number\":\"1\"," +
+                "\"number\":1," +
                 "\"complement\":\"complement\"," +
                 "\"neighborhood\":\"neighborhood\"," +
                 "\"city\":\"city\"," +

@@ -9,10 +9,13 @@ import main.domain.Text;
 import main.domain.Time;
 import main.domain.activity.ActivityRepository;
 import main.domain.activity.Minutes;
+import main.domain.event.EventRepository;
+import main.persistence.EntityNotFoundException;
 import main.domain.activity.Activity;
 
 public class CreateActivityUseCase {
-	private final ActivityRepository repository;
+	private final ActivityRepository activityRepository;
+	private final EventRepository eventRepository;
 	private final Text name;
     private final Text description;
     private final Date date;
@@ -25,6 +28,7 @@ public class CreateActivityUseCase {
 	private final Text city;
 	private final Text state;
 	private final CEP cep;
+	private final Text eventId;
 	private final Quantity spots;
 	private final Minutes duration;
 	private final Quantity points;
@@ -32,8 +36,9 @@ public class CreateActivityUseCase {
 	private final Booleanic voucher;
     private final CreateActivityResponse response;
     
-    public CreateActivityUseCase(ActivityRepository repository, CreateActivityRequest request, CreateActivityResponse response){
-    	this.repository = repository;
+    public CreateActivityUseCase(ActivityRepository activityRepository, EventRepository eventRepository, CreateActivityRequest request, CreateActivityResponse response){
+    	this.activityRepository = activityRepository;
+    	this.eventRepository = eventRepository;
         name = new Text(request.name);
         description = new Text(request.description);
         date = new Date(request.date);
@@ -46,6 +51,7 @@ public class CreateActivityUseCase {
         city = new Text(request.city);
         state = new Text(request.state);
         cep = new CEP(request.cep);
+        eventId = new Text(request.eventId);
         spots = new Quantity(request.spots);
         duration = new Minutes(request.duration);
         points = new Quantity(request.points);
@@ -62,15 +68,30 @@ public class CreateActivityUseCase {
     }
     
     private boolean isValidRequest() {
-        return name.isValid() && description.isValid() && date.isValid() && time.isValid() && place.isValid() &&
-        		street.isValid() && number.isValid() && complement.isValid() && neighborhood.isValid() &&
-        		city.isValid() && state.isValid() && cep.isValid() &&
-        		spots.isValid() && duration.isValid() && points.isValid() &&
-        		groupDiscount.isValid() && voucher.isValid();
+        return isValidFields() && eventIdExists();
     }
     
-    private void create(){
-    	repository.save(makeActivity());
+    private boolean eventIdExists() {
+    	try{
+    		eventRepository.getById(eventId.toString());   
+    		return true;
+    	}
+    	catch(EntityNotFoundException ignored){
+    		return false;
+    	}
+	}
+
+	private boolean isValidFields() {
+		return name.isValid() && description.isValid() && date.isValid() && time.isValid() && place.isValid() &&
+	    		street.isValid() && number.isValid() && complement.isValid() && neighborhood.isValid() &&
+	    		city.isValid() && state.isValid() && cep.isValid() &&
+	    		eventId.isValid() &&
+	    		spots.isValid() && duration.isValid() && points.isValid() &&
+	    		groupDiscount.isValid() && voucher.isValid();
+	}
+
+	private void create(){
+    	activityRepository.save(makeActivity());
     	response.success = true;
     }
     
@@ -88,6 +109,7 @@ public class CreateActivityUseCase {
         activity.setCity(city);
         activity.setState(state);
         activity.setCEP(cep);
+        activity.setEventId(eventId);
         activity.setSpots(spots);
         activity.setDuration(duration);
         activity.setPoints(points);
@@ -109,11 +131,12 @@ public class CreateActivityUseCase {
         response.invalidCity = !city.isValid();
         response.invalidState = !state.isValid();
         response.invalidCEP = !cep.isValid();
+        response.invalidEventId = (!eventId.isValid()) || (!eventIdExists());
         response.invalidSpots = !spots.isValid();
         response.invalidDuration = !duration.isValid();
         response.invalidPoints = !points.isValid();
         response.invalidGroupDiscount = !groupDiscount.isValid();
-        response.invalidGroupDiscount = !voucher.isValid();
+        response.invalidVoucher = !voucher.isValid();
     }
 
 }

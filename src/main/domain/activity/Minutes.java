@@ -14,7 +14,7 @@ public class Minutes {
             wasParsed = false;
         }
 	}
-	public int toInteger() {
+	public int toInt() {
 		return value;
 	}
 	public boolean isValid() {

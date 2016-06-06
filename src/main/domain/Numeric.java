@@ -7,7 +7,7 @@ public class Numeric {
 
     public Numeric(String value) {
         try {
-            this.value = Integer.parseInt(value);
+            this.value = Integer.parseInt(value.trim());
             this.wasParsed = true;
         } catch (NullPointerException | NumberFormatException ignored) {
             this.value = 0;
@@ -19,7 +19,7 @@ public class Numeric {
         return wasParsed && value >= 0;
     }
 
-    public int toInteger() {
+    public int toInt() {
         return value;
     }
     

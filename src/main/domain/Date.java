@@ -7,7 +7,7 @@ public class Date {
 	private boolean parsed;
 	public Date(String value) {
 		try{
-			this.value = LocalDate.parse(value);
+			this.value = LocalDate.parse(value.trim());
 			this.parsed = true;
 		}catch( DateTimeParseException | NullPointerException ignored){
 			this.value = LocalDate.MIN;

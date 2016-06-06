@@ -44,7 +44,7 @@ public class EventsSummaryRouteTest extends RouteTest {
                 "\"time\":\"06:59:59\"," +
                 "\"place\":\"place\"," +
                 "\"street\":\"street\"," +
-                "\"number\":\"1\"," +
+                "\"number\":1," +
                 "\"complement\":\"complement\"," +
                 "\"neighborhood\":\"neighborhood\"," +
                 "\"city\":\"city\"," +

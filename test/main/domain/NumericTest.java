@@ -8,7 +8,7 @@ public class NumericTest {
 
 	@Test
     public void givenAnIntegerAsString_itShouldConvertBackToIt() {
-        assertEquals(10, new Numeric("10").toInteger());
+        assertEquals(10, new Numeric("10").toInt());
     }
 	
 	@Test
@@ -16,14 +16,19 @@ public class NumericTest {
 		assertEquals("10", new Numeric("10").toString());
 	}
 
+	@Test
+	public void givenAnIntegerSurroundedBySpacesAsString_itShouldConvertToSameString() {
+		assertEquals("10", new Numeric("    10    ").toString());
+	}
+
     @Test
     public void givenAnInvalidIntegerString_itShouldConvertToZero() {
-        assertEquals(0, new Numeric("not a number").toInteger());
+        assertEquals(0, new Numeric("not a number").toInt());
     }
 
     @Test
     public void givenNullValue_itShouldConvertToZero() {
-        assertEquals(0, new Numeric(null).toInteger());
+        assertEquals(0, new Numeric(null).toInt());
     }
 
     @Test

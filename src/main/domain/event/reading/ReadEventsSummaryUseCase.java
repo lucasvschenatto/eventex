@@ -28,7 +28,7 @@ public class ReadEventsSummaryUseCase {
         summary.time = event.getTime().toString();
         summary.place = event.getPlace().toString();
         summary.street = event.getStreet().toString();
-        summary.number = event.getNumber().toString();
+        summary.number = event.getNumber().toInt();
         summary.complement = event.getComplement().toString();
         summary.neighborhood = event.getNeighborhood().toString();
         summary.city = event.getCity().toString();

@@ -3,13 +3,22 @@ package main.domain;
 public class Booleanic {
 	public static final Booleanic FALSE = new Booleanic("false");
     private boolean value;
+    private boolean parsed;
 
     public Booleanic(String value) {
-    	this.value = Boolean.parseBoolean(value);
+    	if(value != null && ( "true".equalsIgnoreCase(value.trim()) || "false".equalsIgnoreCase(value.trim())) ){
+    		parsed = true;
+    		if("true".equalsIgnoreCase(value.trim()))
+    			this.value = true;
+    		else
+    			this.value = false;
+    	}
+    	else
+    		parsed = false;
     }
 
     public boolean isValid() {
-        return true;
+        return parsed;
     }
 
     public boolean toBoolean() {

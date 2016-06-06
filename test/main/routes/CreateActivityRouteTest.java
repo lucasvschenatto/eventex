@@ -1,7 +1,5 @@
 package main.routes;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class CreateActivityRouteTest extends RouteTest {
@@ -10,11 +8,12 @@ public class CreateActivityRouteTest extends RouteTest {
     public void integration() throws Exception {
         assertRouteResponse("POST", "/activities", "{}",
                 "{" +
+        		"\"invalidEventId\":true," +
         		"\"invalidSpots\":true," +
         		"\"invalidDuration\":true," +
         		"\"invalidPoints\":true," +
-        		"\"invalidGroupDiscount\":false," +
-        		"\"invalidVoucher\":false," +
+        		"\"invalidGroupDiscount\":true," +
+        		"\"invalidVoucher\":true," +
         		"\"success\":false," +
         		"\"invalidName\":true," +
         		"\"invalidDescription\":true," +

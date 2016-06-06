@@ -30,6 +30,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
     private static final Text CITY1 = new Text("City 1");
     private static final Text STATE1 = new Text("State 1");
     private static final CEP CEP1 = new CEP("10000-111");
+    private static final Text EVENT_ID1 = new Text("abCDF0564");
     private static final Quantity SPOTS1 = new Quantity("10");
     private static final Minutes MINUTES1= new Minutes("11");
     private static final Quantity POINTS1 = new Quantity("100");
@@ -48,6 +49,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
     private static final Text CITY2 = new Text("City 2");
     private static final Text STATE2 = new Text("State 2");
     private static final CEP CEP2 = new CEP("20000-222");
+    private static final Text EVENT_ID2 = new Text("159aCeF");
     private static final Quantity SPOTS2 = new Quantity("20");
     private static final Minutes MINUTES2= new Minutes("22");
     private static final Quantity POINTS2 = new Quantity("200");
@@ -81,6 +83,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         activity.setCity(CITY1);
         activity.setState(STATE1);
         activity.setCEP(CEP1);
+        activity.setEventId(EVENT_ID1);
         activity.setSpots(SPOTS1);
         activity.setDuration(MINUTES1);
         activity.setPoints(POINTS1);
@@ -103,6 +106,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
 		activity.setCity(CITY2);
 		activity.setState(STATE2);
 		activity.setCEP(CEP2);
+		activity.setEventId(EVENT_ID2);
 		activity.setSpots(SPOTS2);
 		activity.setDuration(MINUTES2);
 		activity.setPoints(POINTS2);
@@ -125,6 +129,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertEquals(original.getCity(),saved.getCity());
         assertEquals(original.getState(),saved.getState());
         assertEquals(original.getCEP(),saved.getCEP());
+        assertEquals(original.getEventId(),saved.getEventId());
         assertEquals(original.getSpots(),saved.getSpots());
         assertEquals(original.getMinutes(),saved.getMinutes());
         assertEquals(original.getPoints(),saved.getPoints());
@@ -148,6 +153,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertNotEquals(original.getCity(),saved.getCity());
         assertNotEquals(original.getState(),saved.getState());
         assertNotEquals(original.getCEP(),saved.getCEP());
+        assertNotEquals(original.getEventId(),saved.getEventId());
         assertNotEquals(original.getSpots(),saved.getSpots());
         assertNotEquals(original.getMinutes(),saved.getMinutes());
         assertNotEquals(original.getPoints(),saved.getPoints());

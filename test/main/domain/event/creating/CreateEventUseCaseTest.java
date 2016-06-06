@@ -85,7 +85,7 @@ public class CreateEventUseCaseTest {
         assertEquals(time, summary.time);
         assertEquals(place, summary.place);
         assertEquals(street, summary.street);
-        assertEquals(number, summary.number);
+        assertEquals(Integer.parseInt(number), summary.number);
         assertEquals(complement, summary.complement);
         assertEquals(neighborhood, summary.neighborhood);
         assertEquals(city, summary.city);

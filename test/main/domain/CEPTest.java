@@ -10,6 +10,11 @@ public class CEPTest {
     public void givenACEPAsString_itShouldConvertBackToIt() {
         assertEquals("91910-530", new CEP("91910-530").toString());
     }
+	
+	@Test
+	public void givenACEPSurroundedBySpaceAsString_itShouldConvertBackToIt() {
+		assertEquals("91910-530", new CEP("    91910-530    ").toString());
+	}
 	@Test
     public void givenAInvalidString_itShouldConvertToZero() {
         assertEquals("00000-000", new CEP("not a number").toString());

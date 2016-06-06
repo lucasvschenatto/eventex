@@ -8,22 +8,27 @@ import main.domain.Quantity;
 public class QuantityTest {
     @Test
     public void givenAnIntegerAsString_itShouldConvertBackToIt() {
-        assertEquals(10, new Quantity("10").toInteger());
+        assertEquals(10, new Quantity("10").toInt());
     }
 
     @Test
     public void givenAnIntegerAsString_itShouldConvertToSameString() {
     	assertEquals("10", new Quantity("10").toString());
     }
+    
+    @Test
+    public void givenAnIntegerSurroundedBySpacesAsString_itShouldConvertToSameString() {
+    	assertEquals("10", new Quantity("    10    ").toString());
+    }
 
     @Test
     public void givenAnInvalidIntegerString_itShouldConvertToZero() {
-        assertEquals(0, new Quantity("not a number").toInteger());
+        assertEquals(0, new Quantity("not a number").toInt());
     }
 
     @Test
     public void givenNullValue_itShouldConvertToZero() {
-        assertEquals(0, new Quantity(null).toInteger());
+        assertEquals(0, new Quantity(null).toInt());
     }
 
     @Test

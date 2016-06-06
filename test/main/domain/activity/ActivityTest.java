@@ -35,6 +35,7 @@ public class ActivityTest extends EntityTest<Activity>{
 		activity.setCity(new Text("city"));
 		activity.setState(new Text("state"));
 		activity.setCEP(new CEP("11111-111"));
+		activity.setEventId(new Text("1234567890"));
 		activity.setSpots(new Quantity("15"));
 		activity.setDuration(new Minutes("3"));
 		activity.setPoints(new Quantity("400"));

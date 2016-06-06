@@ -10,7 +10,7 @@ public class MinutesTest {
 
 	@Test
     public void givenAnDurationAsString_itShouldConvertBackToIt() {
-        assertEquals(10, new Minutes("10").toInteger());
+        assertEquals(10, new Minutes("10").toInt());
     }
 	@Test
 	public void givenAnDurationAsString_itShouldReturnSameString(){
@@ -18,11 +18,11 @@ public class MinutesTest {
 	}
 	@Test
     public void givenAnInvalidIntegerString_itShouldConvertToZero() {
-        assertEquals(0, new Minutes("not a number").toInteger());
+        assertEquals(0, new Minutes("not a number").toInt());
     }
 	@Test
     public void givenANullValue_itShouldConvertToZero() {
-        assertEquals(0, new Minutes(null).toInteger());
+        assertEquals(0, new Minutes(null).toInt());
     }
 	@Test
     public void itIsInvalidWhenNotANumber() {

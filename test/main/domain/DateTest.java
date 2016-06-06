@@ -13,6 +13,10 @@ public class DateTest {
         assertEquals("2014-12-31", new Date("2014-12-31").toString());
     }
 	@Test
+	public void givenADateSurroundedBySpacesAsString_itShouldConvertBackToIt() {
+		assertEquals("2014-12-31", new Date("    2014-12-31    ").toString());
+	}
+	@Test
     public void givenADateAsString_itShouldSeparateYear() {
         assertEquals(2014, new Date("2014-12-31").getYear());
     }

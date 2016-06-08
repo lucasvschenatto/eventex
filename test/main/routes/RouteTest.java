@@ -1,9 +1,13 @@
 package main.routes;
 
 import main.Main;
+import main.persistence.inmemory.InMemoryRepositoryFactory;
+
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
+import org.junit.BeforeClass;
+
 import spark.Spark;
 
 import java.io.BufferedReader;
@@ -19,6 +23,11 @@ public abstract class RouteTest {
     private static final Charset UTF_8 = Charset.forName("UTF-8");
     private static final String PORT = System.getenv("PORT");
 
+    @BeforeClass
+    public static void setUpClass() throws Exception{
+    	InMemoryRepositoryFactory.resetAll();
+    }
+    
     @Before
     public void setUp() throws Exception {
         Main.main();

@@ -3,7 +3,7 @@ package main.domain.event;
 import main.domain.CEP;
 import main.domain.Date;
 import main.domain.Entity;
-import main.domain.Numeric;
+import main.domain.IntNumber;
 import main.domain.Text;
 import main.domain.Time;
 
@@ -14,7 +14,7 @@ public class Event extends Entity {
     protected Time time;
     protected Text place;
     protected Text street;
-	protected Numeric number;
+	protected IntNumber number;
 	protected Text complement;
 	protected Text neighborhood;
 	protected Text city;
@@ -22,10 +22,10 @@ public class Event extends Entity {
 	protected CEP cep;
 
     public Event() {
-        this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, Text.EMPTY, Numeric.ZERO, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, CEP.ZERO);
+        this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, Text.EMPTY, IntNumber.ZERO, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, CEP.ZERO);
     }
 
-    protected Event(String id, Text name, Text description, Date date, Time time, Text place, Text street, Numeric number, Text complement, Text neighborhood, Text city, Text state, CEP cep) {
+    protected Event(String id, Text name, Text description, Date date, Time time, Text place, Text street, IntNumber number, Text complement, Text neighborhood, Text city, Text state, CEP cep) {
         super(id);
         this.id = id;
         this.name = name;
@@ -90,7 +90,7 @@ public class Event extends Entity {
 		return street;
 	}
 
-	public Numeric getNumber() {
+	public IntNumber getNumber() {
 		return number;
 	}
 
@@ -117,7 +117,7 @@ public class Event extends Entity {
 	public void setStreet(Text street) {
 		this.street = street;
 	}
-	public void setNumber(Numeric number) {
+	public void setNumber(IntNumber number) {
 		this.number = number;
 	}
 	public void setComplement(Text complement){

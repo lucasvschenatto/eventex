@@ -7,17 +7,7 @@ import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
 
 import main.persistence.inmemory.InMemoryRepositoryFactory;
-import main.routes.ActivitiesSummaryRoute;
-import main.routes.CreateActivityRoute;
-import main.routes.CreateEventRoute;
-import main.routes.DeleteActivityRoute;
-import main.routes.DeleteEventRoute;
-import main.routes.Dependencies;
-import main.routes.LoginRoute;
-import main.routes.LogoutRoute;
-import main.routes.EventsSummaryRoute;
-import main.routes.ReadUserRoute;
-import main.routes.RegisterRoute;
+import main.routes.*;
 import main.security.JasyptEncryptor;
 
 public class Main {
@@ -50,18 +40,23 @@ public class Main {
     
     private void setUpRoutes() {
     	Dependencies dependencies = buildDependencies();
+    	
         get("/read-user", new ReadUserRoute(dependencies));
         post("/login", new LoginRoute(dependencies));
         post("/logout", new LogoutRoute(dependencies));
         post("/register", new RegisterRoute(dependencies));
         
+        get("/activities", new ActivitiesSummaryRoute(dependencies));
+        post("/activities", new CreateActivityRoute(dependencies));
+        delete("/activities/:id", new DeleteActivityRoute(dependencies));
+        
         get("/events", new EventsSummaryRoute(dependencies));
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
         
-        get("/activities", new ActivitiesSummaryRoute(dependencies));
-        post("/activities", new CreateActivityRoute(dependencies));
-        delete("/activities/:id", new DeleteActivityRoute(dependencies));
+        get("/participant_categories", new ParticipantCategoriesSummaryRoute(dependencies));
+        post("/participant_categories", new CreateParticipantCategoryRoute(dependencies));
+        delete("/participant_categories/:id", new DeleteParticipantCategoryRoute(dependencies));
     }
 
     private Dependencies buildDependencies() {
@@ -69,6 +64,7 @@ public class Main {
         dependencies.setEncryptor(new JasyptEncryptor());
         dependencies.setActivityRepository(InMemoryRepositoryFactory.getActivityRepository());
         dependencies.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
+        dependencies.setParticipantCategoryRepository(InMemoryRepositoryFactory.getParticipantCategoryRepository());
         dependencies.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
         return dependencies;
     }

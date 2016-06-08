@@ -1,4 +1,4 @@
-package main.domain.event;
+package main.domain;
 
 import static org.junit.Assert.*;
 

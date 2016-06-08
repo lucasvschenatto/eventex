@@ -2,7 +2,7 @@ package main.domain.event;
 
 import main.domain.CEP;
 import main.domain.Date;
-import main.domain.Numeric;
+import main.domain.IntNumber;
 import main.domain.Repository;
 import main.domain.RepositoryTest;
 import main.domain.Text;
@@ -20,7 +20,7 @@ public abstract class EventRepositoryTest extends RepositoryTest<Event> {
     private static final Time TIME1 = new Time("11:01:01");
     private static final Text PLACE1 = new Text("Place 1");
     private static final Text STREET1 = new Text("Street 1");
-    private static final Numeric NUMBER1 = new Numeric("100");
+    private static final IntNumber NUMBER1 = new IntNumber("100");
     private static final Text COMPLEMENT1 = new Text("apartment 1");
     private static final Text NEIGHBORHOOD1 = new Text("Downtown 1");
     private static final Text CITY1 = new Text("City 1");
@@ -33,7 +33,7 @@ public abstract class EventRepositoryTest extends RepositoryTest<Event> {
     private static final Time TIME2 = new Time("12:02:02");
     private static final Text PLACE2 = new Text("Place 2");
     private static final Text STREET2 = new Text("Street 2");
-    private static final Numeric NUMBER2 = new Numeric("200");
+    private static final IntNumber NUMBER2 = new IntNumber("200");
     private static final Text COMPLEMENT2 = new Text("apartment 2");
     private static final Text NEIGHBORHOOD2 = new Text("Downtown 2");
     private static final Text CITY2 = new Text("City 2");

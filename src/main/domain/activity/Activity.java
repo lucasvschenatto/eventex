@@ -4,7 +4,7 @@ import main.domain.Booleanic;
 import main.domain.CEP;
 import main.domain.Date;
 import main.domain.Entity;
-import main.domain.Numeric;
+import main.domain.IntNumber;
 import main.domain.Quantity;
 import main.domain.Text;
 import main.domain.Time;
@@ -19,10 +19,10 @@ public class Activity extends Event{
 	private Booleanic groupDiscount;
 	private Booleanic voucher;
 	public Activity(){
-		this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, Text.EMPTY, Numeric.ZERO, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, CEP.ZERO, 
+		this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, Text.EMPTY, IntNumber.ZERO, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, CEP.ZERO, 
 				Text.EMPTY, Quantity.ZERO, Minutes.ZERO, Quantity.ZERO, Booleanic.FALSE, Booleanic.FALSE);
 	}
-	private Activity(String id, Text name, Text description, Date date, Time time, Text place, Text street, Numeric number, Text complement, Text neighborhood, Text city, Text state, CEP cep, 
+	private Activity(String id, Text name, Text description, Date date, Time time, Text place, Text street, IntNumber number, Text complement, Text neighborhood, Text city, Text state, CEP cep, 
 			Text eventId,
 			Quantity spots, Minutes minutes, Quantity points,
 			Booleanic groupDiscount, Booleanic voucher) {

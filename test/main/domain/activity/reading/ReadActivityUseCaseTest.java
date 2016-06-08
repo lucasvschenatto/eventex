@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import main.domain.CEP;
 import main.domain.Date;
-import main.domain.Numeric;
+import main.domain.IntNumber;
 import main.domain.Text;
 import main.domain.Time;
 import main.domain.activity.ActivityRepository;
@@ -64,7 +64,7 @@ public class ReadActivityUseCaseTest {
         event.setTime(new Time("06:59:59"));
         event.setPlace(new Text("place"));
         event.setStreet(new Text("street"));
-        event.setNumber(new Numeric("1"));
+        event.setNumber(new IntNumber("1"));
         event.setComplement(new Text("complement"));
         event.setNeighborhood(new Text("neighborhood"));
         event.setCity(new Text("city"));

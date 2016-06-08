@@ -1,11 +1,11 @@
 package main.domain;
 
-public class Numeric {
-	public static final Numeric ZERO = new Numeric("0");
-    private int value;
+public class IntNumber {
+	public static final IntNumber ZERO = new IntNumber("0");
+    protected int value;
     private boolean wasParsed;
 
-    public Numeric(String value) {
+    public IntNumber(String value) {
         try {
             this.value = Integer.parseInt(value.trim());
             this.wasParsed = true;
@@ -28,10 +28,10 @@ public class Numeric {
     }
     
     public boolean equals(Object other) {
-        return other instanceof Numeric && equalsPhysicalNumber((Numeric) other);
+        return other instanceof IntNumber && equalsPhysicalNumber((IntNumber) other);
     }
 
-    protected boolean equalsPhysicalNumber(Numeric other) {
+    protected boolean equalsPhysicalNumber(IntNumber other) {
         return value == other.value;
     }
 }

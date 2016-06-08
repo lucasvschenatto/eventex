@@ -2,7 +2,7 @@ package main.domain.event.creating;
 
 import main.domain.CEP;
 import main.domain.Date;
-import main.domain.Numeric;
+import main.domain.IntNumber;
 import main.domain.Text;
 import main.domain.Time;
 import main.domain.event.Event;
@@ -16,7 +16,7 @@ public class CreateEventUseCase {
     private final Time time;
     private final Text place;
     private final Text street;
-	private final Numeric number;
+	private final IntNumber number;
 	private final Text complement;
 	private final Text neighborhood;
 	private final Text city;
@@ -32,7 +32,7 @@ public class CreateEventUseCase {
         time = new Time(request.time);
         place = new Text(request.place);
         street = new Text(request.street);
-        number = new Numeric(request.number);
+        number = new IntNumber(request.number);
         complement = new Text(request.complement);
         neighborhood = new Text(request.neighborhood);
         city = new Text(request.city);

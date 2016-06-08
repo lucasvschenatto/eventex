@@ -3,7 +3,7 @@ package main.domain.event;
 import main.domain.CEP;
 import main.domain.Date;
 import main.domain.EntityTest;
-import main.domain.Numeric;
+import main.domain.IntNumber;
 import main.domain.Text;
 import main.domain.Time;
 import main.domain.event.Event;
@@ -24,7 +24,7 @@ public class EventTest extends EntityTest<Event> {
         event.setTime(new Time("6:59:59"));
         event.setPlace(new Text("place"));
         event.setStreet(new Text("street"));
-        event.setNumber(new Numeric("1"));
+        event.setNumber(new IntNumber("1"));
         event.setComplement(new Text("complement"));
         event.setNeighborhood(new Text("neighborhood"));
         event.setCity(new Text("city"));
@@ -58,7 +58,7 @@ public class EventTest extends EntityTest<Event> {
         assertEquals(Time.MIN,subject.getTime());
         assertEquals(Text.EMPTY,subject.getPlace());
         assertEquals(Text.EMPTY,subject.getStreet());
-		assertEquals(Numeric.ZERO,subject.getNumber());
+		assertEquals(IntNumber.ZERO,subject.getNumber());
 		assertEquals(Text.EMPTY,subject.getComplement());
 		assertEquals(Text.EMPTY,subject.getNeighborhood());
 		assertEquals(Text.EMPTY,subject.getCity());

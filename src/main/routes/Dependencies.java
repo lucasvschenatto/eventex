@@ -4,26 +4,31 @@ import main.domain.account.Encryptor;
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
 import main.domain.event.EventRepository;
+import main.domain.participantCategory.ParticipantCategoryRepository;
 
 public class Dependencies {
 	private ActivityRepository activityRepository;
-    private UserRepository userRepository;
-    private EventRepository eventRepository;
+    private ParticipantCategoryRepository participantCategoryRepository;
+	private UserRepository userRepository;
+	private EventRepository eventRepository;
     private Encryptor encryptor;
-
-    public ActivityRepository getActivityRepository() {
+	public ActivityRepository getActivityRepository() {
     	return activityRepository;
-    }
-    
-    public UserRepository getUserRepository() {
-        return userRepository;
     }
     
     public EventRepository getEventRepository() {
     	return eventRepository;
     }
 
-    public void setActivityRepository(ActivityRepository activityRepository) {
+    public ParticipantCategoryRepository getParticipantCategoryRepository() {
+		return participantCategoryRepository;
+	}
+
+	public UserRepository getUserRepository() {
+	    return userRepository;
+	}
+
+	public void setActivityRepository(ActivityRepository activityRepository) {
     	this.activityRepository = activityRepository;
     }
 
@@ -42,5 +47,9 @@ public class Dependencies {
     public void setEncryptor(Encryptor encryptor) {
         this.encryptor = encryptor;
     }
+
+	public void setParticipantCategoryRepository(ParticipantCategoryRepository participantCategoryRepository) {
+		this.participantCategoryRepository = participantCategoryRepository;
+	}
 
 }

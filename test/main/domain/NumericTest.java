@@ -8,53 +8,53 @@ public class NumericTest {
 
 	@Test
     public void givenAnIntegerAsString_itShouldConvertBackToIt() {
-        assertEquals(10, new Numeric("10").toInt());
+        assertEquals(10, new IntNumber("10").toInt());
     }
 	
 	@Test
     public void givenAnIntegerAsString_itShouldConvertToSameString() {
-		assertEquals("10", new Numeric("10").toString());
+		assertEquals("10", new IntNumber("10").toString());
 	}
 
 	@Test
 	public void givenAnIntegerSurroundedBySpacesAsString_itShouldConvertToSameString() {
-		assertEquals("10", new Numeric("    10    ").toString());
+		assertEquals("10", new IntNumber("    10    ").toString());
 	}
 
     @Test
     public void givenAnInvalidIntegerString_itShouldConvertToZero() {
-        assertEquals(0, new Numeric("not a number").toInt());
+        assertEquals(0, new IntNumber("not a number").toInt());
     }
 
     @Test
     public void givenNullValue_itShouldConvertToZero() {
-        assertEquals(0, new Numeric(null).toInt());
+        assertEquals(0, new IntNumber(null).toInt());
     }
 
     @Test
     public void itIsInvalidWhenNotANumber() {
-        assertFalse(new Numeric("not a number").isValid());
+        assertFalse(new IntNumber("not a number").isValid());
     }
 
     @Test
     public void itIsInvalidWhenNegative() {
-        assertFalse(new Numeric("-1").isValid());
+        assertFalse(new IntNumber("-1").isValid());
     }
 
     @Test
     public void itIsValidWhenZeroOrGreater() {
-        assertTrue(new Numeric("0").isValid());
-        assertTrue(new Numeric("1").isValid());
+        assertTrue(new IntNumber("0").isValid());
+        assertTrue(new IntNumber("1").isValid());
     }
 
     @Test
     public void validNumbersAreEqualWhenTheyHaveTheSameValue() {
-        assertEquals(new Numeric("10"), new Numeric("10"));
+        assertEquals(new IntNumber("10"), new IntNumber("10"));
     }
 
     @Test
     public void invalidNumbers_forDifferentReasons_areEqualNonetheless() {
-        assertEquals(new Numeric("not a number"), new Numeric(null));
+        assertEquals(new IntNumber("not a number"), new IntNumber(null));
     }
 
 }

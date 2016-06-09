@@ -1,4 +1,4 @@
-package main.domain.participantCategory.creating;
+package main.domain.category.creating;
 
 public class CreateParticipantCategoryResponse {
     public boolean success;

@@ -2,9 +2,9 @@ package main.routes;
 
 import com.google.gson.Gson;
 
-import main.domain.participantCategory.creating.CreateParticipantCategoryRequest;
-import main.domain.participantCategory.creating.CreateParticipantCategoryResponse;
-import main.domain.participantCategory.creating.CreateParticipantCategoryUseCase;
+import main.domain.category.creating.CreateParticipantCategoryRequest;
+import main.domain.category.creating.CreateParticipantCategoryResponse;
+import main.domain.category.creating.CreateParticipantCategoryUseCase;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -20,7 +20,7 @@ public class CreateParticipantCategoryRoute implements Route {
     public Object handle(Request request, Response response) throws Exception {
     	CreateParticipantCategoryRequest input = converter.fromJson(request.body(), CreateParticipantCategoryRequest.class);
         CreateParticipantCategoryResponse output = new CreateParticipantCategoryResponse();
-        new CreateParticipantCategoryUseCase(dependencies.getParticipantCategoryRepository(), input, output).execute();
+        new CreateParticipantCategoryUseCase(dependencies.getCategoryRepository(), input, output).execute();
         return converter.toJson(output);
     }
 }

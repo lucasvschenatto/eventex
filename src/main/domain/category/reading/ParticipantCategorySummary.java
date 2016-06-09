@@ -1,4 +1,4 @@
-package main.domain.participantCategory.reading;
+package main.domain.category.reading;
 
 public class ParticipantCategorySummary {
     public String id;

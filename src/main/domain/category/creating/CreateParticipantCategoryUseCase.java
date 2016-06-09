@@ -1,9 +1,9 @@
-package main.domain.participantCategory.creating;
+package main.domain.category.creating;
 
 import main.domain.Percentage;
 import main.domain.Text;
-import main.domain.participantCategory.ParticipantCategory;
-import main.domain.participantCategory.ParticipantCategoryRepository;
+import main.domain.category.ParticipantCategory;
+import main.domain.category.ParticipantCategoryRepository;
 
 public class CreateParticipantCategoryUseCase {
     private final ParticipantCategoryRepository repository;

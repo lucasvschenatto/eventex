@@ -1,7 +1,7 @@
 package main.persistence.inmemory;
 
-import main.domain.participantCategory.ParticipantCategoryRepository;
-import main.domain.participantCategory.ParticipantCategoryRepositoryTest;
+import main.domain.category.ParticipantCategoryRepository;
+import main.domain.category.ParticipantCategoryRepositoryTest;
 
 public class InMemoryParticipantCategoryRepositoryTest extends ParticipantCategoryRepositoryTest{
 

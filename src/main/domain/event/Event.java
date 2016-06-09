@@ -27,7 +27,6 @@ public class Event extends Entity {
 
     protected Event(String id, Text name, Text description, Date date, Time time, Text place, Text street, IntNumber number, Text complement, Text neighborhood, Text city, Text state, CEP cep) {
         super(id);
-        this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;

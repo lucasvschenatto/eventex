@@ -1,4 +1,4 @@
-package main.domain.participantCategory;
+package main.domain.category;
 
 import main.domain.Repository;
 

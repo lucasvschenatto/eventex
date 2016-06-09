@@ -5,16 +5,16 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-public class DeleteParticipantCategoryRoute implements Route {
+public class DeleteCovenantRoute implements Route {
     private Dependencies dependencies;
     private Gson converter = new Gson();
 
-    public DeleteParticipantCategoryRoute(Dependencies dependencies) {
+    public DeleteCovenantRoute(Dependencies dependencies) {
         this.dependencies = dependencies;
     }
 
     public Object handle(Request request, Response response) throws Exception {
-        dependencies.getCategoryRepository().deleteById(request.params(":id"));
+        dependencies.getCovenantRepository().deleteById(request.params(":id"));
         return converter.toJson(null);
     }
 }

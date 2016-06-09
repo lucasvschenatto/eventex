@@ -21,7 +21,7 @@ import main.domain.event.EventRepository;
 import main.persistence.inmemory.InMemoryActivityRepository;
 import main.persistence.inmemory.InMemoryEventRepository;
 
-public class ReadActivityUseCaseTest {
+public class ReadActivitiesSummaryUseCaseTest {
 	private ActivityRepository activityRepository;
 	private EventRepository eventRepository;
 	private ArrayList<ActivitySummary> response;

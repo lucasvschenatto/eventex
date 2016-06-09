@@ -1,8 +1,8 @@
-package main.domain.participantCategory.creating;
+package main.domain.category.creating;
 
-import main.domain.participantCategory.ParticipantCategoryRepository;
-import main.domain.participantCategory.reading.ParticipantCategorySummary;
-import main.domain.participantCategory.reading.ReadParticipantCategoriesSummaryUseCase;
+import main.domain.category.ParticipantCategoryRepository;
+import main.domain.category.reading.ParticipantCategorySummary;
+import main.domain.category.reading.ReadParticipantCategoriesSummaryUseCase;
 import main.persistence.inmemory.InMemoryParticipantCategoryRepository;
 import static org.junit.Assert.*;
 import org.junit.Before;

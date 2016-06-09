@@ -2,14 +2,24 @@ package main.persistence.inmemory;
 
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
+import main.domain.category.ParticipantCategoryRepository;
+import main.domain.covenant.CovenantRepository;
 import main.domain.event.EventRepository;
-import main.domain.participantCategory.ParticipantCategoryRepository;
 
 public abstract class InMemoryRepositoryFactory {
 	private static InMemoryActivityRepository activity;
+	private static ParticipantCategoryRepository category;
+	private static CovenantRepository covenant;
 	private static InMemoryEventRepository event;
-	private static ParticipantCategoryRepository participantCategory;
 	private static InMemoryUserRepository user;
+
+	public static void resetAll() {
+		activity = null;
+		event = null;
+		category = null;
+		covenant = null;
+		user = null;
+	}
 
 	public static ActivityRepository getActivityRepository() {
 		if(activity == null)
@@ -29,17 +39,16 @@ public abstract class InMemoryRepositoryFactory {
 		return user;
 	}
 
-	public static ParticipantCategoryRepository getParticipantCategoryRepository() {
-		if(participantCategory == null)
-			participantCategory = new InMemoryParticipantCategoryRepository();
-		return participantCategory;
+	public static ParticipantCategoryRepository getCategoryRepository() {
+		if(category == null)
+			category = new InMemoryParticipantCategoryRepository();
+		return category;
 	}
 
-	public static void resetAll() {
-		activity = null;
-		event = null;
-		participantCategory = null;
-		user = null;
+	public static CovenantRepository getCovenantRepository() {
+		if(covenant == null)
+			covenant = new InMemoryCovenantRepository();
+		return covenant;
 	}
 
 }

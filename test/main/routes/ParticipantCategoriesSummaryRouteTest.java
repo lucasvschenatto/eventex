@@ -9,7 +9,7 @@ import org.junit.*;
 
 import main.domain.Percentage;
 import main.domain.Text;
-import main.domain.participantCategory.ParticipantCategory;
+import main.domain.category.ParticipantCategory;
 import main.persistence.inmemory.InMemoryRepositoryFactory;
 
 public class ParticipantCategoriesSummaryRouteTest extends RouteTest {
@@ -21,7 +21,7 @@ public class ParticipantCategoriesSummaryRouteTest extends RouteTest {
         category.setDescription(new Text("Description 1"));
         category.setDiscount(new Percentage("12"));
         
-        InMemoryRepositoryFactory.getParticipantCategoryRepository().save(category);
+        InMemoryRepositoryFactory.getCategoryRepository().save(category);
         
         assertRouteResponse("GET", "/participant_categories",
                 "[{" +

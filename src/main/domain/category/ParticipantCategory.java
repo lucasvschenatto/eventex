@@ -1,4 +1,4 @@
-package main.domain.participantCategory;
+package main.domain.category;
 
 import main.domain.Entity;
 import main.domain.Percentage;
@@ -15,7 +15,6 @@ public class ParticipantCategory extends Entity {
 
     protected ParticipantCategory(String id, Text name, Text description, Percentage discount) {
         super(id);
-        this.id = id;
         this.name = name;
         this.description = description;
         this.discount = discount;

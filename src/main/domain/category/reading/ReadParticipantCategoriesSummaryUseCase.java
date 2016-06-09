@@ -1,9 +1,9 @@
-package main.domain.participantCategory.reading;
+package main.domain.category.reading;
 
 import java.util.Collection;
 
-import main.domain.participantCategory.ParticipantCategory;
-import main.domain.participantCategory.ParticipantCategoryRepository;
+import main.domain.category.ParticipantCategory;
+import main.domain.category.ParticipantCategoryRepository;
 
 public class ReadParticipantCategoriesSummaryUseCase {
     private final ParticipantCategoryRepository repository;

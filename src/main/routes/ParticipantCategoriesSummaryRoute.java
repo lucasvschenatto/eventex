@@ -2,8 +2,8 @@ package main.routes;
 
 import com.google.gson.Gson;
 
-import main.domain.participantCategory.reading.ParticipantCategorySummary;
-import main.domain.participantCategory.reading.ReadParticipantCategoriesSummaryUseCase;
+import main.domain.category.reading.ParticipantCategorySummary;
+import main.domain.category.reading.ReadParticipantCategoriesSummaryUseCase;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -21,7 +21,7 @@ public class ParticipantCategoriesSummaryRoute implements Route {
 
     public Object handle(Request request, Response response) throws Exception {
         Collection<ParticipantCategorySummary> output = new ArrayList<>();
-        new ReadParticipantCategoriesSummaryUseCase(dependencies.getParticipantCategoryRepository(), output).execute();
+        new ReadParticipantCategoriesSummaryUseCase(dependencies.getCategoryRepository(), output).execute();
         return converter.toJson(output);
     }
 }

@@ -54,6 +54,10 @@ public class Main {
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
         
+        get("/covenants", new CovenantsSummaryRoute(dependencies));
+        post("/covenants", new CreateCovenantRoute(dependencies));
+        delete("/covenants/:id", new DeleteCovenantRoute(dependencies));
+        
         get("/participant_categories", new ParticipantCategoriesSummaryRoute(dependencies));
         post("/participant_categories", new CreateParticipantCategoryRoute(dependencies));
         delete("/participant_categories/:id", new DeleteParticipantCategoryRoute(dependencies));
@@ -63,8 +67,9 @@ public class Main {
         Dependencies dependencies = new Dependencies();
         dependencies.setEncryptor(new JasyptEncryptor());
         dependencies.setActivityRepository(InMemoryRepositoryFactory.getActivityRepository());
+        dependencies.setCovenantRepository(InMemoryRepositoryFactory.getCovenantRepository());
+        dependencies.setParticipantCategoryRepository(InMemoryRepositoryFactory.getCategoryRepository());
         dependencies.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
-        dependencies.setParticipantCategoryRepository(InMemoryRepositoryFactory.getParticipantCategoryRepository());
         dependencies.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
         return dependencies;
     }

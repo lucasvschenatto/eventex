@@ -151,7 +151,7 @@ public class CreateActivityUseCaseTest{
 		eventRepository = new InMemoryEventRepository();
 		
 		Event event = new Event();
-        event.setId("9876543210Aa");
+        event.setId(VALID_EVENT_ID);
         event.setName(new Text("Name 1"));
         event.setDescription(new Text("Description 1"));
         event.setDate(new Date("1900-01-01"));
@@ -177,6 +177,16 @@ public class CreateActivityUseCaseTest{
         		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         andItShouldNotReturnErrors();
+	}
+	
+	@Test
+    public void givenInexistentEventId_ItIsInvalid() {
+        givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
+        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP,
+        		"aeiou345DDF", VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
+        whenCreatingTheActivity();
+        thenItShouldNotBeCreated();
+        andItShouldReturnTheErrors("invalidEventId");
 	}
 	
 	@Test

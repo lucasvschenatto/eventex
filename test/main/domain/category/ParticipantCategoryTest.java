@@ -1,8 +1,9 @@
-package main.domain.participantCategory;
+package main.domain.category;
 
 import main.domain.EntityTest;
 import main.domain.Percentage;
 import main.domain.Text;
+
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 

@@ -1,10 +1,9 @@
-package main.domain.participantCategory;
+package main.domain.category;
 
 import main.domain.Percentage;
 import main.domain.Repository;
 import main.domain.RepositoryTest;
 import main.domain.Text;
-import main.domain.participantCategory.ParticipantCategory;
 
 import static org.junit.Assert.*;
 import org.junit.Before;

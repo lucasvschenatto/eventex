@@ -1,9 +1,9 @@
-package main.domain.participantCategory.reading;
+package main.domain.category.reading;
 
-import main.domain.participantCategory.ParticipantCategoryRepository;
-import main.domain.participantCategory.creating.CreateParticipantCategoryRequest;
-import main.domain.participantCategory.creating.CreateParticipantCategoryResponse;
-import main.domain.participantCategory.creating.CreateParticipantCategoryUseCase;
+import main.domain.category.ParticipantCategoryRepository;
+import main.domain.category.creating.CreateParticipantCategoryRequest;
+import main.domain.category.creating.CreateParticipantCategoryResponse;
+import main.domain.category.creating.CreateParticipantCategoryUseCase;
 import main.persistence.inmemory.InMemoryParticipantCategoryRepository;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -15,7 +15,7 @@ public class ReadParticipantCategoriesSummaryUseCaseTest {
     private ParticipantCategoryRepository repository;
     private ArrayList<ParticipantCategorySummary> response;
 
-    private void givenEvent(String name, String description, String discount) {
+    private void givenCategory(String name, String description, String discount) {
         CreateParticipantCategoryRequest request = new CreateParticipantCategoryRequest();
         request.name = name;
         request.description = description;
@@ -47,15 +47,15 @@ public class ReadParticipantCategoriesSummaryUseCaseTest {
     }
 
     @Test
-    public void givenNoEvents_itReturnsAnEmptyCollection() {
+    public void givenNoCategories_itReturnsAnEmptyCollection() {
         whenReadingSummaries();
         thenTheSizeMustBe(0);
     }
 
     @Test
-    public void givenAnEvent_itMustBeReturnedInTheSummary() {
-        givenEvent("name 1", "description 1", "14");
-        givenEvent("name 2", "description 2", "27");
+    public void givenACategory_itMustBeReturnedInTheSummary() {
+        givenCategory("name 1", "description 1", "14");
+        givenCategory("name 2", "description 2", "27");
         whenReadingSummaries();
         thenTheSizeMustBe(2);
         andItMustPresentAtIndex(0, "1", "name 1", "description 1", 14);

@@ -88,6 +88,18 @@ public class CEPTest {
 	}
 	
 	@Test
+	public void itIsInvalidWhenMinusInWrongPlace() {
+		assertFalse(new CEP("-12345123").isValid());
+		assertFalse(new CEP("1-2345123").isValid());
+		assertFalse(new CEP("12-345123").isValid());
+		assertFalse(new CEP("123-45123").isValid());
+		assertFalse(new CEP("1234-5123").isValid());
+		assertFalse(new CEP("123451-23").isValid());
+		assertFalse(new CEP("1234512-3").isValid());
+		assertFalse(new CEP("12345123-").isValid());
+	}
+	
+	@Test
 	public void itIsValidWhenZero() {
 		assertTrue(new CEP("00000-000").isValid());
 		assertTrue(new CEP("00000000").isValid());

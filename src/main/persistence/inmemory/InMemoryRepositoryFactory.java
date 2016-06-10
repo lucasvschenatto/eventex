@@ -2,14 +2,14 @@ package main.persistence.inmemory;
 
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
-import main.domain.category.ParticipantCategoryRepository;
-import main.domain.covenant.CovenantRepository;
+import main.domain.associate.AssociateRepository;
+import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
 
 public abstract class InMemoryRepositoryFactory {
 	private static InMemoryActivityRepository activity;
-	private static ParticipantCategoryRepository category;
-	private static CovenantRepository covenant;
+	private static CategoryRepository category;
+	private static AssociateRepository associate;
 	private static InMemoryEventRepository event;
 	private static InMemoryUserRepository user;
 
@@ -17,7 +17,7 @@ public abstract class InMemoryRepositoryFactory {
 		activity = null;
 		event = null;
 		category = null;
-		covenant = null;
+		associate = null;
 		user = null;
 	}
 
@@ -39,16 +39,16 @@ public abstract class InMemoryRepositoryFactory {
 		return user;
 	}
 
-	public static ParticipantCategoryRepository getCategoryRepository() {
+	public static CategoryRepository getCategoryRepository() {
 		if(category == null)
-			category = new InMemoryParticipantCategoryRepository();
+			category = new InMemoryCategoryRepository();
 		return category;
 	}
 
-	public static CovenantRepository getCovenantRepository() {
-		if(covenant == null)
-			covenant = new InMemoryCovenantRepository();
-		return covenant;
+	public static AssociateRepository getAssociateRepository() {
+		if(associate == null)
+			associate = new InMemoryAssociateRepository();
+		return associate;
 	}
 
 }

@@ -3,14 +3,14 @@ package main.routes;
 import main.domain.account.Encryptor;
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
-import main.domain.category.ParticipantCategoryRepository;
-import main.domain.covenant.CovenantRepository;
+import main.domain.associate.AssociateRepository;
+import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
 
 public class Dependencies {
 	private ActivityRepository activityRepository;
-	private ParticipantCategoryRepository categoryRepository;
-	private CovenantRepository covenantRepository;
+	private CategoryRepository categoryRepository;
+	private AssociateRepository associateRepository;
 	private Encryptor encryptor;
 	private EventRepository eventRepository;
 	private UserRepository userRepository;
@@ -19,8 +19,8 @@ public class Dependencies {
 		return activityRepository;
 	}
 
-	public CovenantRepository getCovenantRepository() {
-		return covenantRepository;
+	public AssociateRepository getAssociateRepository() {
+		return associateRepository;
 	}
 
 	public Encryptor getEncryptor() {
@@ -31,7 +31,7 @@ public class Dependencies {
 		return eventRepository;
 	}
 
-	public ParticipantCategoryRepository getCategoryRepository() {
+	public CategoryRepository getCategoryRepository() {
 		return categoryRepository;
 	}
 
@@ -43,8 +43,8 @@ public class Dependencies {
 		this.activityRepository = activityRepository;
 	}
 
-	public void setCovenantRepository(CovenantRepository covenantRepository) {
-		this.covenantRepository = covenantRepository;
+	public void setAssociateRepository(AssociateRepository associateRepository) {
+		this.associateRepository = associateRepository;
 	}
 
 	public void setEncryptor(Encryptor encryptor) {
@@ -55,7 +55,7 @@ public class Dependencies {
 		this.eventRepository = eventRepository;
 	}
 
-	public void setParticipantCategoryRepository(ParticipantCategoryRepository participantCategoryRepository) {
+	public void setParticipantCategoryRepository(CategoryRepository participantCategoryRepository) {
 		this.categoryRepository = participantCategoryRepository;
 	}
 

@@ -54,20 +54,21 @@ public class Main {
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
         
-        get("/covenants", new CovenantsSummaryRoute(dependencies));
-        post("/covenants", new CreateCovenantRoute(dependencies));
-        delete("/covenants/:id", new DeleteCovenantRoute(dependencies));
+        get("/categories", new CategoriesSummaryRoute(dependencies));
+        post("/categories", new CreateCategoryRoute(dependencies));
+        delete("/categories/:id", new DeleteCategoryRoute(dependencies));
         
-        get("/participant_categories", new ParticipantCategoriesSummaryRoute(dependencies));
-        post("/participant_categories", new CreateParticipantCategoryRoute(dependencies));
-        delete("/participant_categories/:id", new DeleteParticipantCategoryRoute(dependencies));
+        get("/associates", new AssociatesSummaryRoute(dependencies));
+        post("/associates", new CreateAssociateRoute(dependencies));
+        delete("/associates/:id", new DeleteAssociateRoute(dependencies));
+        
     }
 
     private Dependencies buildDependencies() {
         Dependencies dependencies = new Dependencies();
         dependencies.setEncryptor(new JasyptEncryptor());
         dependencies.setActivityRepository(InMemoryRepositoryFactory.getActivityRepository());
-        dependencies.setCovenantRepository(InMemoryRepositoryFactory.getCovenantRepository());
+        dependencies.setAssociateRepository(InMemoryRepositoryFactory.getAssociateRepository());
         dependencies.setParticipantCategoryRepository(InMemoryRepositoryFactory.getCategoryRepository());
         dependencies.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
         dependencies.setUserRepository(InMemoryRepositoryFactory.getUserRepository());

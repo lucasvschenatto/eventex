@@ -32,11 +32,11 @@ public class CreateCategoryUseCase {
     }
 
     private void create() {
-        repository.save(makeParticipantCategory());
+        repository.save(makeCategory());
         response.success = true;
     }
 
-    private Category makeParticipantCategory() {
+    private Category makeCategory() {
         Category category = new Category();
         category.setName(name);
         category.setDescription(description);

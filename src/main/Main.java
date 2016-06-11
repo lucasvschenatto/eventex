@@ -50,29 +50,34 @@ public class Main {
         post("/activities", new CreateActivityRoute(dependencies));
         delete("/activities/:id", new DeleteActivityRoute(dependencies));
         
-        get("/events", new EventsSummaryRoute(dependencies));
-        post("/events", new CreateEventRoute(dependencies));
-        delete("/events/:id", new DeleteEventRoute(dependencies));
+        get("/associates", new AssociatesSummaryRoute(dependencies));
+        post("/associates", new CreateAssociateRoute(dependencies));
+        delete("/associates/:id", new DeleteAssociateRoute(dependencies));
         
         get("/categories", new CategoriesSummaryRoute(dependencies));
         post("/categories", new CreateCategoryRoute(dependencies));
         delete("/categories/:id", new DeleteCategoryRoute(dependencies));
         
-        get("/associates", new AssociatesSummaryRoute(dependencies));
-        post("/associates", new CreateAssociateRoute(dependencies));
-        delete("/associates/:id", new DeleteAssociateRoute(dependencies));
+        get("/events", new EventsSummaryRoute(dependencies));
+        post("/events", new CreateEventRoute(dependencies));
+        delete("/events/:id", new DeleteEventRoute(dependencies));
+        
+        get("/professions", new ProfessionsSummaryRoute(dependencies));
+        post("/professions", new CreateProfessionRoute(dependencies));
+        delete("/professions/:id", new DeleteProfessionRoute(dependencies));
         
     }
 
     private Dependencies buildDependencies() {
-        Dependencies dependencies = new Dependencies();
-        dependencies.setEncryptor(new JasyptEncryptor());
-        dependencies.setActivityRepository(InMemoryRepositoryFactory.getActivityRepository());
-        dependencies.setAssociateRepository(InMemoryRepositoryFactory.getAssociateRepository());
-        dependencies.setParticipantCategoryRepository(InMemoryRepositoryFactory.getCategoryRepository());
-        dependencies.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
-        dependencies.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
-        return dependencies;
+        Dependencies d = new Dependencies();
+        d.setEncryptor(new JasyptEncryptor());
+        d.setActivityRepository(InMemoryRepositoryFactory.getActivityRepository());
+        d.setAssociateRepository(InMemoryRepositoryFactory.getAssociateRepository());
+        d.setCategoryRepository(InMemoryRepositoryFactory.getCategoryRepository());
+        d.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
+        d.setProfessionRepository(InMemoryRepositoryFactory.getProfessionRepository());
+        d.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
+        return d;
     }
 
 }

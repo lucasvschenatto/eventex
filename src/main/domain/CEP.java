@@ -12,12 +12,14 @@ public class CEP {
 	public CEP(String value) {
 		try {
 			if(value == null) throw new NullPointerException();
-			this.value = new MaskFormatter("#####-###").valueToString(value.trim());
+			String trimedValue = value.trim();
+			if(trimedValue.length() != 9) throw new CEPFormatException();
+			this.value = new MaskFormatter("#####-###").valueToString(trimedValue);
 			parsed = true;
-		} catch (ParseException | NullPointerException ignored) {
+		} catch (ParseException | NullPointerException | CEPFormatException ignored) {
 			this.value = "00000-000";
 			parsed = false;
-		}		
+		}
 	}
 	public String toString(){
 		return value;
@@ -32,4 +34,7 @@ public class CEP {
 	private boolean equalsValue(CEP other) {
 		return value.equals(other.value);
 	}
+}
+class CEPFormatException extends RuntimeException{
+	private static final long serialVersionUID = 1L;	
 }

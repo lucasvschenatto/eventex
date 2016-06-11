@@ -18,14 +18,14 @@ public class CreateCategoryUseCaseTest {
 	private CreateCategoryResponse response;
 	private CategoryRepository repository;
 
-    private void givenParticipantCategoryInformation(String name, String description, String discount) {
+    private void givenCategoryInformation(String name, String description, String discount) {
         request = new CreateCategoryRequest();
         request.name = name;
         request.description = description;
         request.discount = discount;
     }
 
-    private void whenCreatingTheParticipantCategory() {
+    private void whenCreatingTheCategory() {
         new CreateCategoryUseCase(repository, request, response).execute();
     }
 
@@ -73,89 +73,89 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenNullName_itIsInvalid() {
-        givenParticipantCategoryInformation(null, VALID_DESCRIPTION, VALID_DISCOUNT);
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation(null, VALID_DESCRIPTION, VALID_DISCOUNT);
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
     }
 
     @Test
     public void givenEmptyName_itIsInvalid() {
-        givenParticipantCategoryInformation("", VALID_DESCRIPTION, VALID_DISCOUNT);
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation("", VALID_DESCRIPTION, VALID_DISCOUNT);
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
     }
 
     @Test
     public void givenNameWithOnlySpaces_itIsInvalid() {
-        givenParticipantCategoryInformation("   ", VALID_DESCRIPTION, VALID_DISCOUNT);
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation("   ", VALID_DESCRIPTION, VALID_DISCOUNT);
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
     }
 
     @Test
     public void givenNullDescription_itIsInvalid() {
-        givenParticipantCategoryInformation(VALID_NAME, null, VALID_DISCOUNT);
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation(VALID_NAME, null, VALID_DISCOUNT);
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
     }
 
     @Test
     public void givenEmptyDescription_itIsInvalid() {
-        givenParticipantCategoryInformation(VALID_NAME, "", VALID_DISCOUNT);
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation(VALID_NAME, "", VALID_DISCOUNT);
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
     }
 
     @Test
     public void givenDescriptionWithOnlySpaces_itIsInvalid() {
-        givenParticipantCategoryInformation(VALID_NAME, "  ", VALID_DISCOUNT);
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation(VALID_NAME, "  ", VALID_DISCOUNT);
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
     }
     
     @Test
     public void givenNullDiscount_itIsInvalid() {
-        givenParticipantCategoryInformation(VALID_NAME, VALID_DESCRIPTION, null);
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, null);
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDiscount");
     }
 
     @Test
     public void givenEmptyDiscount_itIsInvalid() {
-        givenParticipantCategoryInformation(VALID_NAME, VALID_DESCRIPTION, "");
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, "");
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDiscount");
     }
 
     @Test
     public void givenDiscountWithOnlySpaces_itIsInvalid() {
-        givenParticipantCategoryInformation(VALID_NAME, VALID_DESCRIPTION, "  ");
-        whenCreatingTheParticipantCategory();
+        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, "  ");
+        whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDiscount");
     }
 
 
     @Test
-    public void givenAllValidInput_theParticipantCategoryMustBeCreated() {
-        givenParticipantCategoryInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT);
-        whenCreatingTheParticipantCategory();
+    public void givenAllValidInput_theCategoryMustBeCreated() {
+        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT);
+        whenCreatingTheCategory();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT);
         andItShouldNotReturnErrors();
     }
 
     @Test
-    public void givenNameAndDescriptionSurroundedBySpaces_theParticipantCategoryIsCreatedWithTheTextsTrimmed() {
-        givenParticipantCategoryInformation("  Valid name  ", "  Valid description  ", VALID_DISCOUNT);
-        whenCreatingTheParticipantCategory();
+    public void givenNameAndDescriptionSurroundedBySpaces_theCategoryIsCreatedWithTheTextsTrimmed() {
+        givenCategoryInformation("  Valid name  ", "  Valid description  ", VALID_DISCOUNT);
+        whenCreatingTheCategory();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT);
         andItShouldNotReturnErrors();
     }

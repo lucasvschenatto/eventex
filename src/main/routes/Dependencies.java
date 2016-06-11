@@ -6,21 +6,26 @@ import main.domain.activity.ActivityRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
+import main.domain.profession.ProfessionRepository;
 
 public class Dependencies {
 	private ActivityRepository activityRepository;
-	private CategoryRepository categoryRepository;
 	private AssociateRepository associateRepository;
+	private CategoryRepository categoryRepository;
 	private Encryptor encryptor;
 	private EventRepository eventRepository;
+	private ProfessionRepository professionRepository;
 	private UserRepository userRepository;
-
 	public ActivityRepository getActivityRepository() {
 		return activityRepository;
 	}
 
 	public AssociateRepository getAssociateRepository() {
 		return associateRepository;
+	}
+
+	public CategoryRepository getCategoryRepository() {
+		return categoryRepository;
 	}
 
 	public Encryptor getEncryptor() {
@@ -31,8 +36,8 @@ public class Dependencies {
 		return eventRepository;
 	}
 
-	public CategoryRepository getCategoryRepository() {
-		return categoryRepository;
+	public ProfessionRepository getProfessionRepository() {
+		return professionRepository;
 	}
 
 	public UserRepository getUserRepository() {
@@ -55,10 +60,14 @@ public class Dependencies {
 		this.eventRepository = eventRepository;
 	}
 
-	public void setParticipantCategoryRepository(CategoryRepository participantCategoryRepository) {
+	public void setCategoryRepository(CategoryRepository participantCategoryRepository) {
 		this.categoryRepository = participantCategoryRepository;
 	}
 
+	public void setProfessionRepository(ProfessionRepository professionRepository){
+		this.professionRepository = professionRepository;
+	}
+	
 	public void setUserRepository(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}

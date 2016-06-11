@@ -100,15 +100,21 @@ public class CEPTest {
 	}
 	
 	@Test
+	public void itIsInvalidWithoutMinus() {
+		assertFalse(new CEP("12345123").isValid());
+		assertFalse(new CEP("12345 123").isValid());
+		assertFalse(new CEP("12345A123").isValid());
+		assertFalse(new CEP("12345^123").isValid());
+	}
+	
+	@Test
 	public void itIsValidWhenZero() {
 		assertTrue(new CEP("00000-000").isValid());
-		assertTrue(new CEP("00000000").isValid());
 	}
 	
 	@Test
 	public void itIsValidWhenCEP() {
 		assertTrue(new CEP("12345-123").isValid());
-		assertTrue(new CEP("12345678").isValid());
 	}
 
 	@Test

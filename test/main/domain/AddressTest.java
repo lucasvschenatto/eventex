@@ -19,7 +19,7 @@ public class AddressTest {
 	}
 	
 	@Test
-	public void givenEmptyAddress_itShouldHaveInitialAttributesAndBrasilAsCountry(){
+	public void givenEmptyAddress_itShouldHaveInitialAttributes(){
 		Address address = new Address(null);
 		
 		assertEquals(new Text(""),address.getStreet());
@@ -28,7 +28,7 @@ public class AddressTest {
 		assertEquals(new Text(""),address.getNeighborhood());
 		assertEquals(new Text(""),address.getCity());
 		assertEquals(new Text(""),address.getState());
-		assertEquals(new Text("Brasil"),address.getCountry());
+		assertEquals(new Text(""),address.getCountry());
 		assertEquals(new CEP("00000-000"),address.getCEP());
 	}
 

@@ -1,6 +1,7 @@
 package main.domain.event.creating;
 
 import main.domain.AddressData;
+import main.domain.AddressSummary;
 import main.domain.event.EventRepository;
 import main.domain.event.reading.EventSummary;
 import main.domain.event.reading.ReadEventsSummaryUseCase;
@@ -17,7 +18,8 @@ public class CreateEventUseCaseTest {
 	private static final String VALID_DATE = "1999-01-01";
 	private static final String VALID_TIME = "01:01:01";
 	private static final String VALID_PLACE = "Valid place";
-	private static final AddressData VALID_ADDRESS = makeValidAddress();
+	private static final AddressData VALID_ADDRESS_DATA = makeValidAddressData();
+	private static final AddressSummary VALID_ADDRESS_SUMMARY = makeValidAddressSummary();
 	private CreateEventRequest request;
 	private CreateEventResponse response;
 	private EventRepository repository;
@@ -33,7 +35,20 @@ public class CreateEventUseCaseTest {
         request.address = address;
     }
 
-    private static AddressData makeValidAddress() {
+    private static AddressSummary makeValidAddressSummary() {
+    	AddressSummary summary = new AddressSummary();
+		summary.street = "valid Street";
+		summary.number = 510;
+		summary.complement = "valid complement";
+		summary.neighborhood = "valid neighborhood";
+		summary.city = "valid city";
+		summary.state = "valid state";
+		summary.country = "valid country";
+		summary.cep = "10000-123";
+		return summary;
+	}
+
+	private static AddressData makeValidAddressData() {
     	AddressData data = new AddressData();
 		data.street = "valid Street";
 		data.number = "510";
@@ -72,7 +87,7 @@ public class CreateEventUseCaseTest {
     }
 
     private void thenItShouldBeCreatedWithTheData(String name, String description, String date, String time, String place, 
-    		AddressData address) {
+    		AddressSummary address) {
         assertTrue(response.success);
         EventSummary summary = getSummaries().get(0);
         assertEquals(name, summary.name);
@@ -102,7 +117,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenNullName_itIsInvalid() {
         givenEventInformation(null, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_DATA);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -111,7 +126,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenEmptyName_itIsInvalid() {
         givenEventInformation("", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_DATA);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -120,7 +135,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenNameWithOnlySpaces_itIsInvalid() {
         givenEventInformation("   ", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_DATA);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -129,7 +144,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenNullDescription_itIsInvalid() {
         givenEventInformation(VALID_NAME, null, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_DATA);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -138,7 +153,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenEmptyDescription_itIsInvalid() {
         givenEventInformation(VALID_NAME, "", VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_DATA);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -147,7 +162,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenDescriptionWithOnlySpaces_itIsInvalid() {
         givenEventInformation(VALID_NAME, "  ", VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_DATA);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -236,20 +251,20 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenAllValidInput_theEventMustBeCreated() {
         givenEventInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_DATA);
         whenCreatingTheEvent();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_SUMMARY);
         andItShouldNotReturnErrors();
     }
 
     @Test
     public void givenNameAndDescriptionSurroundedBySpaces_theEventIsCreatedWithTheTextsTrimmed() {
         givenEventInformation("  Valid name  ", "  Valid description  ", VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_DATA);
         whenCreatingTheEvent();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS);
+        		VALID_ADDRESS_SUMMARY);
         andItShouldNotReturnErrors();
     }
 }

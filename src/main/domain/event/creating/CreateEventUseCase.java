@@ -1,6 +1,7 @@
 package main.domain.event.creating;
 
 import main.domain.Address;
+import main.domain.AddressValidation;
 import main.domain.Date;
 import main.domain.Text;
 import main.domain.Time;
@@ -43,9 +44,15 @@ public class CreateEventUseCase {
     private void create() {
         repository.save(makeEvent());
         response.success = true;
+        response.address = sendAddressIsValid();
     }
 
-    private Event makeEvent() {
+    private AddressValidation sendAddressIsValid() {
+    	AddressValidation validation = new AddressValidation();
+		return validation;
+	}
+
+	private Event makeEvent() {
         Event event = new Event();
         event.setName(name);
         event.setDescription(description);

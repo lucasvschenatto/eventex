@@ -1,6 +1,7 @@
 package main.domain.activity.creating;
 
 import main.domain.Address;
+import main.domain.AddressValidation;
 import main.domain.Booleanic;
 import main.domain.Date;
 import main.domain.Quantity;
@@ -79,7 +80,13 @@ public class CreateActivityUseCase {
 	private void create(){
     	activityRepository.save(makeActivity());
     	response.success = true;
+    	response.address = sendAddressIsValid();
     }
+	
+	private AddressValidation sendAddressIsValid() {
+    	AddressValidation validation = new AddressValidation();
+		return validation;
+	}
     
     private Activity makeActivity() {
         Activity activity = new Activity();

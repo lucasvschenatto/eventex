@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import main.domain.Address;
 import main.domain.AddressData;
+import main.domain.AddressSummary;
 import main.domain.Date;
 import main.domain.Text;
 import main.domain.Time;
@@ -26,7 +27,8 @@ public class CreateActivityUseCaseTest{
 	private static final String VALID_DATE = "1999-01-01";
 	private static final String VALID_TIME = "01:01:01";
 	private static final String VALID_PLACE = "Valid place";
-	private static final AddressData VALID_ADDRESS = makeValidAddress();
+	private static final AddressData VALID_ADDRESS_DATA = makeValidAddress();
+	private static final AddressSummary VALID_ADDRESS_SUMMARY = makeValidAddressSummary();
 	private static final String VALID_EVENT_ID = "9876543210Aa";
 	private static final String VALID_SPOTS = "15";
 	private static final String VALID_DURATION = "60";
@@ -57,6 +59,19 @@ public class CreateActivityUseCaseTest{
         request.groupDiscount = groupDiscount;
         request.voucher = voucher;
     }
+	
+	private static AddressSummary makeValidAddressSummary() {
+    	AddressSummary summary = new AddressSummary();
+		summary.street = "valid Street";
+		summary.number = 510;
+		summary.complement = "valid complement";
+		summary.neighborhood = "valid neighborhood";
+		summary.city = "valid city";
+		summary.state = "valid state";
+		summary.country = "valid country";
+		summary.cep = "10000-123";
+		return summary;
+	}
 	
 	private static AddressData makeValidAddress() {
     	AddressData data = new AddressData();
@@ -103,7 +118,7 @@ public class CreateActivityUseCaseTest{
     }
 	
 	private void thenItShouldBeCreatedWithTheData(String name, String description, String date, String time, String place, 
-    		AddressData address,
+    		AddressSummary address,
     		String eventId,
     		String spots, String duration, String points,
     		String groupDiscount, String voucher) {
@@ -153,11 +168,11 @@ public class CreateActivityUseCaseTest{
 	@Test
     public void givenAllValidInput_theActivityMustBeCreated() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_SUMMARY,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         andItShouldNotReturnErrors();
 	}
@@ -165,7 +180,7 @@ public class CreateActivityUseCaseTest{
 	@Test
     public void givenInexistentEventId_ItIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		"aeiou345DDF", VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -175,11 +190,11 @@ public class CreateActivityUseCaseTest{
 	@Test
     public void givenNameAndDescriptionSurroundedBySpaces_theActivityIsCreatedWithTheTextsTrimmed() {
 		givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-				VALID_ADDRESS,
+				VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
 		whenCreatingTheActivity();
 		thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-				VALID_ADDRESS,
+				VALID_ADDRESS_SUMMARY,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         andItShouldNotReturnErrors();
 	}
@@ -188,7 +203,7 @@ public class CreateActivityUseCaseTest{
 	@Test
     public void givenNullName_itIsInvalid() {
         givenActivityInformation(null, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -198,7 +213,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEmptyName_itIsInvalid() {
         givenActivityInformation("", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -208,7 +223,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenNameWithOnlySpaces_itIsInvalid() {
         givenActivityInformation("   ", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -218,7 +233,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenNullDescription_itIsInvalid() {
         givenActivityInformation(VALID_NAME, null, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -228,7 +243,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEmptyDescription_itIsInvalid() {
         givenActivityInformation(VALID_NAME, "", VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -238,7 +253,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenDescriptionWithOnlySpaces_itIsInvalid() {
         givenActivityInformation(VALID_NAME, "  ", VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -248,7 +263,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenNullEventId_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		null, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -258,7 +273,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEmptyEventId_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		"", VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -268,7 +283,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEventIdWithOnlySpaces_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		"    ", VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -277,7 +292,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEventIdWithNotExistingId_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			"not existing id", VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -287,7 +302,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenNullSpots_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, null, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -297,7 +312,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEmptySpots_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, "", VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -307,7 +322,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenSpotsWithOnlySpaces_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, "    ", VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -316,7 +331,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenSpotsWithoutANumber_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, "not a number", VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -325,7 +340,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenNullDuration_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, null, VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -335,7 +350,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEmptyDuration_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, "", VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -345,7 +360,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenDurationWithOnlySpaces_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, "    ", VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -354,7 +369,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenDurationWithoutANumber_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, "not a number", VALID_POINTS, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -363,7 +378,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenNullPoints_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, null, VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -373,7 +388,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEmptyPoints_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, "", VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -383,7 +398,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenPointsWithOnlySpaces_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, "    ", VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -392,7 +407,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenPointsWithoutANumber_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, "not a number", VALID_GROUP_DISCOUNT, VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -402,7 +417,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenNullGroupDiscount_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, null, VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -412,7 +427,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEmptyGroupDiscount_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, "", VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -422,7 +437,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenGroupDiscountWithOnlySpaces_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, "    ", VALID_VOUCHER);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -431,7 +446,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenGroupDiscountWithoutABoolean_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS,"not a boolean", VALID_VOUCHER);
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();
@@ -442,7 +457,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenNullVoucher_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, null);
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -452,7 +467,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenEmptyVoucher_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, "");
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -462,7 +477,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenVoucherWithOnlySpaces_itIsInvalid() {
         givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_ADDRESS,
+        		VALID_ADDRESS_DATA,
         		VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, "    ");
         whenCreatingTheActivity();
         thenItShouldNotBeCreated();
@@ -471,7 +486,7 @@ public class CreateActivityUseCaseTest{
     @Test
     public void givenVoucherWithoutABoolean_itIsInvalid() {
     	givenActivityInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-    			VALID_ADDRESS,
+    			VALID_ADDRESS_DATA,
     			VALID_EVENT_ID, VALID_SPOTS, VALID_DURATION, VALID_POINTS, VALID_GROUP_DISCOUNT, "not a boolean");
     	whenCreatingTheActivity();
     	thenItShouldNotBeCreated();

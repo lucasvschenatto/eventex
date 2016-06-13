@@ -16,7 +16,7 @@ public class Address {
 	public Address(AddressData data){
 		if(data == null){
 			data = new AddressData();
-			data.country = "Brasil";
+//			data.country = "Brasil";
 		}
 		street = new Text(data.street); 
 		number = new IntNumber(data.number); 
@@ -108,53 +108,14 @@ public class Address {
 		return summary;
 	}
 	
-//	public Address(){
-//	this(Text.EMPTY,IntNumber.ZERO,Text.EMPTY,Text.EMPTY,Text.EMPTY,Text.EMPTY,new Text("Brasil"),CEP.ZERO);
-//}
-//	protected Address(Text street, IntNumber number, Text complement, 
-//			Text neighborhood, Text city, Text state,
-//			Text country, CEP cep) {
-//		this.street = street;
-//		this.number = number;
-//		this.complement = complement;
-//		this.city = city;
-//		this.neighborhood = neighborhood;
-//		this.state = state;
-//		this.country = country;
-//		this.cep = cep;
-//	}
+	public boolean equals(Object other){
+		return other instanceof Address && equalsValue((Address)other);
+	}
 
-
-//
-//	public void setStreet(Text street) {
-//		this.street = street;
-//	}
-//
-//	public void setNumber(IntNumber number) {
-//		this.number = number;
-//	}
-//
-//	public void setComplement(Text complement) {
-//		this.complement = complement;
-//	}
-//
-//	public void setCity(Text city) {
-//		this.city = city;
-//	}
-//
-//	public void setNeighborhood(Text neighborhood) {
-//		this.neighborhood = neighborhood;
-//	}
-//
-//	public void setState(Text state) {
-//		this.state = state;
-//	}
-//
-//	public void setCountry(Text country) {
-//		this.country = country;
-//	}
-//
-//	public void setCEP(CEP cep) {
-//		this.cep = cep;
-//	}
+	private boolean equalsValue(Address other) {
+		return street.equals(other.street) && number.equals(other.number) &&
+				complement.equals(other.complement) && neighborhood.equals(other.neighborhood) &&
+						city.equals(other.city) && state.equals(other.state) &&
+						country.equals(other.country) && cep.equals(other.cep);
+	}
 }

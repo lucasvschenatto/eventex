@@ -5,118 +5,103 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class AddressTest {
-	private Address makeValidAddress() {
-		Address address = new Address();
-		address.setPlace("place");
-		address.setStreet("street");
-		address.setNumber("1");
-		address.setComplement("complement");
-		address.setNeighborhood("neighborhood");
-		address.setCity("city");
-		address.setState("state");
-		address.setCountry("country");
-		address.setCEP("11111-111");
-		return address;
+	private AddressData validAddressData() {
+		AddressData data = new AddressData();
+		data.street = "street";
+		data.number = "1";
+		data.complement = "complement";
+		data.neighborhood = "neighborhood";
+		data.city = "city";
+		data.state = "state";
+		data.country = "country";
+		data.cep = "11111-111";
+		return data;
 	}
 	
 	@Test
 	public void givenEmptyAddress_itShouldHaveInitialAttributesAndBrasilAsCountry(){
-		Address address = new Address();
+		Address address = new Address(null);
 		
-		assertEquals("", address.getPlace());
-		assertEquals("",address.getStreet());
-		assertEquals(0,address.getNumber());
-		assertEquals("",address.getComplement());
-		assertEquals("",address.getNeighborhood());
-		assertEquals("",address.getCity());
-		assertEquals("",address.getState());
-		assertEquals("Brasil",address.getCountry());
-		assertEquals("00000-000",address.getCEP());
+		assertEquals(new Text(""),address.getStreet());
+		assertEquals(new IntNumber("0"),address.getNumber());
+		assertEquals(new Text(""),address.getComplement());
+		assertEquals(new Text(""),address.getNeighborhood());
+		assertEquals(new Text(""),address.getCity());
+		assertEquals(new Text(""),address.getState());
+		assertEquals(new Text("Brasil"),address.getCountry());
+		assertEquals(new CEP("00000-000"),address.getCEP());
 	}
 
 	@Test
 	public void givenAttributesAsObjects_itShouldConvertBackToIt(){
-		Address address = new Address();
+		AddressData data = new AddressData();
+		data.street = "street";
+		data.number = "52";
+		data.complement = "ap. 110";
+		data.neighborhood = "downtown";
+		data.city = "city";
+		data.state = "state";
+		data.country = "country";
+		data.cep = "11111-111";
+		Address address = new Address(data);
 		
-		address.setPlace("Armazém do Zé");
-		address.setStreet("street");
-		address.setNumber("52");
-		address.setComplement("ap. 110");
-		address.setNeighborhood("downtown");
-		address.setCity("city");
-		address.setState("state");
-		address.setCountry("Brazil");
-		address.setCEP("11111-111");
-		
-		assertEquals("Armazém do Zé", address.getPlace());
-		assertEquals("street",address.getStreet());
-		assertEquals(52,address.getNumber());
-		assertEquals("ap. 110",address.getComplement());
-		assertEquals("downtown",address.getNeighborhood());
-		assertEquals("city",address.getCity());
-		assertEquals("state",address.getState());
-		assertEquals("Brazil",address.getCountry());
-		assertEquals("11111-111",address.getCEP());
+		assertEquals(new Text("street"),address.getStreet());
+		assertEquals(new IntNumber("52"),address.getNumber());
+		assertEquals(new Text("ap. 110"),address.getComplement());
+		assertEquals(new Text("downtown"),address.getNeighborhood());
+		assertEquals(new Text("city"),address.getCity());
+		assertEquals(new Text("state"),address.getState());
+		assertEquals(new Text("country"),address.getCountry());
+		assertEquals(new CEP("11111-111"),address.getCEP());
 	}
 	
 	@Test
 	public void givenAllInitialAttributes_itIsInvalid(){
-		assertFalse(new Address().isValid());
+		assertFalse(new Address(null).isValid());
 	}
 
 	@Test
 	public void givenAllValidAttributes_itIsValid(){
-		assertTrue(makeValidAddress().isValid());
-	}
-	
-	@Test
-	public void givenNoPlace_itIsValid(){
-		Address address = makeValidAddress();
-		address.setPlace("");
-		assertTrue(address.isValid());
+		assertTrue(new Address(validAddressData()).isValid());
 	}
 	
 	@Test
 	public void givenNoNeighborhood_itIsValid(){
-		Address address = makeValidAddress();
-		address.setNeighborhood("");
-		assertTrue(address.isValid());
-	}
-	
-	@Test
-	public void givenPlaceButNoStreetNorNumber_itIsValid(){
-		Address address = makeValidAddress();
-		address.setPlace("place");
-		address.setStreet("");
-		address.setNumber("");
+		AddressData data = validAddressData();
+		data.neighborhood = "";
+		Address address = new Address(data);
 		assertTrue(address.isValid());
 	}
 
 	@Test
 	public void givenNoCity_itIsInvalid(){
-		Address address = makeValidAddress();
-		address.setCity("");
+		AddressData data = validAddressData();
+		data.city = "";
+		Address address = new Address(data);
 		assertFalse(address.isValid());
 	}
 	
 	@Test
 	public void givenNoState_itIsInvalid(){
-		Address address = makeValidAddress();
-		address.setState("");
+		AddressData data = validAddressData();
+		data.state = "";
+		Address address = new Address(data);
 		assertFalse(address.isValid());
 	}
 	
 	@Test
 	public void givenNoCountry_itIsInvalid(){
-		Address address = makeValidAddress();
-		address.setCountry("");
+		AddressData data = validAddressData();
+		data.country = "";
+		Address address = new Address(data);
 		assertFalse(address.isValid());
 	}
 	
 	@Test
 	public void givenNoCEP_itIsInvalid(){
-		Address address = makeValidAddress();
-		address.setCEP("");
+		AddressData data = validAddressData();
+		data.cep = "";
+		Address address = new Address(data);
 		assertFalse(address.isValid());
 	}
 }

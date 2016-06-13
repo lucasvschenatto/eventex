@@ -20,13 +20,17 @@ public class CreateActivityRouteTest extends RouteTest {
         		"\"invalidDate\":true," +
         		"\"invalidTime\":true," +
         		"\"invalidPlace\":true," +
-        		"\"invalidStreet\":true," +
-        		"\"invalidNumber\":true," +
-        		"\"invalidComplement\":true," +
-        		"\"invalidNeighborhood\":true," +
-        		"\"invalidCity\":true," +
-        		"\"invalidState\":true," +
-        		"\"invalidCEP\":true" +
+        		"\"address\":" +
+	    			"{" +
+	        		"\"invalidStreet\":true," +
+	        		"\"invalidNumber\":true," +
+	        		"\"invalidComplement\":true," +
+	        		"\"invalidNeighborhood\":true," +
+	        		"\"invalidCity\":true," +
+	        		"\"invalidState\":true," +
+	        		"\"invalidCountry\":true,"+
+	        		"\"invalidCEP\":true" +
+	        		"}"+
                 "}");
     }
 

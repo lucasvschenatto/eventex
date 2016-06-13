@@ -1,14 +1,15 @@
 package main.domain.event;
 
-import main.domain.CEP;
+import main.domain.Address;
+import main.domain.AddressData;
 import main.domain.Date;
 import main.domain.EntityTest;
-import main.domain.IntNumber;
 import main.domain.Text;
 import main.domain.Time;
 import main.domain.event.Event;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class EventTest extends EntityTest<Event> {
@@ -23,13 +24,8 @@ public class EventTest extends EntityTest<Event> {
         event.setDate(new Date("1900-01-01"));
         event.setTime(new Time("6:59:59"));
         event.setPlace(new Text("place"));
-        event.setStreet(new Text("street"));
-        event.setNumber(new IntNumber("1"));
-        event.setComplement(new Text("complement"));
-        event.setNeighborhood(new Text("neighborhood"));
-        event.setCity(new Text("city"));
-        event.setState(new Text("state"));
-        event.setCEP(new CEP("11111-111"));
+        event.setAddress(new Address(validAddressData()));
+        
         return event;
     }
 
@@ -40,14 +36,20 @@ public class EventTest extends EntityTest<Event> {
         assertEquals(entity.getDate(),copy.getDate());
         assertEquals(entity.getTime(),copy.getTime());
         assertEquals(entity.getPlace(),copy.getPlace());
-        assertEquals(entity.getId(), copy.getId());
-        assertEquals(entity.getStreet(), copy.getStreet());
-        assertEquals(entity.getNumber(), copy.getNumber());
-        assertEquals(entity.getComplement(),copy.getComplement());
-        assertEquals(entity.getNeighborhood(),copy.getNeighborhood());
-        assertEquals(entity.getCity(),copy.getCity());
-        assertEquals(entity.getState(),copy.getState());
-        assertEquals(entity.getCEP(),copy.getCEP());
+        assertEquals(entity.getAddress(), copy.getAddress());
+    }
+    
+    private AddressData validAddressData(){
+    	AddressData data = new AddressData();
+    	data.street = "street";
+        data.number = "1";
+        data.complement = "complement";
+        data.neighborhood = "neighborhood";
+        data.city = "city";
+        data.state = "state";
+        data.country = "country";
+        data.cep = "11111-111";
+    	return data;
     }
 
     @Test
@@ -57,12 +59,6 @@ public class EventTest extends EntityTest<Event> {
         assertEquals(Date.MIN, subject.getDate());
         assertEquals(Time.MIN,subject.getTime());
         assertEquals(Text.EMPTY,subject.getPlace());
-        assertEquals(Text.EMPTY,subject.getStreet());
-		assertEquals(IntNumber.ZERO,subject.getNumber());
-		assertEquals(Text.EMPTY,subject.getComplement());
-		assertEquals(Text.EMPTY,subject.getNeighborhood());
-		assertEquals(Text.EMPTY,subject.getCity());
-		assertEquals(Text.EMPTY,subject.getState());
-		assertEquals(CEP.ZERO,subject.getCEP());
+        assertEquals(Address.EMPTY,subject.getAddress());
     }
 }

@@ -1,117 +1,160 @@
 package main.domain;
 
 public class Address {
-	protected Text place;
-	protected Text street;
-	protected IntNumber number;
-	protected Text complement;
-	protected Text city;
-	protected Text neighborhood;
-	protected Text state;
-	protected Text country;
-	protected CEP cep;
+	public static final Address EMPTY = new Address(null);
+	private Text street;
+	private IntNumber number;
+	private Text complement;
+	private Text neighborhood;
+	private Text city;
+	private Text state;
+	private Text country;
+	private CEP cep;
 	
-	public Address(){
-		this(Text.EMPTY,Text.EMPTY,IntNumber.ZERO,Text.EMPTY,Text.EMPTY,Text.EMPTY,Text.EMPTY,new Text("Brasil"),CEP.ZERO);
-	}
 
-	protected Address(Text place, Text street, IntNumber number, Text complement, 
-			Text city, Text neighborhood, Text state,
-			Text country, CEP cep) {
-		this.place = place;
-		this.street = street;
-		this.number = number;
-		this.complement = complement;
-		this.city = city;
-		this.neighborhood = neighborhood;
-		this.state = state;
-		this.country = country;
-		this.cep = cep;
+	
+	public Address(AddressData data){
+		if(data == null){
+			data = new AddressData();
+			data.country = "Brasil";
+		}
+		street = new Text(data.street); 
+		number = new IntNumber(data.number); 
+		complement = new Text(data.complement); 
+		neighborhood = new Text(data.neighborhood);
+		city = new Text(data.city); 
+		state = new Text(data.state); 
+		country = new Text(data.country); 
+		cep = new CEP(data.cep);
 	}
-
-	public String getCEP() {
-		return cep.toString();
+	
+	public AddressData getData(){
+		AddressData data = new AddressData();
+		data.street = street.toString();
+		data.number = number.toString();
+		data.complement = complement.toString();
+		data.neighborhood = neighborhood.toString();
+		data.city = city.toString();
+		data.state = state.toString();
+		data.country = country.toString();
+		data.cep = cep.toString();
+		return data;
 	}
-
-	public String getCity() {
-		return city.toString();
+	
+	public Text getStreet() {
+		return street;
 	}
-
-	public String getComplement() {
-		return complement.toString();
+	public IntNumber getNumber() {
+		return number;
 	}
-
-	public String getCountry() {
-		return country.toString();
+	public Text getComplement() {
+		return complement;
 	}
-
-	public String getNeighborhood() {
-		return neighborhood.toString();
+	public Text getNeighborhood() {
+		return neighborhood;
 	}
-
-	public int getNumber() {
-		return number.toInt();
+	public Text getCity() {
+		return city;
 	}
-
-	public String getPlace() {
-		return place.toString();
+	public Text getState() {
+		return state;
 	}
-
-	public String getState() {
-		return state.toString();
+	public Text getCountry() {
+		return country;
 	}
-
-	public String getStreet() {
-		return street.toString();
+	public CEP getCEP() {
+		return cep;
 	}
-
-	public void setCEP(String cep) {
-		this.cep = new CEP(cep);
+	
+	public AddressValidation getValidation(){
+		AddressValidation validation = new AddressValidation();
+		validation.invalidStreet = !street.isValid();
+		validation.invalidNumber = !number.isValid();
+        validation.invalidComplement = !complement.isValid();
+        validation.invalidNeighborhood = !neighborhood.isValid();
+        validation.invalidCity = !city.isValid();
+        validation.invalidState = !state.isValid();
+        validation.invalidCountry = !country.isValid();
+        validation.invalidCEP = !cep.isValid();
+        return validation;
 	}
-
-	public void setCity(String city) {
-		this.city = new Text(city);
-	}
-
-	public void setComplement(String complement) {
-		this.complement = new Text(complement);
-	}
-
-	public void setCountry(String country) {
-		this.country = new Text(country);
-	}
-
-	public void setNeighborhood(String neighborhood) {
-		this.neighborhood = new Text(neighborhood);
-	}
-
-	public void setNumber(String number) {
-		this.number = new IntNumber(number);
-	}
-
-	public void setPlace(String place) {
-		this.place = new Text(place);
-	}
-
-	public void setState(String state) {
-		this.state = new Text(state);
-	}
-
-	public void setStreet(String street) {
-		this.street = new Text(street);
-	}
-
+	
 	public boolean isValid() {
 		return isLocalAddressValid() && isCountryAddressValid();
 	}
 
 	private boolean isLocalAddressValid() {
-		return (street.isValid() && number.isValid() && !number.equals(IntNumber.ZERO)) ||
-				place.isValid();
+		return (street.isValid() && number.isValid() && !number.equals(IntNumber.ZERO));
 	}
 	
 	private boolean isCountryAddressValid() {
 		return city.isValid() && state.isValid() && country.isValid() && cep.isValid();
 	}
+	
+	public Address copy() {
+	return new Address(getData());
+}
 
+	public AddressSummary toSummary() {
+		AddressSummary summary = new AddressSummary();
+		summary.street = street.toString();
+		summary.number = number.toInt();
+		summary.complement = complement.toString();
+		summary.neighborhood = neighborhood.toString();
+		summary.city = city.toString();
+		summary.state = state.toString();
+		summary.country = country.toString();
+		summary.cep = cep.toString();
+		return summary;
+	}
+	
+//	public Address(){
+//	this(Text.EMPTY,IntNumber.ZERO,Text.EMPTY,Text.EMPTY,Text.EMPTY,Text.EMPTY,new Text("Brasil"),CEP.ZERO);
+//}
+//	protected Address(Text street, IntNumber number, Text complement, 
+//			Text neighborhood, Text city, Text state,
+//			Text country, CEP cep) {
+//		this.street = street;
+//		this.number = number;
+//		this.complement = complement;
+//		this.city = city;
+//		this.neighborhood = neighborhood;
+//		this.state = state;
+//		this.country = country;
+//		this.cep = cep;
+//	}
+
+
+//
+//	public void setStreet(Text street) {
+//		this.street = street;
+//	}
+//
+//	public void setNumber(IntNumber number) {
+//		this.number = number;
+//	}
+//
+//	public void setComplement(Text complement) {
+//		this.complement = complement;
+//	}
+//
+//	public void setCity(Text city) {
+//		this.city = city;
+//	}
+//
+//	public void setNeighborhood(Text neighborhood) {
+//		this.neighborhood = neighborhood;
+//	}
+//
+//	public void setState(Text state) {
+//		this.state = state;
+//	}
+//
+//	public void setCountry(Text country) {
+//		this.country = country;
+//	}
+//
+//	public void setCEP(CEP cep) {
+//		this.cep = cep;
+//	}
 }

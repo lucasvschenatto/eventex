@@ -27,13 +27,7 @@ public class ReadActivitiesSummaryUseCase {
         summary.date = activity.getDate().toString();
         summary.time = activity.getTime().toString();
         summary.place = activity.getPlace().toString();
-        summary.street = activity.getStreet().toString();
-        summary.number = activity.getNumber().toInt();
-        summary.complement = activity.getComplement().toString();
-        summary.neighborhood = activity.getNeighborhood().toString();
-        summary.city = activity.getCity().toString();
-        summary.state = activity.getState().toString();
-        summary.cep = activity.getCEP().toString();
+        summary.address = activity.getAddress().toSummary();
         summary.eventId = activity.getEventId().toString();
         summary.spots = activity.getSpots().toInt();
         summary.duration = activity.getMinutes().toInt();

@@ -1,5 +1,7 @@
 package main.domain.event.creating;
 
+import main.domain.AddressValidation;
+
 public class CreateEventResponse {
     public boolean success;
     public boolean invalidName;
@@ -7,11 +9,5 @@ public class CreateEventResponse {
     public boolean invalidDate;
     public boolean invalidTime;
     public boolean invalidPlace;
-	public boolean invalidStreet;
-	public boolean invalidNumber;
-	public boolean invalidComplement;
-	public boolean invalidNeighborhood;
-	public boolean invalidCity;
-	public boolean invalidState;
-	public boolean invalidCEP;
+    public AddressValidation address;
 }

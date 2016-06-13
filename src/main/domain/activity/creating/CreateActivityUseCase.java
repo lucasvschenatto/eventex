@@ -1,9 +1,8 @@
 package main.domain.activity.creating;
 
+import main.domain.Address;
 import main.domain.Booleanic;
-import main.domain.CEP;
 import main.domain.Date;
-import main.domain.IntNumber;
 import main.domain.Quantity;
 import main.domain.Text;
 import main.domain.Time;
@@ -21,13 +20,7 @@ public class CreateActivityUseCase {
     private final Date date;
     private final Time time;
     private final Text place;
-    private final Text street;
-	private final IntNumber number;
-	private final Text complement;
-	private final Text neighborhood;
-	private final Text city;
-	private final Text state;
-	private final CEP cep;
+    private final Address address;
 	private final Text eventId;
 	private final Quantity spots;
 	private final Minutes duration;
@@ -44,13 +37,7 @@ public class CreateActivityUseCase {
         date = new Date(request.date);
         time = new Time(request.time);
         place = new Text(request.place);
-        street = new Text(request.street);
-        number = new IntNumber(request.number);
-        complement = new Text(request.complement);
-        neighborhood = new Text(request.neighborhood);
-        city = new Text(request.city);
-        state = new Text(request.state);
-        cep = new CEP(request.cep);
+        address = new Address(request.address);
         eventId = new Text(request.eventId);
         spots = new Quantity(request.spots);
         duration = new Minutes(request.duration);
@@ -83,8 +70,7 @@ public class CreateActivityUseCase {
 
 	private boolean isValidFields() {
 		return name.isValid() && description.isValid() && date.isValid() && time.isValid() && place.isValid() &&
-	    		street.isValid() && number.isValid() && complement.isValid() && neighborhood.isValid() &&
-	    		city.isValid() && state.isValid() && cep.isValid() &&
+	    		address.isValid() &&
 	    		eventId.isValid() &&
 	    		spots.isValid() && duration.isValid() && points.isValid() &&
 	    		groupDiscount.isValid() && voucher.isValid();
@@ -102,13 +88,7 @@ public class CreateActivityUseCase {
         activity.setDate(date);
         activity.setTime(time);
         activity.setPlace(place);
-        activity.setStreet(street);
-        activity.setNumber(number);
-        activity.setComplement(complement);
-        activity.setNeighborhood(neighborhood);
-        activity.setCity(city);
-        activity.setState(state);
-        activity.setCEP(cep);
+        activity.setAddress(address);
         activity.setEventId(eventId);
         activity.setSpots(spots);
         activity.setDuration(duration);
@@ -124,13 +104,7 @@ public class CreateActivityUseCase {
         response.invalidDate = !date.isValid();
         response.invalidTime = !time.isValid();
         response.invalidPlace = !place.isValid();
-        response.invalidStreet = !street.isValid();
-        response.invalidNumber = !number.isValid();
-        response.invalidComplement = !complement.isValid();
-        response.invalidNeighborhood = !neighborhood.isValid();
-        response.invalidCity = !city.isValid();
-        response.invalidState = !state.isValid();
-        response.invalidCEP = !cep.isValid();
+        response.address = address.getValidation();
         response.invalidEventId = (!eventId.isValid()) || (!eventIdExists());
         response.invalidSpots = !spots.isValid();
         response.invalidDuration = !duration.isValid();

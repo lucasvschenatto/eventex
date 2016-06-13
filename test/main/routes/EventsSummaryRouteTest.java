@@ -7,9 +7,9 @@ package main.routes;
 //import main.persistence.mongo.MongoProductRepository;
 import org.junit.*;
 
-import main.domain.CEP;
+import main.domain.Address;
+import main.domain.AddressData;
 import main.domain.Date;
-import main.domain.IntNumber;
 import main.domain.Text;
 import main.domain.Time;
 import main.domain.event.Event;
@@ -25,13 +25,7 @@ public class EventsSummaryRouteTest extends RouteTest {
         event.setDate(new Date("1900-01-01"));
         event.setTime(new Time("06:59:59"));
         event.setPlace(new Text("place"));
-        event.setStreet(new Text("street"));
-        event.setNumber(new IntNumber("1"));
-        event.setComplement(new Text("complement"));
-        event.setNeighborhood(new Text("neighborhood"));
-        event.setCity(new Text("city"));
-        event.setState(new Text("state"));
-        event.setCEP(new CEP("11111-111"));
+        event.setAddress(new Address(makeAddressData()));
         
         InMemoryRepositoryFactory.getEventRepository().save(event);
         
@@ -43,13 +37,31 @@ public class EventsSummaryRouteTest extends RouteTest {
                 "\"date\":\"1900-01-01\"," +
                 "\"time\":\"06:59:59\"," +
                 "\"place\":\"place\"," +
-                "\"street\":\"street\"," +
-                "\"number\":1," +
-                "\"complement\":\"complement\"," +
-                "\"neighborhood\":\"neighborhood\"," +
-                "\"city\":\"city\"," +
-                "\"state\":\"state\"," +
-                "\"cep\":\"11111-111\"" +
+                "\"address\":" +
+	    			"{" +
+	                "\"street\":\"street\"," +
+	                "\"number\":1," +
+	                "\"complement\":\"complement\"," +
+	                "\"neighborhood\":\"neighborhood\"," +
+	                "\"city\":\"city\"," +
+	                "\"state\":\"state\"," +
+	                "\"country\":\"country\","+
+	                "\"cep\":\"11111-111\"" +
+	                "}"+
                 "}]");
     }
+    
+    private AddressData makeAddressData(){
+    	AddressData address = new AddressData();
+    	address.street = "street";
+    	address.number = "1";
+    	address.complement = "complement";
+    	address.neighborhood = "neighborhood";
+    	address.city = "city";
+    	address.state = "state";
+    	address.country = "country";
+    	address.cep = "11111-111";
+    	return address;
+    }
+    
 }

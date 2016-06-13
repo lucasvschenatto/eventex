@@ -1,9 +1,9 @@
 package main.domain.activity;
 
+import main.domain.Address;
+import main.domain.AddressData;
 import main.domain.Booleanic;
-import main.domain.CEP;
 import main.domain.Date;
-import main.domain.IntNumber;
 import main.domain.Quantity;
 import main.domain.Repository;
 import main.domain.RepositoryTest;
@@ -23,13 +23,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
     private static final Date DATE1 = new Date("2010-01-01");
     private static final Time TIME1 = new Time("11:01:01");
     private static final Text PLACE1 = new Text("Place 1");
-    private static final Text STREET1 = new Text("Street 1");
-    private static final IntNumber NUMBER1 = new IntNumber("100");
-    private static final Text COMPLEMENT1 = new Text("apartment 1");
-    private static final Text NEIGHBORHOOD1 = new Text("Downtown 1");
-    private static final Text CITY1 = new Text("City 1");
-    private static final Text STATE1 = new Text("State 1");
-    private static final CEP CEP1 = new CEP("10000-111");
+    private static final Address ADDRESS1 = new Address(makeData1());
     private static final Text EVENT_ID1 = new Text("abCDF0564");
     private static final Quantity SPOTS1 = new Quantity("10");
     private static final Minutes MINUTES1= new Minutes("11");
@@ -42,13 +36,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
     private static final Date DATE2 = new Date("2020-02-02");
     private static final Time TIME2 = new Time("12:02:02");
     private static final Text PLACE2 = new Text("Place 2");
-    private static final Text STREET2 = new Text("Street 2");
-    private static final IntNumber NUMBER2 = new IntNumber("200");
-    private static final Text COMPLEMENT2 = new Text("apartment 2");
-    private static final Text NEIGHBORHOOD2 = new Text("Downtown 2");
-    private static final Text CITY2 = new Text("City 2");
-    private static final Text STATE2 = new Text("State 2");
-    private static final CEP CEP2 = new CEP("20000-222");
+    private static final Address ADDRESS2 = new Address(makeData2());
     private static final Text EVENT_ID2 = new Text("159aCeF");
     private static final Quantity SPOTS2 = new Quantity("20");
     private static final Minutes MINUTES2= new Minutes("22");
@@ -59,15 +47,41 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
 	
 	protected abstract ActivityRepository getRepository();
 	
+	private static AddressData makeData1() {
+    	AddressData data = new AddressData();
+		data.street = "Street 1";
+		data.number = "100";
+		data.complement = "apartment 1";
+		data.neighborhood = "Downtown 1";
+		data.city = "City 1";
+		data.state = "State 1";
+		data.country = "Country 1";
+		data.cep = "10000-111";
+		return data;
+	}
+
+	private static AddressData makeData2() {
+    	AddressData data = new AddressData();
+    	data.street = "Street 2";
+		data.number = "200";
+		data.complement = "apartment 2";
+		data.neighborhood = "Downtown 2";
+		data.city = "City 2";
+		data.state = "State 2";
+		data.country = "Country 2";
+		data.cep = "20000-222";
+		return data;
+	}
+
 	protected Repository<Activity> getAbstractRepository(){
 		return getRepository();
 	}
-	@Override
+	
+	
 	protected Activity makeNewEntity() {
 		return new Activity();
 	}
 
-	@Override
 	protected Activity makeEntityWithId(String id) {
 		Activity activity = new Activity();
         activity.setId(id);
@@ -76,13 +90,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         activity.setDate(DATE1);
         activity.setTime(TIME1);
         activity.setPlace(PLACE1);
-        activity.setStreet(STREET1);
-        activity.setNumber(NUMBER1);
-        activity.setComplement(COMPLEMENT1);
-        activity.setNeighborhood(NEIGHBORHOOD1);
-        activity.setCity(CITY1);
-        activity.setState(STATE1);
-        activity.setCEP(CEP1);
+        activity.setAddress(ADDRESS1);
         activity.setEventId(EVENT_ID1);
         activity.setSpots(SPOTS1);
         activity.setDuration(MINUTES1);
@@ -92,20 +100,13 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         return activity;
 	}
 
-	@Override
 	protected void changeEntity(Activity activity) {
 		activity.setName(NAME2);
 		activity.setDescription(DESCRIPTION2);
 		activity.setDate(DATE2);
 		activity.setTime(TIME2);
 		activity.setPlace(PLACE2);
-		activity.setStreet(STREET2);
-		activity.setNumber(NUMBER2);
-		activity.setComplement(COMPLEMENT2);
-		activity.setNeighborhood(NEIGHBORHOOD2);
-		activity.setCity(CITY2);
-		activity.setState(STATE2);
-		activity.setCEP(CEP2);
+		activity.setAddress(ADDRESS2);
 		activity.setEventId(EVENT_ID2);
 		activity.setSpots(SPOTS2);
 		activity.setDuration(MINUTES2);
@@ -114,7 +115,6 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
 		activity.setVoucher(VOUCHER2);
 	}
 
-	@Override
 	protected void assertEntityHasSameValues(Activity original, Activity saved) {
 		assertEquals(original.getId(), saved.getId());
         assertEquals(original.getName(), saved.getName());
@@ -122,13 +122,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertEquals(original.getDate(),saved.getDate());
         assertEquals(original.getTime(),saved.getTime());
         assertEquals(original.getPlace(),saved.getPlace());
-        assertEquals(original.getStreet(),saved.getStreet());
-        assertEquals(original.getNumber(),saved.getNumber());
-        assertEquals(original.getComplement(),saved.getComplement());
-        assertEquals(original.getNeighborhood(),saved.getNeighborhood());
-        assertEquals(original.getCity(),saved.getCity());
-        assertEquals(original.getState(),saved.getState());
-        assertEquals(original.getCEP(),saved.getCEP());
+        assertEquals(original.getAddress(),saved.getAddress());
         assertEquals(original.getEventId(),saved.getEventId());
         assertEquals(original.getSpots(),saved.getSpots());
         assertEquals(original.getMinutes(),saved.getMinutes());
@@ -138,7 +132,6 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         
 	}
 
-	@Override
 	protected void assertEntityDoesNotHaveSameValues(Activity original, Activity saved) {
 		assertEquals(original.getId(), saved.getId());
         assertNotEquals(original.getName(), saved.getName());
@@ -146,13 +139,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertNotEquals(original.getDate(),saved.getDate());
         assertNotEquals(original.getTime(),saved.getTime());
         assertNotEquals(original.getPlace(),saved.getPlace());
-        assertNotEquals(original.getStreet(),saved.getStreet());
-        assertNotEquals(original.getNumber(),saved.getNumber());
-        assertNotEquals(original.getComplement(),saved.getComplement());
-        assertNotEquals(original.getNeighborhood(),saved.getNeighborhood());
-        assertNotEquals(original.getCity(),saved.getCity());
-        assertNotEquals(original.getState(),saved.getState());
-        assertNotEquals(original.getCEP(),saved.getCEP());
+        assertNotEquals(original.getAddress(),saved.getAddress());
         assertNotEquals(original.getEventId(),saved.getEventId());
         assertNotEquals(original.getSpots(),saved.getSpots());
         assertNotEquals(original.getMinutes(),saved.getMinutes());

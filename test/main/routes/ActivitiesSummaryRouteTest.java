@@ -2,10 +2,10 @@ package main.routes;
 
 import org.junit.Test;
 
+import main.domain.Address;
+import main.domain.AddressData;
 import main.domain.Booleanic;
-import main.domain.CEP;
 import main.domain.Date;
-import main.domain.IntNumber;
 import main.domain.Quantity;
 import main.domain.Text;
 import main.domain.Time;
@@ -24,13 +24,7 @@ public class ActivitiesSummaryRouteTest extends RouteTest {
         event.setDate(new Date("1900-01-01"));
         event.setTime(new Time("06:59:59"));
         event.setPlace(new Text("place"));
-        event.setStreet(new Text("street"));
-        event.setNumber(new IntNumber("1"));
-        event.setComplement(new Text("complement"));
-        event.setNeighborhood(new Text("neighborhood"));
-        event.setCity(new Text("city"));
-        event.setState(new Text("state"));
-        event.setCEP(new CEP("11111-111"));
+        event.setAddress(new Address(makeAddressData()));
     	
         Activity activity = new Activity();
         activity.setEventId(new Text("aeuou13542xxx9testk9"));
@@ -45,13 +39,7 @@ public class ActivitiesSummaryRouteTest extends RouteTest {
         activity.setDate(new Date("1900-01-01"));
         activity.setTime(new Time("06:59:59"));
         activity.setPlace(new Text("place"));
-        activity.setStreet(new Text("street"));
-        activity.setNumber(new IntNumber("1"));
-        activity.setComplement(new Text("complement"));
-        activity.setNeighborhood(new Text("neighborhood"));
-        activity.setCity(new Text("city"));
-        activity.setState(new Text("state"));
-        activity.setCEP(new CEP("11111-111"));
+        activity.setAddress(new Address(makeAddressData()));
         
         InMemoryRepositoryFactory.getActivityRepository().save(activity);
         InMemoryRepositoryFactory.getEventRepository().save(event);
@@ -70,14 +58,31 @@ public class ActivitiesSummaryRouteTest extends RouteTest {
                 "\"date\":\"1900-01-01\"," +
                 "\"time\":\"06:59:59\"," +
                 "\"place\":\"place\"," +
-                "\"street\":\"street\"," +
-                "\"number\":1," +
-                "\"complement\":\"complement\"," +
-                "\"neighborhood\":\"neighborhood\"," +
-                "\"city\":\"city\"," +
-                "\"state\":\"state\"," +
-                "\"cep\":\"11111-111\"" +
+                "\"address\":" +
+	    			"{" +
+	                "\"street\":\"street\"," +
+	                "\"number\":1," +
+	                "\"complement\":\"complement\"," +
+	                "\"neighborhood\":\"neighborhood\"," +
+	                "\"city\":\"city\"," +
+	                "\"state\":\"state\"," +
+	                "\"country\":\"country\","+
+	                "\"cep\":\"11111-111\"" +
+	                "}"+
                 "}]");
 	}
+    
+    private AddressData makeAddressData(){
+    	AddressData address = new AddressData();
+    	address.street = "street";
+    	address.number = "1";
+    	address.complement = "complement";
+    	address.neighborhood = "neighborhood";
+    	address.city = "city";
+    	address.state = "state";
+    	address.country = "country";
+    	address.cep = "11111-111";
+    	return address;
+    }
 
 }

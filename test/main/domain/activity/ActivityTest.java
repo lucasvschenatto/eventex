@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import main.domain.Address;
+import main.domain.AddressData;
 import main.domain.Booleanic;
-import main.domain.CEP;
 import main.domain.Date;
 import main.domain.EntityTest;
-import main.domain.IntNumber;
 import main.domain.Quantity;
 import main.domain.Text;
 import main.domain.Time;
@@ -28,13 +28,7 @@ public class ActivityTest extends EntityTest<Activity>{
 		activity.setDate(new Date("1900-01-01"));
 		activity.setTime(new Time("6:59:59"));
 		activity.setPlace(new Text("place"));
-		activity.setStreet(new Text("street"));
-		activity.setNumber(new IntNumber("1"));
-		activity.setComplement(new Text("complement"));
-		activity.setNeighborhood(new Text("neighborhood"));
-		activity.setCity(new Text("city"));
-		activity.setState(new Text("state"));
-		activity.setCEP(new CEP("11111-111"));
+		activity.setAddress(new Address(validAddressData()));
 		activity.setEventId(new Text("1234567890"));
 		activity.setSpots(new Quantity("15"));
 		activity.setDuration(new Minutes("3"));
@@ -44,7 +38,6 @@ public class ActivityTest extends EntityTest<Activity>{
 		return activity;
 	}
 
-	@Override
 	protected void assertSameData(Activity entity, Activity copy) {
 		assertEquals(entity.getSpots(),copy.getSpots());
         assertEquals(entity.getMinutes(),copy.getMinutes());
@@ -53,6 +46,19 @@ public class ActivityTest extends EntityTest<Activity>{
         assertEquals(entity.getVoucher(),copy.getVoucher());
 	}
 
+	private AddressData validAddressData(){
+    	AddressData data = new AddressData();
+    	data.street = "street";
+        data.number = "1";
+        data.complement = "complement";
+        data.neighborhood = "neighborhood";
+        data.city = "city";
+        data.state = "state";
+        data.country = "country";
+        data.cep = "11111-111";
+    	return data;
+    }
+	
 	@Test
 	public void newActivityHasEmptyAttributes() {
         assertEquals(Quantity.ZERO,subject.getSpots());

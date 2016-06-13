@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.domain.CEP;
+import main.domain.Address;
+import main.domain.AddressData;
+import main.domain.AddressSummary;
 import main.domain.Date;
-import main.domain.IntNumber;
 import main.domain.Text;
 import main.domain.Time;
 import main.domain.activity.ActivityRepository;
@@ -26,8 +27,60 @@ public class ReadActivitiesSummaryUseCaseTest {
 	private EventRepository eventRepository;
 	private ArrayList<ActivitySummary> response;
 	
+	private static AddressData addressData1() {
+    	AddressData data = new AddressData();
+		data.street = "Street 1";
+		data.number = "100";
+		data.complement = "apartment 1";
+		data.neighborhood = "Downtown 1";
+		data.city = "City 1";
+		data.state = "State 1";
+		data.country = "Country 1";
+		data.cep = "10000-111";
+		return data;
+	}
+
+	private static AddressData addressData2() {
+    	AddressData data = new AddressData();
+    	data.street = "Street 2";
+		data.number = "200";
+		data.complement = "apartment 2";
+		data.neighborhood = "Downtown 2";
+		data.city = "City 2";
+		data.state = "State 2";
+		data.country = "Country 2";
+		data.cep = "20000-222";
+		return data;
+	}
+	
+	private static AddressSummary addressSummary1() {
+		AddressSummary data = new AddressSummary();
+		data.street = "Street 1";
+		data.number = 100;
+		data.complement = "apartment 1";
+		data.neighborhood = "Downtown 1";
+		data.city = "City 1";
+		data.state = "State 1";
+		data.country = "Country 1";
+		data.cep = "10000-111";
+		return data;
+	}
+
+	private static AddressSummary addressSummary2() {
+    	AddressSummary data = new AddressSummary();
+    	data.street = "Street 2";
+		data.number = 200;
+		data.complement = "apartment 2";
+		data.neighborhood = "Downtown 2";
+		data.city = "City 2";
+		data.state = "State 2";
+		data.country = "Country 2";
+		data.cep = "20000-222";
+		return data;
+	}
+	
 	private void givenActivity(String name, String description, String date, String time, String place, 
-    		String street, String number, String complement, String neighborhood, String city, String state, String cep,
+    		AddressData address,
     		String eventId,
     		String spots, String duration, String points, 
     		String groupDiscount, String voucher) {
@@ -39,13 +92,7 @@ public class ReadActivitiesSummaryUseCaseTest {
         request.date = date;
         request.time = time;
         request.place = place;
-        request.street = street;
-        request.number = number;
-        request.complement = complement;
-        request.neighborhood = neighborhood;
-        request.city = city;
-        request.state = state;
-        request.cep = cep;
+        request.address = address;
         request.eventId = eventId;
         request.spots = spots;
         request.duration = duration;
@@ -63,13 +110,7 @@ public class ReadActivitiesSummaryUseCaseTest {
         event.setDate(new Date("1900-01-01"));
         event.setTime(new Time("06:59:59"));
         event.setPlace(new Text("place"));
-        event.setStreet(new Text("street"));
-        event.setNumber(new IntNumber("1"));
-        event.setComplement(new Text("complement"));
-        event.setNeighborhood(new Text("neighborhood"));
-        event.setCity(new Text("city"));
-        event.setState(new Text("state"));
-        event.setCEP(new CEP("11111-111"));
+        event.setAddress(new Address(null));
         eventRepository.save(event);
 	}
 
@@ -82,7 +123,7 @@ public class ReadActivitiesSummaryUseCaseTest {
     }
 	
 	private void andItMustPresentAtIndex(int index, String id, String name, String description, String date, String time, String place, 
-    		String street, int number, String complement, String neighborhood, String city, String state, String cep,
+    		AddressSummary address,
     		String eventId,
     		int spots, int duration, int points, 
     		boolean groupDiscount, boolean voucher) {
@@ -93,13 +134,7 @@ public class ReadActivitiesSummaryUseCaseTest {
         assertEquals(date, summary.date);
         assertEquals(time, summary.time);
         assertEquals(place, summary.place);
-        assertEquals(street, summary.street);
-        assertEquals(number, summary.number);
-        assertEquals(complement, summary.complement);
-        assertEquals(neighborhood, summary.neighborhood);
-        assertEquals(city, summary.city);
-        assertEquals(state, summary.state);
-        assertEquals(cep, summary.cep);
+        assertEquals(address, summary.address);
         assertEquals(eventId, summary.eventId);
         assertEquals(spots, summary.spots);
         assertEquals(duration, summary.duration);
@@ -123,12 +158,12 @@ public class ReadActivitiesSummaryUseCaseTest {
 	
 	@Test
 	public void givenAnActivity_itMustBeReturnedInTheSummary(){
-		givenActivity("name 1", "description 1", "2011-01-01", "01:01:01", "place 1", "street 1", "100", "ap. 11", "downtown 1", "city 1", "state 1", "10000-111","111Aafbe", "101","31","1100", "true", "true");
-		givenActivity("name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", "200", "ap. 22", "downtown 2", "city 2", "state 2", "20000-222","222Aafbe", "202","32","2200", "false", "false");
+		givenActivity("name 1", "description 1", "2011-01-01", "01:01:01", "place 1", addressData1(),"111Aafbe", "101","31","1100", "true", "true");
+		givenActivity("name 2", "description 2", "2022-02-02", "02:02:02", "place 2", addressData2(),"222Aafbe", "202","32","2200", "false", "false");
 		whenReadingSummaries();
 		thenTheSizeMustBe(2);
-		andItMustPresentAtIndex(0, "1", "name 1", "description 1", "2011-01-01", "01:01:01", "place 1", "street 1", 100, "ap. 11", "downtown 1", "city 1", "state 1", "10000-111", "111Aafbe", 101,31,1100, true, true);
-		andItMustPresentAtIndex(1, "2", "name 2", "description 2", "2022-02-02", "02:02:02", "place 2", "street 2", 200, "ap. 22", "downtown 2", "city 2", "state 2", "20000-222", "222Aafbe", 202,32,2200, false, false);
+		andItMustPresentAtIndex(0, "1", "name 1", "description 1", "2011-01-01", "01:01:01", "place 1", addressSummary1(), "111Aafbe", 101,31,1100, true, true);
+		andItMustPresentAtIndex(1, "2", "name 2", "description 2", "2022-02-02", "02:02:02", "place 2", addressSummary2(), "222Aafbe", 202,32,2200, false, false);
 	}
 
 }

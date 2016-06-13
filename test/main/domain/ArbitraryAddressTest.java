@@ -8,7 +8,7 @@ public class ArbitraryAddressTest {
 
 	@Test
 	public void test() {
-		assertTrue(new ArbitraryAddress().isValid());
+		assertTrue(new ArbitraryAddress(null).isValid());
 	}
 
 }

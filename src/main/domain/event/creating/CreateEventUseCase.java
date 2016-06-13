@@ -1,8 +1,7 @@
 package main.domain.event.creating;
 
-import main.domain.CEP;
+import main.domain.Address;
 import main.domain.Date;
-import main.domain.IntNumber;
 import main.domain.Text;
 import main.domain.Time;
 import main.domain.event.Event;
@@ -15,13 +14,7 @@ public class CreateEventUseCase {
     private final Date date;
     private final Time time;
     private final Text place;
-    private final Text street;
-	private final IntNumber number;
-	private final Text complement;
-	private final Text neighborhood;
-	private final Text city;
-	private final Text state;
-	private final CEP cep;
+    private final Address address;
     private final CreateEventResponse response;
 
     public CreateEventUseCase(EventRepository repository, CreateEventRequest request, CreateEventResponse response) {
@@ -31,13 +24,7 @@ public class CreateEventUseCase {
         date = new Date(request.date);
         time = new Time(request.time);
         place = new Text(request.place);
-        street = new Text(request.street);
-        number = new IntNumber(request.number);
-        complement = new Text(request.complement);
-        neighborhood = new Text(request.neighborhood);
-        city = new Text(request.city);
-        state = new Text(request.state);
-        cep = new CEP(request.cep);
+        address = new Address(request.address);
         this.response = response;
     }
 
@@ -50,8 +37,7 @@ public class CreateEventUseCase {
 
     private boolean isValidRequest() {
         return name.isValid() && description.isValid() && date.isValid() && time.isValid() && place.isValid() &&
-        		street.isValid() && number.isValid() && complement.isValid() && neighborhood.isValid() &&
-        		city.isValid() && state.isValid() && cep.isValid();
+        		address.isValid();
     }
 
     private void create() {
@@ -66,13 +52,7 @@ public class CreateEventUseCase {
         event.setDate(date);
         event.setTime(time);
         event.setPlace(place);
-        event.setStreet(street);
-        event.setNumber(number);
-        event.setComplement(complement);
-        event.setNeighborhood(neighborhood);
-        event.setCity(city);
-        event.setState(state);
-        event.setCEP(cep);
+        event.setAddress(address);
         return event;
     }
 
@@ -82,12 +62,6 @@ public class CreateEventUseCase {
         response.invalidDate = !date.isValid();
         response.invalidTime = !time.isValid();
         response.invalidPlace = !place.isValid();
-        response.invalidStreet = !street.isValid();
-        response.invalidNumber = !number.isValid();
-        response.invalidComplement = !complement.isValid();
-        response.invalidNeighborhood = !neighborhood.isValid();
-        response.invalidCity = !city.isValid();
-        response.invalidState = !state.isValid();
-        response.invalidCEP = !cep.isValid();
+        response.address = address.getValidation();
     }
 }

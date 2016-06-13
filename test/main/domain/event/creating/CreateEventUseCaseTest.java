@@ -1,5 +1,6 @@
 package main.domain.event.creating;
 
+import main.domain.AddressData;
 import main.domain.event.EventRepository;
 import main.domain.event.reading.EventSummary;
 import main.domain.event.reading.ReadEventsSummaryUseCase;
@@ -16,35 +17,36 @@ public class CreateEventUseCaseTest {
 	private static final String VALID_DATE = "1999-01-01";
 	private static final String VALID_TIME = "01:01:01";
 	private static final String VALID_PLACE = "Valid place";
-	private static final String VALID_STREET = "Valid street";
-	private static final String VALID_NUMBER = "510";
-	private static final String VALID_COMPLEMENT = "valid complement";
-	private static final String VALID_NEIGHBORHOOD = "Valid neighborhood";
-	private static final String VALID_CITY = "Valid city";
-	private static final String VALID_STATE = "Valid state";
-	private static final String VALID_CEP = "10000-123";
+	private static final AddressData VALID_ADDRESS = makeValidAddress();
 	private CreateEventRequest request;
 	private CreateEventResponse response;
 	private EventRepository repository;
 
     private void givenEventInformation(String name, String description, String date, String time, String place, 
-    		String street, String number, String complement, String neighborhood, String city, String state, String cep) {
+    		AddressData address) {
         request = new CreateEventRequest();
         request.name = name;
         request.description = description;
         request.date = date;
         request.time = time;
         request.place = place;
-        request.street = street;
-        request.number = number;
-        request.complement = complement;
-        request.neighborhood = neighborhood;
-        request.city = city;
-        request.state = state;
-        request.cep = cep;
+        request.address = address;
     }
 
-    private void whenCreatingTheEvent() {
+    private static AddressData makeValidAddress() {
+    	AddressData data = new AddressData();
+		data.street = "valid Street";
+		data.number = "510";
+		data.complement = "valid complement";
+		data.neighborhood = "valid neighborhood";
+		data.city = "valid city";
+		data.state = "valid state";
+		data.country = "valid country";
+		data.cep = "10000-123";
+		return data;
+	}
+
+	private void whenCreatingTheEvent() {
         new CreateEventUseCase(repository, request, response).execute();
     }
 
@@ -60,13 +62,7 @@ public class CreateEventUseCaseTest {
         if (response.invalidDate) list.add("invalidDate");
         if (response.invalidTime) list.add("invalidTime");
         if (response.invalidPlace) list.add("invalidPlace");
-        if (response.invalidStreet) list.add("invalidStreet");
-        if (response.invalidNumber) list.add("invalidNumber");
-        if (response.invalidComplement) list.add("invalidComplement");
-        if (response.invalidNeighborhood) list.add("invalidNeighborhood");
-        if (response.invalidCity) list.add("invalidCity");
-        if (response.invalidState) list.add("invalidState");
-        if (response.invalidCEP) list.add("invalidCEP");
+        if (!response.address.isValid()) list.add("invalidPlace");
         return list.toArray(new String[list.size()]);
     }
 
@@ -76,7 +72,7 @@ public class CreateEventUseCaseTest {
     }
 
     private void thenItShouldBeCreatedWithTheData(String name, String description, String date, String time, String place, 
-    		String street, String number, String complement, String neighborhood, String city, String state, String cep) {
+    		AddressData address) {
         assertTrue(response.success);
         EventSummary summary = getSummaries().get(0);
         assertEquals(name, summary.name);
@@ -84,13 +80,7 @@ public class CreateEventUseCaseTest {
         assertEquals(date, summary.date);
         assertEquals(time, summary.time);
         assertEquals(place, summary.place);
-        assertEquals(street, summary.street);
-        assertEquals(Integer.parseInt(number), summary.number);
-        assertEquals(complement, summary.complement);
-        assertEquals(neighborhood, summary.neighborhood);
-        assertEquals(city, summary.city);
-        assertEquals(state, summary.state);
-        assertEquals(cep, summary.cep);
+        assertEquals(address, summary.address);
     }
 
     private ArrayList<EventSummary> getSummaries() {
@@ -112,7 +102,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenNullName_itIsInvalid() {
         givenEventInformation(null, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -121,7 +111,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenEmptyName_itIsInvalid() {
         givenEventInformation("", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -130,7 +120,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenNameWithOnlySpaces_itIsInvalid() {
         givenEventInformation("   ", VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -139,7 +129,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenNullDescription_itIsInvalid() {
         givenEventInformation(VALID_NAME, null, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -148,7 +138,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenEmptyDescription_itIsInvalid() {
         givenEventInformation(VALID_NAME, "", VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -157,7 +147,7 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenDescriptionWithOnlySpaces_itIsInvalid() {
         givenEventInformation(VALID_NAME, "  ", VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         whenCreatingTheEvent();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -246,20 +236,20 @@ public class CreateEventUseCaseTest {
     @Test
     public void givenAllValidInput_theEventMustBeCreated() {
         givenEventInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         whenCreatingTheEvent();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         andItShouldNotReturnErrors();
     }
 
     @Test
     public void givenNameAndDescriptionSurroundedBySpaces_theEventIsCreatedWithTheTextsTrimmed() {
         givenEventInformation("  Valid name  ", "  Valid description  ", VALID_DATE, VALID_TIME, VALID_PLACE, 
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         whenCreatingTheEvent();
         thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DATE, VALID_TIME, VALID_PLACE,
-        		VALID_STREET, VALID_NUMBER, VALID_COMPLEMENT, VALID_NEIGHBORHOOD, VALID_CITY, VALID_STATE, VALID_CEP);
+        		VALID_ADDRESS);
         andItShouldNotReturnErrors();
     }
 }

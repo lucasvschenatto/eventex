@@ -1,10 +1,9 @@
 package main.domain.activity;
 
+import main.domain.Address;
 import main.domain.Booleanic;
-import main.domain.CEP;
 import main.domain.Date;
 import main.domain.Entity;
-import main.domain.IntNumber;
 import main.domain.Quantity;
 import main.domain.Text;
 import main.domain.Time;
@@ -19,14 +18,14 @@ public class Activity extends Event{
 	private Booleanic groupDiscount;
 	private Booleanic voucher;
 	public Activity(){
-		this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, Text.EMPTY, IntNumber.ZERO, Text.EMPTY, Text.EMPTY, Text.EMPTY, Text.EMPTY, CEP.ZERO, 
+		this("", Text.EMPTY, Text.EMPTY, Date.MIN, Time.MIN, Text.EMPTY, new Address(null), 
 				Text.EMPTY, Quantity.ZERO, Minutes.ZERO, Quantity.ZERO, Booleanic.FALSE, Booleanic.FALSE);
 	}
-	private Activity(String id, Text name, Text description, Date date, Time time, Text place, Text street, IntNumber number, Text complement, Text neighborhood, Text city, Text state, CEP cep, 
+	private Activity(String id, Text name, Text description, Date date, Time time, Text place, Address address, 
 			Text eventId,
 			Quantity spots, Minutes minutes, Quantity points,
 			Booleanic groupDiscount, Booleanic voucher) {
-		super(id, name, description, date, time, place, street, number, complement, neighborhood, city, state, cep);
+		super(id, name, description, date, time, place, address);
 		this.eventId = eventId;
 		this.spots = spots;
 		this.minutes = minutes;
@@ -36,7 +35,7 @@ public class Activity extends Event{
 	}
 
 	public Entity copy() {
-		return new Activity (id, name, description, date, time, place, street, number, complement, neighborhood, city, state, cep, 
+		return new Activity (id, name, description, date, time, place, address.copy(), 
 				eventId, spots, minutes, points, groupDiscount, voucher);
 	}
 

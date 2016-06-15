@@ -62,6 +62,10 @@ public class Main {
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
         
+        get("/participants", new ParticipantsSummaryRoute(dependencies));
+        post("/participants", new CreateParticipantRoute(dependencies));
+        delete("/participants/:id", new DeleteParticipantRoute(dependencies));
+        
         get("/professions", new ProfessionsSummaryRoute(dependencies));
         post("/professions", new CreateProfessionRoute(dependencies));
         delete("/professions/:id", new DeleteProfessionRoute(dependencies));
@@ -75,6 +79,7 @@ public class Main {
         d.setAssociateRepository(InMemoryRepositoryFactory.getAssociateRepository());
         d.setCategoryRepository(InMemoryRepositoryFactory.getCategoryRepository());
         d.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
+        d.setParticipantRepository(InMemoryRepositoryFactory.getParticipantRepository());
         d.setProfessionRepository(InMemoryRepositoryFactory.getProfessionRepository());
         d.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
         return d;

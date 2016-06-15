@@ -5,6 +5,7 @@ import main.domain.activity.ActivityRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
+import main.domain.participant.ParticipantRepository;
 import main.domain.profession.ProfessionRepository;
 
 public abstract class InMemoryRepositoryFactory {
@@ -14,6 +15,7 @@ public abstract class InMemoryRepositoryFactory {
 	private static InMemoryEventRepository event;
 	private static InMemoryUserRepository user;
 	private static InMemoryProfessionRepository profession;
+	private static ParticipantRepository participant;
 
 	public static void resetAll() {
 		activity = null;
@@ -58,6 +60,12 @@ public abstract class InMemoryRepositoryFactory {
 		if(profession == null)
 			profession = new InMemoryProfessionRepository();
 		return profession;
+	}
+
+	public static ParticipantRepository getParticipantRepository() {
+		if(participant == null)
+			participant = new InMemoryParticipantRepository();
+		return participant;
 	}
 
 }

@@ -4,6 +4,7 @@ import main.domain.Entity;
 import main.domain.Text;
 
 public class Profession extends Entity {
+	public static final Profession EMPTY = new Profession();
     protected Text name;
     protected Text description;
 
@@ -17,7 +18,7 @@ public class Profession extends Entity {
         this.description = description;
     }
 
-    public Entity copy() {
+    public Profession copy() {
         return new Profession(id, name, description);
     }
 

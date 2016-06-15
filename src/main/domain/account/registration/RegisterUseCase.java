@@ -1,5 +1,6 @@
 package main.domain.account.registration;
 
+import main.domain.Email;
 import main.domain.account.*;
 
 public class RegisterUseCase {

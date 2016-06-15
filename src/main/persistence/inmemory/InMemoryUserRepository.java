@@ -1,6 +1,6 @@
 package main.persistence.inmemory;
 
-import main.domain.account.Email;
+import main.domain.Email;
 import main.domain.account.User;
 import main.domain.account.UserRepository;
 import main.persistence.EntityNotFoundException;

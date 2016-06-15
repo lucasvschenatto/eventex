@@ -1,5 +1,6 @@
 package main.domain.account;
 
+import main.domain.Email;
 import main.domain.Repository;
 
 public interface UserRepository extends Repository<User> {

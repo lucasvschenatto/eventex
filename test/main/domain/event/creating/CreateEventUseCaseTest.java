@@ -77,7 +77,7 @@ public class CreateEventUseCaseTest {
         if (response.invalidDate) list.add("invalidDate");
         if (response.invalidTime) list.add("invalidTime");
         if (response.invalidPlace) list.add("invalidPlace");
-        if (!response.address.isValid()) list.add("invalidPlace");
+        if (!response.address.isValid()) list.add("invalidAddress");
         return list.toArray(new String[list.size()]);
     }
 

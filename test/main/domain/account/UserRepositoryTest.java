@@ -1,5 +1,6 @@
 package main.domain.account;
 
+import main.domain.Email;
 import main.domain.Repository;
 import main.domain.RepositoryTest;
 import main.persistence.EntityNotFoundException;

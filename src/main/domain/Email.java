@@ -1,6 +1,4 @@
-package main.domain.account;
-
-import main.domain.Text;
+package main.domain;
 
 public class Email extends Text {
     public static final Email EMPTY = new Email("");

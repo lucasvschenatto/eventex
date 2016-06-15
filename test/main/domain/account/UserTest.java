@@ -1,5 +1,6 @@
 package main.domain.account;
 
+import main.domain.Email;
 import main.domain.EntityTest;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

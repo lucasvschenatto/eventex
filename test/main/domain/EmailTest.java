@@ -1,7 +1,9 @@
-package main.domain.account;
+package main.domain;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import main.domain.Email;
 
 public class EmailTest {
     private Email makeEmail(String value) {

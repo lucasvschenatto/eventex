@@ -1,8 +1,10 @@
 package main.domain.account;
 
+import main.domain.Email;
 import main.domain.Entity;
 
 public class User extends Entity {
+	public static final User EMPTY = new User();
 	private CPF cpf;
     private Email email;
     private EncryptedPassword password;

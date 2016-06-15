@@ -12,6 +12,7 @@ public class UserTest extends EntityTest<User> {
     protected User makeSubjectWithData() {
         User user = makeNewSubject();
         user.setId("id");
+        user.setUsername(new Username("username"));
         user.setEmail(new Email("email@host.com"));
         user.setPassword(new EncryptedPassword("", "password"));
         return user;
@@ -19,12 +20,14 @@ public class UserTest extends EntityTest<User> {
 
     protected void assertSameData(User entity, User copy) {
         assertEquals(entity.getId(), copy.getId());
+        assertEquals(entity.getUsername(), copy.getUsername());
         assertEquals(entity.getEmail(), copy.getEmail());
         assertEquals(entity.getPassword(), copy.getPassword());
     }
 
     @Test
     public void newUser_hasEmptyAttributes() {
+    	assertEquals(Username.EMPTY, subject.getUsername());
         assertEquals(Email.EMPTY, subject.getEmail());
         assertEquals(EncryptedPassword.EMPTY, subject.getPassword());
     }
@@ -41,5 +44,12 @@ public class UserTest extends EntityTest<User> {
         EncryptedPassword password = new EncryptedPassword("", "whatever");
         subject.setPassword(password);
         assertEquals(password, subject.getPassword());
+    }
+    
+    @Test
+    public void userKeepsTheUsernameSet(){
+    	Username username = new Username("username");
+    	subject.setUsername(username);
+    	assertEquals(username,subject.getUsername());
     }
 }

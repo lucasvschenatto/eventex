@@ -16,7 +16,7 @@ public class Text {
         return this.getClass().isInstance(other) && equalsText((Text) other);
     }
 
-    private boolean equalsText(Text other) {
+    protected boolean equalsText(Text other) {
         return value.equals(other.value);
     }
 

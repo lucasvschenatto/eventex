@@ -54,7 +54,7 @@ public class CEPTest {
 
 	@Test
 	public void itIsInvalidWhenNull() {
-		assertFalse(new CEP("").isValid());
+		assertFalse(new CEP(null).isValid());
 	}
 	
 	@Test

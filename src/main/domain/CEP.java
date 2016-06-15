@@ -29,12 +29,12 @@ public class CEP {
 	}
 	
 	public boolean equals(Object other){
-		return other instanceof CEP && equalsValue((CEP)other);
+		return this.getClass().isInstance(other) && equalsValue((CEP)other);
 	}
 	private boolean equalsValue(CEP other) {
 		return value.equals(other.value);
 	}
-}
-class CEPFormatException extends RuntimeException{
-	private static final long serialVersionUID = 1L;	
+	private class CEPFormatException extends RuntimeException{
+		private static final long serialVersionUID = 1L;	
+	}
 }

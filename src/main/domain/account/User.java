@@ -3,23 +3,29 @@ package main.domain.account;
 import main.domain.Entity;
 
 public class User extends Entity {
+	private CPF cpf;
     private Email email;
     private EncryptedPassword password;
-	private Username username;
+    private Username username;
 
     public User() {
-        this("", Email.EMPTY, EncryptedPassword.EMPTY, Username.EMPTY);
+        this("", CPF.EMPTY, Email.EMPTY, EncryptedPassword.EMPTY, Username.EMPTY);
     }
 
-    private User(String id, Email email, EncryptedPassword password, Username username) {
+    private User(String id,CPF cpf, Email email, EncryptedPassword password, Username username) {
         super(id);
+        this.cpf = cpf;
         this.email = email;
         this.password = password;
         this.username = username;
     }
 
     public User copy() {
-        return new User(id, email, password, username);
+        return new User(id, cpf, email, password, username);
+    }
+    
+    public CPF getCPF(){
+    	return cpf;
     }
 
     public Email getEmail() {
@@ -33,6 +39,10 @@ public class User extends Entity {
     public Username getUsername() {
 		return username;
 	}
+    
+    public void setCPF(CPF cpf){
+    	this.cpf = cpf;
+    }
 
 	public void setEmail(Email email) {
         this.email = email;

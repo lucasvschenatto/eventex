@@ -21,7 +21,9 @@ public class RegisterUseCaseTest {
     private RegisterResponse response;
     private UserRepository repository;
 
-    private void givenRegistrationData(String email, String password, String passwordConfirmation) {
+    private void givenRegistrationData(String username, String cpf, String email, String password, String passwordConfirmation) {
+    	request.username = username;
+    	request.cpf = cpf;
         request.email = email;
         request.password = password;
         request.passwordConfirmation = passwordConfirmation;
@@ -43,6 +45,8 @@ public class RegisterUseCaseTest {
 
     private String[] makeErrorsArray() {
         ArrayList<String> list = new ArrayList<>();
+        if (response.invalidUsername) list.add("invalidUsername");
+        if (response.invalidCPF) list.add("invalidCPF");
         if (response.invalidEmail) list.add("invalidEmail");
         if (response.invalidPassword) list.add("invalidPassword");
         if (response.invalidPasswordConfirmation) list.add("invalidPasswordConfirmation");
@@ -85,15 +89,31 @@ public class RegisterUseCaseTest {
 
     @Test
     public void whenRegisteringWithValidData_itMustReturnTheUserId_andBeSuccessful() {
-        givenRegistrationData("email@host.com", "Passw0rd", "Passw0rd");
+        givenRegistrationData("username", "000000001-91", "email@host.com", "Passw0rd", "Passw0rd");
         whenRegistering();
         thenItShouldBeSuccessful();
         andItShouldBePossibleToLogInWith("email@host.com", "Passw0rd");
     }
+    
+    @Test
+    public void whenRegisteringWithIncorrectUsername_itMusReturnTheError() {
+        givenRegistrationData("", "000000001-91", "email@host.com", "Passw0rd", "Passw0rd");
+        whenRegistering();
+        thenItShouldReturnTheErrors("invalidUsername");
+        andItShouldNotBePossibleToLogInWith("email@host.com", "Passw0rd");
+    }
+    
+    @Test
+    public void whenRegisteringWithIncorrectCPF_itMusReturnTheError() {
+    	givenRegistrationData("username", "", "email@host.com", "Passw0rd", "Passw0rd");
+    	whenRegistering();
+    	thenItShouldReturnTheErrors("invalidCPF");
+    	andItShouldNotBePossibleToLogInWith("email@host.com", "Passw0rd");
+    }
 
     @Test
     public void whenRegisteringWithAnInvalidEmail_itMustReturnTheError() {
-        givenRegistrationData("", "Passw0rd", "Passw0rd");
+        givenRegistrationData("username", "000000001-91", "", "Passw0rd", "Passw0rd");
         whenRegistering();
         thenItShouldReturnTheErrors("invalidEmail");
         andItShouldNotBePossibleToLogInWith("", "Passw0rd");
@@ -101,7 +121,7 @@ public class RegisterUseCaseTest {
 
     @Test
     public void whenRegisteringWithIncorrectPasswordConfirmation_itMusReturnTheError() {
-        givenRegistrationData("email@host.com", "Passw0rd", "PasswOrd2");
+        givenRegistrationData("username", "000000001-91", "email@host.com", "Passw0rd", "PasswOrd2");
         whenRegistering();
         thenItShouldReturnTheErrors("invalidPasswordConfirmation");
         andItShouldNotBePossibleToLogInWith("email@host.com", "password1");
@@ -109,7 +129,7 @@ public class RegisterUseCaseTest {
 
     @Test
     public void whenRegisteringWithAnInvalidPassword_itMustReturnTheError() {
-        givenRegistrationData("email@host.com", "", "");
+        givenRegistrationData("username", "000000001-91", "email@host.com", "", "");
         whenRegistering();
         thenItShouldReturnTheErrors("invalidPassword");
         andItShouldNotBePossibleToLogInWith("email@host.com", "");
@@ -117,7 +137,7 @@ public class RegisterUseCaseTest {
 
     @Test
     public void whenRegisteringWithAllDataBeingInvalid_itMustReturnAllErrors() {
-        givenRegistrationData("", "", "PasswOrd2");
+        givenRegistrationData("username", "000000001-91", "", "", "PasswOrd2");
         whenRegistering();
         thenItShouldReturnTheErrors("invalidEmail", "invalidPassword", "invalidPasswordConfirmation");
         andItShouldNotBePossibleToLogInWith("", "");

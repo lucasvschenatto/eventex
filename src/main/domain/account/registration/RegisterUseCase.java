@@ -5,6 +5,8 @@ import main.domain.account.*;
 public class RegisterUseCase {
     private final UserRepository repository;
     private final Encryptor encryptor;
+    private final Username username;
+    private final CPF cpf;
     private final Email email;
     private final Password password;
     private final Password passwordConfirmation;
@@ -12,6 +14,8 @@ public class RegisterUseCase {
 
     public RegisterUseCase(UserRepository repository, RegisterRequest request, RegisterResponse response, Encryptor encryptor) {
         this.repository = repository;
+        username = new Username(request.username);
+        cpf = new CPF(request.cpf);
         email = new Email(request.email);
         password = new Password(request.password);
         passwordConfirmation = new Password(request.passwordConfirmation);
@@ -27,11 +31,14 @@ public class RegisterUseCase {
     }
 
     private boolean isValidRequest() {
-        return email.isValid() && password.isValid() && password.equals(passwordConfirmation);
+        return username.isValid() && cpf.isValid() &&
+        		email.isValid() && password.isValid() && password.equals(passwordConfirmation);
     }
 
     private void register() {
         User user = new User();
+        user.setUsername(username);
+        user.setCPF(cpf);
         user.setEmail(email);
         user.setPassword(encryptor.encrypt(password));
         repository.save(user);
@@ -40,6 +47,8 @@ public class RegisterUseCase {
     }
 
     private void sendErrors() {
+        response.invalidUsername = !username.isValid();
+        response.invalidCPF = !cpf.isValid();
         response.invalidEmail = !email.isValid();
         response.invalidPassword = !password.isValid();
         response.invalidPasswordConfirmation = !password.equals(passwordConfirmation);

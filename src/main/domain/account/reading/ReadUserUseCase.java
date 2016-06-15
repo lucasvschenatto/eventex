@@ -27,5 +27,6 @@ public class ReadUserUseCase {
         User user = repository.getById(request.id);
         response.success = true;
         response.email = user.getEmail().toString();
+        response.username = user.getUsername().toString();
     }
 }

@@ -4,4 +4,6 @@ public class RegisterRequest {
     public String email;
     public String password;
     public String passwordConfirmation;
+	public String username;
+	public String cpf;
 }

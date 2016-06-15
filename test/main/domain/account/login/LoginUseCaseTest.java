@@ -20,8 +20,10 @@ public class LoginUseCaseTest {
     private LoginResponse response;
     private UserRepository repository;
 
-    private void givenUser(String email, String password) {
+    private void givenUser(String username, String cpf, String email, String password) {
         RegisterRequest request = new RegisterRequest();
+        request.username = username;
+        request.cpf = cpf;
         request.email = email;
         request.password = password;
         request.passwordConfirmation = password;
@@ -72,7 +74,7 @@ public class LoginUseCaseTest {
 
     @Test
     public void givenAUser_butLoggingWithAnotherEmail_itMustReturnError() {
-        givenUser("email@host.com", "Passw0rd");
+        givenUser("username", "000000001-91", "email@host.com", "Passw0rd");
         givenLogInData("another.email@host.com", "Passw0rd");
         whenLoggingIn();
         thenEmailOrPasswordShouldBeInvalid();
@@ -80,7 +82,7 @@ public class LoginUseCaseTest {
 
     @Test
     public void givenAUser_butLoggingWithIncorrectPassword_itMustReturnError() {
-        givenUser("email@host.com", "Passw0rd");
+        givenUser("username", "000000001-91", "email@host.com", "Passw0rd");
         givenLogInData("email@host.com", "incorrect password");
         whenLoggingIn();
         thenEmailOrPasswordShouldBeInvalid();
@@ -88,7 +90,7 @@ public class LoginUseCaseTest {
 
     @Test
     public void givenAUser_andLoggingWithCorrectData_itMustBeSuccessful() {
-        givenUser("email@host.com", "Passw0rd");
+        givenUser("username", "000000001-91", "email@host.com", "Passw0rd");
         givenLogInData("email@host.com", "Passw0rd");
         whenLoggingIn();
         thenItMustHaveLoggedInWithUser("email@host.com");

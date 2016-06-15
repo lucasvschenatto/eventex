@@ -19,9 +19,11 @@ public class ReadUserUseCaseTest {
         idToRead = "whatever";
     }
 
-    private void givenRegisteredUser(String email) {
+    private void givenRegisteredUser(String email, String username, String cpf) {
         RegisterRequest request = new RegisterRequest();
         request.email = email;
+        request.username = username;
+        request.cpf = cpf;
         request.password = request.passwordConfirmation = "Passw0rd";
         RegisterResponse response = new RegisterResponse();
         new RegisterUseCase(repository, request, response, new FakeEncryptor()).execute();
@@ -37,11 +39,13 @@ public class ReadUserUseCaseTest {
     private void thenItShouldNotExist() {
         assertFalse(response.success);
         assertNull(response.email);
+        assertNull(response.username);
     }
 
-    private void thenItShouldReturn(String email) {
+    private void thenItShouldReturn(String email, String username) {
         assertTrue(response.success);
         assertEquals(email, response.email);
+        assertEquals(username, response.username);
     }
 
     @Before
@@ -59,8 +63,8 @@ public class ReadUserUseCaseTest {
 
     @Test
     public void afterRegistering_itMustReturnTheRegisteredData() {
-        givenRegisteredUser("email@host.com");
+        givenRegisteredUser("email@host.com", "username", "000000001-91");
         whenReadingUser();
-        thenItShouldReturn("email@host.com");
+        thenItShouldReturn("email@host.com", "username");
     }
 }

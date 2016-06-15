@@ -5,7 +5,7 @@ import java.text.ParseException;
 import javax.swing.text.MaskFormatter;
 
 public class Phone {
-//	public static final Phone ZERO = new Phone("(00) 0000-0000");
+	public static final Phone ZERO = new Phone("(00) 0000-0000");
 	private String value;
 	private boolean parsed;
 	

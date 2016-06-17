@@ -87,4 +87,5 @@ public abstract class CategoryRepositoryTest extends RepositoryTest<Category> {
         	counter++;
         assertEquals(2, counter);
     }
+	
 }

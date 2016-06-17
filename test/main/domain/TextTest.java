@@ -48,4 +48,13 @@ public class TextTest {
     public void aTextWithAtLeastOneCharacterIsValid() {
         assertTrue(new Text("a").isValid());
     }
+    
+    @Test
+    public void hashCodeIsTheSameForDifferentObjectsWithSameValue(){
+    	assertEquals(new Text("hashCode testing").hashCode(), new Text("hashCode testing").hashCode());
+    }
+    @Test
+    public void hashCodeIsNotTheSameForDifferentValueObjects(){
+    	assertNotEquals(new Text("hashCode 1").hashCode(), new Text("hashCode 2").hashCode());
+    }
 }

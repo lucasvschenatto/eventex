@@ -1,7 +1,8 @@
+package main.domain.reports;
 public class Certificate {
     public static void main( String[] args ) {
 
-        CertificateRender render = new Certificate();
+        CertificateRender render = new CertificateRender();
         String renderedHtml = render.write( "Valid Name", "Valid Course", 10, "Valid Date", 10 );
 
         System.out.println( "The following HTML was rendered: " + new java.util.Date().toString() );

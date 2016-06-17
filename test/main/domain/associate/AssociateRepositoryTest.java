@@ -96,4 +96,26 @@ public abstract class AssociateRepositoryTest extends RepositoryTest<Associate> 
         	counter++;
         assertEquals(2, counter);
     }
+	
+	@Test
+    public void usingGetByCode_theReturnedCategoryMustEqualTheSavedOne_butNotBeTheSame() {
+        Associate associate = makeNewEntity();
+        repository.save(associate);
+        Associate savedAssociate = repository.getByCode(associate.getCode());
+        assertNotSame(associate, savedAssociate);
+        assertEntityHasSameValues(associate, savedAssociate);
+    }
+	
+	@Test
+    public void beforeSavingTheAssociate_repositoryDoesNotHaveIt() {
+        assertFalse(repository.hasWithCode(new Text("UNIQUE_CODE")));
+    }
+	
+	@Test
+    public void afterSavingANewEntity_repositoryNowHasIt() {
+        Associate associate = new Associate();
+        associate.setCode(new Text("UNIQUE_CODE"));
+        repository.save(associate);
+        assertTrue(repository.hasWithCode(associate.getCode()));
+    }
 }

@@ -1,10 +1,25 @@
 package main.domain.inscription.reading;
 
+import main.domain.Booleanic;
+import main.domain.Text;
+import main.domain.activity.Activity;
+import main.domain.activity.ActivityRepository;
+import main.domain.associate.Associate;
+import main.domain.associate.AssociateRepository;
+import main.domain.category.Category;
+import main.domain.category.CategoryRepository;
 import main.domain.inscription.InscriptionRepository;
 import main.domain.inscription.creating.CreateInscriptionRequest;
 import main.domain.inscription.creating.CreateInscriptionResponse;
 import main.domain.inscription.creating.CreateInscriptionUseCase;
+import main.domain.participant.Participant;
+import main.domain.participant.ParticipantRepository;
+import main.persistence.inmemory.InMemoryActivityRepository;
+import main.persistence.inmemory.InMemoryAssociateRepository;
+import main.persistence.inmemory.InMemoryCategoryRepository;
 import main.persistence.inmemory.InMemoryInscriptionRepository;
+import main.persistence.inmemory.InMemoryParticipantRepository;
+
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,21 +27,45 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class ReadInscriptionsSummaryUseCaseTest {
-    private InscriptionRepository repository;
+    private InscriptionRepository inscriptionRepository;
+    private ParticipantRepository participantRepository;
+    private ActivityRepository activityRepository;
+    private CategoryRepository categoryRepository;
+    private AssociateRepository associateRepository;
     private ArrayList<InscriptionSummary> response;
 
     private void givenInscription(String participantId, String activityId, String categoryId, String associateCode) {
-        CreateInscriptionRequest request = new CreateInscriptionRequest();
+        Participant participant = new Participant();
+        participant.setId(participantId);
+    	participantRepository.save(participant);
+    	
+    	Activity activity = new Activity();
+    	activity.setId(activityId);
+    	activityRepository.save(activity);
+    	
+    	Category category = new Category();
+    	category.setId(categoryId);
+    	category.setNeedCodeAtInscription(new Booleanic("true"));
+    	categoryRepository.save(category);
+    	
+    	Associate associate = new Associate();
+    	associate.setCategoryId(new Text(categoryId));
+    	associate.setCode(new Text(associateCode));
+    	associateRepository.save(associate);
+    	
+    	CreateInscriptionRequest request = new CreateInscriptionRequest();
         request.participantId = participantId;
         request.activityId = activityId;
         request.categoryId = categoryId;
         request.associateCode = associateCode;
         CreateInscriptionResponse response = new CreateInscriptionResponse();
-        new CreateInscriptionUseCase(repository, request, response).execute();
+        new CreateInscriptionUseCase(inscriptionRepository, participantRepository,
+        		activityRepository, categoryRepository,
+        		associateRepository, request, response).execute();
     }
 
     private void whenReadingSummaries() {
-        new ReadInscriptionsSummaryUseCase(repository, response).execute();
+        new ReadInscriptionsSummaryUseCase(inscriptionRepository, response).execute();
     }
 
     private void thenTheSizeMustBe(int size) {
@@ -45,7 +84,11 @@ public class ReadInscriptionsSummaryUseCaseTest {
 
     @Before
     public void setUp() throws Exception {
-        repository = new InMemoryInscriptionRepository();
+        inscriptionRepository = new InMemoryInscriptionRepository();
+        participantRepository = new InMemoryParticipantRepository();
+        activityRepository = new InMemoryActivityRepository();
+        categoryRepository = new InMemoryCategoryRepository();
+        associateRepository = new InMemoryAssociateRepository();
         response = new ArrayList<>();
     }
 

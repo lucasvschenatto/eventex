@@ -23,4 +23,8 @@ public class Text {
     public boolean isValid() {
         return value.length() > 0;
     }
+
+	public int hashCode() {
+		return value.hashCode();
+	}
 }

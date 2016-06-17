@@ -45,7 +45,7 @@ public class InMemoryRepository<TEntity extends Entity> implements Repository<TE
     }
 
     @SuppressWarnings("unchecked")
-    private TEntity makeCopy(TEntity entity) {
+    protected TEntity makeCopy(TEntity entity) {
         return (TEntity) entity.copy();
     }
 }

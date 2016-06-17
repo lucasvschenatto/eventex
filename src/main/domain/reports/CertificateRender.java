@@ -1,3 +1,4 @@
+package main.domain.reports;
 public class CertificateRender {
 
     public String write( String name, String course, int hours, String date, int score ) {

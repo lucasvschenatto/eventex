@@ -5,18 +5,19 @@ import main.domain.activity.ActivityRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
+import main.domain.inscription.InscriptionRepository;
 import main.domain.participant.ParticipantRepository;
 import main.domain.profession.ProfessionRepository;
 
 public abstract class InMemoryRepositoryFactory {
 	private static InMemoryActivityRepository activity;
-	private static CategoryRepository category;
 	private static AssociateRepository associate;
+	private static CategoryRepository category;
 	private static InMemoryEventRepository event;
-	private static InMemoryUserRepository user;
-	private static InMemoryProfessionRepository profession;
+	private static InscriptionRepository inscription;
 	private static ParticipantRepository participant;
-
+	private static InMemoryProfessionRepository profession;
+	private static InMemoryUserRepository user;
 	public static void resetAll() {
 		activity = null;
 		event = null;
@@ -32,16 +33,10 @@ public abstract class InMemoryRepositoryFactory {
 		return activity;
 	}
 	
-	public static EventRepository getEventRepository() {
-		if(event == null)
-			event = new InMemoryEventRepository();
-		return event;
-	}
-	
-	public static UserRepository getUserRepository() {
-		if(user == null)
-			user = new InMemoryUserRepository();
-		return user;
+	public static AssociateRepository getAssociateRepository() {
+		if(associate == null)
+			associate = new InMemoryAssociateRepository();
+		return associate;
 	}
 
 	public static CategoryRepository getCategoryRepository() {
@@ -50,10 +45,22 @@ public abstract class InMemoryRepositoryFactory {
 		return category;
 	}
 
-	public static AssociateRepository getAssociateRepository() {
-		if(associate == null)
-			associate = new InMemoryAssociateRepository();
-		return associate;
+	public static EventRepository getEventRepository() {
+		if(event == null)
+			event = new InMemoryEventRepository();
+		return event;
+	}
+	
+	public static InscriptionRepository getInscriptionRepository() {
+		if(inscription == null)
+			inscription = new InMemoryInscriptionRepository();
+		return inscription;
+	}
+
+	public static ParticipantRepository getParticipantRepository() {
+		if(participant == null)
+			participant = new InMemoryParticipantRepository();
+		return participant;
 	}
 
 	public static ProfessionRepository getProfessionRepository() {
@@ -62,10 +69,10 @@ public abstract class InMemoryRepositoryFactory {
 		return profession;
 	}
 
-	public static ParticipantRepository getParticipantRepository() {
-		if(participant == null)
-			participant = new InMemoryParticipantRepository();
-		return participant;
+	public static UserRepository getUserRepository() {
+		if(user == null)
+			user = new InMemoryUserRepository();
+		return user;
 	}
 
 }

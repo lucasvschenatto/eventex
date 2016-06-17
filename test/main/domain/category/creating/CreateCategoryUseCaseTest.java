@@ -14,15 +14,18 @@ public class CreateCategoryUseCaseTest {
 	private static final String VALID_NAME = "Valid name";
 	private static final String VALID_DESCRIPTION = "Valid description";
 	private static final String VALID_DISCOUNT = "63";
+	private static final String VALID_NEED_CODE_AT_INSCRIPTION = "true";
 	private CreateCategoryRequest request;
 	private CreateCategoryResponse response;
 	private CategoryRepository repository;
 
-    private void givenCategoryInformation(String name, String description, String discount) {
+    private void givenCategoryInformation(String name, String description, 
+    		String discount, String needCodeAtInscription) {
         request = new CreateCategoryRequest();
         request.name = name;
         request.description = description;
         request.discount = discount;
+        request.needCodeAtInscription = needCodeAtInscription;
     }
 
     private void whenCreatingTheCategory() {
@@ -39,6 +42,7 @@ public class CreateCategoryUseCaseTest {
         if (response.invalidName) list.add("invalidName");
         if (response.invalidDescription) list.add("invalidDescription");
         if (response.invalidDiscount) list.add("invalidDiscount");
+        if (response.invalidNeedCodeAtInscription) list.add("invalidNeedCodeAtInscription");
         return list.toArray(new String[list.size()]);
     }
 
@@ -47,12 +51,14 @@ public class CreateCategoryUseCaseTest {
         assertEquals(0, getSummaries().size());
     }
 
-    private void thenItShouldBeCreatedWithTheData(String name, String description, String discount) {
+    private void thenItShouldBeCreatedWithTheData(String name, String description,
+    		String discount, String needDiscountAtInscription) {
         assertTrue(response.success);
         CategorySummary summary = getSummaries().get(0);
         assertEquals(name, summary.name);
         assertEquals(description, summary.description);
         assertEquals(Integer.parseInt(discount), summary.discount);
+        assertEquals(Boolean.parseBoolean(needDiscountAtInscription), summary.needCodeAtInscription);
     }
 
     private ArrayList<CategorySummary> getSummaries() {
@@ -73,7 +79,7 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenNullName_itIsInvalid() {
-        givenCategoryInformation(null, VALID_DESCRIPTION, VALID_DISCOUNT);
+        givenCategoryInformation(null, VALID_DESCRIPTION, VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -81,7 +87,7 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenEmptyName_itIsInvalid() {
-        givenCategoryInformation("", VALID_DESCRIPTION, VALID_DISCOUNT);
+        givenCategoryInformation("", VALID_DESCRIPTION, VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -89,7 +95,7 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenNameWithOnlySpaces_itIsInvalid() {
-        givenCategoryInformation("   ", VALID_DESCRIPTION, VALID_DISCOUNT);
+        givenCategoryInformation("   ", VALID_DESCRIPTION, VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidName");
@@ -97,7 +103,7 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenNullDescription_itIsInvalid() {
-        givenCategoryInformation(VALID_NAME, null, VALID_DISCOUNT);
+        givenCategoryInformation(VALID_NAME, null, VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -105,7 +111,7 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenEmptyDescription_itIsInvalid() {
-        givenCategoryInformation(VALID_NAME, "", VALID_DISCOUNT);
+        givenCategoryInformation(VALID_NAME, "", VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -113,7 +119,7 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenDescriptionWithOnlySpaces_itIsInvalid() {
-        givenCategoryInformation(VALID_NAME, "  ", VALID_DISCOUNT);
+        givenCategoryInformation(VALID_NAME, "  ", VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDescription");
@@ -121,7 +127,7 @@ public class CreateCategoryUseCaseTest {
     
     @Test
     public void givenNullDiscount_itIsInvalid() {
-        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, null);
+        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, null, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDiscount");
@@ -129,7 +135,7 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenEmptyDiscount_itIsInvalid() {
-        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, "");
+        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, "", VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDiscount");
@@ -137,7 +143,7 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenDiscountWithOnlySpaces_itIsInvalid() {
-        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, "  ");
+        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, "  ", VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
         thenItShouldNotBeCreated();
         andItShouldReturnTheErrors("invalidDiscount");
@@ -146,17 +152,17 @@ public class CreateCategoryUseCaseTest {
 
     @Test
     public void givenAllValidInput_theCategoryMustBeCreated() {
-        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT);
+        givenCategoryInformation(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
-        thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT);
+        thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         andItShouldNotReturnErrors();
     }
 
     @Test
     public void givenNameAndDescriptionSurroundedBySpaces_theCategoryIsCreatedWithTheTextsTrimmed() {
-        givenCategoryInformation("  Valid name  ", "  Valid description  ", VALID_DISCOUNT);
+        givenCategoryInformation("  Valid name  ", "  Valid description  ", VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         whenCreatingTheCategory();
-        thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT);
+        thenItShouldBeCreatedWithTheData(VALID_NAME, VALID_DESCRIPTION, VALID_DISCOUNT, VALID_NEED_CODE_AT_INSCRIPTION);
         andItShouldNotReturnErrors();
     }
 }

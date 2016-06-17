@@ -6,6 +6,7 @@ import main.domain.activity.ActivityRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
+import main.domain.inscription.InscriptionRepository;
 import main.domain.participant.ParticipantRepository;
 import main.domain.profession.ProfessionRepository;
 
@@ -18,6 +19,7 @@ public class Dependencies {
 	private ParticipantRepository participantRepository;
 	private ProfessionRepository professionRepository;
 	private UserRepository userRepository;
+	private InscriptionRepository inscriptionRepository;
 	public ActivityRepository getActivityRepository() {
 		return activityRepository;
 	}
@@ -36,6 +38,10 @@ public class Dependencies {
 
 	public EventRepository getEventRepository() {
 		return eventRepository;
+	}
+
+	public InscriptionRepository getInscriptionRepository() {
+		return inscriptionRepository;
 	}
 
 	public ProfessionRepository getProfessionRepository() {
@@ -80,6 +86,10 @@ public class Dependencies {
 
 	public void setParticipantRepository(ParticipantRepository participantRepository) {
 		this.participantRepository = participantRepository;
+	}
+
+	public void setInscriptionRepository(InscriptionRepository inscriptionRepository) {
+		this.inscriptionRepository = inscriptionRepository;
 	}
 
 }

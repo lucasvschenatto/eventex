@@ -26,6 +26,7 @@ public class ReadCategoriesSummaryUseCase {
         summary.name = category.getName().toString();
         summary.description = category.getDescription().toString();
         summary.discount = category.getDiscount().toInt();
+        summary.needCodeAtInscription = category.getNeedCodeAtInscription().toBoolean();
         return summary;
     }
 }

@@ -1,5 +1,6 @@
 package main.domain.category;
 
+import main.domain.Booleanic;
 import main.domain.Entity;
 import main.domain.Percentage;
 import main.domain.Text;
@@ -8,20 +9,22 @@ public class Category extends Entity {
     protected Text name;
     protected Text description;
     protected Percentage discount;
+    protected Booleanic needCodeAtInscription;
 
     public Category() {
-        this("", Text.EMPTY, Text.EMPTY, Percentage.ZERO);
+        this("", Text.EMPTY, Text.EMPTY, Percentage.ZERO, Booleanic.FALSE);
     }
 
-    protected Category(String id, Text name, Text description, Percentage discount) {
+    protected Category(String id, Text name, Text description, Percentage discount, Booleanic needCodeAtInscription) {
         super(id);
         this.name = name;
         this.description = description;
         this.discount = discount;
+        this.needCodeAtInscription = needCodeAtInscription;
     }
 
     public Entity copy() {
-        return new Category(id, name, description, discount);
+        return new Category(id, name, description, discount, needCodeAtInscription);
     }
 
     public Text getName() {
@@ -46,5 +49,13 @@ public class Category extends Entity {
 
 	public void setDiscount(Percentage discount) {
 		this.discount = discount;
+	}
+
+	public Booleanic getNeedCodeAtInscription() {
+		return needCodeAtInscription;
+	}
+
+	public void setNeedCodeAtInscription(Booleanic needCodeAtInscription) {
+		this.needCodeAtInscription = needCodeAtInscription;
 	}
 }

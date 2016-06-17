@@ -5,4 +5,5 @@ public class CreateCategoryResponse {
     public boolean invalidName;
     public boolean invalidDescription;
     public boolean invalidDiscount;
+    public boolean invalidNeedCodeAtInscription;
 }

@@ -10,7 +10,8 @@ public class CreateCategoryRouteTest extends RouteTest {
         		"\"success\":false," +
         		"\"invalidName\":true," +
         		"\"invalidDescription\":true," +
-        		"\"invalidDiscount\":true" +
+        		"\"invalidDiscount\":true," +
+        		"\"invalidNeedCodeAtInscription\":true" +
                 "}");
     }
 }

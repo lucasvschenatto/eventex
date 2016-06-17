@@ -5,4 +5,5 @@ public class CategorySummary {
     public String name;
     public String description;
     public int    discount;
+    public boolean needCodeAtInscription;
 }

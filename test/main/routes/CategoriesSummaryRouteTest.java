@@ -7,6 +7,7 @@ package main.routes;
 //import main.persistence.mongo.MongoProductRepository;
 import org.junit.*;
 
+import main.domain.Booleanic;
 import main.domain.Percentage;
 import main.domain.Text;
 import main.domain.category.Category;
@@ -20,6 +21,7 @@ public class CategoriesSummaryRouteTest extends RouteTest {
         category.setName(new Text("Name 1"));
         category.setDescription(new Text("Description 1"));
         category.setDiscount(new Percentage("12"));
+        category.setNeedCodeAtInscription(new Booleanic("true"));
         
         InMemoryRepositoryFactory.getCategoryRepository().save(category);
         
@@ -28,7 +30,8 @@ public class CategoriesSummaryRouteTest extends RouteTest {
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"name\":\"Name 1\"," +
                 "\"description\":\"Description 1\"," +
-                "\"discount\":12" +
+                "\"discount\":12," +
+                "\"needCodeAtInscription\":true" +
                 "}]");
     }
 }

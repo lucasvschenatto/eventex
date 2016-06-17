@@ -4,4 +4,5 @@ public class CreateCategoryRequest {
     public String name;
     public String description;
     public String discount;
+    public String needCodeAtInscription;
 }

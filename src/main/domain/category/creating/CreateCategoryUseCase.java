@@ -1,5 +1,6 @@
 package main.domain.category.creating;
 
+import main.domain.Booleanic;
 import main.domain.Percentage;
 import main.domain.Text;
 import main.domain.category.Category;
@@ -10,6 +11,7 @@ public class CreateCategoryUseCase {
     private final Text name;
     private final Text description;
     private final Percentage discount;
+    private final Booleanic needCodeAtInscription;
     private final CreateCategoryResponse response;
 
     public CreateCategoryUseCase(CategoryRepository repository, CreateCategoryRequest request, CreateCategoryResponse response) {
@@ -17,6 +19,7 @@ public class CreateCategoryUseCase {
         name = new Text(request.name);
         description = new Text(request.description);
         discount = new Percentage(request.discount);
+        needCodeAtInscription = new Booleanic(request.needCodeAtInscription);
         this.response = response;
     }
 
@@ -28,7 +31,7 @@ public class CreateCategoryUseCase {
     }
 
     private boolean isValidRequest() {
-        return name.isValid() && description.isValid() && discount.isValid();
+        return name.isValid() && description.isValid() && discount.isValid() && needCodeAtInscription.isValid();
     }
 
     private void create() {
@@ -41,6 +44,7 @@ public class CreateCategoryUseCase {
         category.setName(name);
         category.setDescription(description);
         category.setDiscount(discount);
+        category.setNeedCodeAtInscription(needCodeAtInscription);
         return category;
     }
 
@@ -48,5 +52,6 @@ public class CreateCategoryUseCase {
         response.invalidName = !name.isValid();
         response.invalidDescription = !description.isValid();
         response.invalidDiscount = !discount.isValid();
+        response.invalidNeedCodeAtInscription = !needCodeAtInscription.isValid();
     }
 }

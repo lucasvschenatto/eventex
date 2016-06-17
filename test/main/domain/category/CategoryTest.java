@@ -1,5 +1,6 @@
 package main.domain.category;
 
+import main.domain.Booleanic;
 import main.domain.EntityTest;
 import main.domain.Percentage;
 import main.domain.Text;
@@ -17,6 +18,7 @@ public class CategoryTest extends EntityTest<Category> {
         category.setName(new Text("name"));
         category.setDescription(new Text("description"));
         category.setDiscount(new Percentage("50"));
+        category.setNeedCodeAtInscription(new Booleanic("true"));
         return category;
     }
 
@@ -25,6 +27,7 @@ public class CategoryTest extends EntityTest<Category> {
         assertEquals(entity.getName(), copy.getName());
         assertEquals(entity.getDescription(), copy.getDescription());
         assertEquals(entity.getDiscount(),copy.getDiscount());
+        assertEquals(entity.getNeedCodeAtInscription(), copy.getNeedCodeAtInscription());
     }
 
     @Test
@@ -32,5 +35,6 @@ public class CategoryTest extends EntityTest<Category> {
         assertEquals(Text.EMPTY, subject.getName());
         assertEquals(Text.EMPTY, subject.getDescription());
         assertEquals(Percentage.ZERO, subject.getDiscount());
+        assertEquals(Booleanic.FALSE, subject.getNeedCodeAtInscription());
     }
 }

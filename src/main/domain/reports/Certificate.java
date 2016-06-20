@@ -6,15 +6,15 @@ import main.domain.Text;
 public class Certificate extends Entity {
 	protected Text name;
 	protected Text course;
-	protected int hours
+	protected int hours;
 	protected Text date;
 	protected int score;
 
-	public Certificate(String name, String course, int hours, String date, int score){
-		this("", Text.EMPTY, Text.EMPTY, 0, Text.EMPTY, 0);
+	public Certificate(String id, String name, String course, int hours, String date, int score){
+		this(id, Text.EMPTY, Text.EMPTY, 0, Text.EMPTY, 0);
 	}
 
-	public Certificate(Text name, Text course, int hours, Text date, int score){
+	public Certificate(String id, Text name, Text course, int hours, Text date, int score){
 		super(id);
 		this.name = name;
 		this.course = course;
@@ -27,7 +27,7 @@ public class Certificate extends Entity {
 		return new Certificate(id, name, course, hours, date, score);
 	}
 
-	public getHtmlCertificate(Text name, Text course, int hours, Text, date, int score){
+	public String getHtmlCertificate(Text name, Text course, int hours, Text date, int score){
 		StringBuilder html = new StringBuilder();
         html.append( "<!doctype html>\n" );
         
@@ -51,7 +51,7 @@ public class Certificate extends Entity {
         return html.toString();
 	}
 
-	public getHtmlCertificate(){
+	public String getHtmlCertificate(){
 		StringBuilder html = new StringBuilder();
         html.append( "<!doctype html>\n" );
         
@@ -117,8 +117,8 @@ public class Certificate extends Entity {
 
     public static void main( String[] args ) {
     	// testing
-        Certificate c = new Certificate();
-        String html = c.getCertificate( "Valid Name", "Valid Course", 10, "Valid Date", 10 );
+        Certificate c = new Certificate("Valid ID", "Valid Name", "Valid Course", 60, "Valid Date", 10);
+        String html = c.getHtmlCertificate();
 
         System.out.println( "The following HTML was rendered: " + new java.util.Date().toString() );
         System.out.println( html );

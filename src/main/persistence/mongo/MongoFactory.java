@@ -9,7 +9,6 @@ import main.domain.event.EventRepository;
 import main.domain.inscription.InscriptionRepository;
 import main.domain.participant.ParticipantRepository;
 import main.domain.profession.ProfessionRepository;
-import main.persistence.inmemory.InMemoryEventRepository;
 
 public class MongoFactory implements RepositoryFactory {
 	
@@ -18,21 +17,21 @@ public class MongoFactory implements RepositoryFactory {
 	private  ActivityRepository activity;
 	private  AssociateRepository associate;
 	private  CategoryRepository category;
-	private  InMemoryEventRepository event;
+	private  EventRepository event;
 	private  InscriptionRepository inscription;
 	private  ParticipantRepository participant;
 	private  ProfessionRepository profession;
 	private  UserRepository user;
 	
 	private MongoFactory(){
-		activity = null;
-		associate = null;
-		category = null;
-		event = null;
-		inscription = null;
-		participant = null;
-		profession = null;
-		user = null;
+		activity = new MongoActivityRepository();
+		associate = new MongoAssociateRepository();
+		category = new MongoCategoryRepository();
+		event = new MongoEventRepository();
+		inscription = new MongoInscriptionRepository();
+		participant = new MongoParticipantRepository();
+		profession = new MongoProfessionRepository();
+		user = new MongoUserRepository();
 	}
 	
 	public static MongoFactory getInstance(){

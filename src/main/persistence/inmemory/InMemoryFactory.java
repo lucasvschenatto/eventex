@@ -17,7 +17,7 @@ public class InMemoryFactory implements RepositoryFactory {
 	private  ActivityRepository activity;
 	private  AssociateRepository associate;
 	private  CategoryRepository category;
-	private  InMemoryEventRepository event;
+	private  EventRepository event;
 	private  InscriptionRepository inscription;
 	private  ParticipantRepository participant;
 	private  ProfessionRepository profession;

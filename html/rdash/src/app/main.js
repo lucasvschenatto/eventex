@@ -1,6 +1,6 @@
 // import 'core-js';
 // import 'zone.js';
-System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 'angular2/common', 'angular2/router', './components/dashboard/dashboard', './components/tables/tables', './services/user_list', './services/server_list'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 'angular2/common', 'angular2/router', './components/dashboard/dashboard', './components/tables/tables', './components/events/events', './services/user_list', './services/server_list'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -12,7 +12,7 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, browser_1, http_1, common_1, router_1, dashboard_1, tables_1, user_list_1, server_list_1;
+    var core_1, browser_1, http_1, common_1, router_1, dashboard_1, tables_1, events_1, user_list_1, server_list_1;
     var Main;
     return {
         setters:[
@@ -36,6 +36,9 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
             },
             function (tables_1_1) {
                 tables_1 = tables_1_1;
+            },
+            function (events_1_1) {
+                events_1 = events_1_1;
             },
             function (user_list_1_1) {
                 user_list_1 = user_list_1_1;
@@ -76,7 +79,8 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                 Main = __decorate([
                     router_1.RouteConfig([
                         { path: '/', component: dashboard_1.Dashboard, name: 'Dashboard' },
-                        { path: '/tables', component: tables_1.Tables, name: 'Tables' }
+                        { path: '/tables', component: tables_1.Tables, name: 'Tables' },
+                        { path: '/events', component: events_1.Events, name: 'Events' }
                     ]),
                     core_1.Component({
                         selector: 'app',

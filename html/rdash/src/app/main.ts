@@ -15,13 +15,15 @@ import {
 
 import {Dashboard} from './components/dashboard/dashboard';
 import {Tables} from './components/tables/tables';
+import {Events} from './components/events/events';
 
 import {UserListService} from './services/user_list';
 import {ServerListService} from './services/server_list';
 
 @RouteConfig([
     {path: '/', component: Dashboard, name: 'Dashboard'},
-    {path: '/tables', component: Tables, name: 'Tables'}
+    {path: '/tables', component: Tables, name: 'Tables'},
+    {path: '/events', component: Events, name: 'Events'}
 ])
 @Component({
     selector: 'app',

@@ -1,6 +1,6 @@
-﻿import {Address} from "../address/address";
+﻿import {address} from "../address/address";
 
-export interface Event {
+export class Event {
     id: string;
     name: string;
     userId: string;
@@ -9,14 +9,14 @@ export interface Event {
     gender: string;
     education: string;
     birth: string;
-    homeAddress: Address;
+    homeAddress: address;
     homePhone: string;
     cellphone: string;
     professionId: string;
     organization: string;
     department: string;
     role: string;
-    workAddress: Address;
+    workAddress: address;
     workPhone: string;
     workCellphone: string;
     workEmail: string;

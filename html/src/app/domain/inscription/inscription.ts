@@ -1,4 +1,4 @@
-﻿export interface inscription {
+﻿export class inscription {
     id: string;
     participantId: string;
     activityId: string;

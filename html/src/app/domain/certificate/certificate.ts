@@ -1,4 +1,4 @@
-﻿export interface certificate {
+﻿export class certificate {
     id: string;
     name: string;
     course: string;

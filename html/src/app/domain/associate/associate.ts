@@ -1,4 +1,4 @@
-﻿export interface associate {
+﻿export class associate {
     id: string;
     categoryId: string;
     code: string;

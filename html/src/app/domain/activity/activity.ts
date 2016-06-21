@@ -1,4 +1,4 @@
-﻿export interface activity {
+﻿export class activity {
     id: string;
     eventId: string;
     spots: string;

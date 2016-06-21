@@ -1,4 +1,4 @@
-﻿export interface Address {
+﻿export class address {
     id: string;
     street: string;
     number: string;

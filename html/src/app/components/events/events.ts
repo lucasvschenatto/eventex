@@ -1,30 +1,35 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 
 import {RdLoading} from '../rd-loading/rd-loading';
 import {RdWidget} from '../rd-widget/rd-widget';
 
-import {RdWidgetHeader} from '../rd-widget-header/rd-widget-header';
-import {RdWidgetBody} from '../rd-widget-body/rd-widget-body';
-import {RdWidgetFooter} from '../rd-widget-footer/rd-widget-footer';
-
-import {ServerListView} from '../server-list-view/server-list-view';
-import {ServerListService} from '../../services/server_list';
-
+import {EventService} from '../../services/event-service';
+import {Event} from '../../domain/event/event';
+import {address} from '../../domain/address/address';
 
 @Component({
     selector: 'events',
-    providers: [ServerListService],
     templateUrl: 'app/components/events/events.html',
-    directives: [RdWidget, RdWidgetHeader, RdWidgetBody, RdWidgetFooter, RdLoading, ServerListView]
+    directives: [RdWidget, RdLoading]
 })
-export class Events {
-    servers:any[];
-    serverListService:ServerListService;
+export class Events implements OnInit {
+    public domain: Event;
+    public events: Event[] = [];
 
-    constructor(private serverListService:ServerListService) {
+    constructor(private _eventService:EventService) {
     }
-    
+
     ngOnInit() {
-        this.servers = this.serverListService.all();
+        this._eventService.getList()
+            .subscribe(data => this.events = data, error => console.log(error));
+    }
+
+    public onAdd(): void {
+        this.domain = new Event();
+        this.domain.address = new address();
+    }
+
+    public onBack(): void {
+        this.domain = null;
     }
 }

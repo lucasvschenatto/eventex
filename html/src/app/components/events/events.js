@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-widget', '../rd-widget-header/rd-widget-header', '../rd-widget-body/rd-widget-body', '../rd-widget-footer/rd-widget-footer', '../server-list-view/server-list-view', '../../services/server_list'], function(exports_1, context_1) {
+System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-widget', '../../services/event-service', '../../domain/event/event', '../../domain/address/address'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-w
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, rd_loading_1, rd_widget_1, rd_widget_header_1, rd_widget_body_1, rd_widget_footer_1, server_list_view_1, server_list_1;
+    var core_1, rd_loading_1, rd_widget_1, event_service_1, event_1, address_1;
     var Events;
     return {
         setters:[
@@ -23,37 +23,40 @@ System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-w
             function (rd_widget_1_1) {
                 rd_widget_1 = rd_widget_1_1;
             },
-            function (rd_widget_header_1_1) {
-                rd_widget_header_1 = rd_widget_header_1_1;
+            function (event_service_1_1) {
+                event_service_1 = event_service_1_1;
             },
-            function (rd_widget_body_1_1) {
-                rd_widget_body_1 = rd_widget_body_1_1;
+            function (event_1_1) {
+                event_1 = event_1_1;
             },
-            function (rd_widget_footer_1_1) {
-                rd_widget_footer_1 = rd_widget_footer_1_1;
-            },
-            function (server_list_view_1_1) {
-                server_list_view_1 = server_list_view_1_1;
-            },
-            function (server_list_1_1) {
-                server_list_1 = server_list_1_1;
+            function (address_1_1) {
+                address_1 = address_1_1;
             }],
         execute: function() {
             Events = (function () {
-                function Events(serverListService) {
-                    this.serverListService = serverListService;
+                function Events(_eventService) {
+                    this._eventService = _eventService;
+                    this.events = [];
                 }
                 Events.prototype.ngOnInit = function () {
-                    this.servers = this.serverListService.all();
+                    var _this = this;
+                    this._eventService.getList()
+                        .subscribe(function (data) { return _this.events = data; }, function (error) { return console.log(error); });
+                };
+                Events.prototype.onAdd = function () {
+                    this.domain = new event_1.Event();
+                    this.domain.address = new address_1.address();
+                };
+                Events.prototype.onBack = function () {
+                    this.domain = null;
                 };
                 Events = __decorate([
                     core_1.Component({
                         selector: 'events',
-                        providers: [server_list_1.ServerListService],
                         templateUrl: 'app/components/events/events.html',
-                        directives: [rd_widget_1.RdWidget, rd_widget_header_1.RdWidgetHeader, rd_widget_body_1.RdWidgetBody, rd_widget_footer_1.RdWidgetFooter, rd_loading_1.RdLoading, server_list_view_1.ServerListView]
+                        directives: [rd_widget_1.RdWidget, rd_loading_1.RdLoading]
                     }), 
-                    __metadata('design:paramtypes', [server_list_1.ServerListService])
+                    __metadata('design:paramtypes', [event_service_1.EventService])
                 ], Events);
                 return Events;
             }());

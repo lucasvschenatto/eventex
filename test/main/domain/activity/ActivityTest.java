@@ -40,7 +40,7 @@ public class ActivityTest extends EntityTest<Activity>{
 
 	protected void assertSameData(Activity entity, Activity copy) {
 		assertEquals(entity.getSpots(),copy.getSpots());
-        assertEquals(entity.getMinutes(),copy.getMinutes());
+        assertEquals(entity.getDuration(),copy.getDuration());
         assertEquals(entity.getPoints(),copy.getPoints());
         assertEquals(entity.getGroupDiscount(),copy.getGroupDiscount());
         assertEquals(entity.getVoucher(),copy.getVoucher());
@@ -62,7 +62,7 @@ public class ActivityTest extends EntityTest<Activity>{
 	@Test
 	public void newActivityHasEmptyAttributes() {
         assertEquals(Quantity.ZERO,subject.getSpots());
-        assertEquals(Minutes.ZERO,subject.getMinutes());
+        assertEquals(Minutes.ZERO,subject.getDuration());
         assertEquals(Quantity.ZERO,subject.getPoints());
         assertEquals(Booleanic.FALSE,subject.getGroupDiscount());
         assertEquals(Booleanic.FALSE,subject.getVoucher());

@@ -6,7 +6,7 @@ import static spark.Spark.post;
 import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
 
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 import main.routes.*;
 import main.security.JasyptEncryptor;
 
@@ -15,12 +15,12 @@ public class Main {
 	public static void main(String... arguments) {
         new Main().startSparkServer();
     }
-	
+
 	private void startSparkServer() {
 		setUpPort();
 		setUpStaticFiles();
 		setUpRoutes();
-	}		 
+	}
 
     private void setUpPort() {
     	int envPort;
@@ -73,20 +73,13 @@ public class Main {
         get("/professions", new ProfessionsSummaryRoute(dependencies));
         post("/professions", new CreateProfessionRoute(dependencies));
         delete("/professions/:id", new DeleteProfessionRoute(dependencies));
-        
+
     }
 
     private Dependencies buildDependencies() {
         Dependencies d = new Dependencies();
         d.setEncryptor(new JasyptEncryptor());
-        d.setActivityRepository(InMemoryRepositoryFactory.getActivityRepository());
-        d.setAssociateRepository(InMemoryRepositoryFactory.getAssociateRepository());
-        d.setCategoryRepository(InMemoryRepositoryFactory.getCategoryRepository());
-        d.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
-        d.setInscriptionRepository(InMemoryRepositoryFactory.getInscriptionRepository());
-        d.setParticipantRepository(InMemoryRepositoryFactory.getParticipantRepository());
-        d.setProfessionRepository(InMemoryRepositoryFactory.getProfessionRepository());
-        d.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
+        d.setRepositoryFactory(InMemoryFactory.getInstance());
         return d;
     }
 

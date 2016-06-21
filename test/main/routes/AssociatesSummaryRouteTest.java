@@ -13,7 +13,7 @@ import main.domain.Percentage;
 import main.domain.Text;
 import main.domain.associate.Associate;
 import main.domain.category.Category;
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 
 public class AssociatesSummaryRouteTest extends RouteTest {
     @Test
@@ -32,8 +32,8 @@ public class AssociatesSummaryRouteTest extends RouteTest {
         associate.setUpdateDate(new Date("2016-01-01"));
         associate.setActive(new Booleanic("true"));
         
-        InMemoryRepositoryFactory.getCategoryRepository().save(category);
-        InMemoryRepositoryFactory.getAssociateRepository().save(associate);
+        InMemoryFactory.getInstance().getCategoryRepository().save(category);
+        InMemoryFactory.getInstance().getAssociateRepository().save(associate);
         
         assertRouteResponse("GET", "/associates",
                 "[{" +

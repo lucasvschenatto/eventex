@@ -1,7 +1,7 @@
 package main.routes;
 
 import main.Main;
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
@@ -25,7 +25,7 @@ public abstract class RouteTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception{
-    	InMemoryRepositoryFactory.resetAll();
+    	InMemoryFactory.reset();
     }
     
     @Before

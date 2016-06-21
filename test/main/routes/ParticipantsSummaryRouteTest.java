@@ -14,7 +14,7 @@ import main.domain.Email;
 import main.domain.Phone;
 import main.domain.Text;
 import main.domain.participant.Participant;
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 
 public class ParticipantsSummaryRouteTest extends RouteTest {
     @Test
@@ -40,7 +40,7 @@ public class ParticipantsSummaryRouteTest extends RouteTest {
         participant.setWorkCellphone(new Phone("(11) 1111-1111"));
         participant.setWorkEmail(new Email("name@domain.com"));
         
-        InMemoryRepositoryFactory.getParticipantRepository().save(participant);
+        InMemoryFactory.getInstance().getParticipantRepository().save(participant);
         
         assertRouteResponse("GET", "/participants",
                 "[{" +

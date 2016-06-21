@@ -9,7 +9,7 @@ import org.junit.*;
 
 import main.domain.Text;
 import main.domain.profession.Profession;
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 
 public class ProfessionsSummaryRouteTest extends RouteTest {
     @Test
@@ -19,7 +19,7 @@ public class ProfessionsSummaryRouteTest extends RouteTest {
         profession.setName(new Text("Name 1"));
         profession.setDescription(new Text("Description 1"));
         
-        InMemoryRepositoryFactory.getProfessionRepository().save(profession);
+        InMemoryFactory.getInstance().getProfessionRepository().save(profession);
         
         assertRouteResponse("GET", "/professions",
                 "[{" +

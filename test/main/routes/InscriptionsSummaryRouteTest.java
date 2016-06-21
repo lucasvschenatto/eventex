@@ -9,7 +9,7 @@ import org.junit.*;
 
 import main.domain.Text;
 import main.domain.inscription.Inscription;
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 
 public class InscriptionsSummaryRouteTest extends RouteTest {
     @Test
@@ -21,7 +21,7 @@ public class InscriptionsSummaryRouteTest extends RouteTest {
         inscription.setCategoryId(new Text("category"));
         inscription.setAssociateCode(new Text("CODE"));
         
-        InMemoryRepositoryFactory.getInscriptionRepository().save(inscription);
+        InMemoryFactory.getInstance().getInscriptionRepository().save(inscription);
         
         assertRouteResponse("GET", "/inscriptions",
                 "[{" +

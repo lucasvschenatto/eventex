@@ -9,7 +9,7 @@ public class Reports extends Entity {
 	}
 
 	public Reports copy() {
-		return null;
+		return new Reports(id);
 	}
 
 }

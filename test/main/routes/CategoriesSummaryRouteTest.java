@@ -11,7 +11,7 @@ import main.domain.Booleanic;
 import main.domain.Percentage;
 import main.domain.Text;
 import main.domain.category.Category;
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 
 public class CategoriesSummaryRouteTest extends RouteTest {
     @Test
@@ -23,7 +23,7 @@ public class CategoriesSummaryRouteTest extends RouteTest {
         category.setDiscount(new Percentage("12"));
         category.setNeedCodeAtInscription(new Booleanic("true"));
         
-        InMemoryRepositoryFactory.getCategoryRepository().save(category);
+        InMemoryFactory.getInstance().getCategoryRepository().save(category);
         
         assertRouteResponse("GET", "/categories",
                 "[{" +

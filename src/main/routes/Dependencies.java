@@ -1,5 +1,6 @@
 package main.routes;
 
+import main.domain.RepositoryFactory;
 import main.domain.account.Encryptor;
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
@@ -52,44 +53,24 @@ public class Dependencies {
 		return userRepository;
 	}
 
-	public void setActivityRepository(ActivityRepository activityRepository) {
-		this.activityRepository = activityRepository;
-	}
-
-	public void setAssociateRepository(AssociateRepository associateRepository) {
-		this.associateRepository = associateRepository;
+	public ParticipantRepository getParticipantRepository() {
+		return participantRepository;
 	}
 
 	public void setEncryptor(Encryptor encryptor) {
 		this.encryptor = encryptor;
 	}
 
-	public void setEventRepository(EventRepository eventRepository) {
-		this.eventRepository = eventRepository;
-	}
-
-	public void setCategoryRepository(CategoryRepository participantCategoryRepository) {
-		this.categoryRepository = participantCategoryRepository;
-	}
-
-	public void setProfessionRepository(ProfessionRepository professionRepository){
-		this.professionRepository = professionRepository;
-	}
-	
-	public void setUserRepository(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
-
-	public ParticipantRepository getParticipantRepository() {
-		return participantRepository;
-	}
-
-	public void setParticipantRepository(ParticipantRepository participantRepository) {
-		this.participantRepository = participantRepository;
-	}
-
-	public void setInscriptionRepository(InscriptionRepository inscriptionRepository) {
-		this.inscriptionRepository = inscriptionRepository;
+	public void setRepositoryFactory(RepositoryFactory factory) {
+		activityRepository = factory.getActivityRepository();
+		associateRepository = factory.getAssociateRepository();
+		categoryRepository = factory.getCategoryRepository();
+		eventRepository = factory.getEventRepository();
+		inscriptionRepository = factory.getInscriptionRepository();
+		participantRepository = factory.getParticipantRepository();
+		professionRepository = factory.getProfessionRepository();
+		userRepository = factory.getUserRepository();
+		participantRepository = factory.getParticipantRepository();
 	}
 
 }

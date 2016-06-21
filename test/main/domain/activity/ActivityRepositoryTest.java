@@ -125,7 +125,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertEquals(original.getAddress(),saved.getAddress());
         assertEquals(original.getEventId(),saved.getEventId());
         assertEquals(original.getSpots(),saved.getSpots());
-        assertEquals(original.getMinutes(),saved.getMinutes());
+        assertEquals(original.getDuration(),saved.getDuration());
         assertEquals(original.getPoints(),saved.getPoints());
         assertEquals(original.getGroupDiscount(),saved.getGroupDiscount());
         assertEquals(original.getVoucher(),saved.getVoucher());
@@ -142,7 +142,7 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
         assertNotEquals(original.getAddress(),saved.getAddress());
         assertNotEquals(original.getEventId(),saved.getEventId());
         assertNotEquals(original.getSpots(),saved.getSpots());
-        assertNotEquals(original.getMinutes(),saved.getMinutes());
+        assertNotEquals(original.getDuration(),saved.getDuration());
         assertNotEquals(original.getPoints(),saved.getPoints());
         assertNotEquals(original.getGroupDiscount(),saved.getGroupDiscount());
         assertNotEquals(original.getVoucher(),saved.getVoucher());

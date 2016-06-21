@@ -5,5 +5,4 @@ export interface Event {
     date: string;
     time: string;
     place: string;
-    
 }

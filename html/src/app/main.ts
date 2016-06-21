@@ -15,7 +15,7 @@ import {
 
 import {Dashboard} from './components/dashboard/dashboard';
 import {Tables} from './components/tables/tables';
-import {Events} from './domain/events';
+import {Events} from './components/events/events';
 
 import {UserListService} from './services/user_list';
 import {ServerListService} from './services/server_list';

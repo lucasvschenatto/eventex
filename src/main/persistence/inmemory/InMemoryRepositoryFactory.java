@@ -4,6 +4,7 @@ import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
+import main.domain.certificate.CertificateRepository;
 import main.domain.event.EventRepository;
 import main.domain.inscription.InscriptionRepository;
 import main.domain.participant.ParticipantRepository;
@@ -13,6 +14,7 @@ public abstract class InMemoryRepositoryFactory {
 	private static InMemoryActivityRepository activity;
 	private static AssociateRepository associate;
 	private static CategoryRepository category;
+	private static CertificateRepository certificate;
 	private static InMemoryEventRepository event;
 	private static InscriptionRepository inscription;
 	private static ParticipantRepository participant;
@@ -43,6 +45,12 @@ public abstract class InMemoryRepositoryFactory {
 		if(category == null)
 			category = new InMemoryCategoryRepository();
 		return category;
+	}
+	
+	public static CertificateRepository getCertificateRepository() {
+		if(certificate == null)
+			certificate = new InMemoryCertificateRepository();
+		return certificate;
 	}
 
 	public static EventRepository getEventRepository() {

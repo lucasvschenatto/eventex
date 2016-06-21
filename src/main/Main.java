@@ -25,7 +25,7 @@ public class Main {
     private void setUpPort() {
     	int envPort;
     	try{
-// HEROKU configura a porta que deve usar atravÈs de vari·vel de ambiente
+// HEROKU configura a porta que deve usar atrav√©s de vari√°vel de ambiente
 			envPort = Integer.parseInt(System.getenv("PORT"));
 		}catch(NumberFormatException e){
 			envPort = 8080;
@@ -74,6 +74,8 @@ public class Main {
         post("/professions", new CreateProfessionRoute(dependencies));
         delete("/professions/:id", new DeleteProfessionRoute(dependencies));
 
+        get("/certificate", new CreateCertificateRoute(dependencies));
+        
     }
 
     private Dependencies buildDependencies() {

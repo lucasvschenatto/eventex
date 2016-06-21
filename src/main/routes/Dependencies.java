@@ -6,6 +6,7 @@ import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
+import main.domain.certificate.CertificateRepository;
 import main.domain.event.EventRepository;
 import main.domain.inscription.InscriptionRepository;
 import main.domain.participant.ParticipantRepository;
@@ -15,6 +16,7 @@ public class Dependencies {
 	private ActivityRepository activityRepository;
 	private AssociateRepository associateRepository;
 	private CategoryRepository categoryRepository;
+	private CertificateRepository certificateRepository;
 	private Encryptor encryptor;
 	private EventRepository eventRepository;
 	private ParticipantRepository participantRepository;
@@ -39,6 +41,10 @@ public class Dependencies {
 
 	public EventRepository getEventRepository() {
 		return eventRepository;
+	}
+	
+	public CertificateRepository getCertificateRepository(){
+		return certificateRepository;
 	}
 
 	public InscriptionRepository getInscriptionRepository() {
@@ -72,5 +78,4 @@ public class Dependencies {
 		userRepository = factory.getUserRepository();
 		participantRepository = factory.getParticipantRepository();
 	}
-
 }

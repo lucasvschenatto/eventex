@@ -24,8 +24,8 @@
       <tbody>
         <tr *ngFor="#event of events">
           <td>
-            <a href="" title="Editar"><span class="fa fa-pencil"></span></a>
-            <a href="" title="Excluir"><span class="fa fa-remove"></span></a>
+            <a href="#" (click)="onEdit(event);" title="Editar"><span class="fa fa-pencil"></span></a>
+            <a href="#" (click)="onDel(event);" title="Excluir"><span class="fa fa-remove"></span></a>
           </td>
           <td>{{event.name}}</td>
           <td>{{event.description}}</td>
@@ -34,59 +34,60 @@
     </table>
   </div>
   <div *ngIf="domain" class="col-lg-12">
+    <input type="hidden" class="form-control" [(ngModel)]="domain.id">
     <div class="form-group">
       <label>Nome</label>
-      <input type="text" class="form-control" [(ngModel)]="domain.name">
+      <input type="text" class="form-control" [(ngModel)]="domain.name" required>
     </div>
     <div class="form-group">
       <label>Descrição</label>
-      <input type="text" class="form-control" [(ngModel)]="domain.description">
+      <input type="text" class="form-control" [(ngModel)]="domain.description" required>
     </div>
     <div class="form-group">
       <label>Local</label>
-      <input type="text" class="form-control" [(ngModel)]="domain.place">
+      <input type="text" class="form-control" [(ngModel)]="domain.place" required>
     </div>
     <div class="form-group">
       <label>Data</label>
-      <input type="text" class="form-control" [(ngModel)]="domain.date">
+      <input type="text" class="form-control" [(ngModel)]="domain.date" required>
     </div>
     <div class="form-group">
       <label>Horário</label>
-      <input type="text" class="form-control" [(ngModel)]="domain.time">
+      <input type="text" class="form-control" [(ngModel)]="domain.time" required>
     </div>
     <fieldset>
       <legend>Endereço</legend>
       <div class="form-group">
         <label>Rua</label>
-        <input type="text" class="form-control" [(ngModel)]="domain.address.street">
+        <input type="text" class="form-control" [(ngModel)]="domain.address.street" required>
       </div>
       <div class="form-group">
         <label>Número</label>
-        <input type="text" class="form-control" [(ngModel)]="domain.address.number">
+        <input type="text" class="form-control" [(ngModel)]="domain.address.number" required>
       </div>
       <div class="form-group">
         <label>Complemento</label>
-        <input type="text" class="form-control" [(ngModel)]="domain.address.complement">
+        <input type="text" class="form-control" [(ngModel)]="domain.address.complement" required>
       </div>
       <div class="form-group">
         <label>Bairro</label>
-        <input type="text" class="form-control" [(ngModel)]="domain.address.neighborhood">
+        <input type="text" class="form-control" [(ngModel)]="domain.address.neighborhood" required>
       </div>
       <div class="form-group">
         <label>Cidade</label>
-        <input type="text" class="form-control" [(ngModel)]="domain.address.city">
+        <input type="text" class="form-control" [(ngModel)]="domain.address.city" required>
       </div>
       <div class="form-group">
         <label>Estado</label>
-        <input type="text" class="form-control" [(ngModel)]="domain.address.state">
+        <input type="text" class="form-control" [(ngModel)]="domain.address.state" required>
       </div>
       <div class="form-group">
         <label>País</label>
-        <input type="text" class="form-control" [(ngModel)]="domain.address.country">
+        <input type="text" class="form-control" [(ngModel)]="domain.address.country" required>
       </div>
       <div class="form-group">
         <label>CEP</label>
-        <input type="text" class="form-control" [(ngModel)]="domain.address.cep">
+        <input type="text" class="form-control" [(ngModel)]="domain.address.cep" required>
       </div>
     </fieldset>
     <a href="#" (click)="onSave()" class="btn btn-primary">Salvar</a>

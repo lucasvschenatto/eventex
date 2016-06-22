@@ -52,6 +52,11 @@ System.register(["angular2/core", "angular2/http", "rxjs/Observable", "rxjs/Rx",
                         .then(function (res) { return res.json(); })
                         .catch(this.throwError);
                 };
+                EventService.prototype.del = function (domain) {
+                    return this._http.delete(this._apiUrl + "/" + domain.id)
+                        .toPromise()
+                        .catch(this.throwError);
+                };
                 EventService.prototype.throwError = function (response) {
                     return Observable_1.Observable.throw(response.json().error || "Server error");
                 };

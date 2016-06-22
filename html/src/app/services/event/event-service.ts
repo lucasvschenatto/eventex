@@ -29,6 +29,12 @@ export class EventService extends BaseService {
             .catch(this.throwError);
     }
 
+    public del(domain:Event) {
+        return this._http.delete(this._apiUrl + "/" + domain.id)
+            .toPromise()
+            .catch(this.throwError);
+    }
+
     private throwError(response) {
         return Observable.throw(response.json().error || "Server error")
     }

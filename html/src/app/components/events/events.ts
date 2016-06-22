@@ -6,6 +6,9 @@ import {RdWidget} from '../rd-widget/rd-widget';
 import {EventService} from '../../services/event/event-service';
 import {Event} from '../../domain/event/event';
 import {address} from '../../domain/address/address';
+import {TEST_SERVER_APPLICATION_PROVIDERS} from "angular2/platform/testing/server";
+
+/// <reference path="../../lib/bootbox.d.ts" />
 
 @Component({
     selector: 'events',
@@ -15,19 +18,41 @@ import {address} from '../../domain/address/address';
 export class Events implements OnInit {
     public domain: Event;
     public events: Event[] = [];
+    private _list:any;
 
     constructor(private _service:EventService) {
     }
 
     ngOnInit() {
-        this._service.getList()
-            .subscribe(data => this.events = data, error => console.log(error));
+        this._list = this._service.getList();
+        this.subscribe();
+    }
+
+    public subscribe(): void {
+        this._list.subscribe(data => this.events = data, error => console.log(error));
     }
 
     public onAdd(): boolean {
         this.domain = new Event();
         this.domain.address = new address();
 
+        return false;
+    }
+
+    public onEdit(current:Event): boolean {
+        this.domain = new Event();
+        this.domain = current;
+
+        return false;
+    }
+
+    public onDel(current:Event): boolean {
+        let service = this._service;
+        let _this = this;
+        bootbox.confirm("Você tem certeza que deseja excluir o evento selecionado?", function () {
+            service.del(current);
+            _this.subscribe();
+        });
         return false;
     }
 
@@ -38,8 +63,15 @@ export class Events implements OnInit {
     }
 
     public onSave(): boolean {
-        this._service.save(this.domain);
-
+        let response = this._service.save(this.domain);
+        this.onBack();
+        /*
+        if(response.success) {
+            this.onBack();
+        } else {
+            bootbox.alert("Ocorreu um erro inesperado. Por favor, contate o administrador do sistema.");
+        }
+         */
         return false;
     }
 }

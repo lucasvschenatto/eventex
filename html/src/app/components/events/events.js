@@ -33,19 +33,37 @@ System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-w
                 address_1 = address_1_1;
             }],
         execute: function() {
+            /// <reference path="../../lib/bootbox.d.ts" />
             Events = (function () {
                 function Events(_service) {
                     this._service = _service;
                     this.events = [];
                 }
                 Events.prototype.ngOnInit = function () {
+                    this._list = this._service.getList();
+                    this.subscribe();
+                };
+                Events.prototype.subscribe = function () {
                     var _this = this;
-                    this._service.getList()
-                        .subscribe(function (data) { return _this.events = data; }, function (error) { return console.log(error); });
+                    this._list.subscribe(function (data) { return _this.events = data; }, function (error) { return console.log(error); });
                 };
                 Events.prototype.onAdd = function () {
                     this.domain = new event_1.Event();
                     this.domain.address = new address_1.address();
+                    return false;
+                };
+                Events.prototype.onEdit = function (current) {
+                    this.domain = new event_1.Event();
+                    this.domain = current;
+                    return false;
+                };
+                Events.prototype.onDel = function (current) {
+                    var service = this._service;
+                    var _this = this;
+                    bootbox.confirm("Você tem certeza que deseja excluir o evento selecionado?", function () {
+                        service.del(current);
+                        _this.subscribe();
+                    });
                     return false;
                 };
                 Events.prototype.onBack = function () {
@@ -53,7 +71,15 @@ System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-w
                     return false;
                 };
                 Events.prototype.onSave = function () {
-                    this._service.save(this.domain);
+                    var response = this._service.save(this.domain);
+                    this.onBack();
+                    /*
+                    if(response.success) {
+                        this.onBack();
+                    } else {
+                        bootbox.alert("Ocorreu um erro inesperado. Por favor, contate o administrador do sistema.");
+                    }
+                     */
                     return false;
                 };
                 Events = __decorate([

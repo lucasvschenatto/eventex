@@ -17,27 +17,15 @@ public abstract class CertificateRepositoryTest extends RepositoryTest<Certifica
     private static final Date DATE1 = new Date("2010-01-01");
     private static final Quantity SCORE1 = new Quantity("10");
     
-    private static final Text NAME2 = new Text("Name 1");
-    private static final Text COURSE2 = new Text("Course 1");
-    private static final Quantity HOURS2 = new Quantity("60");
-    private static final Date DATE2 = new Date("2010-01-01");
-    private static final Quantity SCORE2 = new Quantity("10");
+    private static final Text NAME2 = new Text("Name 2");
+    private static final Text COURSE2 = new Text("Course 2");
+    private static final Quantity HOURS2 = new Quantity("30");
+    private static final Date DATE2 = new Date("2012-02-02");
+    private static final Quantity SCORE2 = new Quantity("20");
     
     private CertificateRepository repository;
 
     protected abstract CertificateRepository getRepository();
-
-	@Override
-	protected String getValidId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected String getInvalidId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	protected Repository<Certificate> getAbstractRepository() {
@@ -82,7 +70,7 @@ public abstract class CertificateRepositoryTest extends RepositoryTest<Certifica
 
 	@Override
 	protected void assertEntityDoesNotHaveSameValues(Certificate original, Certificate saved) {
-		assertNotEquals(original.getId(), saved.getId());
+		assertEquals(original.getId(), saved.getId());
 		assertNotEquals(original.getName(), saved.getName());
 		assertNotEquals(original.getCourse(), saved.getCourse());
         assertNotEquals(original.getHours(), saved.getHours());

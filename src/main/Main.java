@@ -6,21 +6,24 @@ import static spark.Spark.post;
 import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
 
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.domain.RepositoryFactory;
+import main.persistence.mongo.MongoFactory;
 import main.routes.*;
 import main.security.JasyptEncryptor;
 
 public class Main {
+	private static RepositoryFactory factory;
 
 	public static void main(String... arguments) {
         new Main().startSparkServer();
     }
-	
+
+
 	private void startSparkServer() {
 		setUpPort();
 		setUpStaticFiles();
 		setUpRoutes();
-	}		 
+	}
 
     private void setUpPort() {
     	int envPort;
@@ -34,7 +37,6 @@ public class Main {
     }
 
     private void setUpStaticFiles() {
-//        externalStaticFileLocation("resources/public");
     	externalStaticFileLocation("html");
     }
     
@@ -58,6 +60,8 @@ public class Main {
         post("/categories", new CreateCategoryRoute(dependencies));
         delete("/categories/:id", new DeleteCategoryRoute(dependencies));
         
+        post("/certificates", new CreateCertificateRoute(dependencies));
+
         get("/events", new EventsSummaryRoute(dependencies));
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
@@ -73,24 +77,23 @@ public class Main {
         get("/professions", new ProfessionsSummaryRoute(dependencies));
         post("/professions", new CreateProfessionRoute(dependencies));
         delete("/professions/:id", new DeleteProfessionRoute(dependencies));
-        
-        get("/certificate", new CreateCertificateRoute(dependencies));
-        
     }
 
     private Dependencies buildDependencies() {
         Dependencies d = new Dependencies();
         d.setEncryptor(new JasyptEncryptor());
-        d.setActivityRepository(InMemoryRepositoryFactory.getActivityRepository());
-        d.setAssociateRepository(InMemoryRepositoryFactory.getAssociateRepository());
-        d.setCategoryRepository(InMemoryRepositoryFactory.getCategoryRepository());
-        d.setCertificateRepository(InMemoryRepositoryFactory.getCertificateRepository());
-        d.setEventRepository(InMemoryRepositoryFactory.getEventRepository());
-        d.setInscriptionRepository(InMemoryRepositoryFactory.getInscriptionRepository());
-        d.setParticipantRepository(InMemoryRepositoryFactory.getParticipantRepository());
-        d.setProfessionRepository(InMemoryRepositoryFactory.getProfessionRepository());
-        d.setUserRepository(InMemoryRepositoryFactory.getUserRepository());
+        d.setRepositoryFactory(getFactory());
         return d;
+    }
+    
+    private RepositoryFactory getFactory(){
+    	if(factory == null)
+    		factory = MongoFactory.getInstance();
+    	return factory;
+    }
+    
+    public static void setFactory(RepositoryFactory newFactory){
+    	factory = newFactory;
     }
 
 }

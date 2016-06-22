@@ -7,9 +7,15 @@ import "rxjs/Rx";
 @Injectable()
 export class EventService {
     constructor(private _http: Http) { }
-    private _apiUrl: string = "https://eventex.herokuapp.com/events";
+    private _apiUrl: string = "http://eventex.herokuapp.com/events";
 
-    getList() {
+    public getList() {
+        return this._http.get(this._apiUrl)
+            .map(res => res.json())
+            .catch(this.throwError);
+    }
+
+    public save(domain:Event) {
         return this._http.get(this._apiUrl)
             .map(res => res.json())
             .catch(this.throwError);

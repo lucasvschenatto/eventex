@@ -28,9 +28,14 @@ System.register(["angular2/core", "angular2/http", "rxjs/Observable", "rxjs/Rx"]
             EventService = (function () {
                 function EventService(_http) {
                     this._http = _http;
-                    this._apiUrl = "https://eventex.herokuapp.com/events";
+                    this._apiUrl = "http://eventex.herokuapp.com/events";
                 }
                 EventService.prototype.getList = function () {
+                    return this._http.get(this._apiUrl)
+                        .map(function (res) { return res.json(); })
+                        .catch(this.throwError);
+                };
+                EventService.prototype.save = function (domain) {
                     return this._http.get(this._apiUrl)
                         .map(function (res) { return res.json(); })
                         .catch(this.throwError);

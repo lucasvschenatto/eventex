@@ -19,6 +19,7 @@ import {Events} from './components/events/events';
 
 import {UserListService} from './services/user_list';
 import {ServerListService} from './services/server_list';
+import {EventService} from './services/event-service';
 
 @RouteConfig([
     {path: '/', component: Dashboard, name: 'Dashboard'},
@@ -66,4 +67,5 @@ class Main {
 
 bootstrap(Main, [ROUTER_PROVIDERS, FORM_PROVIDERS,
     ROUTER_PROVIDERS, HTTP_PROVIDERS, UserListService, ServerListService,
+    EventService,
     bind(LocationStrategy).toClass(HashLocationStrategy)]);

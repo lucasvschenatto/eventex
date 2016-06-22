@@ -11,13 +11,9 @@ public class Address {
 	private Text country;
 	private CEP cep;
 	
-
-	
 	public Address(AddressData data){
-		if(data == null){
+		if(data == null)
 			data = new AddressData();
-//			data.country = "Brasil";
-		}
 		street = new Text(data.street); 
 		number = new IntNumber(data.number); 
 		complement = new Text(data.complement); 

@@ -12,7 +12,7 @@ import main.domain.Time;
 import main.domain.activity.Activity;
 import main.domain.activity.Minutes;
 import main.domain.event.Event;
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 
 public class ActivitiesSummaryRouteTest extends RouteTest {
     @Test
@@ -41,8 +41,8 @@ public class ActivitiesSummaryRouteTest extends RouteTest {
         activity.setPlace(new Text("place"));
         activity.setAddress(new Address(makeAddressData()));
         
-        InMemoryRepositoryFactory.getActivityRepository().save(activity);
-        InMemoryRepositoryFactory.getEventRepository().save(event);
+        InMemoryFactory.getInstance().getActivityRepository().save(activity);
+        InMemoryFactory.getInstance().getEventRepository().save(event);
         
         assertRouteResponse("GET", "/activities",
                 "[{" +

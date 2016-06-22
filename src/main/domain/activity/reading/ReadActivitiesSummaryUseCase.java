@@ -30,7 +30,7 @@ public class ReadActivitiesSummaryUseCase {
         summary.address = activity.getAddress().toSummary();
         summary.eventId = activity.getEventId().toString();
         summary.spots = activity.getSpots().toInt();
-        summary.duration = activity.getMinutes().toInt();
+        summary.duration = activity.getDuration().toInt();
         summary.points= activity.getPoints().toInt();
         summary.groupDiscount = activity.getGroupDiscount().toBoolean();
         summary.voucher = activity.getVoucher().toBoolean();

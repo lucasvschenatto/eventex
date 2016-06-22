@@ -13,7 +13,7 @@ public class Activity extends Event{
 	
 	private Text eventId;
 	private Quantity spots;
-	private Minutes minutes;
+	private Minutes duration;
 	private Quantity points;
 	private Booleanic groupDiscount;
 	private Booleanic voucher;
@@ -28,7 +28,7 @@ public class Activity extends Event{
 		super(id, name, description, date, time, place, address);
 		this.eventId = eventId;
 		this.spots = spots;
-		this.minutes = minutes;
+		this.duration = minutes;
 		this.points = points;
 		this.groupDiscount = groupDiscount;
 		this.voucher = voucher;
@@ -36,7 +36,7 @@ public class Activity extends Event{
 
 	public Entity copy() {
 		return new Activity (id, name, description, date, time, place, address.copy(), 
-				eventId, spots, minutes, points, groupDiscount, voucher);
+				eventId, spots, duration, points, groupDiscount, voucher);
 	}
 
 	public Text getEventId(){
@@ -45,8 +45,8 @@ public class Activity extends Event{
 	public Quantity getSpots() {
 		return spots;
 	}
-	public Minutes getMinutes() {
-		return minutes;
+	public Minutes getDuration() {
+		return duration;
 	}
 	public Quantity getPoints() {
 		return points;
@@ -65,7 +65,7 @@ public class Activity extends Event{
 		this.spots = spots;
 	}
 	public void setDuration(Minutes minutes) {
-		this.minutes = minutes;		
+		this.duration = minutes;		
 	}
 	public void setPoints(Quantity points) {
 		this.points = points;

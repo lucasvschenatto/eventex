@@ -7,7 +7,7 @@ import main.persistence.EntityNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InMemoryRepository<TEntity extends Entity> implements Repository<TEntity> {
+public abstract class InMemoryRepository<TEntity extends Entity> implements Repository<TEntity> {
     private int incrementalId;
     private Map<String, TEntity> entities = new HashMap<>();
 

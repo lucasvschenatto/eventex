@@ -13,7 +13,7 @@ import main.domain.Date;
 import main.domain.Text;
 import main.domain.Time;
 import main.domain.event.Event;
-import main.persistence.inmemory.InMemoryRepositoryFactory;
+import main.persistence.inmemory.InMemoryFactory;
 
 public class EventsSummaryRouteTest extends RouteTest {
     @Test
@@ -27,7 +27,7 @@ public class EventsSummaryRouteTest extends RouteTest {
         event.setPlace(new Text("place"));
         event.setAddress(new Address(makeAddressData()));
         
-        InMemoryRepositoryFactory.getEventRepository().save(event);
+        InMemoryFactory.getInstance().getEventRepository().save(event);
         
         assertRouteResponse("GET", "/events",
                 "[{" +

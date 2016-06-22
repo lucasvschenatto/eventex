@@ -100,6 +100,7 @@ public abstract class AssociateRepositoryTest extends RepositoryTest<Associate> 
 	@Test
     public void usingGetByCode_theReturnedCategoryMustEqualTheSavedOne_butNotBeTheSame() {
         Associate associate = makeNewEntity();
+        associate.setCode(CODE1);
         repository.save(associate);
         Associate savedAssociate = repository.getByCode(associate.getCode());
         assertNotSame(associate, savedAssociate);

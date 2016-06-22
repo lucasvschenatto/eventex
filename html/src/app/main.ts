@@ -14,19 +14,42 @@ import {
 } from 'angular2/router';
 
 import {Dashboard} from './components/dashboard/dashboard';
-import {Tables} from './components/tables/tables';
-import {Events} from './components/events/events';
 
 import {UserListService} from './services/user_list';
 import {ServerListService} from './services/server_list';
+
+import {Events} from './components/events/events';
 import {EventService} from './services/event/event-service';
+
+import {Activities} from "./components/activities/activities";
+import {ActivityService} from "./services/activity/activity-service";
+
+import {Associates} from "./components/associates/associates";
+import {AssociateService} from "./services/associate/associate-service";
+
+import {Categories} from "./components/categories/categories";
+import {CategoryService} from "./services/category/category-service";
+
+import {Certificates} from "./components/certificates/certificates";
+import {CertificateService} from "./services/certificate/certificate-service";
+
+import {Inscriptions} from "./components/inscriptions/inscriptions";
+import {InscriptionService} from "./services/inscription/inscription-service";
+
+import {Participants} from "./components/participants/participants";
+import {ParticipantService} from "./services/participant/participant-service";
 
 export declare const REST_URL:string = "http://localhost:8080";
 
 @RouteConfig([
     {path: '/', component: Dashboard, name: 'Dashboard'},
-    {path: '/tables', component: Tables, name: 'Tables'},
-    {path: '/events', component: Events, name: 'Events'}
+    {path: '/events', component: Events, name: 'Events'},
+    {path: '/activities', component: Activities, name: 'Activities'},
+    {path: '/associates', component: Associates, name: 'Associates'},
+    {path: '/categories', component: Categories, name: 'Categories'},
+    {path: '/certificates', component: Certificates, name: 'Certificates'},
+    {path: '/inscriptions', component: Inscriptions, name: 'Inscriptions'},
+    {path: '/participants', component: Participants, name: 'Participants'}
 ])
 @Component({
     selector: 'app',
@@ -69,5 +92,6 @@ class Main {
 
 bootstrap(Main, [ROUTER_PROVIDERS, FORM_PROVIDERS,
     ROUTER_PROVIDERS, HTTP_PROVIDERS, UserListService, ServerListService,
-    EventService,
+    EventService, ActivityService, AssociateService, CategoryService, CertificateService, InscriptionService,
+    ParticipantService,
     bind(LocationStrategy).toClass(HashLocationStrategy)]);

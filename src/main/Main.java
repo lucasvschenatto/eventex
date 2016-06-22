@@ -34,7 +34,6 @@ public class Main {
     }
 
     private void setUpStaticFiles() {
-//        externalStaticFileLocation("resources/public");
     	externalStaticFileLocation("html");
     }
     
@@ -58,6 +57,8 @@ public class Main {
         post("/categories", new CreateCategoryRoute(dependencies));
         delete("/categories/:id", new DeleteCategoryRoute(dependencies));
         
+        post("/certificates", new CreateCertificateRoute(dependencies));
+
         get("/events", new EventsSummaryRoute(dependencies));
         post("/events", new CreateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
@@ -73,9 +74,6 @@ public class Main {
         get("/professions", new ProfessionsSummaryRoute(dependencies));
         post("/professions", new CreateProfessionRoute(dependencies));
         delete("/professions/:id", new DeleteProfessionRoute(dependencies));
-
-        get("/certificate", new CreateCertificateRoute(dependencies));
-        
     }
 
     private Dependencies buildDependencies() {

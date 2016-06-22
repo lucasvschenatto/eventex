@@ -8,14 +8,14 @@ import org.bson.Document;
 public class AddressConverter implements Converter<Address, Document> {
     public Document to(Address entity) {
         Document document = new Document();
-        document.put("street", entity.getStreet());
-        document.put("number", entity.getNumber());
-        document.put("complement", entity.getComplement());
-        document.put("neighborhood", entity.getNeighborhood());
-        document.put("city", entity.getCity());
-        document.put("state", entity.getState());
-        document.put("country", entity.getCountry());
-        document.put("cep", entity.getCEP());
+        document.put("street", entity.getStreet().toString());
+        document.put("number", entity.getNumber().toString());
+        document.put("complement", entity.getComplement().toString());
+        document.put("neighborhood", entity.getNeighborhood().toString());
+        document.put("city", entity.getCity().toString());
+        document.put("state", entity.getState().toString());
+        document.put("country", entity.getCountry().toString());
+        document.put("cep", entity.getCEP().toString());
         return document;
     }
 
@@ -24,7 +24,7 @@ public class AddressConverter implements Converter<Address, Document> {
     	data.street = document.getString("street");
     	data.number = document.getString("number");
     	data.complement = document.getString("complement");
-    	data.neighborhood = document.getString("neighborhod");
+    	data.neighborhood = document.getString("neighborhood");
     	data.city = document.getString("city");
     	data.state = document.getString("state");
     	data.country = document.getString("country");

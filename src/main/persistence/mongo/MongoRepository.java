@@ -10,8 +10,6 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -25,9 +23,8 @@ public abstract class MongoRepository<TEntity extends Entity> implements Reposit
     }
 
     protected MongoCollection<Document> getCollection(String name) {
-        MongoClientURI uri = new MongoClientURI(System.getenv("MONGODB_URI"));
-        MongoClient client = new MongoClient(uri);
-        MongoDatabase database = client.getDatabase(uri.getDatabase());
+        MongoConnection connection = MongoConnection.getInstance();
+        MongoDatabase database = connection.getDatabase();
         return database.getCollection(name);
     }
 

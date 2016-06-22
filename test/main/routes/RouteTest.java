@@ -3,9 +3,9 @@ package main.routes;
 import main.Main;
 import main.persistence.inmemory.InMemoryFactory;
 
-import org.junit.After;
+import org.junit.AfterClass;
+
 import static org.junit.Assert.assertEquals;
-import org.junit.Before;
 import org.junit.BeforeClass;
 
 import spark.Spark;
@@ -26,16 +26,12 @@ public abstract class RouteTest {
     @BeforeClass
     public static void setUpClass() throws Exception{
     	InMemoryFactory.reset();
-    }
-    
-    @Before
-    public void setUp() throws Exception {
-        Main.main();
-        Spark.awaitInitialization();
+    	Main.main();
+    	Spark.awaitInitialization();
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @AfterClass
+    public static void tearDown() throws Exception {
         Spark.stop();
     }
 

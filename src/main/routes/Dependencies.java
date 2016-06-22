@@ -71,6 +71,7 @@ public class Dependencies {
 		activityRepository = factory.getActivityRepository();
 		associateRepository = factory.getAssociateRepository();
 		categoryRepository = factory.getCategoryRepository();
+		certificateRepository = factory.getCertificateRepository();
 		eventRepository = factory.getEventRepository();
 		inscriptionRepository = factory.getInscriptionRepository();
 		participantRepository = factory.getParticipantRepository();

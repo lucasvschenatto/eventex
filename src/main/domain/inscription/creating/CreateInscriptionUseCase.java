@@ -11,7 +11,7 @@ import main.domain.inscription.InscriptionRepository;
 import main.domain.participant.ParticipantRepository;
 
 public class CreateInscriptionUseCase {
-    private final InscriptionRepository inscriptionRepository;
+    protected final InscriptionRepository inscriptionRepository;
     private final ParticipantRepository participantRepository;
     private final ActivityRepository activityRepository;
     private final CategoryRepository categoryRepository;
@@ -20,7 +20,7 @@ public class CreateInscriptionUseCase {
     private final Text activityId;
     private final Text categoryId;
     private final Text associateCode;
-    private final CreateInscriptionResponse response;
+    protected final CreateInscriptionResponse response;
 
     public CreateInscriptionUseCase(InscriptionRepository inscriptionRepository,
     		ParticipantRepository participantRepository, ActivityRepository activityRepository,
@@ -45,8 +45,8 @@ public class CreateInscriptionUseCase {
             sendErrors();
     }
 
-    private boolean isValidRequest() {
-        return isValidFields() && idsExist() && associateCodeIsCorrect();
+    protected boolean isValidRequest() {
+        return isValidFields() && referencedIdsExist() && associateCodeIsCorrect();
     }
 
 	private boolean associateCodeIsCorrect() {
@@ -66,7 +66,7 @@ public class CreateInscriptionUseCase {
 		return participantId.isValid() && activityId.isValid() && categoryId.isValid();
 	}
 	
-	private boolean idsExist() {
+	private boolean referencedIdsExist() {
 		if(participantExists() && activityExists() && categoryExists())
 			return true;
 		else
@@ -90,7 +90,7 @@ public class CreateInscriptionUseCase {
         response.success = true;
     }
 
-    private Inscription makeInscription() {
+    protected Inscription makeInscription() {
         Inscription inscription = new Inscription();
         inscription.setParticipantId(participantId);
         inscription.setActivityId(activityId);
@@ -99,7 +99,7 @@ public class CreateInscriptionUseCase {
         return inscription;
     }
 
-    private void sendErrors() {
+    protected void sendErrors() {
         response.invalidParticipantId = !isParticipantValid();
         response.invalidActivityId = !isActivityValid();
         response.invalidCategoryId = !isCategoryIdValid();

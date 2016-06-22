@@ -10,7 +10,7 @@ import main.domain.participant.Participant;
 import main.domain.participant.ParticipantRepository;
 
 public class CreateParticipantUseCase {
-    private final ParticipantRepository repository;
+    protected final ParticipantRepository repository;
     private final Text name;
     private final Text userId;
     private final Text nametag;
@@ -29,7 +29,7 @@ public class CreateParticipantUseCase {
     private final Phone workPhone;
     private final Phone workCellphone;
     private final Email workEmail;
-    private final CreateParticipantResponse response;
+    protected final CreateParticipantResponse response;
 
     public CreateParticipantUseCase(ParticipantRepository repository, CreateParticipantRequest request, CreateParticipantResponse response) {
         this.repository = repository;
@@ -61,7 +61,7 @@ public class CreateParticipantUseCase {
             sendErrors();
     }
 
-    private boolean isValidRequest() {
+    protected boolean isValidRequest() {
         return name.isValid() && userId.isValid() && nametag.isValid() && nationality.isValid() &&
         		gender.isValid() && education.isValid() && birth.isValid() && homeAddress.isValid() && 
         		homePhone.isValid() && cellphone.isValid() && professionId.isValid() &&
@@ -81,7 +81,7 @@ public class CreateParticipantUseCase {
 		return validation;
 	}
 
-	private Participant makeParticipant() {
+	protected Participant makeParticipant() {
         Participant participant = new Participant();
         participant.setName(name);
         participant.setUserId(userId);
@@ -104,7 +104,7 @@ public class CreateParticipantUseCase {
         return participant;
     }
 
-    private void sendErrors() {
+    protected void sendErrors() {
         response.invalidName = !name.isValid();
         response.invalidName = !name.isValid();
         response.invalidUserId = !userId.isValid();

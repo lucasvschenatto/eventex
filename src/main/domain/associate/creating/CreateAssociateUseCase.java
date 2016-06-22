@@ -9,14 +9,14 @@ import main.domain.category.CategoryRepository;
 import main.persistence.EntityNotFoundException;
 
 public class CreateAssociateUseCase {
-    private final AssociateRepository associateRepository;
+    protected final AssociateRepository associateRepository;
     private final CategoryRepository categoryRepository;
     private final Text categoryId;
     private final Text code;
     private final Text name;
     private final Date updateDate;
     private final Booleanic active;
-    private final CreateAssociateResponse response;
+    protected final CreateAssociateResponse response;
 
     public CreateAssociateUseCase(AssociateRepository associateRepository, CategoryRepository categoryRepository, CreateAssociateRequest request, CreateAssociateResponse response) {
         this.associateRepository = associateRepository;
@@ -36,7 +36,7 @@ public class CreateAssociateUseCase {
             sendErrors();
     }
 
-    private boolean isValidRequest() {
+    protected boolean isValidRequest() {
         return isValidFields() && categoryIdExists();
     }
     
@@ -55,11 +55,11 @@ public class CreateAssociateUseCase {
     }
 
     private void create() {
-        associateRepository.save(makeCovenant());
+        associateRepository.save(makeAssociate());
         response.success = true;
     }
 
-    private Associate makeCovenant() {
+    protected Associate makeAssociate() {
         Associate associate = new Associate();
         associate.setCategoryId(categoryId);
         associate.setCode(code);
@@ -69,7 +69,7 @@ public class CreateAssociateUseCase {
         return associate;
     }
 
-    private void sendErrors() {
+    protected void sendErrors() {
     	response.invalidCategoryId = (!categoryId.isValid()) || (!categoryIdExists());
     	response.invalidCode = !code.isValid();
         response.invalidName = !name.isValid();

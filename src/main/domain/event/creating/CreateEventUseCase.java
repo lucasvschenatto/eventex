@@ -9,14 +9,14 @@ import main.domain.event.Event;
 import main.domain.event.EventRepository;
 
 public class CreateEventUseCase {
-    private final EventRepository repository;
+    protected final EventRepository repository;
     private final Text name;
     private final Text description;
     private final Date date;
     private final Time time;
     private final Text place;
     private final Address address;
-    private final CreateEventResponse response;
+    protected final CreateEventResponse response;
 
     public CreateEventUseCase(EventRepository repository, CreateEventRequest request, CreateEventResponse response) {
         this.repository = repository;
@@ -36,7 +36,7 @@ public class CreateEventUseCase {
             sendErrors();
     }
 
-    private boolean isValidRequest() {
+    protected boolean isValidRequest() {
         return name.isValid() && description.isValid() && date.isValid() && time.isValid() && place.isValid() &&
         		address.isValid();
     }
@@ -52,7 +52,7 @@ public class CreateEventUseCase {
 		return validation;
 	}
 
-	private Event makeEvent() {
+	protected Event makeEvent() {
         Event event = new Event();
         event.setName(name);
         event.setDescription(description);
@@ -63,7 +63,7 @@ public class CreateEventUseCase {
         return event;
     }
 
-    private void sendErrors() {
+    protected void sendErrors() {
         response.invalidName = !name.isValid();
         response.invalidDescription = !description.isValid();
         response.invalidDate = !date.isValid();

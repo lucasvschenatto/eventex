@@ -5,10 +5,10 @@ import main.domain.profession.Profession;
 import main.domain.profession.ProfessionRepository;
 
 public class CreateProfessionUseCase {
-    private final ProfessionRepository repository;
+    protected final ProfessionRepository repository;
     private final Text name;
     private final Text description;
-    private final CreateProfessionResponse response;
+    protected final CreateProfessionResponse response;
 
     public CreateProfessionUseCase(ProfessionRepository repository, CreateProfessionRequest request, CreateProfessionResponse response) {
         this.repository = repository;
@@ -24,7 +24,7 @@ public class CreateProfessionUseCase {
             sendErrors();
     }
 
-    private boolean isValidRequest() {
+    protected boolean isValidRequest() {
         return name.isValid() && description.isValid();
     }
 
@@ -33,14 +33,14 @@ public class CreateProfessionUseCase {
         response.success = true;
     }
 
-    private Profession makeProfession() {
+    protected Profession makeProfession() {
         Profession profession = new Profession();
         profession.setName(name);
         profession.setDescription(description);
         return profession;
     }
 
-    private void sendErrors() {
+    protected void sendErrors() {
         response.invalidName = !name.isValid();
         response.invalidDescription = !description.isValid();
     }

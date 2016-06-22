@@ -1,17 +1,17 @@
 System.register([], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var Event;
+    var activity;
     return {
         setters:[],
         execute: function() {
-            Event = (function () {
-                function Event() {
+            activity = (function () {
+                function activity() {
                 }
-                return Event;
+                return activity;
             }());
-            exports_1("Event", Event);
+            exports_1("activity", activity);
         }
     }
 });
-//# sourceMappingURL=participant.js.map
+//# sourceMappingURL=activity.js.map

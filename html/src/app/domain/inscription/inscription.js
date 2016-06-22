@@ -1,17 +1,17 @@
 System.register([], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var Event;
+    var inscription;
     return {
         setters:[],
         execute: function() {
-            Event = (function () {
-                function Event() {
+            inscription = (function () {
+                function inscription() {
                 }
-                return Event;
+                return inscription;
             }());
-            exports_1("Event", Event);
+            exports_1("inscription", inscription);
         }
     }
 });
-//# sourceMappingURL=participant.js.map
+//# sourceMappingURL=inscription.js.map

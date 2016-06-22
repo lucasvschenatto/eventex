@@ -1,17 +1,17 @@
 System.register([], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var Event;
+    var profession;
     return {
         setters:[],
         execute: function() {
-            Event = (function () {
-                function Event() {
+            profession = (function () {
+                function profession() {
                 }
-                return Event;
+                return profession;
             }());
-            exports_1("Event", Event);
+            exports_1("profession", profession);
         }
     }
 });
-//# sourceMappingURL=participant.js.map
+//# sourceMappingURL=profession.js.map

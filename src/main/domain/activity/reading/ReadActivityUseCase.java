@@ -4,12 +4,12 @@ import main.domain.activity.Activity;
 import main.domain.activity.ActivityRepository;
 
 public class ReadActivityUseCase {
-	private final String id;
+	private final ReadActivityRequest request;
 	private final ActivityRepository repository;
 	private final ActivitySummary response;
 	
 	public ReadActivityUseCase(ActivityRepository repository, ReadActivityRequest request, ActivitySummary response){
-		id = request.id;
+		this.request = request;
 		this.repository = repository;
 		this.response = response;
 	}
@@ -20,11 +20,11 @@ public class ReadActivityUseCase {
 	}
 	
 	private boolean activityExists() {
-		return repository.hasWithId(id);
+		return repository.hasWithId(request.id);
 	}
 
 	private void sendActivity() {
-		Activity activity = repository.getById(id);
+		Activity activity = repository.getById(request.id);
 		response.id = activity.getId();
 		response.name = activity.getName().toString();
 		response.description = activity.getDescription().toString();

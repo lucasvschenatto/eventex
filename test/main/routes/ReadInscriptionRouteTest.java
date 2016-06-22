@@ -6,7 +6,7 @@ import main.domain.Text;
 import main.domain.inscription.Inscription;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class InscriptionsSummaryRouteTest extends RouteTest {
+public class ReadInscriptionRouteTest extends RouteTest {
     @Test
     public void integration() throws Exception {
         Inscription inscription = new Inscription();
@@ -18,13 +18,13 @@ public class InscriptionsSummaryRouteTest extends RouteTest {
         
         InMemoryFactory.getInstance().getInscriptionRepository().save(inscription);
         
-        assertRouteResponse("GET", "/inscriptions",
-                "[{" +
+        assertRouteResponse("GET", "/inscriptions/55ec9e9ad8699a069f77a024",
+                "{" +
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"participantId\":\"participant\"," +
                 "\"activityId\":\"activity\"," +
                 "\"categoryId\":\"category\"," +
                 "\"associateCode\":\"CODE\"" +
-                "}]");
+                "}");
     }
 }

@@ -4,13 +4,13 @@ import main.domain.associate.Associate;
 import main.domain.associate.AssociateRepository;
 
 public class ReadAssociateUseCase {
-	private final String id;
+	private final ReadAssociateRequest request;
     private final AssociateRepository repository;
     private final AssociateSummary response;
 
     public ReadAssociateUseCase(AssociateRepository repository, ReadAssociateRequest request,
     		AssociateSummary response) {
-    	id = request.id;
+    	this.request = request;
         this.repository = repository;
         this.response = response;
     }
@@ -21,11 +21,11 @@ public class ReadAssociateUseCase {
     }
 
 	private boolean associateExists() {
-		return repository.hasWithId(id);
+		return repository.hasWithId(request.id);
 	}
 
 	private void sendAssociate() {
-		Associate associate = repository.getById(id);
+		Associate associate = repository.getById(request.id);
         response.id = associate.getId();
         response.categoryId = associate.getCategoryId().toString();
         response.code = associate.getCode().toString();

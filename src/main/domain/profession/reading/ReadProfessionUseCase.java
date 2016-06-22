@@ -4,13 +4,13 @@ import main.domain.profession.Profession;
 import main.domain.profession.ProfessionRepository;
 
 public class ReadProfessionUseCase {
-	private final String id;
+	private final ReadProfessionRequest request;
     private final ProfessionRepository repository;
     private final ProfessionSummary response;
 
     public ReadProfessionUseCase(ProfessionRepository repository, ReadProfessionRequest request,
     		ProfessionSummary response) {
-    	id = request.id;
+    	this.request = request;
         this.repository = repository;
         this.response = response;
     }
@@ -21,11 +21,11 @@ public class ReadProfessionUseCase {
     }
 
     private boolean professionExists() {
-		return repository.hasWithId(id);
+		return repository.hasWithId(request.id);
 	}
 
 	private void sendProfession() {
-		Profession profession = repository.getById(id);
+		Profession profession = repository.getById(request.id);
         response.id = profession.getId();
         response.name = profession.getName().toString();
         response.description = profession.getDescription().toString();

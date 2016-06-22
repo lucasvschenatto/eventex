@@ -6,7 +6,7 @@ import main.domain.Text;
 import main.domain.profession.Profession;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class ProfessionsSummaryRouteTest extends RouteTest {
+public class ReadProfessionRouteTest extends RouteTest {
     @Test
     public void integration() throws Exception {
         Profession profession = new Profession();
@@ -16,11 +16,11 @@ public class ProfessionsSummaryRouteTest extends RouteTest {
         
         InMemoryFactory.getInstance().getProfessionRepository().save(profession);
         
-        assertRouteResponse("GET", "/professions",
-                "[{" +
+        assertRouteResponse("GET", "/professions/55ec9e9ad8699a069f77a024",
+                "{" +
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"name\":\"Name 1\"," +
                 "\"description\":\"Description 1\"" +
-                "}]");
+                "}");
     }
 }

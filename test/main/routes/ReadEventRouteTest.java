@@ -10,7 +10,7 @@ import main.domain.Time;
 import main.domain.event.Event;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class EventsSummaryRouteTest extends RouteTest {
+public class ReadEventRouteTest extends RouteTest {
     @Test
     public void integration() throws Exception {
         Event event = new Event();
@@ -24,8 +24,8 @@ public class EventsSummaryRouteTest extends RouteTest {
         
         InMemoryFactory.getInstance().getEventRepository().save(event);
         
-        assertRouteResponse("GET", "/events",
-                "[{" +
+        assertRouteResponse("GET", "/events/55ec9e9ad8699a069f77a024",
+                "{" +
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"name\":\"Name 1\"," +
                 "\"description\":\"Description 1\"," +
@@ -43,7 +43,7 @@ public class EventsSummaryRouteTest extends RouteTest {
 	                "\"country\":\"country\","+
 	                "\"cep\":\"11111-111\"" +
 	                "}"+
-                "}]");
+                "}");
     }
     
     private AddressData makeAddressData(){

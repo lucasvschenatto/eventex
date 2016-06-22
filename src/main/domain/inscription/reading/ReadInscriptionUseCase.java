@@ -4,13 +4,13 @@ import main.domain.inscription.Inscription;
 import main.domain.inscription.InscriptionRepository;
 
 public class ReadInscriptionUseCase {
-	private final String id;
+	private final ReadInscriptionRequest request;
     private final InscriptionRepository repository;
     private final InscriptionSummary response;
 
     public ReadInscriptionUseCase(InscriptionRepository repository, ReadInscriptionRequest request,
     		InscriptionSummary response) {
-    	id = request.id;
+    	this.request = request;
         this.repository = repository;
         this.response = response;
     }
@@ -21,11 +21,11 @@ public class ReadInscriptionUseCase {
     }
     
     private boolean inscriptionExists() {
-		return repository.hasWithId(id);
+		return repository.hasWithId(request.id);
 	}
 
     private void sendInscription() {
-    	Inscription inscription = repository.getById(id);
+    	Inscription inscription = repository.getById(request.id);
         response.id = inscription.getId();
         response.participantId = inscription.getParticipantId().toString();
         response.activityId = inscription.getActivityId().toString();

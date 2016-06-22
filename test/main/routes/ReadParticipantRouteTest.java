@@ -11,7 +11,7 @@ import main.domain.Text;
 import main.domain.participant.Participant;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class ParticipantsSummaryRouteTest extends RouteTest {
+public class ReadParticipantRouteTest extends RouteTest {
     @Test
     public void integration() throws Exception {
         Participant participant = new Participant();
@@ -37,8 +37,8 @@ public class ParticipantsSummaryRouteTest extends RouteTest {
         
         InMemoryFactory.getInstance().getParticipantRepository().save(participant);
         
-        assertRouteResponse("GET", "/participants",
-                "[{" +
+        assertRouteResponse("GET", "/participants/55ec9e9ad8699a069f77a024",
+                "{" +
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"name\":\"Name\"," +
                 "\"userId\":\"userid\"," +
@@ -78,7 +78,7 @@ public class ParticipantsSummaryRouteTest extends RouteTest {
                 "\"workPhone\":\"(11) 1111-1111\"," +
                 "\"workCellphone\":\"(11) 1111-1111\"," +
                 "\"workEmail\":\"name@domain.com\"" +
-                "}]");
+                "}");
     }
     
     private AddressData makeAddressData(){

@@ -4,12 +4,12 @@ import main.domain.event.Event;
 import main.domain.event.EventRepository;
 
 public class ReadEventUseCase {
-	private final String id;
+	private final ReadEventRequest request;
     private final EventRepository repository;
     private final EventSummary response;
 
     public ReadEventUseCase(EventRepository repository, ReadEventRequest request, EventSummary response) {
-    	id = request.id;
+    	this.request = request;
         this.repository = repository;
         this.response = response;
     }
@@ -20,11 +20,11 @@ public class ReadEventUseCase {
     }
 
     private boolean eventExists() {
-		return repository.hasWithId(id);
+		return repository.hasWithId(request.id);
 	}
 
 	private void sendEvent() {
-		Event event = repository.getById(id);
+		Event event = repository.getById(request.id);
         response.id = event.getId();
         response.name = event.getName().toString();
         response.description = event.getDescription().toString();

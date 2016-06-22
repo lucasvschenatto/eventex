@@ -4,12 +4,12 @@ import main.domain.participant.Participant;
 import main.domain.participant.ParticipantRepository;
 
 public class ReadParticipantUseCase {
-	private final String id;
+	private final ReadParticipantRequest request;
     private final ParticipantRepository repository;
     private final ParticipantSummary response;
 
     public ReadParticipantUseCase(ParticipantRepository repository, ReadParticipantRequest request, ParticipantSummary response) {
-        id = request.id;
+        this.request = request;
     	this.repository = repository;
         this.response = response;
     }
@@ -20,11 +20,11 @@ public class ReadParticipantUseCase {
     }
 
     private boolean participantExists() {
-		return repository.hasWithId(id);
+		return repository.hasWithId(request.id);
 	}
 
 	private void sendParticipant() {
-		Participant participant = repository.getById(id);
+		Participant participant = repository.getById(request.id);
 		response.id = participant.getId();
 		response.name = participant.getName().toString();
 		response.userId = participant.getUserId().toString();

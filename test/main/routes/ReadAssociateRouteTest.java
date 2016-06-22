@@ -10,7 +10,7 @@ import main.domain.associate.Associate;
 import main.domain.category.Category;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class AssociatesSummaryRouteTest extends RouteTest {
+public class ReadAssociateRouteTest extends RouteTest {
     @Test
     public void integration() throws Exception {
     	Category category = new Category();
@@ -30,14 +30,14 @@ public class AssociatesSummaryRouteTest extends RouteTest {
         InMemoryFactory.getInstance().getCategoryRepository().save(category);
         InMemoryFactory.getInstance().getAssociateRepository().save(associate);
         
-        assertRouteResponse("GET", "/associates",
-                "[{" +
+        assertRouteResponse("GET", "/associates/55ec9e9ad8699a069f77a024",
+                "{" +
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"categoryId\":\"E3edrGT\"," +
                 "\"code\":\"CODE\"," +
                 "\"name\":\"Name 1\"," +
                 "\"updateDate\":\"2016-01-01\"," +
                 "\"active\":true" +
-                "}]");
+                "}");
     }
 }

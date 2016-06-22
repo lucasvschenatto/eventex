@@ -8,7 +8,7 @@ import main.domain.Text;
 import main.domain.category.Category;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class CategoriesSummaryRouteTest extends RouteTest {
+public class ReadCategoryRouteTest extends RouteTest {
     @Test
     public void integration() throws Exception {
         Category category = new Category();
@@ -20,13 +20,13 @@ public class CategoriesSummaryRouteTest extends RouteTest {
         
         InMemoryFactory.getInstance().getCategoryRepository().save(category);
         
-        assertRouteResponse("GET", "/categories",
-                "[{" +
+        assertRouteResponse("GET", "/categories/55ec9e9ad8699a069f77a024",
+                "{" +
                 "\"id\":\"55ec9e9ad8699a069f77a024\"," +
                 "\"name\":\"Name 1\"," +
                 "\"description\":\"Description 1\"," +
                 "\"discount\":12," +
                 "\"needCodeAtInscription\":true" +
-                "}]");
+                "}");
     }
 }

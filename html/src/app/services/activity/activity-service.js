@@ -1,6 +1,11 @@
-System.register(["angular2/core", "angular2/http", "rxjs/Observable", "rxjs/Rx"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/http", "rxjs/Observable", "rxjs/Rx", "../base-service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    var __extends = (this && this.__extends) || function (d, b) {
+        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,7 +15,7 @@ System.register(["angular2/core", "angular2/http", "rxjs/Observable", "rxjs/Rx"]
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, Observable_1;
+    var core_1, http_1, Observable_1, base_service_1;
     var ActivityService;
     return {
         setters:[
@@ -23,16 +28,28 @@ System.register(["angular2/core", "angular2/http", "rxjs/Observable", "rxjs/Rx"]
             function (Observable_1_1) {
                 Observable_1 = Observable_1_1;
             },
-            function (_1) {}],
+            function (_1) {},
+            function (base_service_1_1) {
+                base_service_1 = base_service_1_1;
+            }],
         execute: function() {
-            ActivityService = (function () {
+            ActivityService = (function (_super) {
+                __extends(ActivityService, _super);
                 function ActivityService(_http) {
+                    _super.call(this);
                     this._http = _http;
-                    this._apiUrl = "https://eventex.herokuapp.com/activity";
+                    this._apiUrl = this._baseUrl + "/activities";
                 }
                 ActivityService.prototype.getList = function () {
                     return this._http.get(this._apiUrl)
                         .map(function (res) { return res.json(); })
+                        .catch(this.throwError);
+                };
+                ActivityService.prototype.save = function (domain) {
+                    var body = JSON.stringify(domain);
+                    return this._http.post(this._apiUrl, body)
+                        .toPromise()
+                        .then(function (res) { return res.json(); })
                         .catch(this.throwError);
                 };
                 ActivityService.prototype.throwError = function (response) {
@@ -43,7 +60,7 @@ System.register(["angular2/core", "angular2/http", "rxjs/Observable", "rxjs/Rx"]
                     __metadata('design:paramtypes', [http_1.Http])
                 ], ActivityService);
                 return ActivityService;
-            }());
+            }(base_service_1.BaseService));
             exports_1("ActivityService", ActivityService);
         }
     }

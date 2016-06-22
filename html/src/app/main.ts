@@ -19,7 +19,9 @@ import {Events} from './components/events/events';
 
 import {UserListService} from './services/user_list';
 import {ServerListService} from './services/server_list';
-import {EventService} from './services/event-service';
+import {EventService} from './services/event/event-service';
+
+export declare const REST_URL:string = "http://localhost:8080";
 
 @RouteConfig([
     {path: '/', component: Dashboard, name: 'Dashboard'},

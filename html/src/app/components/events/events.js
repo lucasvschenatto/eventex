@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-widget', '../../services/event-service', '../../domain/event/event', '../../domain/address/address'], function(exports_1, context_1) {
+System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-widget', '../../services/event/event-service', '../../domain/event/event', '../../domain/address/address'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -34,21 +34,27 @@ System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-w
             }],
         execute: function() {
             Events = (function () {
-                function Events(_eventService) {
-                    this._eventService = _eventService;
+                function Events(_service) {
+                    this._service = _service;
                     this.events = [];
                 }
                 Events.prototype.ngOnInit = function () {
                     var _this = this;
-                    this._eventService.getList()
+                    this._service.getList()
                         .subscribe(function (data) { return _this.events = data; }, function (error) { return console.log(error); });
                 };
                 Events.prototype.onAdd = function () {
                     this.domain = new event_1.Event();
                     this.domain.address = new address_1.address();
+                    return false;
                 };
                 Events.prototype.onBack = function () {
                     this.domain = null;
+                    return false;
+                };
+                Events.prototype.onSave = function () {
+                    this._service.save(this.domain);
+                    return false;
                 };
                 Events = __decorate([
                     core_1.Component({

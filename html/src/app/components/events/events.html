@@ -5,8 +5,8 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!domain"><a (click)="onAdd()">Adicionar</a></li>
-        <li *ngIf="domain"><a (click)="onBack()">Voltar</a></li>
+        <li *ngIf="!domain"><a href="#" (click)="onAdd()">Adicionar</a></li>
+        <li *ngIf="domain"><a href="#" (click)="onBack()">Voltar</a></li>
       </ul>
     </div>
   </div>
@@ -46,6 +46,14 @@
       <label>Local</label>
       <input type="text" class="form-control" [(ngModel)]="domain.place">
     </div>
+    <div class="form-group">
+      <label>Data</label>
+      <input type="text" class="form-control" [(ngModel)]="domain.date">
+    </div>
+    <div class="form-group">
+      <label>Horário</label>
+      <input type="text" class="form-control" [(ngModel)]="domain.time">
+    </div>
     <fieldset>
       <legend>Endereço</legend>
       <div class="form-group">
@@ -81,6 +89,6 @@
         <input type="text" class="form-control" [(ngModel)]="domain.address.cep">
       </div>
     </fieldset>
-    <button (click)="onSave()" class="btn btn-primary">Salvar</button>
+    <a href="#" (click)="onSave()" class="btn btn-primary">Salvar</a>
   </div>
 </div>

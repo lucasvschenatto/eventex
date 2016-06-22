@@ -26,6 +26,7 @@ public abstract class RouteTest {
     @BeforeClass
     public static void setUpClass() throws Exception{
     	InMemoryFactory.reset();
+    	Main.setFactory(InMemoryFactory.getInstance());
     	Main.main();
     	Spark.awaitInitialization();
     }

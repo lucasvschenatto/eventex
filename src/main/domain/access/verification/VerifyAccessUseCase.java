@@ -1,6 +1,5 @@
 package main.domain.access.verification;
 
-import main.domain.account.Encryptor;
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
 import main.domain.associate.AssociateRepository;

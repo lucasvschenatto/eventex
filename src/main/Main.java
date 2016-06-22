@@ -6,15 +6,18 @@ import static spark.Spark.post;
 import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
 
-import main.persistence.inmemory.InMemoryFactory;
+import main.domain.RepositoryFactory;
+import main.persistence.mongo.MongoFactory;
 import main.routes.*;
 import main.security.JasyptEncryptor;
 
 public class Main {
+	private static RepositoryFactory factory;
 
 	public static void main(String... arguments) {
         new Main().startSparkServer();
     }
+
 
 	private void startSparkServer() {
 		setUpPort();
@@ -79,8 +82,18 @@ public class Main {
     private Dependencies buildDependencies() {
         Dependencies d = new Dependencies();
         d.setEncryptor(new JasyptEncryptor());
-        d.setRepositoryFactory(InMemoryFactory.getInstance());
+        d.setRepositoryFactory(getFactory());
         return d;
+    }
+    
+    private RepositoryFactory getFactory(){
+    	if(factory == null)
+    		factory = MongoFactory.getInstance();
+    	return factory;
+    }
+    
+    public static void setFactory(RepositoryFactory newFactory){
+    	factory = newFactory;
     }
 
 }

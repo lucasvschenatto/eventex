@@ -54,7 +54,7 @@ public class Main {
     private void setUpPort() {
     	int envPort;
     	try{
-// HEROKU configura a porta que deve usar atrav√©s de vari√°vel de ambiente
+// HEROKU configura a porta que deve usar atravÈs de vari·vel de ambiente
 			envPort = Integer.parseInt(System.getenv("PORT"));
 		}catch(NumberFormatException e){
 			envPort = 8080;
@@ -78,32 +78,46 @@ public class Main {
         
         get("/activities", new ActivitiesSummaryRoute(dependencies));
         post("/activities", new CreateActivityRoute(dependencies));
+        get("/activities/:id", new ReadActivityRoute(dependencies));
+        post("/activities/:id", new UpdateActivityRoute(dependencies));
         delete("/activities/:id", new DeleteActivityRoute(dependencies));
         
         get("/associates", new AssociatesSummaryRoute(dependencies));
         post("/associates", new CreateAssociateRoute(dependencies));
+        get("/associates/:id", new ReadAssociateRoute(dependencies));
+        post("/associates/:id", new UpdateAssociateRoute(dependencies));
         delete("/associates/:id", new DeleteAssociateRoute(dependencies));
         
         get("/categories", new CategoriesSummaryRoute(dependencies));
         post("/categories", new CreateCategoryRoute(dependencies));
+        get("/categories/:id", new ReadCategoryRoute(dependencies));
+        post("/categories/:id", new UpdateCategoryRoute(dependencies));
         delete("/categories/:id", new DeleteCategoryRoute(dependencies));
         
         post("/certificates", new CreateCertificateRoute(dependencies));
 
         get("/events", new EventsSummaryRoute(dependencies));
         post("/events", new CreateEventRoute(dependencies));
+        get("/events/:id", new ReadEventRoute(dependencies));
+        post("/events/:id", new UpdateEventRoute(dependencies));
         delete("/events/:id", new DeleteEventRoute(dependencies));
         
         get("/inscriptions", new InscriptionsSummaryRoute(dependencies));
         post("/inscriptions", new CreateInscriptionRoute(dependencies));
+        get("/inscriptions/:id", new ReadInscriptionRoute(dependencies));
+        post("/inscriptions/:id", new UpdateInscriptionRoute(dependencies));
         delete("/inscriptions/:id", new DeleteInscriptionRoute(dependencies));
         
         get("/participants", new ParticipantsSummaryRoute(dependencies));
         post("/participants", new CreateParticipantRoute(dependencies));
+        get("/participants/:id", new ReadParticipantRoute(dependencies));
+        post("/participants/:id", new UpdateParticipantRoute(dependencies));
         delete("/participants/:id", new DeleteParticipantRoute(dependencies));
         
         get("/professions", new ProfessionsSummaryRoute(dependencies));
         post("/professions", new CreateProfessionRoute(dependencies));
+        get("/professions/:id", new ReadProfessionRoute(dependencies));
+        post("/professions/:id", new UpdateProfessionRoute(dependencies));
         delete("/professions/:id", new DeleteProfessionRoute(dependencies));
     }
 

@@ -14,7 +14,7 @@ import main.persistence.EntityNotFoundException;
 import main.domain.activity.Activity;
 
 public class CreateActivityUseCase {
-	private final ActivityRepository activityRepository;
+	protected final ActivityRepository activityRepository;
 	private final EventRepository eventRepository;
 	private final Text name;
     private final Text description;
@@ -28,7 +28,7 @@ public class CreateActivityUseCase {
 	private final Quantity points;
 	private final Booleanic groupDiscount;
 	private final Booleanic voucher;
-    private final CreateActivityResponse response;
+    protected final CreateActivityResponse response;
     
     public CreateActivityUseCase(ActivityRepository activityRepository, EventRepository eventRepository, CreateActivityRequest request, CreateActivityResponse response){
     	this.activityRepository = activityRepository;
@@ -55,7 +55,7 @@ public class CreateActivityUseCase {
     		sendErrors();
     }
     
-    private boolean isValidRequest() {
+    protected boolean isValidRequest() {
         return isValidFields() && eventIdExists();
     }
     
@@ -88,7 +88,7 @@ public class CreateActivityUseCase {
 		return validation;
 	}
     
-    private Activity makeActivity() {
+    protected Activity makeActivity() {
         Activity activity = new Activity();
         activity.setName(name);
         activity.setDescription(description);
@@ -105,7 +105,7 @@ public class CreateActivityUseCase {
         return activity;
     }
     
-    private void sendErrors() {
+    protected void sendErrors() {
         response.invalidName = !name.isValid();
         response.invalidDescription = !description.isValid();
         response.invalidDate = !date.isValid();

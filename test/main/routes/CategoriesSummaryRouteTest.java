@@ -1,10 +1,5 @@
 package main.routes;
 
-//import com.mongodb.MongoClient;
-//import com.mongodb.MongoClientURI;
-//import com.mongodb.client.MongoDatabase;
-
-//import main.persistence.mongo.MongoProductRepository;
 import org.junit.*;
 
 import main.domain.Booleanic;

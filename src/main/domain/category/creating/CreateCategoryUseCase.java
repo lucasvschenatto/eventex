@@ -7,12 +7,12 @@ import main.domain.category.Category;
 import main.domain.category.CategoryRepository;
 
 public class CreateCategoryUseCase {
-    private final CategoryRepository repository;
+    protected final CategoryRepository repository;
     private final Text name;
     private final Text description;
     private final Percentage discount;
     private final Booleanic needCodeAtInscription;
-    private final CreateCategoryResponse response;
+    protected final CreateCategoryResponse response;
 
     public CreateCategoryUseCase(CategoryRepository repository, CreateCategoryRequest request, CreateCategoryResponse response) {
         this.repository = repository;
@@ -30,7 +30,7 @@ public class CreateCategoryUseCase {
             sendErrors();
     }
 
-    private boolean isValidRequest() {
+    protected boolean isValidRequest() {
         return name.isValid() && description.isValid() && discount.isValid() && needCodeAtInscription.isValid();
     }
 
@@ -39,7 +39,7 @@ public class CreateCategoryUseCase {
         response.success = true;
     }
 
-    private Category makeCategory() {
+    protected Category makeCategory() {
         Category category = new Category();
         category.setName(name);
         category.setDescription(description);
@@ -48,7 +48,7 @@ public class CreateCategoryUseCase {
         return category;
     }
 
-    private void sendErrors() {
+    protected void sendErrors() {
         response.invalidName = !name.isValid();
         response.invalidDescription = !description.isValid();
         response.invalidDiscount = !discount.isValid();

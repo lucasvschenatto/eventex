@@ -1,6 +1,6 @@
 ﻿import {address} from "../address/address";
 
-export class Event {
+export class Participant {
     id: string;
     name: string;
     userId: string;

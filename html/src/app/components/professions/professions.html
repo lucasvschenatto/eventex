@@ -1,7 +1,7 @@
 ﻿<nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Inscrições</a>
+            <a class="navbar-brand" href="#">Profissão</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -17,36 +17,30 @@
             <thead>
                 <tr>
                     <th>Ações</th>
-                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="#inscription of inscriptions">
+                <tr *ngFor="#profession of professions">
                     <td>
                         <a href="" title="Editar"><span class="fa fa-pencil"></span></a>
                         <a href="" title="Excluir"><span class="fa fa-remove"></span></a>
                     </td>
-                    <td>{{inscription.associateCode}}</td>
+                    <td>{{profession.name}}</td>
+                    <td>{{profession.description}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div *ngIf="domain" class="col-lg-12">
         <div class="form-group">
-            <label>Participante</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.participantId">
+            <label>Nome</label>
+            <input type="text" class="form-control" [(ngModel)]="domain.name">
         </div>
         <div class="form-group">
-            <label>Atividade</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.activityId">
-        </div>
-        <div class="form-group">
-            <label>Categoria</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.categoryId">
-        </div>
-        <div class="form-group">
-            <label>Código</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.associateCode">
+            <label>Descrição</label>
+            <input type="text" class="form-control" [(ngModel)]="domain.description">
         </div>
         <a href="#" (click)="onSave()" class="btn btn-primary">Salvar</a>
     </div>

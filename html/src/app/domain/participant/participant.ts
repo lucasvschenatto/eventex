@@ -9,15 +9,15 @@ export class Participant {
     gender: string;
     education: string;
     birth: string;
-    homeAddress: address;
     homePhone: string;
     cellphone: string;
     professionId: string;
     organization: string;
     department: string;
     role: string;
-    workAddress: address;
     workPhone: string;
     workCellphone: string;
     workEmail: string;
+    homeAddress: address;
+    workAddress: address;
 }

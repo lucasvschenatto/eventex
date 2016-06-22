@@ -20,7 +20,7 @@ export class AssociateService extends BaseService {
             .catch(this.throwError);
     }
 
-    public save(domain: activity) {
+    public save(domain: associate) {
         let body = JSON.stringify(domain);
 
         return this._http.post(this._apiUrl, body)

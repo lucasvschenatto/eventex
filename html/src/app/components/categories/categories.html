@@ -1,7 +1,7 @@
 ﻿<nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Atividades</a>
+            <a class="navbar-brand" href="#">Categorias</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -17,44 +17,38 @@
             <thead>
                 <tr>
                     <th>Ações</th>
-                    <th>Locais</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="#activity of activities">
+                <tr *ngFor="#category of categories">
                     <td>
                         <a href="" title="Editar"><span class="fa fa-pencil"></span></a>
                         <a href="" title="Excluir"><span class="fa fa-remove"></span></a>
                     </td>
-                    <td>{{activity.spots}}</td>
+                    <td>{{category.name}}</td>
+                    <td>{{category.description}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div *ngIf="domain" class="col-lg-12">
         <div class="form-group">
-            <label>Evento</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.eventId">
+            <label>Nome</label>
+            <input type="text" class="form-control" [(ngModel)]="domain.name">
         </div>
         <div class="form-group">
-            <label>Locais</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.spots">
+            <label>Descrição</label>
+            <input type="text" class="form-control" [(ngModel)]="domain.description">
         </div>
         <div class="form-group">
-            <label>Duração</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.duration">
+            <label>Desconto</label>
+            <input type="text" class="form-control" [(ngModel)]="domain.discount">
         </div>
         <div class="form-group">
-            <label>Pontos</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.points">
-        </div>
-        <div class="form-group">
-            <label>Desconto de Grupo</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.groupDiscount">
-        </div>
-        <div class="form-group">
-            <label>Voucher</label>
-            <input type="text" class="form-control" [(ngModel)]="domain.voucher">
+            <label>Necessita Código na Inscrição</label>
+            <input type="checkbox" class="form-control" [(ngModel)]="domain.needCodeAtInscription">
         </div>
         <a href="#" (click)="onSave()" class="btn btn-primary">Salvar</a>
     </div>

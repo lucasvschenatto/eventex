@@ -56,7 +56,7 @@ private static final HashMap<String, String> corsHeaders = new HashMap<String, S
     }
 
     private void setUpStaticFiles() {
-    	externalStaticFileLocation("html/src");
+    	externalStaticFileLocation("html");
     }
     
     private void setUpRoutes() {

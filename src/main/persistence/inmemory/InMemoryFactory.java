@@ -5,7 +5,6 @@ import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
-import main.domain.certificate.CertificateRepository;
 import main.domain.event.EventRepository;
 import main.domain.inscription.InscriptionRepository;
 import main.domain.participant.ParticipantRepository;
@@ -18,7 +17,6 @@ public class InMemoryFactory implements RepositoryFactory {
 	private ActivityRepository activity;
 	private AssociateRepository associate;
 	private CategoryRepository category;
-	private CertificateRepository certificate;
 	private EventRepository event;
 	private InscriptionRepository inscription;
 	private ParticipantRepository participant;
@@ -30,7 +28,6 @@ public class InMemoryFactory implements RepositoryFactory {
 		activity = new InMemoryActivityRepository();
 		associate = new InMemoryAssociateRepository();
 		category = new InMemoryCategoryRepository();
-		certificate = new InMemoryCertificateRepository();
 		event = new InMemoryEventRepository();
 		inscription = new InMemoryInscriptionRepository();
 		participant = new InMemoryParticipantRepository();
@@ -77,10 +74,6 @@ public class InMemoryFactory implements RepositoryFactory {
 
 	public UserRepository getUserRepository() {
 		return user;
-	}
-
-	public CertificateRepository getCertificateRepository() {
-		return certificate;
 	}
 
 }

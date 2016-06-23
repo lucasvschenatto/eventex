@@ -31,20 +31,20 @@ public abstract class InscriptionRepositoryTest extends RepositoryTest<Inscripti
     }
 
     protected Inscription makeEntityWithId(String id) {
-        Inscription category = new Inscription();
-        category.setId(id);
-        category.setParticipantId(PARTICIPANT_ID1);
-        category.setActivityId(ACTIVITY_ID1);
-        category.setCategoryId(CATEGORY_ID1);
-        category.setAssociateCode(ASSOCIATE_CODE1);
-        return category;
+        Inscription inscription = new Inscription();
+        inscription.setId(id);
+        inscription.setParticipantId(PARTICIPANT_ID1);
+        inscription.setActivityId(ACTIVITY_ID1);
+        inscription.setCategoryId(CATEGORY_ID1);
+        inscription.setAssociateCode(ASSOCIATE_CODE1);
+        return inscription;
     }
 
-    protected void changeEntity(Inscription category) {
-        category.setParticipantId(PARTICIPANT_ID2);
-        category.setActivityId(ACTIVITY_ID2);
-        category.setCategoryId(CATEGORY_ID2);
-        category.setAssociateCode(ASSOCIATE_CODE2);
+    protected void changeEntity(Inscription inscription) {
+        inscription.setParticipantId(PARTICIPANT_ID2);
+        inscription.setActivityId(ACTIVITY_ID2);
+        inscription.setCategoryId(CATEGORY_ID2);
+        inscription.setAssociateCode(ASSOCIATE_CODE2);
     }
 
     protected void assertEntityHasSameValues(Inscription original, Inscription saved) {
@@ -79,10 +79,31 @@ public abstract class InscriptionRepositoryTest extends RepositoryTest<Inscripti
     public void givenTwoParticipantCategorys_itReturnsTheTwo() {
         repository.save(new Inscription());
         repository.save(new Inscription());
-        Iterable<Inscription> categories = repository.getAll();
+        Iterable<Inscription> inscriptions = repository.getAll();
         int counter = 0;
-        for (Inscription ignored : categories)
+        for (Inscription ignored : inscriptions)
         	counter++;
         assertEquals(2, counter);
     }
+	
+	@Test
+    public void hasWithParticipant(){
+    	Inscription i = makeNewEntity();
+    	i.setParticipantId(new Text("idDoParticipante"));
+    	repository.save(i);
+    	assertTrue(repository.hasWithParticipantId(new Text("idDoParticipante")));
+    	assertFalse(repository.hasWithParticipantId(new Text("outro id")));
+    }
+	@Test
+	public void getByParticipant(){
+		Inscription i = makeNewEntity();
+    	i.setParticipantId(new Text("idDoParticipante"));
+    	repository.save(i);
+    	
+    	Iterable<Inscription> inscriptions = repository.getAllByParticipantId(new Text("idDoParticipante"));
+        int counter = 0;
+        for (@SuppressWarnings("unused") Inscription ignored : inscriptions)
+        	counter++;
+        assertEquals(2, counter);
+	}
 }

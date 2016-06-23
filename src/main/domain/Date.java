@@ -5,6 +5,10 @@ public class Date {
 	public static final Date MIN = new Date(LocalDate.MIN.toString());
 	private LocalDate value;
 	private boolean parsed;
+	
+	public static Date now(){
+		return new Date(LocalDate.now().toString());
+	}
 	public Date(String value) {
 		try{
 			this.value = LocalDate.parse(value.trim());

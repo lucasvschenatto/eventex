@@ -6,11 +6,6 @@ import static spark.Spark.post;
 import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
 
-import java.util.HashMap;
-import spark.Filter;
-import spark.Request;
-import spark.Response;
-import spark.Spark;
 import main.domain.RepositoryFactory;
 import main.persistence.mongo.MongoFactory;
 import main.routes.*;
@@ -18,27 +13,6 @@ import main.security.JasyptEncryptor;
 
 public class Main {
 	private static RepositoryFactory factory;
-	
-	private static final HashMap<String, String> corsHeaders = new HashMap<String, String>();
-    
-    static {
-        corsHeaders.put("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-        corsHeaders.put("Access-Control-Allow-Origin", "*");
-        corsHeaders.put("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
-        corsHeaders.put("Access-Control-Allow-Credentials", "true");
-    }
-    
-    public final static void apply() {
-        Filter filter = new Filter() {
-            @Override
-            public void handle(Request request, Response response) throws Exception {
-                corsHeaders.forEach((key, value) -> {
-                    response.header(key, value);
-                });
-            }
-        };
-        Spark.after(filter);
-    }
 
 	public static void main(String... arguments) {
         new Main().startSparkServer();
@@ -52,24 +26,16 @@ public class Main {
 	}
 
     private void setUpPort() {
-    	int envPort;
-    	try{
-// HEROKU configura a porta que deve usar através de variável de ambiente
-			envPort = Integer.parseInt(System.getenv("PORT"));
-		}catch(NumberFormatException e){
-			envPort = 8080;
-		}
-		port(envPort);
+    	try{port(Integer.parseInt(System.getenv("PORT")));
+		}catch(NumberFormatException ignored){}
     }
 
     private void setUpStaticFiles() {
-    	externalStaticFileLocation("html");
+    	externalStaticFileLocation("resources/public");
     }
     
     private void setUpRoutes() {
     	Dependencies dependencies = buildDependencies();
-    	
-    	Main.apply();
     	
         get("/read-user", new ReadUserRoute(dependencies));
         post("/login", new LoginRoute(dependencies));
@@ -94,7 +60,7 @@ public class Main {
         post("/categories/:id", new UpdateCategoryRoute(dependencies));
         delete("/categories/:id", new DeleteCategoryRoute(dependencies));
         
-        post("/certificates", new CreateCertificateRoute(dependencies));
+        get("/certificates", new PrintCertificateRoute(dependencies));
 
         get("/events", new EventsSummaryRoute(dependencies));
         post("/events", new CreateEventRoute(dependencies));
@@ -105,7 +71,7 @@ public class Main {
         get("/inscriptions", new InscriptionsSummaryRoute(dependencies));
         post("/inscriptions", new CreateInscriptionRoute(dependencies));
         get("/inscriptions/:id", new ReadInscriptionRoute(dependencies));
-        post("/inscriptions/:id", new UpdateInscriptionRoute(dependencies));
+//        post("/inscriptions/:id", new UpdateInscriptionRoute(dependencies));
         delete("/inscriptions/:id", new DeleteInscriptionRoute(dependencies));
         
         get("/participants", new ParticipantsSummaryRoute(dependencies));

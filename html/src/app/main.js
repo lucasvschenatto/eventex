@@ -1,6 +1,6 @@
 // import 'core-js';
 // import 'zone.js';
-System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 'angular2/common', 'angular2/router', './components/dashboard/dashboard', './services/user_list', './services/server_list', './components/events/events', './services/event/event-service', "./components/activities/activities", "./services/activity/activity-service", "./components/associates/associates", "./services/associate/associate-service", "./components/categories/categories", "./services/category/category-service", "./components/certificates/certificates", "./services/certificate/certificate-service", "./components/inscriptions/inscriptions", "./services/inscription/inscription-service", "./components/participants/participants", "./services/participant/participant-service"], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 'angular2/common', 'angular2/platform/common', 'angular2/router', './components/dashboard/dashboard', './services/user_list', './services/server_list', './components/events/events', './services/event/event-service', "./components/activities/activities", "./services/activity/activity-service", "./components/associates/associates", "./services/associate/associate-service", "./components/categories/categories", "./services/category/category-service", "./components/certificates/certificates", "./services/certificate/certificate-service", "./components/inscriptions/inscriptions", "./services/inscription/inscription-service", "./components/participants/participants", "./services/participant/participant-service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -12,12 +12,13 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, browser_1, http_1, common_1, router_1, dashboard_1, user_list_1, server_list_1, events_1, event_service_1, activities_1, activity_service_1, associates_1, associate_service_1, categories_1, category_service_1, certificates_1, certificate_service_1, inscriptions_1, inscription_service_1, participants_1, participant_service_1;
+    var core_1, browser_1, http_1, common_1, core_2, common_2, router_1, dashboard_1, user_list_1, server_list_1, events_1, event_service_1, activities_1, activity_service_1, associates_1, associate_service_1, categories_1, category_service_1, certificates_1, certificate_service_1, inscriptions_1, inscription_service_1, participants_1, participant_service_1;
     var Main;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+                core_2 = core_1_1;
             },
             function (browser_1_1) {
                 browser_1 = browser_1_1;
@@ -27,6 +28,9 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+            },
+            function (common_2_1) {
+                common_2 = common_2_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -133,11 +137,10 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                 ], Main);
                 return Main;
             }());
-            browser_1.bootstrap(Main, [router_1.ROUTER_PROVIDERS, common_1.FORM_PROVIDERS,
-                router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, user_list_1.UserListService, server_list_1.ServerListService,
+            browser_1.bootstrap(Main, [router_1.ROUTER_PROVIDERS, core_2.provide(common_2.LocationStrategy, { useClass: common_2.HashLocationStrategy }),
+                common_1.FORM_PROVIDERS, http_1.HTTP_PROVIDERS, user_list_1.UserListService, server_list_1.ServerListService,
                 event_service_1.EventService, activity_service_1.ActivityService, associate_service_1.AssociateService, category_service_1.CategoryService, certificate_service_1.CertificateService, inscription_service_1.InscriptionService,
-                participant_service_1.ParticipantService,
-                core_1.bind(router_1.LocationStrategy).toClass(router_1.HashLocationStrategy)]);
+                participant_service_1.ParticipantService]);
         }
     }
 });

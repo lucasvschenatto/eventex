@@ -3,6 +3,14 @@ import {Component, OnInit} from 'angular2/core';
 import {RdLoading} from '../rd-loading/rd-loading';
 import {RdWidget} from '../rd-widget/rd-widget';
 
+import {RdWidgetHeader} from '../rd-widget-header/rd-widget-header';
+import {RdWidgetBody} from '../rd-widget-body/rd-widget-body';
+import {RdWidgetFooter} from '../rd-widget-footer/rd-widget-footer';
+
+import {ServerListView} from '../server-list-view/server-list-view';
+import {ServerListService} from '../../services/server_list';
+import {UserListView} from '../user-list-view/user-list-view';
+
 import {EventService} from '../../services/event/event-service';
 import {Event} from '../../domain/event/event';
 import {address} from '../../domain/address/address';
@@ -13,7 +21,8 @@ import {TEST_SERVER_APPLICATION_PROVIDERS} from "angular2/platform/testing/serve
 @Component({
     selector: 'events',
     templateUrl: 'app/components/events/events.html',
-    directives: [RdWidget, RdLoading]
+    directives: [RdWidget, RdWidgetHeader, RdWidgetBody,
+        RdWidgetFooter, RdLoading, ServerListView, UserListView]
 })
 export class Events implements OnInit {
     public domain: Event;

@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-widget', '../../services/event/event-service', '../../domain/event/event', '../../domain/address/address'], function(exports_1, context_1) {
+System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-widget', '../rd-widget-header/rd-widget-header', '../rd-widget-body/rd-widget-body', '../rd-widget-footer/rd-widget-footer', '../server-list-view/server-list-view', '../user-list-view/user-list-view', '../../services/event/event-service', '../../domain/event/event', '../../domain/address/address'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-w
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, rd_loading_1, rd_widget_1, event_service_1, event_1, address_1;
+    var core_1, rd_loading_1, rd_widget_1, rd_widget_header_1, rd_widget_body_1, rd_widget_footer_1, server_list_view_1, user_list_view_1, event_service_1, event_1, address_1;
     var Events;
     return {
         setters:[
@@ -22,6 +22,21 @@ System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-w
             },
             function (rd_widget_1_1) {
                 rd_widget_1 = rd_widget_1_1;
+            },
+            function (rd_widget_header_1_1) {
+                rd_widget_header_1 = rd_widget_header_1_1;
+            },
+            function (rd_widget_body_1_1) {
+                rd_widget_body_1 = rd_widget_body_1_1;
+            },
+            function (rd_widget_footer_1_1) {
+                rd_widget_footer_1 = rd_widget_footer_1_1;
+            },
+            function (server_list_view_1_1) {
+                server_list_view_1 = server_list_view_1_1;
+            },
+            function (user_list_view_1_1) {
+                user_list_view_1 = user_list_view_1_1;
             },
             function (event_service_1_1) {
                 event_service_1 = event_service_1_1;
@@ -86,7 +101,8 @@ System.register(['angular2/core', '../rd-loading/rd-loading', '../rd-widget/rd-w
                     core_1.Component({
                         selector: 'events',
                         templateUrl: 'app/components/events/events.html',
-                        directives: [rd_widget_1.RdWidget, rd_loading_1.RdLoading]
+                        directives: [rd_widget_1.RdWidget, rd_widget_header_1.RdWidgetHeader, rd_widget_body_1.RdWidgetBody,
+                            rd_widget_footer_1.RdWidgetFooter, rd_loading_1.RdLoading, server_list_view_1.ServerListView, user_list_view_1.UserListView]
                     }), 
                     __metadata('design:paramtypes', [event_service_1.EventService])
                 ], Events);

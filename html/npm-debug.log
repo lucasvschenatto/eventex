@@ -1,0 +1,282 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i',
+1 verbose cli   '@msafi/angular2-text-mask',
+1 verbose cli   '--save' ]
+2 info using npm@2.15.5
+3 info using node@v4.4.5
+4 verbose install initial load of c:\Felipe\eventex\html\package.json
+5 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\angular2\package.json
+6 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\bootbox\package.json
+7 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\bootstrap\package.json
+8 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\concurrently\package.json
+9 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\es6-shim\package.json
+10 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\font-awesome\package.json
+11 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\jquery\package.json
+12 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\live-server\package.json
+13 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\rdash-ui\package.json
+14 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\reflect-metadata\package.json
+15 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\rxjs\package.json
+16 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\systemjs\package.json
+17 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\typescript\package.json
+18 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\typings\package.json
+19 verbose installManyTop reading scoped package data from c:\Felipe\eventex\html\node_modules\zone.js\package.json
+20 info package.json rdash-ui@1.0.1 license should be a valid SPDX license expression
+21 verbose readDependencies loading dependencies from c:\Felipe\eventex\html\package.json
+22 silly cache add args [ '@msafi/angular2-text-mask', null ]
+23 verbose cache add spec @msafi/angular2-text-mask
+24 silly cache add parsed spec Result {
+24 silly cache add   raw: '@msafi/angular2-text-mask',
+24 silly cache add   scope: '@msafi',
+24 silly cache add   name: '@msafi/angular2-text-mask',
+24 silly cache add   rawSpec: '',
+24 silly cache add   spec: 'latest',
+24 silly cache add   type: 'tag' }
+25 silly addNamed @msafi/angular2-text-mask@latest
+26 verbose addNamed "latest" is being treated as a dist-tag for @msafi/angular2-text-mask
+27 info addNameTag [ '@msafi/angular2-text-mask', 'latest' ]
+28 silly mapToRegistry name @msafi/angular2-text-mask
+29 silly mapToRegistry scope (from package name) @msafi
+30 verbose mapToRegistry no registry URL found in name for scope @msafi
+31 silly mapToRegistry using default registry
+32 silly mapToRegistry registry https://registry.npmjs.org/
+33 silly mapToRegistry data Result {
+33 silly mapToRegistry   raw: '@msafi/angular2-text-mask',
+33 silly mapToRegistry   scope: '@msafi',
+33 silly mapToRegistry   name: '@msafi/angular2-text-mask',
+33 silly mapToRegistry   rawSpec: '',
+33 silly mapToRegistry   spec: 'latest',
+33 silly mapToRegistry   type: 'tag' }
+34 silly mapToRegistry uri https://registry.npmjs.org/@msafi%2fangular2-text-mask
+35 verbose addNameTag registry:https://registry.npmjs.org/@msafi%2fangular2-text-mask not in flight; fetching
+36 verbose request uri https://registry.npmjs.org/@msafi%2fangular2-text-mask
+37 verbose request no auth needed
+38 info attempt registry request try #1 at 01:26:21
+39 verbose request id edb96fe7e9e8c404
+40 http request GET https://registry.npmjs.org/@msafi%2fangular2-text-mask
+41 http 200 https://registry.npmjs.org/@msafi%2fangular2-text-mask
+42 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+42 verbose headers   etag: '"4Y8V61KQ6BWE82X4D3SR0OJSU"',
+42 verbose headers   'content-type': 'application/json',
+42 verbose headers   'content-encoding': 'gzip',
+42 verbose headers   'cache-control': 'max-age=0',
+42 verbose headers   'transfer-encoding': 'chunked',
+42 verbose headers   'accept-ranges': 'bytes',
+42 verbose headers   date: 'Thu, 23 Jun 2016 04:26:22 GMT',
+42 verbose headers   via: '1.1 varnish',
+42 verbose headers   age: '0',
+42 verbose headers   connection: 'keep-alive',
+42 verbose headers   'x-served-by': 'cache-atl6240-ATL',
+42 verbose headers   'x-cache': 'MISS',
+42 verbose headers   'x-cache-hits': '0',
+42 verbose headers   'x-timer': 'S1466655982.287592,VS0,VE452',
+42 verbose headers   vary: 'Accept-Encoding' }
+43 silly get cb [ 200,
+43 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+43 silly get     etag: '"4Y8V61KQ6BWE82X4D3SR0OJSU"',
+43 silly get     'content-type': 'application/json',
+43 silly get     'content-encoding': 'gzip',
+43 silly get     'cache-control': 'max-age=0',
+43 silly get     'transfer-encoding': 'chunked',
+43 silly get     'accept-ranges': 'bytes',
+43 silly get     date: 'Thu, 23 Jun 2016 04:26:22 GMT',
+43 silly get     via: '1.1 varnish',
+43 silly get     age: '0',
+43 silly get     connection: 'keep-alive',
+43 silly get     'x-served-by': 'cache-atl6240-ATL',
+43 silly get     'x-cache': 'MISS',
+43 silly get     'x-cache-hits': '0',
+43 silly get     'x-timer': 'S1466655982.287592,VS0,VE452',
+43 silly get     vary: 'Accept-Encoding' } ]
+44 verbose get saving @msafi/angular2-text-mask to C:\Users\luiz.oliveira\AppData\Roaming\npm-cache\registry.npmjs.org\_40msafi_252fangular2-text-mask\.cache.json
+45 verbose correctMkdir C:\Users\luiz.oliveira\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+46 silly addNameTag next cb for @msafi/angular2-text-mask with tag latest
+47 silly addNamed @msafi/angular2-text-mask@0.7.0
+48 verbose addNamed "0.7.0" is a plain semver version for @msafi/angular2-text-mask
+49 warn deprecated @msafi/angular2-text-mask@0.7.0: No longer maintained. Install 'angular2-text-mask' without '@msafi/'
+50 silly mapToRegistry name @msafi/angular2-text-mask
+51 silly mapToRegistry scope (from package name) @msafi
+52 verbose mapToRegistry no registry URL found in name for scope @msafi
+53 silly mapToRegistry using default registry
+54 silly mapToRegistry registry https://registry.npmjs.org/
+55 silly mapToRegistry data Result {
+55 silly mapToRegistry   raw: '@msafi/angular2-text-mask',
+55 silly mapToRegistry   scope: '@msafi',
+55 silly mapToRegistry   name: '@msafi/angular2-text-mask',
+55 silly mapToRegistry   rawSpec: '',
+55 silly mapToRegistry   spec: 'latest',
+55 silly mapToRegistry   type: 'tag' }
+56 silly mapToRegistry uri https://registry.npmjs.org/@msafi%2fangular2-text-mask
+57 verbose addRemoteTarball https://registry.npmjs.org/@msafi/angular2-text-mask/-/angular2-text-mask-0.7.0.tgz not in flight; adding
+58 verbose addRemoteTarball [ 'https://registry.npmjs.org/@msafi/angular2-text-mask/-/angular2-text-mask-0.7.0.tgz',
+58 verbose addRemoteTarball   'a680908108e3a715574d60a155d4b6991a1911e2' ]
+59 info retry fetch attempt 1 at 01:26:22
+60 info attempt registry request try #1 at 01:26:22
+61 http fetch GET https://registry.npmjs.org/@msafi/angular2-text-mask/-/angular2-text-mask-0.7.0.tgz
+62 http fetch 200 https://registry.npmjs.org/@msafi/angular2-text-mask/-/angular2-text-mask-0.7.0.tgz
+63 silly fetchAndShaCheck shasum a680908108e3a715574d60a155d4b6991a1911e2
+64 verbose addTmpTarball C:\Users\LUIZ~1.OLI\AppData\Local\Temp\npm-213756-1fdac3c5\registry.npmjs.org\_40msafi\angular2-text-mask\-\angular2-text-mask-0.7.0.tgz not in flight; adding
+65 verbose addTmpTarball already have metadata; skipping unpack for @msafi/angular2-text-mask@0.7.0
+66 verbose correctMkdir C:\Users\luiz.oliveira\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+67 silly cache afterAdd @msafi/angular2-text-mask@0.7.0
+68 verbose afterAdd C:\Users\luiz.oliveira\AppData\Roaming\npm-cache\@msafi\angular2-text-mask\0.7.0\package\package.json not in flight; writing
+69 verbose correctMkdir C:\Users\luiz.oliveira\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+70 verbose afterAdd C:\Users\luiz.oliveira\AppData\Roaming\npm-cache\@msafi\angular2-text-mask\0.7.0\package\package.json written
+71 silly install resolved [ { name: '@msafi/angular2-text-mask',
+71 silly install resolved     version: '0.7.0',
+71 silly install resolved     description: 'Angular 2 directive for input text masking',
+71 silly install resolved     main: 'dist/textMask.js',
+71 silly install resolved     author: { name: 'M.K. Safi', email: 'msafi@msafi.com' },
+71 silly install resolved     license: 'CC0-1.0',
+71 silly install resolved     bugs: { url: 'https://github.com/msafi/text-mask/issues' },
+71 silly install resolved     repository:
+71 silly install resolved      { type: 'git',
+71 silly install resolved        url: 'git+https://github.com/msafi/text-mask.git' },
+71 silly install resolved     homepage: 'https://github.com/msafi/text-mask/angular2/#readme',
+71 silly install resolved     peerDependencies: { angular2: '*' },
+71 silly install resolved     keywords:
+71 silly install resolved      [ 'angular2',
+71 silly install resolved        'ng2',
+71 silly install resolved        'angular2 component',
+71 silly install resolved        'angular2 directive',
+71 silly install resolved        'text mask',
+71 silly install resolved        'input mask',
+71 silly install resolved        'string mask',
+71 silly install resolved        'input formatting',
+71 silly install resolved        'text formatting',
+71 silly install resolved        'string formatting' ],
+71 silly install resolved     _id: '@msafi/angular2-text-mask@0.7.0',
+71 silly install resolved     scripts: {},
+71 silly install resolved     _shasum: 'a680908108e3a715574d60a155d4b6991a1911e2',
+71 silly install resolved     _from: '@msafi/angular2-text-mask@latest',
+71 silly install resolved     _npmVersion: '3.9.3',
+71 silly install resolved     _nodeVersion: '5.1.0',
+71 silly install resolved     _npmUser: { name: 'msafi', email: 'msafi@msafi.com' },
+71 silly install resolved     dist:
+71 silly install resolved      { shasum: 'a680908108e3a715574d60a155d4b6991a1911e2',
+71 silly install resolved        tarball: 'https://registry.npmjs.org/@msafi/angular2-text-mask/-/angular2-text-mask-0.7.0.tgz' },
+71 silly install resolved     maintainers: [ [Object] ],
+71 silly install resolved     _npmOperationalInternal:
+71 silly install resolved      { host: 'packages-16-east.internal.npmjs.com',
+71 silly install resolved        tmp: 'tmp/angular2-text-mask-0.7.0.tgz_1464563760845_0.14856170769780874' },
+71 silly install resolved     deprecated: 'No longer maintained. Install \'angular2-text-mask\' without \'@msafi/\'',
+71 silly install resolved     directories: {},
+71 silly install resolved     _resolved: 'https://registry.npmjs.org/@msafi/angular2-text-mask/-/angular2-text-mask-0.7.0.tgz' } ]
+72 info install @msafi/angular2-text-mask@0.7.0 into c:\Felipe\eventex\html
+73 info installOne @msafi/angular2-text-mask@0.7.0
+74 verbose installOne of @msafi/angular2-text-mask to c:\Felipe\eventex\html not in flight; installing
+75 verbose correctMkdir C:\Users\luiz.oliveira\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+76 verbose lock using C:\Users\luiz.oliveira\AppData\Roaming\npm-cache\_locks\msafi-angular2-text-mask-f4897c5eef33b006.lock for c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask
+77 silly install write writing @msafi/angular2-text-mask 0.7.0 to c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask
+78 verbose unbuild node_modules\@msafi\angular2-text-mask
+79 silly gentlyRm c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask is being purged from base c:\Felipe\eventex\html
+80 verbose gentlyRm don't care about contents; nuking c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask
+81 verbose tar unpack C:\Users\luiz.oliveira\AppData\Roaming\npm-cache\@msafi\angular2-text-mask\0.7.0\package.tgz
+82 verbose tar unpacking to c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask
+83 silly gentlyRm c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask is being purged
+84 verbose gentlyRm don't care about contents; nuking c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask
+85 silly gunzTarPerm modes [ '777', '666' ]
+86 silly gunzTarPerm extractEntry package.json
+87 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+88 silly gunzTarPerm extractEntry README.md
+89 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+90 silly gunzTarPerm extractEntry webpack.buildAngular2Integration.js
+91 silly gunzTarPerm modified mode [ 'webpack.buildAngular2Integration.js', 420, 438 ]
+92 silly gunzTarPerm extractEntry dist/textMask.js
+93 silly gunzTarPerm modified mode [ 'dist/textMask.js', 420, 438 ]
+94 silly gunzTarPerm extractEntry dist/stats.json
+95 silly gunzTarPerm modified mode [ 'dist/stats.json', 420, 438 ]
+96 silly gunzTarPerm extractEntry dist/textMask.d.ts
+97 silly gunzTarPerm modified mode [ 'dist/textMask.d.ts', 420, 438 ]
+98 silly gunzTarPerm extractEntry example/README.md
+99 silly gunzTarPerm modified mode [ 'example/README.md', 420, 438 ]
+100 silly gunzTarPerm extractEntry example/webpack.buildAngular2Example.js
+101 silly gunzTarPerm modified mode [ 'example/webpack.buildAngular2Example.js', 420, 438 ]
+102 silly gunzTarPerm extractEntry example/app.html
+103 silly gunzTarPerm modified mode [ 'example/app.html', 420, 438 ]
+104 silly gunzTarPerm extractEntry example/app.ts
+105 silly gunzTarPerm modified mode [ 'example/app.ts', 420, 438 ]
+106 silly gunzTarPerm extractEntry example/index.html
+107 silly gunzTarPerm modified mode [ 'example/index.html', 420, 438 ]
+108 silly gunzTarPerm extractEntry publish.sh
+109 silly gunzTarPerm modified mode [ 'publish.sh', 420, 438 ]
+110 silly gunzTarPerm extractEntry src/angular2TextMask.ts
+111 silly gunzTarPerm modified mode [ 'src/angular2TextMask.ts', 420, 438 ]
+112 silly gunzTarPerm extractEntry test/angular2TextMask.spec.js
+113 silly gunzTarPerm modified mode [ 'test/angular2TextMask.spec.js', 420, 438 ]
+114 silly gunzTarPerm extractEntry tsconfig.json
+115 silly gunzTarPerm modified mode [ 'tsconfig.json', 420, 438 ]
+116 silly gunzTarPerm extractEntry typings.json
+117 silly gunzTarPerm modified mode [ 'typings.json', 420, 438 ]
+118 verbose write writing to c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask\package.json
+119 info preinstall @msafi/angular2-text-mask@0.7.0
+120 verbose readDependencies loading dependencies from c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask\package.json
+121 silly prepareForInstallMany adding angular2@* from @msafi/angular2-text-mask peerDependencies
+122 warn peerDependencies The peer dependency angular2@* included from @msafi/angular2-text-mask will no
+123 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+124 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+125 verbose readDependencies loading dependencies from c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask\package.json
+126 silly install resolved []
+127 verbose about to build c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask
+128 info build c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask
+129 info linkStuff @msafi/angular2-text-mask@0.7.0
+130 silly linkStuff @msafi/angular2-text-mask@0.7.0 has c:\Felipe\eventex\html\node_modules as its parent node_modules
+131 verbose linkBins @msafi/angular2-text-mask@0.7.0
+132 verbose linkMans @msafi/angular2-text-mask@0.7.0
+133 verbose rebuildBundles @msafi/angular2-text-mask@0.7.0
+134 info install @msafi/angular2-text-mask@0.7.0
+135 info postinstall @msafi/angular2-text-mask@0.7.0
+136 verbose readDependencies loading dependencies from c:\Felipe\eventex\html\package.json
+137 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\angular2\package.json
+138 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\bootbox\package.json
+139 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\bootstrap\package.json
+140 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\concurrently\package.json
+141 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\es6-shim\package.json
+142 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\font-awesome\package.json
+143 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\jquery\package.json
+144 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\live-server\package.json
+145 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\rdash-ui\package.json
+146 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\reflect-metadata\package.json
+147 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\rxjs\package.json
+148 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\systemjs\package.json
+149 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\typescript\package.json
+150 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\typings\package.json
+151 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\zone.js\package.json
+152 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\concurrent\package.json
+153 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\concurrent.cmd\package.json
+154 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\concurrently\package.json
+155 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\concurrently.cmd\package.json
+156 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\live-server\package.json
+157 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\live-server.cmd\package.json
+158 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\tsc\package.json
+159 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\tsc.cmd\package.json
+160 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\tsserver\package.json
+161 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\tsserver.cmd\package.json
+162 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\typings\package.json
+163 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\.bin\typings.cmd\package.json
+164 verbose targetResolver reading package data from c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask\package.json
+165 verbose already installed skipping angular2@* c:\Felipe\eventex\html
+166 silly install resolved []
+167 verbose unlock done using C:\Users\luiz.oliveira\AppData\Roaming\npm-cache\_locks\msafi-angular2-text-mask-f4897c5eef33b006.lock for c:\Felipe\eventex\html\node_modules\@msafi\angular2-text-mask
+168 verbose validateInstall loading c:\Felipe\eventex\html\package.json for validation
+169 verbose stack Error: The package angular2@2.0.0-beta.17 does not satisfy its siblings' peerDependencies requirements!
+169 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:125:32
+169 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:268:7
+169 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:142:5
+169 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+169 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+169 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+169 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+169 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+169 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+169 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+170 verbose cwd c:\Felipe\eventex\html
+171 error Windows_NT 10.0.10586
+172 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "i" "@msafi/angular2-text-mask" "--save"
+173 error node v4.4.5
+174 error npm  v2.15.5
+175 error code EPEERINVALID
+176 error peerinvalid The package angular2@2.0.0-beta.17 does not satisfy its siblings' peerDependencies requirements!
+176 error peerinvalid Peer @msafi/angular2-text-mask@0.7.0 wants angular2@*
+177 verbose exit [ 1, true ]

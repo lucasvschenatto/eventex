@@ -7,7 +7,7 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             BaseService = (function () {
                 function BaseService() {
-                    this._baseUrl = "http://localhost:8080";
+                    this._baseUrl = "http://eventex.herokuapp.com";
                 }
                 return BaseService;
             }());

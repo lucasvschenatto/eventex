@@ -99,7 +99,7 @@ private static final HashMap<String, String> corsHeaders = new HashMap<String, S
         get("/inscriptions", new InscriptionsSummaryRoute(dependencies));
         post("/inscriptions", new CreateInscriptionRoute(dependencies));
         get("/inscriptions/:id", new ReadInscriptionRoute(dependencies));
-//        post("/inscriptions/:id", new UpdateInscriptionRoute(dependencies));
+        post("/inscriptions/:id", new UpdateInscriptionRoute(dependencies));
         delete("/inscriptions/:id", new DeleteInscriptionRoute(dependencies));
         
         get("/participants", new ParticipantsSummaryRoute(dependencies));

@@ -19,3 +19,6 @@ hs_err_pid*
 /target/
 /bin/
 /.project
+
+
+/html/node_modules/rdash-ui/node_modules/

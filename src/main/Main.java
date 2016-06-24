@@ -19,7 +19,8 @@ import spark.Spark;
 
 public class Main {
 	private static RepositoryFactory factory;
-private static final HashMap<String, String> corsHeaders = new HashMap<String, String>();
+	private static String externalFolder;
+	private static final HashMap<String, String> corsHeaders = new HashMap<String, String>();
     
     static {
         corsHeaders.put("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
@@ -38,6 +39,11 @@ private static final HashMap<String, String> corsHeaders = new HashMap<String, S
             }
         };
         Spark.after(filter);
+        Spark.after("pdf/*", (req,res) -> { 
+        	res.header("Content-type", "application/pdf");
+        	res.header("Content-Disposition", "inline; filename=\"certificado.pdf\"");
+        	res.header("Connection", "keep-alive");
+        });
     }
 	public static void main(String... arguments) {
         new Main().startSparkServer();
@@ -56,7 +62,8 @@ private static final HashMap<String, String> corsHeaders = new HashMap<String, S
     }
 
     private void setUpStaticFiles() {
-    	externalStaticFileLocation("html");
+    	externalFolder = externalFolder != null? externalFolder : "html";
+    	externalStaticFileLocation(externalFolder);
     }
     
     private void setUpRoutes() {
@@ -119,6 +126,7 @@ private static final HashMap<String, String> corsHeaders = new HashMap<String, S
         Dependencies d = new Dependencies();
         d.setEncryptor(new JasyptEncryptor());
         d.setRepositoryFactory(getFactory());
+        d.setStaticFileLocation(externalFolder);
         return d;
     }
     
@@ -130,6 +138,9 @@ private static final HashMap<String, String> corsHeaders = new HashMap<String, S
     
     public static void setFactory(RepositoryFactory newFactory){
     	factory = newFactory;
+    }
+    public static void setStaticFilesLocation(String externalFolderLocation){
+    	externalFolder = externalFolderLocation;
     }
 
 }

@@ -21,6 +21,7 @@ public class Dependencies {
 	private ProfessionRepository professionRepository;
 	private UserRepository userRepository;
 	private InscriptionRepository inscriptionRepository;
+	private String externalFileLocation;
 	public ActivityRepository getActivityRepository() {
 		return activityRepository;
 	}
@@ -71,5 +72,13 @@ public class Dependencies {
 		professionRepository = factory.getProfessionRepository();
 		userRepository = factory.getUserRepository();
 		participantRepository = factory.getParticipantRepository();
+	}
+	
+	public String getStaticFileLocation(){
+		return externalFileLocation;
+	}
+
+	public void setStaticFileLocation(String externalFileLocation) {
+		this.externalFileLocation = externalFileLocation;		
 	}
 }

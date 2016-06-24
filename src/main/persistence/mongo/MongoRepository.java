@@ -75,6 +75,13 @@ public abstract class MongoRepository<TEntity extends Entity> implements Reposit
         if (document == null) throw new EntityNotFoundException();
         return converter.fromPersisted(document);
     }
+    
+    protected Iterable<TEntity> getAllBy(Bson query){
+    	List<TEntity> all = new ArrayList<>();
+        for (Document document : collection.find(query))
+        	all.add(converter.fromPersisted(document));
+        return all;
+    }
 
     private Bson makeIdQuery(String id) {
         return new Document("_id", new ObjectId(id));

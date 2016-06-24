@@ -9,19 +9,23 @@ import main.domain.activity.Activity;
 import main.domain.activity.ActivityRepository;
 
 public class PrintCertificateUseCase {
+	private static final String PDF_FOLDER = "/pdf"; 
 	private final ActivityRepository activityRepository;
 	private final ParticipantRepository participantRepository;
 	private final InscriptionRepository inscriptionRepository;
 	private final String activityId;
 	private final String participantId;
+	private final String staticFileLocation;
 	private final PrintCertificateResponse response;
 	
 	public PrintCertificateUseCase(ActivityRepository activityRepository, 
 			ParticipantRepository participantRepository, InscriptionRepository inscriptionRepository,
+			String staticFileLocation,
 			PrintCertificateRequest request, PrintCertificateResponse response){
 		this.activityRepository = activityRepository;
 		this.participantRepository = participantRepository;
 		this.inscriptionRepository = inscriptionRepository;
+		this.staticFileLocation = staticFileLocation.concat(PDF_FOLDER);
 		activityId = request.activityId;
 		participantId = request.participantId;
 		this.response = response;
@@ -51,7 +55,7 @@ public class PrintCertificateUseCase {
 	}
 
 	private void sendCertificate() {
-		response.certificate = new PDF().from(makeCertificate());
+		response.certificateLink = new PDF(makeCertificate(), staticFileLocation).create();
 		response.success = true;
 	}
 	

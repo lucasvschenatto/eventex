@@ -21,10 +21,9 @@ public class InMemoryAssociateRepository extends InMemoryRepository<Associate> i
 		return associates.containsKey(code);
 	}
 
-	@Override
 	public void save(Associate associate){
 		super.save(associate);
-		associates.put(associate.getCode(), associate);
+		associates.put(associate.getCode(), getById(associate.getId()));
 	}
 
 }

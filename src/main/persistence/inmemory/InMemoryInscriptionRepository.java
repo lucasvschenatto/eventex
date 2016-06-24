@@ -1,26 +1,39 @@
 package main.persistence.inmemory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import main.domain.Text;
 import main.domain.inscription.Inscription;
 import main.domain.inscription.InscriptionRepository;
 
 public class InMemoryInscriptionRepository extends InMemoryRepository<Inscription> implements InscriptionRepository {
-
-	@Override
+	private Map<Text, Inscription> participantKey = new HashMap<Text, Inscription>();
+	private Map<Text, Inscription> activityKey = new HashMap<Text, Inscription>();
+	
 	public boolean inscriptionExists(Text participantId, Text activityId) {
-		// TODO Auto-generated method stub
-		return false;
+		return hasWithParticipantId(participantId) && hasWithActivityId(activityId);
 	}
 
-	@Override
+	
+	private boolean hasWithActivityId(Text activityId) {
+		return activityKey.containsKey(activityId);
+	}
+
+
 	public boolean hasWithParticipantId(Text participantId) {
-		// TODO Auto-generated method stub
-		return false;
+		return participantKey.containsKey(participantId);
 	}
 
-	@Override
+	
 	public Iterable<Inscription> getAllByParticipantId(Text participantId) {
-		// TODO Auto-generated method stub
-		return null;
+		return participantKey.values();
+	}
+	
+	public void save(Inscription inscription){
+		super.save(inscription);
+		Inscription saved = getById(inscription.getId());
+		participantKey.put(inscription.getParticipantId(), saved);
+		activityKey.put(inscription.getActivityId(), saved);
 	}
 }

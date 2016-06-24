@@ -95,9 +95,11 @@ public abstract class InscriptionRepositoryTest extends RepositoryTest<Inscripti
     	assertFalse(repository.hasWithParticipantId(new Text("outro id")));
     }
 	@Test
-	public void getByParticipant(){
+	public void getAllByParticipant(){
 		Inscription i = makeNewEntity();
     	i.setParticipantId(new Text("idDoParticipante"));
+    	repository.save(i);
+    	i.setParticipantId(new Text("idDoParticipante2"));
     	repository.save(i);
     	
     	Iterable<Inscription> inscriptions = repository.getAllByParticipantId(new Text("idDoParticipante"));
@@ -105,5 +107,15 @@ public abstract class InscriptionRepositoryTest extends RepositoryTest<Inscripti
         for (@SuppressWarnings("unused") Inscription ignored : inscriptions)
         	counter++;
         assertEquals(2, counter);
+	}
+	
+	@Test
+	public void inscriptionExists(){
+		Inscription i = makeNewEntity();
+    	i.setParticipantId(new Text("idDoParticipante"));
+    	i.setActivityId(new Text("idDaAtividade"));
+    	repository.save(i);
+    	assertTrue(repository.inscriptionExists(new Text("idDoParticipante"), new Text("idDaAtividade")));
+    	assertFalse(repository.inscriptionExists(new Text("outro id"), new Text("outro id")));
 	}
 }

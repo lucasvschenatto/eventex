@@ -21,7 +21,7 @@ public class PrintCertificateRoute implements Route {
     	PrintCertificateRequest input = converter.fromJson(request.body(), PrintCertificateRequest.class);
         PrintCertificateResponse output = new PrintCertificateResponse();
         new PrintCertificateUseCase(dependencies.getActivityRepository(), dependencies.getParticipantRepository(), 
-        		dependencies.getInscriptionRepository(), input, output).execute();
+        		dependencies.getInscriptionRepository(), dependencies.getStaticFileLocation(), input, output).execute();
         return converter.toJson(output);
     }
 }

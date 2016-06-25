@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").directive("uiDate", function(){
+angular.module("eventex").directive("uiDate", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){

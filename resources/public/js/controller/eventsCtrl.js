@@ -1,8 +1,8 @@
-angular.module("eventex").controller("contatosCtrl", function($scope, contatosAPI, serialGenerator, contatos){
+angular.module("eventex").controller("eventsCtrl", function($scope, eventsAPI, events){
 	$scope.app = "Eventex";
-	$scope.contatos = contatos.data;
+	$scope.events = events.data;
 
-	var init = function(){
+	/*var init = function(){
 		calcularImpostos($scope.contatos);
 		generateSerial($scope.contatos);
 	};
@@ -44,5 +44,5 @@ angular.module("eventex").controller("contatosCtrl", function($scope, contatosAP
 		var imposto = 1.2;
 		return base * imposto;
 	};
-	init();
+	init();*/
 } );

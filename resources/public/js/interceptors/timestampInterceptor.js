@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").factory("timestampInterceptor", function(){
+angular.module("eventex").factory("timestampInterceptor", function(){
 	return{
 		request: function(config){
 			var url = config.url;

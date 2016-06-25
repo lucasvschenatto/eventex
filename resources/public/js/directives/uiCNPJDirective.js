@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").directive("uiCnpj", function(){
+angular.module("eventex").directive("uiCnpj", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){

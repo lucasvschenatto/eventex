@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").controller("novoContatoCtrl", function($filter, $scope, $location, contatosAPI, serialGenerator, operadoras){
+angular.module("eventex").controller("novoContatoCtrl", function($filter, $scope, $location, contatosAPI, serialGenerator, operadoras){
 	$scope.operadoras = operadoras.data;
 	$scope.adicionarContato = function(contato){
 		contato.serial = serialGenerator.generate();

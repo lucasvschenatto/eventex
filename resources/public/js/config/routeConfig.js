@@ -1,10 +1,10 @@
-angular.module("listaTelefonica").config(function ($routeProvider) {
-	$routeProvider.when("/contatos", {
-		templateUrl: "view/contatos.html",
-		controller: "contatosCtrl",
+angular.module("eventex").config(function ($routeProvider) {
+	$routeProvider.when("/", {
+		templateUrl: "view/events.html",
+		controller: "eventsCtrl",
 		resolve: {
-			contatos: function (contatosAPI){
-				return contatosAPI.getContatos();
+			events: function (eventsAPI){
+				return eventsAPI.getEvents();
 			}
 		}
 	});
@@ -29,5 +29,5 @@ angular.module("listaTelefonica").config(function ($routeProvider) {
 	$routeProvider.when("/error",{
 		templateUrl: "view/error.html"
 	});
-	$routeProvider.otherwise({redirectTo:"/contatos"});
+	$routeProvider.otherwise({redirectTo:"/"});
 });

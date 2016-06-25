@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").directive("uiCep", function(){
+angular.module("eventex").directive("uiCep", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){

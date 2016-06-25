@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").factory("loadingInterceptor",function($q,$rootScope,$timeout){
+angular.module("eventex").factory("loadingInterceptor",function($q,$rootScope,$timeout){
 	return{
 		request: function(config){
 			$rootScope.loading = true;

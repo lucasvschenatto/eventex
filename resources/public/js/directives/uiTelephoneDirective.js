@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").directive("uiTelephone", function(){
+angular.module("eventex").directive("uiTelephone", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){

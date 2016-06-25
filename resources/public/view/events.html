@@ -1,0 +1,33 @@
+<div class="jumbotron">
+	<h3>{{app}}</h3>
+	{{teste}}
+	<input type="text" name="testinput" ng-model="teste" placeholder="digite aqui"></input>
+	<ui-accordions ng-hide="true">
+		<ui-accordion title="Lucas">
+			<p>Marido</p>
+			<p>Gaúcho</p>
+		</ui-accordion>
+		<ui-accordion title="Rhawena">
+			<p>Esposa</p>
+			<p>Pernambucana</p>
+		</ui-accordion>
+		<ui-accordion title="Junior">
+			<p>Filho</p>
+			<p>Gaúcho</p>
+		</ui-accordion>
+	</ui-accordions>
+
+	<hr/>
+	<input class="form-control" type="text" ng-model="criterioDeBusca" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="O que você está buscando?">
+	<table ng-show="events.length > 0" class="table">
+		<th></th>
+		<th><a href="" ng-click="ordenarPor('nome')">Nome</th>
+		<th><a href="" ng-click="ordenarPor('telefone')">Data</th>
+		<th>Local</th>
+		<tr ng-repeat="event in events | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+			<td>{{::event.name}}</td>
+			<td><a href="#/detalhesContato/{{contato.id}}">{{::contato.nome | name}}</a></td>
+			<td>{{::event.date | date:"dd/MM/yyyy HH:mm"}}</td>
+			<td>{{::event.place}}</td>
+	</table>
+</div>

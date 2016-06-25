@@ -1,1 +1,1 @@
-angular.module("eventex",["ngMessages", "serialGenerator","ui","ngRoute"]);
+angular.module("eventex",["ngMessages", "ui","ngRoute"]);

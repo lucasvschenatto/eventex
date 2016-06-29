@@ -22,6 +22,10 @@ public class CreateAssociateRoute implements Route {
         CreateAssociateResponse output = new CreateAssociateResponse();
         new CreateAssociateUseCase(dependencies.getAssociateRepository(), dependencies.getCategoryRepository(),
         		input, output).execute();
+        if(output.success)
+        	response.status(201);
+        else
+        	response.status(422);
         return converter.toJson(output);
     }
 }

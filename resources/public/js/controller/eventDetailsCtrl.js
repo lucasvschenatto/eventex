@@ -12,6 +12,6 @@ angular.module("eventex").controller("eventDetailsCtrl", function($scope, $locat
 		});
 	};
 	$scope.newActivity = function(){
-		$location.path($location.path()+"/new");
+		$location.path($location.path()+"/new_activity");
 	}
 } );

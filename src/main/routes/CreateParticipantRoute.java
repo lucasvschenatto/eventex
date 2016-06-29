@@ -21,6 +21,10 @@ public class CreateParticipantRoute implements Route {
     	CreateParticipantRequest input = converter.fromJson(request.body(), CreateParticipantRequest.class);
         CreateParticipantResponse output = new CreateParticipantResponse();
         new CreateParticipantUseCase(dependencies.getParticipantRepository(), input, output).execute();
+        if(output.success)
+        	response.status(201);
+        else
+        	response.status(422);
         return converter.toJson(output);
     }
 }

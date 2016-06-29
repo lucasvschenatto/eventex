@@ -1,5 +1,5 @@
-angular.module("eventex").controller("activityDetailsCtrl", function($scope, $location, eventsAPI, activity){
-	$scope.activity = activity;
+angular.module("eventex").controller("activityDetailsCtrl", function($scope, $location, activitiesAPI, inscriptionsAPI, activity){
+	$scope.activity = activity.data;
 	$scope.deleteActivity = function(activity){
 		activitiesAPI.deleteActivity(activity);
 		$location.path("/");

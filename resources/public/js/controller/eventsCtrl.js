@@ -6,6 +6,6 @@ angular.module("eventex").controller("eventsCtrl", function($scope,$location, ev
 		$scope.orderDirection = !$scope.orderDirection;
 	};
 	$scope.newEvent = function(){
-		$location.path("/events/new");
+		$location.path("/new_event");
 	}
 } );

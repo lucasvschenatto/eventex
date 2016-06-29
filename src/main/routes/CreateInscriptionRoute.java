@@ -24,6 +24,10 @@ public class CreateInscriptionRoute implements Route {
         		dependencies.getParticipantRepository(), dependencies.getActivityRepository(),
         		dependencies.getCategoryRepository(), dependencies.getAssociateRepository(),
         		input, output).execute();
+        if(output.success)
+        	response.status(201);
+        else
+        	response.status(422);
         return converter.toJson(output);
     }
 }

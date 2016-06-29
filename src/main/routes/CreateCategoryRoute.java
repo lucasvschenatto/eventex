@@ -21,6 +21,10 @@ public class CreateCategoryRoute implements Route {
     	CreateCategoryRequest input = converter.fromJson(request.body(), CreateCategoryRequest.class);
         CreateCategoryResponse output = new CreateCategoryResponse();
         new CreateCategoryUseCase(dependencies.getCategoryRepository(), input, output).execute();
+        if(output.success)
+        	response.status(201);
+        else
+        	response.status(422);
         return converter.toJson(output);
     }
 }

@@ -1,9 +1,8 @@
 <div class="jumbotron">
 	<div>
 		<div align=right>
-			<button class="btn btn-primary btn-right" ng-click="updateEvent(event)">Editar</button>
+			<button class="btn btn-primary" ng-click="updateEvent(event)">Editar</button>
 		</div>
-		<div aligh=right></div>
 		<table class="table">
 			<tr><td>Nome</td>			<td>{{event.name}}</td></tr>
 			<tr><td>Data</td>			<td>{{event.date}}</td></tr>
@@ -30,7 +29,8 @@
 	</nav>
 	<ui-accordions>
 	<ui-accordion ng-repeat="activity in activities" title={{activity.name}}>
-		<p>{{activity.eventId}}</p>
+		<p>{{activity.id}}</p>
+		<p>{{activity.name}}</p>
 	</ui-accordion>
 	</ui-accordions>
 	<a href="#/" class="btn btn-default btn-block">Voltar</a>

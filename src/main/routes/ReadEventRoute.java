@@ -22,6 +22,7 @@ public class ReadEventRoute implements Route {
     	input.id = request.params(":id");
         EventSummary output = new EventSummary();
         new ReadEventUseCase(dependencies.getEventRepository(), input, output).execute();
+        if(output.id == null || output.id.isEmpty()) response.status(404);
         return converter.toJson(output);
     }
 }

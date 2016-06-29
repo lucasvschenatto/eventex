@@ -1,21 +1,25 @@
-angular.module("eventex").factory("activitiesAPI", function ($http, config){
+angular.module("eventex").factory("activitiesAPI", function ($http){
 	var _getActivities = function(){
-		return $http.get(config.baseUrl+"/activities");
+		return $http.get("/activities");
 	};
 	var _getActivity = function(id){
-		return $http.get(config.baseUrl+"/activities/"+id);
+		return $http.get("/activities/"+id);
 	}
-	var _saveActivity = function(activity){
-		return $http.post(config.baseUrl+"/activities", activity) 
+	var _createActivity = function(activity){
+		return $http.post("/activities", activity) 
+	};
+	var _updateActivity = function(activity){
+		return $http.put("/activities/"+activity.id, activity) 
 	};
 	var _deleteActivity = function(activity){
-		$http.delete(config.baseUrl+"/activities/"+activity.id, {});
+		$http.delete("/activities/"+activity.id, {});
 	}
 	
 	return {
 		getActivities: _getActivities,
 		getActivity: _getActivity,
-		saveActivity: _saveActivity,
+		createActivity: _createActivity,
+		updateActivity: _updateActivity,
 		deleteActivity: _deleteActivity
 	};
 });

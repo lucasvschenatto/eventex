@@ -1,21 +1,25 @@
-angular.module("eventex").factory("inscriptionsAPI", function ($http, config){
+angular.module("eventex").factory("inscriptionsAPI", function ($http){
 	var _getInscriptions = function(){
-		return $http.get(config.baseUrl+"/inscriptions");
+		return $http.get("/inscriptions");
 	};
 	var _getInscription = function(id){
-		return $http.get(config.baseUrl+"/inscriptions/"+id);
+		return $http.get("/inscriptions/"+id);
 	}
-	var _saveInscription = function(inscription){
-		return $http.post(config.baseUrl+"/inscriptions", inscription) 
+	var _createInscription = function(inscription){
+		return $http.post("/inscriptions", inscription) 
+	};
+	var _updateInscription = function(inscription){
+		return $http.put("/inscriptions/"+inscription.id, inscription) 
 	};
 	var _deleteInscription = function(inscription){
-		$http.delete(config.baseUrl+"/inscriptions/"+inscription.id, {});
+		$http.delete("/inscriptions/"+inscription.id, {});
 	}
 	
 	return {
 		getInscriptions: _getInscriptions,
 		getInscription: _getInscription,
-		saveInscription: _saveInscription,
+		createInscription: _createInscription,
+		updateInscription: _updateInscription,
 		deleteInscription: _deleteInscription
 	};
 });

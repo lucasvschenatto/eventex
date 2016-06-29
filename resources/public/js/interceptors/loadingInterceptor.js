@@ -1,4 +1,4 @@
-angular.module("eventex").factory("loadingInterceptor",function($q,$rootScope,$timeout){
+angular.module("eventex").factory("loadingInterceptor",function($q,$rootScope){
 	return{
 		request: function(config){
 			$rootScope.loading = true;
@@ -9,15 +9,12 @@ angular.module("eventex").factory("loadingInterceptor",function($q,$rootScope,$t
 			return $q.reject(rejection);
 		},
 		response: function(response){
-			$timeout(function(){
 			$rootScope.loading = false;
-				
-			}, 2000);
 			return response;
 		},
 		responseError: function(rejection){
 			$rootScope.loading = false;
-			return $q,reject(rejection);
+			return $q.reject(rejection);
 		}
 	}
 });

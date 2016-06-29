@@ -1,21 +1,25 @@
-angular.module("eventex").factory("participantsAPI", function ($http, config){
+angular.module("eventex").factory("participantsAPI", function ($http){
 	var _getParticipants = function(){
-		return $http.get(config.baseUrl+"/participants");
+		return $http.get("/participants");
 	};
 	var _getParticipant = function(id){
-		return $http.get(config.baseUrl+"/participants/"+id);
+		return $http.get("/participants/"+id);
 	}
-	var _saveParticipant = function(participant){
-		return $http.post(config.baseUrl+"/participants", participant) 
+	var _createParticipant = function(participant){
+		return $http.post("/participants", participant) 
+	};
+	var _updateParticipant = function(participant){
+		return $http.post("/participants", participant) 
 	};
 	var _deleteParticipant = function(participant){
-		$http.delete(config.baseUrl+"/participants/"+participant.id, {});
+		$http.delete("/participants/"+participant.id, {});
 	}
 	
 	return {
 		getParticipants: _getParticipants,
 		getParticipant: _getParticipant,
-		saveParticipant: _saveParticipant,
+		createParticipant: _createParticipant,
+		updateParticipant: _updeParticipant,
 		deleteParticipant: _deleteParticipant
 	};
 });

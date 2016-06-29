@@ -21,7 +21,8 @@ public class UpdateActivityRoute implements Route {
 		input.id = request.params(":id");
 		UpdateActivityResponse output = new UpdateActivityResponse();
 		new UpdateActivityUseCase(dependencies.getActivityRepository(),dependencies.getEventRepository(),
-				input,output).execute(); 
+				input,output).execute();
+		if(!output.success) response.status(404);
 		return converter.toJson(output);
 	}
 

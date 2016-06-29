@@ -1,4 +1,4 @@
-<html ng-app="eventex">
+<html >
 <head>
 	<meta charset="UTF-8">
 	<title>Eventex</title>
@@ -17,6 +17,11 @@
 	<script src="js/app.js"></script>
 
 	<script src="js/controller/eventsCtrl.js"></script>
+	<script src="js/controller/eventDetailsCtrl.js"></script>
+	<script src="js/controller/eventNewCtrl.js"></script>
+
+	<script src="js/controller/activityNewCtrl.js"></script>
+	<script src="js/controller/activityDetailsCtrl.js"></script>
 	
 
 	<script src="js/services/activitiesAPIService.js"></script>
@@ -31,8 +36,6 @@
 
 	<script src="js/config/routeConfig.js"></script>
 	<script src="js/config/interceptorsConfig.js"></script>
-
-	<script src="js/values/configValue.js"></script>
 	
 	<script src="js/filters/nameFilter.js"></script>
 	<script src="js/filters/ellipsisFilter.js"></script>
@@ -48,7 +51,23 @@
 	<script src="js/interceptors/errorInterceptor.js"></script>
 	<script src="js/interceptors/loadingInterceptor.js"></script>
 </head>
-<body>
+<body ng-app="eventex">
+	<nav class="navbar navbar-default">
+	    <div class="container-fluid">
+	        <div class="navbar-header"><p class="navbar-brand">Eventex</p></div>
+	        <div class="collapse navbar-collapse">
+	            <ul class="nav navbar-nav navbar-right">
+	                <li ng-show="loggedIn">
+	                    <button class="btn btn-default navbar-btn" ng-click="logout()">Logout</button>
+	                </li>
+	                <li ng-hide="loggedIn">
+	                    <button class="btn btn-default navbar-btn" ng-click="login()">Login</button>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+
 	<div class="jumbotron" ng-show="loading">
 		<div class="spinner">
 		  <div class="rect1"></div>
@@ -58,7 +77,9 @@
 		  <div class="rect5"></div>
 		</div>
 	</div>
-	<div ng-hide="carregando" ng-view></div>
-	<div ng-include="'view/footer.html'"></div>
+	
+	<div ng-hide="loading" ng-view></div>
+	
+	<footer ng-include="'view/footer.html'"></footer>
 </body>
 </html>

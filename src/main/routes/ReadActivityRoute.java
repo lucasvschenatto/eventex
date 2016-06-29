@@ -20,7 +20,8 @@ public class ReadActivityRoute implements Route {
 		ReadActivityRequest input = new ReadActivityRequest();
 		input.id = request.params(":id");
 		ActivitySummary output = new ActivitySummary();
-		new ReadActivityUseCase(dependencies.getActivityRepository(),input,output).execute(); 
+		new ReadActivityUseCase(dependencies.getActivityRepository(),input,output).execute();
+		if(output.id == null || output.id.isEmpty()) response.status(404);
 		return converter.toJson(output);
 	}
 

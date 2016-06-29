@@ -22,6 +22,7 @@ public class ReadAssociateRoute implements Route {
     	input.id = request.params(":id");
         AssociateSummary output = new AssociateSummary();
         new ReadAssociateUseCase(dependencies.getAssociateRepository(), input, output).execute();
+        if(output.id == null || output.id.isEmpty()) response.status(404);
         return converter.toJson(output);
     }
 }

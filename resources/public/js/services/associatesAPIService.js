@@ -1,21 +1,25 @@
-angular.module("eventex").factory("associatesAPI", function ($http, config){
+angular.module("eventex").factory("associatesAPI", function ($http){
 	var _getAssociates = function(){
-		return $http.get(config.baseUrl+"/associates");
+		return $http.get("/associates");
 	};
 	var _getAssociate = function(id){
-		return $http.get(config.baseUrl+"/associates/"+id);
+		return $http.get("/associates/"+id);
 	}
-	var _saveAssociate = function(associate){
-		return $http.post(config.baseUrl+"/associates", associate) 
+	var _createAssociate = function(associate){
+		return $http.post("/associates", associate) 
+	};
+	var _updateAssociate = function(associate){
+		return $http.put("/associates/"+associate.id, associate) 
 	};
 	var _deleteAssociate = function(associate){
-		$http.delete(config.baseUrl+"/associates/"+associate.id, {});
+		$http.delete("/associates/"+associate.id, {});
 	}
 	
 	return {
 		getAssociates: _getAssociates,
 		getAssociate: _getAssociate,
-		saveAssociate: _saveAssociate,
+		createAssociate: _createAssociate,
+		updateAssociate: _updateAssociate,
 		deleteAssociate: _deleteAssociate
 	};
 });

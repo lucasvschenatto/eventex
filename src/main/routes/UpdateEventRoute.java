@@ -22,6 +22,7 @@ public class UpdateEventRoute implements Route {
     	input.id = request.params(":id");
         UpdateEventResponse output = new UpdateEventResponse();
         new UpdateEventUseCase(dependencies.getEventRepository(), input, output).execute();
+        if(!output.success) response.status(404);
         return converter.toJson(output);
     }
 }

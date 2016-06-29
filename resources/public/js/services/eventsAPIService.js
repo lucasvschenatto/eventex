@@ -1,21 +1,25 @@
-angular.module("eventex").factory("eventsAPI", function ($http, config){
+angular.module("eventex").factory("eventsAPI", function ($http){
 	var _getEvents = function(){
-		return $http.get(config.baseUrl+"/events");
+		return $http.get("/events");
 	};
 	var _getEvent = function(id){
-		return $http.get(config.baseUrl+"/events/"+id);
+		return $http.get("/events/"+id);
 	}
-	var _saveEvent = function(event){
-		return $http.post(config.baseUrl+"/events", event) 
+	var _createEvent = function(event){
+		return $http.post("/events", event);
+	};
+	var _updateEvent = function(event){
+		return $http.put("/events/"+event.id, event);
 	};
 	var _deleteEvent = function(event){
-		$http.delete(config.baseUrl+"/events/"+event.id, {});
-	}
+		$http.delete("/events/"+event.id, {});
+	};
 	
 	return {
 		getEvents: _getEvents,
 		getEvent: _getEvent,
-		saveEvent: _saveEvent,
+		createEvent: _createEvent,
+		updateEvent: _updateEvent,
 		deleteEvent: _deleteEvent
 	};
 });

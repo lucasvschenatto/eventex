@@ -22,6 +22,7 @@ public class ReadParticipantRoute implements Route {
     	input.id = request.params(":id");
         ParticipantSummary output = new ParticipantSummary();
         new ReadParticipantUseCase(dependencies.getParticipantRepository(), input, output).execute();
+        if(output.id == null || output.id.isEmpty()) response.status(404);
         return converter.toJson(output);
     }
 }

@@ -1,0 +1,37 @@
+<div class="jumbotron">
+	<div>
+		<div align=right>
+			<button class="btn btn-primary btn-right" ng-click="updateEvent(event)">Editar</button>
+		</div>
+		<div aligh=right></div>
+		<table class="table">
+			<tr><td>Nome</td>			<td>{{event.name}}</td></tr>
+			<tr><td>Data</td>			<td>{{event.date}}</td></tr>
+			<tr><td>Local</td>			<td>{{event.place}}</td></tr>
+			<tr><td>descrição</td>		<td>{{event.description}}</td></tr>
+			<tr><td>Rua:</td>			<td>{{event.address.street}}</td></tr>
+			<tr><td>Numero:</td>		<td>{{event.address.number}}</td></tr>
+			<tr><td>Complemento:</td>	<td>{{event.address.complement}}</td></tr>
+			<tr><td>Bairro:</td>		<td>{{event.address.neighborhood}}</td></tr>
+			<tr><td>Cidade:</td>		<td>{{event.address.city}}</td></tr>
+			<tr><td>Estado:</td>		<td>{{event.address.state}}</td></tr>
+			<tr><td>País:</td>			<td>{{event.address.country}}</td></tr>
+			<tr><td>CEP:</td>			<td>{{event.address.cep}}</td></tr>
+		</table>
+	</div>
+	<hr>
+	<nav class="navbar">
+			<div class="navbar-left">
+				<p class="">Atividades</p>
+			</div>
+			<div class="navbar-right">
+				<button class="btn btn-primary" ng-click="newActivity()">Nova Atividade</button>
+			</div>
+	</nav>
+	<ui-accordions>
+	<ui-accordion ng-repeat="activity in activities" title={{activity.name}}>
+		<p>{{activity.eventId}}</p>
+	</ui-accordion>
+	</ui-accordions>
+	<a href="#/" class="btn btn-default btn-block">Voltar</a>
+</div>

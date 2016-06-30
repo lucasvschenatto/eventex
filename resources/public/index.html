@@ -7,6 +7,12 @@
 	<link rel="stylesheet" type="text/css" href="css/ui.css">
 	<link rel="stylesheet" type="text/css" href="css/spinner.css">
 
+	<script src="https://use.fonticons.com/86198105.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/rdash.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-messages.js"></script>
 	<script src="lib/angular/angular-route.js"></script>
@@ -16,23 +22,33 @@
 	
 	<script src="js/app.js"></script>
 
-	<script src="js/controller/eventsCtrl.js"></script>
-	<script src="js/controller/eventDetailsCtrl.js"></script>
-	<script src="js/controller/eventNewCtrl.js"></script>
+	<script src="manager/js/controller/eventsCtrl.js"></script>
+	<script src="manager/js/controller/eventDetailsCtrl.js"></script>
+	<script src="manager/js/controller/eventNewCtrl.js"></script>
 
-	<script src="js/controller/activityNewCtrl.js"></script>
-	<script src="js/controller/activityDetailsCtrl.js"></script>
+	<script src="manager/js/controller/activityNewCtrl.js"></script>
+	<script src="manager/js/controller/activityDetailsCtrl.js"></script>
 	
+	<script src="manager/js/controller/categoriesCtrl.js"></script>
+	<script src="manager/js/controller/categoryDetailsCtrl.js"></script>
+	<script src="manager/js/controller/categoryNewCtrl.js"></script>
 
-	<script src="js/services/activitiesAPIService.js"></script>
-	<script src="js/services/associatesAPIService.js"></script>
-	<script src="js/services/categoriesAPIService.js"></script>
+	<script src="manager/js/controller/associateNewCtrl.js"></script>
+	<script src="manager/js/controller/associateDetailsCtrl.js"></script>
+
+	<script src="manager/js/controller/professionsCtrl.js"></script>
+	<script src="manager/js/controller/professionDetailsCtrl.js"></script>
+	<script src="manager/js/controller/professionNewCtrl.js"></script>
+
+	<script src="manager/js/services/activitiesAPIService.js"></script>
+	<script src="manager/js/services/associatesAPIService.js"></script>
+	<script src="manager/js/services/categoriesAPIService.js"></script>
+	<script src="manager/js/services/eventsAPIService.js"></script>
+	<script src="manager/js/services/inscriptionsAPIService.js"></script>
+	<script src="manager/js/services/participantsAPIService.js"></script>
+	<script src="manager/js/services/professionsAPIService.js"></script>
+
 	<script src="js/services/certificatesAPIService.js"></script>
-	<script src="js/services/eventsAPIService.js"></script>
-	<script src="js/services/inscriptionsAPIService.js"></script>
-	<script src="js/services/participantsAPIService.js"></script>
-	<script src="js/services/professionsAPIService.js"></script>
-
 
 	<script src="js/config/routeConfig.js"></script>
 	<script src="js/config/interceptorsConfig.js"></script>
@@ -68,18 +84,10 @@
 	    </div>
 	</nav>
 
-	<div class="jumbotron" ng-show="loading">
-		<div class="spinner">
-		  <div class="rect1"></div>
-		  <div class="rect2"></div>
-		  <div class="rect3"></div>
-		  <div class="rect4"></div>
-		  <div class="rect5"></div>
-		</div>
-	</div>
+	<div class="jumbotron" ng-show="loading" ng-include="'view/loading.html'"></div>
 	
 	<div ng-hide="loading" ng-view></div>
-	
+
 	<footer ng-include="'view/footer.html'"></footer>
 </body>
 </html>

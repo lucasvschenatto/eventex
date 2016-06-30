@@ -1,0 +1,14 @@
+<div class="jumbotron">
+	<form name="categoryForm">
+		<input class="form-control" type="text" ng-model="category.name" name="name" placeholder="Nome" ng-required="true" ng-minlength="3" />
+		<input class="form-control" type="text" ng-model="category.discount" name="discount" placeholder="Desconto"/>
+		<input class="form-control" type="text" ng-model="category.needCodeAtInscription" name="needCodeAtInscription" placeholder="Inscrição requer código"/>
+		<input class="form-control" type="text" ng-model="category.description" name="description" placeholder="Descrição" ng-required="true"/>
+	</form>
+	<div ng-messages="categoryForm.name.$error" class="alert-danger" ng-show="categoryForm.name.$dirty">
+		<div ng-message="required"> por favor preencha o nome</div>
+		<div ng-message="minlength"> o campo nome deve ter no mpinimo 3 caracteres</div>
+	</div>
+	<button class="btn btn-primary btn-block" ng-click="createCategory(category)">Salvar</button>
+	<a href="#/manager/categories" class="btn btn-default btn-block">Cancelar</a>
+</div>

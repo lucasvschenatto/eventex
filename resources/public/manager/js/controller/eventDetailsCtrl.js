@@ -3,7 +3,7 @@ angular.module("eventex").controller("eventDetailsCtrl", function($scope, $locat
 	$scope.activities = activities.data;
 	$scope.deleteEvent = function(event){
 		eventsAPI.deleteEvent(event);
-		$location.path("/");
+		$location.path("/manager/events");
 	};
 	$scope.updateEvent = function(event){
 		eventsAPI.updateEvent(event);

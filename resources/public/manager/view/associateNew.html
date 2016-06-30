@@ -1,0 +1,14 @@
+<div class="jumbotron">
+	<form name="associateForm">
+		<input class="form-control" type="text" ng-model="associate.code" name="code" placeholder="código" ng-required="true" ng-minlength="6" />
+		<input class="form-control" type="text" ng-model="associate.name" name="name" placeholder="Nome" ng-required="true" ng-minlength="3" />
+		<input class="form-control" type="text" ng-model="associate.active" name="active" placeholder="Ativo" ng-required="true"/>
+		<input class="form-control" type="text" ng-model="associate.updateDate" name="updateDate" placeholder="Data de atualização"/>
+	</form>
+	<div ng-messages="associateForm.name.$error" class="alert-danger" ng-show="associateForm.name.$dirty">
+		<div ng-message="required"> por favor preencha o nome</div>
+		<div ng-message="minlength"> o campo nome deve ter no mpinimo 3 caracteres</div>
+	</div>
+	<button class="btn btn-primary btn-block" ng-click="createAssociate(associate)">Salvar</button>
+	<a href="#/manager/categories/{{associate.categoryId}}" class="btn btn-default btn-block">Cancelar</a>
+</div>

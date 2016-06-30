@@ -14,10 +14,10 @@
 		<input class="form-control" type="text" ng-model="event.address.country" name="country" placeholder="País"/>
 		<input class="form-control" type="text" ng-model="event.address.cep" name="cep" placeholder="CEP"/>
 	</form>
-	<div ng-messages="eventForm.nome.$error" class="alert-danger" ng-show="eventForm.nome.$dirty">
+	<div ng-messages="eventForm.name.$error" class="alert-danger" ng-show="eventForm.name.$dirty">
 		<div ng-message="required"> por favor preencha o nome</div>
 		<div ng-message="minlength"> o campo nome deve ter no mpinimo 3 caracteres</div>
 	</div>
 	<button class="btn btn-primary btn-block" ng-click="createEvent(event)">Salvar</button>
-	<a href="#/" class="btn btn-default btn-block">Cancelar</a>
+	<a href="#/manager/events" class="btn btn-default btn-block">Cancelar</a>
 </div>

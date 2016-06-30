@@ -10,9 +10,10 @@
 		<th><a href="" ng-click="orderBy('date')">Data</th>
 		<th><a href="" ng-click="orderBy('place')">Local</th>
 		<tr ng-repeat="event in events | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
-			<td><a href="#/{{event.id}}">{{::event.name | name}}</a></td>
+			<td><a href="#/manager/events/{{event.id}}">{{::event.name | name}}</a></td>
 			<td>{{::event.date | date:"dd/MM/yyyy"}}</td>
 			<td>{{::event.place}}</td>
 	</table>
 	<button class="btn btn-primary btn-block" ng-click="newEvent()">Novo Evento</button>
+	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
 </div>

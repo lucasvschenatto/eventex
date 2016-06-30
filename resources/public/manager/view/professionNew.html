@@ -1,0 +1,12 @@
+<div class="jumbotron">
+	<form name="professionForm">
+		<input class="form-control" type="text" ng-model="profession.name" name="name" placeholder="Nome" ng-required="true" ng-minlength="3" />
+		<input class="form-control" type="text" ng-model="profession.description" name="description" placeholder="Descrição" ng-required="true"/>
+	</form>
+	<div ng-messages="professionForm.name.$error" class="alert-danger" ng-show="professionForm.name.$dirty">
+		<div ng-message="required"> por favor preencha o nome</div>
+		<div ng-message="minlength"> o campo nome deve ter no mpinimo 3 caracteres</div>
+	</div>
+	<button class="btn btn-primary btn-block" ng-click="createProfession(profession)">Salvar</button>
+	<a href="#/manager/professions" class="btn btn-default btn-block">Cancelar</a>
+</div>

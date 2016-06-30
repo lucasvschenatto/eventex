@@ -1,0 +1,21 @@
+<div class="jumbotron">
+	<div class="form-group" ng-show="false">
+		<label class="input-group" for="text" style="float:left;margin-right:5px;">Pesquise a sua categoria:</label>
+		<div class="input-group">
+		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Pesquisa de categorias">
+		</div>
+	</div>
+	<table ng-show="categories.length > 0" class="table">
+		<th><a href="" ng-click="orderBy('name')">Nome</th>
+		<th><a href="" ng-click="orderBy('discount')">Desconto</th>
+		<th><a href="" ng-click="orderBy('needCodeAtInscription')">Requer código na inscrição</th>
+		<th><a href="" ng-click="orderBy('description')">Descrição</th>
+		<tr ng-repeat="category in categories | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
+			<td><a href="#/manager/categories/{{category.id}}">{{::category.name | name}}</a></td>
+			<td>{{::category.discount}}</td>
+			<td>{{::category.needCodeAtInscription}}</td>
+			<td>{{::category.description}}</td>
+	</table>
+	<button class="btn btn-primary btn-block" ng-click="newCategory()">Nova Categoria</button>
+	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
+</div>

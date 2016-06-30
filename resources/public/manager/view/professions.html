@@ -1,0 +1,17 @@
+<div class="jumbotron">
+	<div class="form-group" ng-show="false">
+		<label class="input-group" for="text" style="float:left;margin-right:5px;">Pesquisa por profissão:</label>
+		<div class="input-group">
+		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Pesquisa de categorias">
+		</div>
+	</div>
+	<table ng-show="professions.length > 0" class="table">
+		<th><a href="" ng-click="orderBy('name')">Nome</th>
+		<th><a href="" ng-click="orderBy('description')">Descrição</th>
+		<tr ng-repeat="profession in professions | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
+			<td><a href="#/manager/professions/{{profession.id}}">{{::profession.name | name}}</a></td>
+			<td>{{::profession.description}}</td>
+	</table>
+	<button class="btn btn-primary btn-block" ng-click="newProfession()">Nova Profissão</button>
+	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
+</div>

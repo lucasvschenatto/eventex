@@ -10,6 +10,6 @@ angular.module("eventex").controller("activityNewCtrl", function($scope,$locatio
 
 	$scope.createActivity = function(activity){
 		activitiesAPI.createActivity(activity);
-		$location.path("/");
+		$location.path("/manager/events/"+activity.eventId);
 	};
 } );

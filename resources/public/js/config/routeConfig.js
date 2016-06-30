@@ -1,5 +1,11 @@
 angular.module("eventex").config(function ($routeProvider) {
 	var _managerBase = "/manager";
+
+	$routeProvider.when("/register",{
+		templateUrl: "view/register.html",
+		controller: "registerCtrl"
+	});
+
 	$routeProvider.when("/error",{
 		templateUrl: "view/error.html"
 	});

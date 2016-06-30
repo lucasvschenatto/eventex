@@ -49,9 +49,13 @@
 	<script src="manager/js/services/professionsAPIService.js"></script>
 
 	<script src="js/services/certificatesAPIService.js"></script>
+	<script src="js/services/usersAPIService.js"></script>
+	<script src="js/services/participantsAPIService.js"></script>
 
 	<script src="js/config/routeConfig.js"></script>
 	<script src="js/config/interceptorsConfig.js"></script>
+
+	<script src="js/controller/registerCtrl.js"></script>
 	
 	<script src="js/filters/nameFilter.js"></script>
 	<script src="js/filters/ellipsisFilter.js"></script>
@@ -68,21 +72,8 @@
 	<script src="js/interceptors/loadingInterceptor.js"></script>
 </head>
 <body ng-app="eventex">
-	<nav class="navbar navbar-default">
-	    <div class="container-fluid">
-	        <div class="navbar-header"><p class="navbar-brand">Eventex</p></div>
-	        <div class="collapse navbar-collapse">
-	            <ul class="nav navbar-nav navbar-right">
-	                <li ng-show="loggedIn">
-	                    <button class="btn btn-default navbar-btn" ng-click="logout()">Logout</button>
-	                </li>
-	                <li ng-hide="loggedIn">
-	                    <button class="btn btn-default navbar-btn" ng-click="login()">Login</button>
-	                </li>
-	            </ul>
-	        </div>
-	    </div>
-	</nav>
+	<nav ng-include="'view/header.html'"></nav>
+	
 
 	<div class="jumbotron" ng-show="loading" ng-include="'view/loading.html'"></div>
 	

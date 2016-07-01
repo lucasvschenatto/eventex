@@ -1,4 +1,4 @@
-angular.module("eventex").directive("uiDate", function(){
+angular.module("ui").directive("uiMaskDate", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){
@@ -22,7 +22,7 @@ angular.module("eventex").directive("uiDate", function(){
 			ctrl.$parsers.push(function (value){
 				if(value.length === 10){
 					var _dateArray = value.split("/");
-					return new Date(_dateArray[2],_dateArray[1]-1,_dateArray[0]);
+					return new Date(_dateArray[2],_dateArray[1]-1,_dateArray[0]).toISOString().substring(0, 10);
 				}
 			})
 		}

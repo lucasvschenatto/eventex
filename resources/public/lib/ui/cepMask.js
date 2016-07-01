@@ -1,4 +1,4 @@
-angular.module("eventex").directive("uiCep", function(){
+angular.module("ui").directive("uiMaskCep", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){

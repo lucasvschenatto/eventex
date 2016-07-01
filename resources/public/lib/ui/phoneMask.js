@@ -1,4 +1,4 @@
-angular.module("eventex").directive("uiTelephone", function(){
+angular.module("ui").directive("uiMaskPhone", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){
@@ -17,6 +17,7 @@ angular.module("eventex").directive("uiTelephone", function(){
 			}
 			element.bind("keyup", function(){
 				if(ctrl.$dirty){
+					console.log(ctrl);
 					ctrl.$setViewValue(_formatTelephone(ctrl.$viewValue));
 					ctrl.$render();
 				}

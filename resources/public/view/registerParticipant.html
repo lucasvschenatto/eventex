@@ -1,1 +1,23 @@
-<div> hehehe</div>
+<form class="form-horizontal" name="participantForm">
+    <ui-input         field="name"          status="status.name"          ng-model="participant.name"          ></ui-input>
+    <ui-input         field="nametag"       status="status.nametag"       ng-model="participant.nametag"       ></ui-input>
+    <ui-input         field="nationality"   status="status.nationality"   ng-model="participant.nationality"   ></ui-input>
+    <ui-input         field="gender"        status="status.gender"        ng-model="participant.gender"        ></ui-input>
+    <ui-input         field="education"     status="status.education"     ng-model="participant.education"     ></ui-input>
+    <ui-input         field="birth"         status="status.birth"         ng-model="participant.birth"         ></ui-input>
+    <ui-input-address field="homeAddress"   status="status.homeAddress"   ng-model="participant.homeAddress"   ></ui-input-address>
+    <ui-input-phone   field="homePhone"     status="status.homePhone"     ng-model="participant.homePhone"     ></ui-input-phone>
+    <ui-input-phone   field="cellPhone"     status="status.cellPhone"     ng-model="participant.cellPhone"     ></ui-input-phone>
+    <ui-input         field="professionId"  status="status.professionId"  ng-model="participant.professionId"  ></ui-input>
+    <ui-input         field="organization"  status="status.organization"  ng-model="participant.organization"  ></ui-input>
+    <ui-input         field="department"    status="status.department"    ng-model="participant.department"    ></ui-input>
+    <ui-input         field="role"          status="status.role"          ng-model="participant.role"          ></ui-input>
+    <ui-input-address field="workAddress"   status="status.workAddress"   ng-model="participant.workAddress"   ></ui-input-address>
+    <ui-input-phone   field="workPhone"     status="status.workPhone"     ng-model="participant.workPhone"     ></ui-input-phone>
+    <ui-input-phone   field="workCellphone" status="status.workCellphone" ng-model="participant.workCellphone" ></ui-input-phone>
+    <ui-input         field="workEmail"     status="status.workEmail"     ng-model="participant.workEmail"     ></ui-input>
+</form>
+<div class="col-sm-offset-2 col-sm-10">
+    <button ng-disabled="participantForm.$error.required" class="btn btn-primary" ng-click="createParticipant(participant)">Salvar perfil</button>
+    <span class="help-block">{{message.participantForm}}</span>
+</div>

@@ -1,4 +1,4 @@
-angular.module("eventex").directive("uiCpf", function(){
+angular.module("ui").directive("uiMaskCpf", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){
@@ -18,6 +18,12 @@ angular.module("eventex").directive("uiCpf", function(){
 			element.bind("keyup", function(){
 				ctrl.$setViewValue(_formatCPF(ctrl.$viewValue));
 				ctrl.$render();
+			});
+			ctrl.$parsers.push(function(value){
+				if(value.length == 14){
+					return value.replace(".","").replace(".","");
+				}
+
 			});
 		}
 	};

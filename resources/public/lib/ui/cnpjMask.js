@@ -1,4 +1,4 @@
-angular.module("eventex").directive("uiCnpj", function(){
+angular.module("ui").directive("uiMaskCnpj", function(){
 	return {
 		require: "ngModel",
 		link: function(scope, element, attrs, ctrl){

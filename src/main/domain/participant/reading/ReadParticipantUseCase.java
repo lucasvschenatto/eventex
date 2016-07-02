@@ -6,9 +6,9 @@ import main.domain.participant.ParticipantRepository;
 public class ReadParticipantUseCase {
 	private final ReadParticipantRequest request;
     private final ParticipantRepository repository;
-    private final ParticipantSummary response;
+    private final ReadParticipantResponse response;
 
-    public ReadParticipantUseCase(ParticipantRepository repository, ReadParticipantRequest request, ParticipantSummary response) {
+    public ReadParticipantUseCase(ParticipantRepository repository, ReadParticipantRequest request, ReadParticipantResponse response) {
         this.request = request;
     	this.repository = repository;
         this.response = response;
@@ -25,9 +25,7 @@ public class ReadParticipantUseCase {
 
 	private void sendParticipant() {
 		Participant participant = repository.getById(request.id);
-		response.id = participant.getId();
 		response.name = participant.getName().toString();
-		response.userId = participant.getUserId().toString();
 		response.nametag = participant.getNametag().toString();
 		response.nationality = participant.getNationality().toString();
 		response.gender = participant.getGender().toString();

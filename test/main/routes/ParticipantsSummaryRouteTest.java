@@ -12,6 +12,10 @@ import main.domain.participant.Participant;
 import main.persistence.inmemory.InMemoryFactory;
 
 public class ParticipantsSummaryRouteTest extends RouteTest {
+	@Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("GET", "/participants",200);
+	}
     @Test
     public void integration() throws Exception {
         Participant participant = new Participant();

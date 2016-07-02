@@ -4,7 +4,12 @@ import org.junit.*;
 
 public class CreateCertificateRouteTest extends RouteTest {
 
-	@Test
+	@Override
+	public void responseCodeForNoRequestBody() throws Exception {
+		assertRouteResponse("POST", "/certificates",404);
+	}
+
+	@Test@Ignore
     public void integration() throws Exception {		
         assertRouteResponse("POST", "/certificates", "{}",
                 "{" +

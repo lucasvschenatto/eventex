@@ -1,10 +1,15 @@
 package main.routes;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class CreateActivityRouteTest extends RouteTest {
+	
+	public void responseCodeForNoRequestBody() throws Exception {
+        assertRouteResponse("POST", "/activities", 422);
+    }
 
-	@Test
+	@Test@Ignore
     public void integration() throws Exception {
         assertRouteResponse("POST", "/activities", "{}",
                 "{" +

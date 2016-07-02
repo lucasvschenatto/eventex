@@ -15,7 +15,12 @@ import main.domain.event.Event;
 import main.persistence.inmemory.InMemoryFactory;
 
 public class ReadActivityRouteTest extends RouteTest {
-    @Test
+    @Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("GET", "/activities/not_exists",404);
+	}
+
+	@Test
     public void integration() throws Exception {
     	Event event = new Event();
         event.setId("aeuou13542xxx9testk9");

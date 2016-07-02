@@ -7,6 +7,7 @@ import org.junit.AfterClass;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import spark.Spark;
 
@@ -22,6 +23,9 @@ import java.nio.charset.Charset;
 public abstract class RouteTest {
     private static final Charset UTF_8 = Charset.forName("UTF-8");
     private static final String PORT = System.getenv("PORT");
+    
+    @Test
+    public abstract void responseCodeForNoRequestBody() throws Exception;
 
     @BeforeClass
     public static void setUpClass() throws Exception{
@@ -49,6 +53,12 @@ public abstract class RouteTest {
         writeRequestBody(connection, bodyBytes);
         assertResponse(expectedResponse, connection);
     }
+    
+    protected void assertRouteResponse(String method, String path, int expectedResponseCode) throws Exception {
+        HttpURLConnection connection = makeConnection(path);
+        writeRequestHeader(method, connection);
+        assertResponseCode(expectedResponseCode, connection);
+    }
 
     private HttpURLConnection makeConnection(String path) throws IOException {
     	String validPort = PORT != null? PORT: "8080";
@@ -71,12 +81,16 @@ public abstract class RouteTest {
         outputStream.write(bodyBytes);
         outputStream.close();
     }
+    
+    private void assertResponseCode(int expectedResponse, HttpURLConnection connection) throws IOException {
+    	assertEquals(expectedResponse , connection.getResponseCode());
+    }
 
     private void assertResponse(String expectedResponse, HttpURLConnection connection) throws IOException {
         assertEquals(expectedResponse + "\r", getResponse(connection));
     }
 
-    private String getResponse(HttpURLConnection connection) throws IOException {
+	private String getResponse(HttpURLConnection connection) throws IOException {
         BufferedReader inputReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         StringBuilder responseBuilder = new StringBuilder();
         String line;

@@ -98,8 +98,11 @@ public abstract class InscriptionRepositoryTest extends RepositoryTest<Inscripti
 	public void getAllByParticipant(){
 		Inscription i = makeNewEntity();
     	i.setParticipantId(new Text("idDoParticipante"));
+    	i.setActivityId(ACTIVITY_ID1);
     	repository.save(i);
-    	i.setParticipantId(new Text("idDoParticipante2"));
+    	i = makeNewEntity();
+    	i.setParticipantId(new Text("idDoParticipante"));
+    	i.setActivityId(ACTIVITY_ID2);
     	repository.save(i);
     	
     	Iterable<Inscription> inscriptions = repository.getAllByParticipantId(new Text("idDoParticipante"));

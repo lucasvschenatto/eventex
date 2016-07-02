@@ -20,7 +20,8 @@ public class CreateInscriptionRoute implements Route {
     public Object handle(Request request, Response response) throws Exception {
     	CreateInscriptionRequest input = converter.fromJson(request.body(), CreateInscriptionRequest.class);
         CreateInscriptionResponse output = new CreateInscriptionResponse();
-        new CreateInscriptionUseCase(dependencies.getInscriptionRepository(),
+        if(input!=null)
+			new CreateInscriptionUseCase(dependencies.getInscriptionRepository(),
         		dependencies.getParticipantRepository(), dependencies.getActivityRepository(),
         		dependencies.getCategoryRepository(), dependencies.getAssociateRepository(),
         		input, output).execute();

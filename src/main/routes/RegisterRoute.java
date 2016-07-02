@@ -20,13 +20,16 @@ public class RegisterRoute implements Route {
     public Object handle(Request request, Response response) throws Exception {
         RegisterResponse output = executeUseCase(request);
         response.cookie("user-id", output.id);
+        if(!output.success) 
+        	response.status(400);
         return converter.toJson(output);
     }
 
     private RegisterResponse executeUseCase(Request request) {
         RegisterResponse output = new RegisterResponse();
         RegisterRequest input = converter.fromJson(request.body(), RegisterRequest.class);
-        new RegisterUseCase(dependencies.getUserRepository(), input, output, dependencies.getEncryptor()).execute();
+        if(input!= null)
+        	new RegisterUseCase(dependencies.getUserRepository(), input, output, dependencies.getEncryptor()).execute();
         return output;
     }
 }

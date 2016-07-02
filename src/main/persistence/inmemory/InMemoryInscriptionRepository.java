@@ -22,16 +22,18 @@ public class InMemoryInscriptionRepository extends InMemoryRepository<Inscriptio
 	}
 
 	
-	public Iterable<Inscription> getAllByParticipantId(Text participantId) {
+	public Iterable<Inscription> getAllForParticipantId(Text participantId) {
 		Collection<Inscription> inscriptions = new HashSet<Inscription>();
-		participantKey.forEach((participant,map)->inscriptions.addAll(map.values()));
+		participantKey.forEach((participant,map)->map.forEach((key,value)->inscriptions.add(makeCopy(value))));
 		return inscriptions;
 				
 	}
 	
-	public void save(Inscription inscription){
-		super.save(inscription);
-		Inscription saved = getById(inscription.getId());
+	public void save(Inscription i){
+		if(hasWithId(i.getId()))
+			participantKey.get(getById(i.getId()).getParticipantId()).remove(getById(i.getId()).getActivityId());
+		super.save(i);
+		Inscription saved = getById(i.getId());
 		if(participantKey.containsKey(saved.getParticipantId())){
 			Map<Text,Inscription> existingAKey = participantKey.get(saved.getParticipantId());
 			existingAKey.put(saved.getActivityId(), saved);

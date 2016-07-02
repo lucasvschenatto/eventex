@@ -7,6 +7,10 @@ import main.domain.account.login.LoginUseCase;
 import main.domain.account.reading.ReadUserRequest;
 import main.domain.account.reading.ReadUserResponse;
 import main.domain.account.reading.ReadUserUseCase;
+import main.domain.admin.AdminRepository;
+import main.domain.participant.ParticipantRepository;
+import main.persistence.inmemory.InMemoryAdminRepository;
+import main.persistence.inmemory.InMemoryParticipantRepository;
 import main.persistence.inmemory.InMemoryUserRepository;
 import main.security.FakeEncryptor;
 import org.junit.Assert;
@@ -19,7 +23,9 @@ import java.util.ArrayList;
 public class RegisterUseCaseTest {
     private RegisterRequest request;
     private RegisterResponse response;
-    private UserRepository repository;
+    private UserRepository userRepository;
+    private AdminRepository adminRepository;
+    private ParticipantRepository participantRepository;
 
     private void givenRegistrationData(String username, String cpf, String email, String password, String passwordConfirmation) {
     	request.username = username;
@@ -30,7 +36,7 @@ public class RegisterUseCaseTest {
     }
 
     private void whenRegistering() {
-        new RegisterUseCase(repository, request, response, new FakeEncryptor()).execute();
+        new RegisterUseCase(userRepository, request, response, new FakeEncryptor()).execute();
     }
 
     private void thenItShouldBeSuccessful() {
@@ -68,7 +74,8 @@ public class RegisterUseCaseTest {
         request.email = email;
         request.password = password;
         LoginResponse response = new LoginResponse();
-        new LoginUseCase(repository, request, response, new FakeEncryptor()).execute();
+        new LoginUseCase(userRepository, adminRepository, participantRepository, 
+        		request, response, new FakeEncryptor()).execute();
         return response.success;
     }
 
@@ -76,7 +83,7 @@ public class RegisterUseCaseTest {
         ReadUserRequest request = new ReadUserRequest();
         request.id = id;
         ReadUserResponse response = new ReadUserResponse();
-        new ReadUserUseCase(repository, request, response).execute();
+        new ReadUserUseCase(userRepository, request, response).execute();
         return response;
     }
 
@@ -84,7 +91,9 @@ public class RegisterUseCaseTest {
     public void setUp() throws Exception {
         request = new RegisterRequest();
         response = new RegisterResponse();
-        repository = new InMemoryUserRepository();
+        userRepository = new InMemoryUserRepository();
+        adminRepository = new InMemoryAdminRepository();
+        participantRepository = new InMemoryParticipantRepository();
     }
 
     @Test

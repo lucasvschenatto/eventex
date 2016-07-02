@@ -28,6 +28,4 @@ public class MongoAssociateRepository extends MongoRepository<Associate> impleme
 	private Bson makeAssociateCodeQuery(Text code) {
 		return new Document("code", textConverter.to(code));
 	}
-
-
 }

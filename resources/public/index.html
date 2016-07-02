@@ -2,20 +2,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Eventex</title>
+	
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<link rel="stylesheet" type="text/css" href="css/ui.css">
 	<link rel="stylesheet" type="text/css" href="css/spinner.css">
 
+	
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
+
 	<!-- <script src="https://use.fonticons.com/86198105.js"></script> -->
-	<script type="text/javascript" src="https://code.angularjs.org/1.5.7/angular.min.js"></script>
-	<script type="text/javascript" src="https://code.angularjs.org/1.5.7/angular-messages.min.js"></script>
-	<script type="text/javascript" src="https://code.angularjs.org/1.5.7/angular-route.min.js"></script>
-	<script type="text/javascript" src="https://code.angularjs.org/1.5.7/i18n/angular-locale_pt-br.js"></script>
-	<!--<script src="lib/angular/angular.js"></script>
-	<script src="lib/angular/angular-messages.js"></script>
+
+
+	<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/i18n/angular-locale_pt-br.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>-->
+
+
+	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-route.js"></script>
-	<script src="lib/angular/angular-locale_pt-br.js"></script>-->
+	<script src="lib/angular/angular-ui-router.js"></script>
+	<script src="lib/angular/angular-locale_pt-br.js"></script>
 
 	<script src="lib/ui/ui.js"></script>
 	<script src="lib/ui/uiInputs.js"></script>
@@ -57,7 +68,8 @@
 	<script src="js/services/usersAPIService.js"></script>
 	<script src="js/services/participantsAPIService.js"></script>
 
-	<script src="js/config/routeConfig.js"></script>
+	<!-- <script src="js/config/routeConfig.js"></script> -->
+	<script src="js/config/stateConfig.js"></script>
 	<script src="js/config/interceptorsConfig.js"></script>
 
 	<script src="js/controller/registerCtrl.js"></script>
@@ -75,7 +87,7 @@
 
 	<div class="jumbotron" ng-show="loading" ng-include="'view/loading.html'"></div>
 	
-	<div ng-hide="loading" ng-view></div>
+	<div ng-hide="loading" ui-view></div>
 
 	<footer ng-include="'view/footer.html'"></footer>
 </body>

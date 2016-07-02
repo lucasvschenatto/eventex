@@ -35,7 +35,7 @@ public class MongoInscriptionRepository extends MongoRepository<Inscription> imp
 		return hasWith(makeParticipantIdQuery(participantId));
 	}
 
-	public Iterable<Inscription> getAllByParticipantId(Text participantId) {
+	public Iterable<Inscription> getAllForParticipantId(Text participantId) {
 		return getAllBy(makeParticipantIdQuery(participantId));
 	}
 	

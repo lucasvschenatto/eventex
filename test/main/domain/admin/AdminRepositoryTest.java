@@ -70,6 +70,16 @@ public abstract class AdminRepositoryTest extends RepositoryTest<Admin> {
         Iterable<Admin> admins = repository.getAll();
         assertFalse(admins.iterator().hasNext());
     }
+    
+    @Test
+    public void usingGetByUserId_theReturnedCategoryMustEqualTheSavedOne_butNotBeTheSame() {
+        Admin admin = makeNewEntity();
+        admin.setUserId(USER_ID1);
+        repository.save(admin);
+        Admin savedAdmin = repository.getByUserId(admin.getUserId());
+        assertNotSame(admin, savedAdmin);
+        assertEntityHasSameValues(admin, savedAdmin);
+    }
 
 	@Test@SuppressWarnings("unused")
     public void givenTwoAdmins_itReturnsTheTwo() {

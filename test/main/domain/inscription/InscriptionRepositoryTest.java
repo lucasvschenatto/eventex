@@ -105,7 +105,7 @@ public abstract class InscriptionRepositoryTest extends RepositoryTest<Inscripti
     	i.setActivityId(ACTIVITY_ID2);
     	repository.save(i);
     	
-    	Iterable<Inscription> inscriptions = repository.getAllByParticipantId(new Text("idDoParticipante"));
+    	Iterable<Inscription> inscriptions = repository.getAllForParticipantId(new Text("idDoParticipante"));
         int counter = 0;
         for (@SuppressWarnings("unused") Inscription ignored : inscriptions)
         	counter++;

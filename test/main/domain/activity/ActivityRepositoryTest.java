@@ -162,12 +162,37 @@ public abstract class ActivityRepositoryTest extends RepositoryTest<Activity>{
 
     @Test@SuppressWarnings("unused")
     public void givenTwoActivities_itReturnsTheTwo() {
-        repository.save(new Activity());
-        repository.save(new Activity());
+        repository.save(makeNewEntity());
+        repository.save(makeNewEntity());
         Iterable<Activity> activities = repository.getAll();
         int counter = 0;
         for (Activity ignored : activities)
         	counter++;
+        assertEquals(2, counter);
+    }
+    
+    @Test
+    public void eventIdFilter_itReturnsRespectiveActivities(){
+    	Activity a = makeNewEntity();
+    	a.setEventId(EVENT_ID1);
+    	Activity b = makeNewEntity();
+    	b.setEventId(EVENT_ID2);
+    	Activity c = makeNewEntity();
+    	c.setEventId(EVENT_ID1);
+    	Activity d = makeNewEntity();
+    	d.setEventId(EVENT_ID2);
+    	Activity e = makeNewEntity();
+    	e.setEventId(EVENT_ID2);
+    	repository.save(a);
+        repository.save(b);
+        repository.save(c);
+        Iterable<Activity> filtered = repository.getAllForEventId(EVENT_ID1);
+        
+        int counter = 0;
+        for (Activity f : filtered){
+        	assertEquals(f.getEventId(),EVENT_ID1);
+        	counter++;
+        }
         assertEquals(2, counter);
     }
 

@@ -31,8 +31,7 @@ public class MongoProfessionRepositoryTest extends ProfessionRepositoryTest {
     }
 
     private void setUpDatabase() {
-    	MongoConnection connection = MongoConnection.getInstance();
-        MongoDatabase database = connection.getDatabase();
+    	MongoDatabase database = MongoConnection.getDatabase();
         database.getCollection("professions").drop();
     }
 }

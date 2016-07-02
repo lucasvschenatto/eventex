@@ -42,5 +42,6 @@ public class ReadParticipantUseCase {
 		response.workPhone = participant.getWorkPhone().toString();
 		response.workCellphone = participant.getWorkCellphone().toString();
 		response.workEmail = participant.getWorkEmail().toString();
+		response.success = true;
     }
 }

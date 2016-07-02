@@ -3,6 +3,7 @@ package main.persistence.mongo;
 import main.domain.RepositoryFactory;
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
+import main.domain.admin.AdminRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
@@ -15,6 +16,7 @@ public class MongoFactory implements RepositoryFactory {
 	private static MongoFactory instance;
 	
 	private ActivityRepository activity;
+	private AdminRepository admin;
 	private AssociateRepository associate;
 	private CategoryRepository category;
 	private EventRepository event;
@@ -25,6 +27,7 @@ public class MongoFactory implements RepositoryFactory {
 	
 	private MongoFactory(){
 		activity = new MongoActivityRepository();
+		admin = new MongoAdminRepository();
 		associate = new MongoAssociateRepository();
 		category = new MongoCategoryRepository();
 		event = new MongoEventRepository();
@@ -70,6 +73,11 @@ public class MongoFactory implements RepositoryFactory {
 
 	public UserRepository getUserRepository() {
 		return user;
+	}
+
+	@Override
+	public AdminRepository getAdminRepository() {
+		return admin;
 	}
 
 }

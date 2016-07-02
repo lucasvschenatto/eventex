@@ -72,6 +72,12 @@ public class Main {
         put("/activities/:id", new UpdateActivityRoute(dependencies));
         delete("/activities/:id", new DeleteActivityRoute(dependencies));
         
+        get("/admins", new AdminsSummaryRoute(dependencies));
+        post("/admins", new CreateAdminRoute(dependencies));
+        get("/admins/:id", new ReadAdminRoute(dependencies));
+        put("/admins/:id", new UpdateAdminRoute(dependencies));
+        delete("/admins/:id", new DeleteAdminRoute(dependencies));
+        
         get("/associates", new AssociatesSummaryRoute(dependencies));
         post("/associates", new CreateAssociateRoute(dependencies));
         get("/associates/:id", new ReadAssociateRoute(dependencies));

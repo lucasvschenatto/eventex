@@ -10,14 +10,14 @@ public class MongoConnection {
 	private MongoDatabase database;
 	private static MongoConnection instance;
 	
-	public static MongoConnection getInstance(){
+	public static MongoDatabase getDatabase(){
+		return getInstance().database;
+	}
+	
+	private static MongoConnection getInstance(){
 		if(instance == null)
 			instance = new MongoConnection();
 		return instance;
-	}
-	
-	public MongoDatabase getDatabase(){
-		return database;
 	}
 	private MongoConnection(){
 		uri = new MongoClientURI(System.getenv("MONGODB_URI"));

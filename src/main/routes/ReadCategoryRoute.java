@@ -22,6 +22,7 @@ public class ReadCategoryRoute implements Route {
     	input.id = request.params(":id");
         CategorySummary output = new CategorySummary();
         new ReadCategoryUseCase(dependencies.getCategoryRepository(), input, output).execute();
+        if(output.id == null || output.id.isEmpty()) response.status(404);
         return converter.toJson(output);
     }
 }

@@ -3,7 +3,12 @@ package main.routes;
 import org.junit.*;
 
 public class CreateInscriptionRouteTest extends RouteTest {
-    @Test
+    @Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("POST", "/inscriptions",422);
+	}
+
+	@Test@Ignore
     public void integration() throws Exception {
         assertRouteResponse("POST", "/inscriptions", "{}",
                 "{" +

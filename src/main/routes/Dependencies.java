@@ -4,6 +4,7 @@ import main.domain.RepositoryFactory;
 import main.domain.account.Encryptor;
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
+import main.domain.admin.AdminRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
@@ -13,6 +14,7 @@ import main.domain.profession.ProfessionRepository;
 
 public class Dependencies {
 	private ActivityRepository activityRepository;
+	private AdminRepository adminRepository;
 	private AssociateRepository associateRepository;
 	private CategoryRepository categoryRepository;
 	private Encryptor encryptor;
@@ -64,6 +66,7 @@ public class Dependencies {
 
 	public void setRepositoryFactory(RepositoryFactory factory) {
 		activityRepository = factory.getActivityRepository();
+		adminRepository = factory.getAdminRepository();
 		associateRepository = factory.getAssociateRepository();
 		categoryRepository = factory.getCategoryRepository();
 		eventRepository = factory.getEventRepository();
@@ -80,5 +83,13 @@ public class Dependencies {
 
 	public void setStaticFileLocation(String externalFileLocation) {
 		this.externalFileLocation = externalFileLocation;		
+	}
+
+	public AdminRepository getAdminRepository() {
+		return adminRepository;
+	}
+
+	public void setAdminRepository(AdminRepository adminRepository) {
+		this.adminRepository = adminRepository;
 	}
 }

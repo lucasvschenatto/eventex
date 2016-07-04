@@ -192,6 +192,16 @@ public abstract class ParticipantRepositoryTest extends RepositoryTest<Participa
         Iterable<Participant> participants = repository.getAll();
         assertFalse(participants.iterator().hasNext());
     }
+    
+    @Test
+    public void usingGetByUserId_theReturnedCategoryMustEqualTheSavedOne_butNotBeTheSame() {
+        Participant participant = makeNewEntity();
+        participant.setUserId(USER_ID1);
+        repository.save(participant);
+        Participant savedParticipant = repository.getByUserId(participant.getUserId());
+        assertNotSame(participant, savedParticipant);
+        assertEntityHasSameValues(participant, savedParticipant);
+    }
 
 	@Test@SuppressWarnings("unused")
     public void givenTwoParticipants_itReturnsTheTwo() {

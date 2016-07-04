@@ -1,0 +1,32 @@
+<div class="jumbotron">
+	<div>
+		<nav class="navbar">
+			<div class="navbar-left">
+				<p class="">Atividade</p>
+			</div>
+			<div class="navbar-right">
+				<button class="btn btn-primary btn-right" ng-click="updateActivity(activity)">Editar</button>
+			</div>
+		</nav>
+		<table class="table">
+			<tr><td>Nome</td>			<td>{{activity.name}}</td></tr>
+			<tr><td>Data</td>			<td>{{activity.date}}</td></tr>
+			<tr><td>Local</td>			<td>{{activity.place}}</td></tr>
+			<tr><td>descrição</td>		<td>{{activity.description}}</td></tr>
+			<tr><td>Vagas</td>			<td>{{activity.spots}}</td></tr>
+			<tr><td>Duração</td>		<td>{{activity.duration}}</td></tr>
+			<tr><td>Pontos</td>			<td>{{activity.points}}</td></tr>
+			<tr><td>Aceita desconto</td><td>{{activity.groupDiscount}}</td></tr>
+			<tr><td>Aceita voucher</td>	<td>{{activity.voucher}}</td></tr>
+			<tr><td>Rua:</td>			<td>{{activity.address.street}}</td></tr>
+			<tr><td>Numero:</td>		<td>{{activity.address.number}}</td></tr>
+			<tr><td>Complemento:</td>	<td>{{activity.address.complement}}</td></tr>
+			<tr><td>Bairro:</td>		<td>{{activity.address.neighborhood}}</td></tr>
+			<tr><td>Cidade:</td>		<td>{{activity.address.city}}</td></tr>
+			<tr><td>Estado:</td>		<td>{{activity.address.state}}</td></tr>
+			<tr><td>País:</td>			<td>{{activity.address.country}}</td></tr>
+			<tr><td>CEP:</td>			<td>{{activity.address.cep}}</td></tr>
+		</table>
+	</div>
+	<a href="#/manager/events/"+activity.eventId class="btn btn-default btn-block">Voltar</a>
+</div>

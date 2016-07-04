@@ -21,9 +21,11 @@ public class InMemoryAssociateRepository extends InMemoryRepository<Associate> i
 		return associates.containsKey(code);
 	}
 
-	public void save(Associate associate){
-		super.save(associate);
-		associates.put(associate.getCode(), getById(associate.getId()));
+	public void save(Associate a){
+		if(hasWithId(a.getId()))
+			associates.remove(getById(a.getId()).getCode());
+		super.save(a);
+		associates.put(a.getCode(), getById(a.getId()));
 	}
 
 }

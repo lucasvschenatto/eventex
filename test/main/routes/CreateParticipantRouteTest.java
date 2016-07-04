@@ -3,7 +3,12 @@ package main.routes;
 import org.junit.*;
 
 public class CreateParticipantRouteTest extends RouteTest {
-    @Test
+    @Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("POST", "/participants",422);
+	}
+
+	@Test@Ignore
     public void integration() throws Exception {
         assertRouteResponse("POST", "/participants", "{}",
                 "{" +

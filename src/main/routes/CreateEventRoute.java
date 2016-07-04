@@ -20,7 +20,12 @@ public class CreateEventRoute implements Route {
     public Object handle(Request request, Response response) throws Exception {
     	CreateEventRequest input = converter.fromJson(request.body(), CreateEventRequest.class);
         CreateEventResponse output = new CreateEventResponse();
-        new CreateEventUseCase(dependencies.getEventRepository(), input, output).execute();
+        if(input!=null)
+			new CreateEventUseCase(dependencies.getEventRepository(), input, output).execute();
+        if(output.success)
+        	response.status(201);
+        else
+        	response.status(422);
         return converter.toJson(output);
     }
 }

@@ -3,7 +3,7 @@ package main.routes;
 import com.google.gson.Gson;
 
 import main.domain.participant.reading.ReadParticipantRequest;
-import main.domain.participant.reading.ParticipantSummary;
+import main.domain.participant.reading.ReadParticipantResponse;
 import main.domain.participant.reading.ReadParticipantUseCase;
 import spark.Request;
 import spark.Response;
@@ -18,10 +18,16 @@ public class ReadParticipantRoute implements Route {
     }
 
     public Object handle(Request request, Response response) throws Exception {
-    	ReadParticipantRequest input = new ReadParticipantRequest();
-    	input.id = request.params(":id");
-        ParticipantSummary output = new ParticipantSummary();
-        new ReadParticipantUseCase(dependencies.getParticipantRepository(), input, output).execute();
+        ReadParticipantResponse output = executeUseCase(request);
+        if(!output.success) response.status(404);
         return converter.toJson(output);
+    }
+    
+    private ReadParticipantResponse executeUseCase(Request request) {
+    	ReadParticipantRequest input = new ReadParticipantRequest();
+    	input.id = request.cookie("participant-id");
+    	ReadParticipantResponse output = new ReadParticipantResponse();
+    	new ReadParticipantUseCase(dependencies.getParticipantRepository(), input, output).execute();
+        return output;
     }
 }

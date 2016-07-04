@@ -1,0 +1,11 @@
+<form class="form-horizontal" name="userForm">
+    <ui-input     field="username"             status="status.username"             ng-model="user.username"            ></ui-input>
+    <ui-input     field="email"                status="status.email"                ng-model="user.email"               ></ui-input>
+    <ui-input-cpf field="cpf"                  status="status.cpf"                  ng-model="user.cpf"                 ></ui-input-cpf>
+    <ui-input     field="password"             status="status.password"             ng-model="user.password"            ></ui-input>
+    <ui-input     field="passwordConfirmation" status="status.passwordConfirmation" ng-model="user.passwordConfirmation"></ui-input>
+</form>
+<div class="col-sm-offset-2 col-sm-10">
+    <button ng-disabled="userForm.$error.required" class="btn btn-primary" ng-click="createUser(user)">Criar uma conta</button>
+    <span class="help-block">{{message.userForm}}</span>
+</div>

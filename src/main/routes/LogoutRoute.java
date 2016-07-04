@@ -16,6 +16,8 @@ public class LogoutRoute implements Route {
 
     public Object handle(Request request, Response response) throws Exception {
         response.removeCookie("user-id");
+        response.removeCookie("admin-id");
+        response.removeCookie("participant-id");
         return converter.toJson(null);
     }
 }

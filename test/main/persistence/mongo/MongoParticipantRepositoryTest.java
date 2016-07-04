@@ -31,8 +31,7 @@ public class MongoParticipantRepositoryTest extends ParticipantRepositoryTest {
     }
 
     private void setUpDatabase() {
-    	MongoConnection connection = MongoConnection.getInstance();
-        MongoDatabase database = connection.getDatabase();
+    	MongoDatabase database = MongoConnection.getDatabase();
         database.getCollection("participants").drop();
     }
 }

@@ -19,8 +19,13 @@ public class CreateActivityRoute implements Route {
 	public Object handle(Request request, Response response) throws Exception {
 		CreateActivityRequest input = converter.fromJson(request.body(), CreateActivityRequest.class);
 		CreateActivityResponse output = new CreateActivityResponse();
-		new CreateActivityUseCase(dependencies.getActivityRepository(),dependencies.getEventRepository(),
-				input,output).execute(); 
+		if(input!=null)
+			new CreateActivityUseCase(dependencies.getActivityRepository(),dependencies.getEventRepository(),
+				input,output).execute();
+		if(output.success)
+        	response.status(201);
+        else
+        	response.status(422);
 		return converter.toJson(output);
 	}
 

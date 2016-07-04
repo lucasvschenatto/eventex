@@ -12,7 +12,12 @@ import main.domain.participant.Participant;
 import main.persistence.inmemory.InMemoryFactory;
 
 public class ReadParticipantRouteTest extends RouteTest {
-    @Test
+    @Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("GET", "/participants/not_exists",404);
+	}
+
+	@Test@Ignore
     public void integration() throws Exception {
         Participant participant = new Participant();
         participant.setId("55ec9e9ad8699a069f77a024");

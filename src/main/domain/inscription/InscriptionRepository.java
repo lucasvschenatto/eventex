@@ -9,5 +9,5 @@ public interface InscriptionRepository extends Repository<Inscription> {
 	
 	public boolean hasWithParticipantId(Text participantId);
 	
-	public Iterable<Inscription> getAllByParticipantId(Text participantId);
+	public Iterable<Inscription> getAllForParticipantId(Text participantId);
 }

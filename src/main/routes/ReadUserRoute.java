@@ -19,6 +19,7 @@ public class ReadUserRoute implements Route {
 
     public Object handle(Request request, Response response) throws Exception {
         ReadUserResponse output = executeUseCase(request);
+        if(!output.success) response.status(404);
         return converter.toJson(output);
     }
 

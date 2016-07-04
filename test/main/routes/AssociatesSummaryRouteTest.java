@@ -11,7 +11,12 @@ import main.domain.category.Category;
 import main.persistence.inmemory.InMemoryFactory;
 
 public class AssociatesSummaryRouteTest extends RouteTest {
-    @Test
+    @Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("GET", "/associates",200);
+	}
+
+	@Test
     public void integration() throws Exception {
     	Category category = new Category();
     	category.setId("E3edrGT");

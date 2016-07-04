@@ -22,6 +22,7 @@ public class ReadProfessionRoute implements Route {
     	input.id = request.params(":id");
         ProfessionSummary output = new ProfessionSummary();
         new ReadProfessionUseCase(dependencies.getProfessionRepository(), input, output).execute();
+        if(output.id == null || output.id.isEmpty()) response.status(404);
         return converter.toJson(output);
     }
 }

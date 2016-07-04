@@ -9,7 +9,12 @@ import main.domain.category.Category;
 import main.persistence.inmemory.InMemoryFactory;
 
 public class ReadCategoryRouteTest extends RouteTest {
-    @Test
+    @Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("GET", "/categories/not_exists",404);
+	}
+
+	@Test
     public void integration() throws Exception {
         Category category = new Category();
         category.setId("55ec9e9ad8699a069f77a024");

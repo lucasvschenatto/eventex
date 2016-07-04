@@ -3,6 +3,7 @@ package main.persistence.inmemory;
 import main.domain.RepositoryFactory;
 import main.domain.account.UserRepository;
 import main.domain.activity.ActivityRepository;
+import main.domain.admin.AdminRepository;
 import main.domain.associate.AssociateRepository;
 import main.domain.category.CategoryRepository;
 import main.domain.event.EventRepository;
@@ -15,6 +16,7 @@ public class InMemoryFactory implements RepositoryFactory {
 	private static InMemoryFactory instance;
 
 	private ActivityRepository activity;
+	private AdminRepository admin;
 	private AssociateRepository associate;
 	private CategoryRepository category;
 	private EventRepository event;
@@ -26,6 +28,7 @@ public class InMemoryFactory implements RepositoryFactory {
 
 	private InMemoryFactory(){
 		activity = new InMemoryActivityRepository();
+		admin = new InMemoryAdminRepository();
 		associate = new InMemoryAssociateRepository();
 		category = new InMemoryCategoryRepository();
 		event = new InMemoryEventRepository();
@@ -74,6 +77,11 @@ public class InMemoryFactory implements RepositoryFactory {
 
 	public UserRepository getUserRepository() {
 		return user;
+	}
+
+	@Override
+	public AdminRepository getAdminRepository() {
+		return admin;
 	}
 
 }

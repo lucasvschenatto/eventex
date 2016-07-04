@@ -23,8 +23,7 @@ public abstract class MongoRepository<TEntity extends Entity> implements Reposit
     }
 
     protected MongoCollection<Document> getCollection(String name) {
-        MongoConnection connection = MongoConnection.getInstance();
-        MongoDatabase database = connection.getDatabase();
+        MongoDatabase database = MongoConnection.getDatabase();
         return database.getCollection(name);
     }
 

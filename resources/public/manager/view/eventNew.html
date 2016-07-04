@@ -1,0 +1,23 @@
+<div class="jumbotron">
+	<form name="eventForm">
+		<input class="form-control" type="text" ng-model="event.name" name="name" placeholder="Nome" ng-required="true" ng-minlength="3" />
+		<input class="form-control" type="text" ng-model="event.description" name="description" placeholder="Descrição" ng-required="true"/>
+		<input class="form-control" type="text" ng-model="event.date" name="date" placeholder="Data"/>
+		<input class="form-control" type="text" ng-model="event.time" name="time" placeholder="Horario"/>
+		<input class="form-control" type="text" ng-model="event.place" name="place" placeholder="Local"/>
+		<input class="form-control" type="text" ng-model="event.address.street" name="street" placeholder="Rua"/>
+		<input class="form-control" type="text" ng-model="event.address.number" name="number" placeholder="Número"/>
+		<input class="form-control" type="text" ng-model="event.address.complement" name="complement" placeholder="Complemento"/>
+		<input class="form-control" type="text" ng-model="event.address.neighborhood" name="neighborhood" placeholder="Bairro"/>
+		<input class="form-control" type="text" ng-model="event.address.city" name="city" placeholder="Cidade"/>
+		<input class="form-control" type="text" ng-model="event.address.state" name="state" placeholder="estado"/>
+		<input class="form-control" type="text" ng-model="event.address.country" name="country" placeholder="País"/>
+		<input class="form-control" type="text" ng-model="event.address.cep" name="cep" placeholder="CEP"/>
+	</form>
+	<div ng-messages="eventForm.name.$error" class="alert-danger" ng-show="eventForm.name.$dirty">
+		<div ng-message="required"> por favor preencha o nome</div>
+		<div ng-message="minlength"> o campo nome deve ter no mpinimo 3 caracteres</div>
+	</div>
+	<button class="btn btn-primary btn-block" ng-click="createEvent(event)">Salvar</button>
+	<a href="#/manager/events" class="btn btn-default btn-block">Cancelar</a>
+</div>

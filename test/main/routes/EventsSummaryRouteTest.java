@@ -11,7 +11,12 @@ import main.domain.event.Event;
 import main.persistence.inmemory.InMemoryFactory;
 
 public class EventsSummaryRouteTest extends RouteTest {
-    @Test
+    @Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("GET", "/events",200);
+	}
+
+	@Test
     public void integration() throws Exception {
         Event event = new Event();
         event.setId("55ec9e9ad8699a069f77a024");

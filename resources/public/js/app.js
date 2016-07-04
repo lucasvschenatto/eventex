@@ -1,1 +1,1 @@
-angular.module("listaTelefonica",["ngMessages", "serialGenerator","ui","ngRoute"]);
+angular.module("eventex",["ui","ngRoute","ui.router"]);

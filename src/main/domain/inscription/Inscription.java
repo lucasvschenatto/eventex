@@ -21,7 +21,7 @@ public class Inscription extends Entity {
         this.associateCode = associateCode;
     }
 
-    public Entity copy() {
+    public Inscription copy() {
         return new Inscription(id, participantId, activityId, categoryId, associateCode);
     }
 

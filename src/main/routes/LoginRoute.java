@@ -18,15 +18,21 @@ public class LoginRoute implements Route {
     }
 
     public Object handle(Request request, Response response) throws Exception {
-        LoginResponse output = executeUseCase(request);
-        response.cookie("user-id", output.id);
-        return converter.toJson(output);
+	        LoginResponse output = executeUseCase(request);
+	        response.cookie("user-id", output.userId);
+	        response.cookie("admin-id", output.adminId);
+	        response.cookie("participant-id", output.participantId);
+	        if(!output.success) 
+	        	response.status(400);
+	        return converter.toJson(output);
     }
 
     private LoginResponse executeUseCase(Request request) {
         LoginRequest input = converter.fromJson(request.body(), LoginRequest.class);
         LoginResponse output = new LoginResponse();
-        new LoginUseCase(dependencies.getUserRepository(), input, output, dependencies.getEncryptor()).execute();
+        if(input!= null)
+        	new LoginUseCase(dependencies.getUserRepository(), dependencies.getAdminRepository(),
+        			dependencies.getParticipantRepository(), input, output, dependencies.getEncryptor()).execute();
         return output;
     }
 }

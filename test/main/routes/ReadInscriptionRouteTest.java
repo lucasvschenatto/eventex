@@ -7,7 +7,12 @@ import main.domain.inscription.Inscription;
 import main.persistence.inmemory.InMemoryFactory;
 
 public class ReadInscriptionRouteTest extends RouteTest {
-    @Test
+    @Override
+	public void responseCodeForNoRequestBody() throws Exception {
+    	assertRouteResponse("GET", "/inscriptions/not_exists",404);
+	}
+
+	@Test
     public void integration() throws Exception {
         Inscription inscription = new Inscription();
         inscription.setId("55ec9e9ad8699a069f77a024");

@@ -1,5 +1,5 @@
 package main.domain.participant.reading;
 
-public class ReadParticipantRequest {
+public class ReadParticipantRequest{
 	public String id;
 }

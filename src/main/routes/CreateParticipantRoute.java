@@ -20,7 +20,12 @@ public class CreateParticipantRoute implements Route {
     public Object handle(Request request, Response response) throws Exception {
     	CreateParticipantRequest input = converter.fromJson(request.body(), CreateParticipantRequest.class);
         CreateParticipantResponse output = new CreateParticipantResponse();
-        new CreateParticipantUseCase(dependencies.getParticipantRepository(), input, output).execute();
+        if(input!=null)
+			new CreateParticipantUseCase(dependencies.getParticipantRepository(), input, output).execute();
+        if(output.success)
+        	response.status(201);
+        else
+        	response.status(422);
         return converter.toJson(output);
     }
 }

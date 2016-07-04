@@ -1,0 +1,31 @@
+<div class="jumbotron">
+	<div>
+		<div align=right>
+			<button class="btn btn-primary" ng-click="updateCategory(category)">Editar</button>
+		</div>
+		<table class="table">
+			<tr><td>Nome</td>					<td>{{category.name}}</td></tr>
+			<tr><td>Desconto</td>				<td>{{category.discount}}</td></tr>
+			<tr><td>Inscrição requer código</td><td>{{category.needCodeAtInscription}}</td></tr>
+			<tr><td>Descrição</td>				<td>{{category.description}}</td></tr>
+		</table>
+	</div>
+	<hr>
+	<nav class="navbar">
+			<div class="navbar-left">
+				<p class="">Códigos de associados e conveniados</p>
+			</div>
+			<div class="navbar-right">
+				<button class="btn btn-primary" ng-click="newAssociate()">Novo código</button>
+			</div>
+	</nav>
+	<ui-accordions>
+	<ui-accordion ng-repeat="associate in associates" title={{associate.name}}>
+		<p>{{associate.code}}</p>
+		<p>{{associate.name}}</p>
+		<p>{{associate.active}}</p>
+		<p>{{associate.updateDate}}</p>
+	</ui-accordion>
+	</ui-accordions>
+	<a href="#/manager/categories" class="btn btn-default btn-block">Voltar</a>
+</div>

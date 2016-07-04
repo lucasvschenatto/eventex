@@ -20,8 +20,13 @@ public class CreateAssociateRoute implements Route {
     public Object handle(Request request, Response response) throws Exception {
     	CreateAssociateRequest input = converter.fromJson(request.body(), CreateAssociateRequest.class);
         CreateAssociateResponse output = new CreateAssociateResponse();
-        new CreateAssociateUseCase(dependencies.getAssociateRepository(), dependencies.getCategoryRepository(),
+        if(input!=null)
+			new CreateAssociateUseCase(dependencies.getAssociateRepository(), dependencies.getCategoryRepository(),
         		input, output).execute();
+        if(output.success)
+        	response.status(201);
+        else
+        	response.status(422);
         return converter.toJson(output);
     }
 }

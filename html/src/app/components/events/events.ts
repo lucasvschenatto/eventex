@@ -7,14 +7,9 @@ import {RdWidgetHeader} from '../rd-widget-header/rd-widget-header';
 import {RdWidgetBody} from '../rd-widget-body/rd-widget-body';
 import {RdWidgetFooter} from '../rd-widget-footer/rd-widget-footer';
 
-import {ServerListView} from '../server-list-view/server-list-view';
-import {ServerListService} from '../../services/server_list';
-import {UserListView} from '../user-list-view/user-list-view';
-
 import {EventService} from '../../services/event/event-service';
 import {Event} from '../../domain/event/event';
 import {address} from '../../domain/address/address';
-import {TEST_SERVER_APPLICATION_PROVIDERS} from "angular2/platform/testing/server";
 
 /// <reference path="../../lib/bootbox.d.ts" />
 
@@ -22,7 +17,7 @@ import {TEST_SERVER_APPLICATION_PROVIDERS} from "angular2/platform/testing/serve
     selector: 'events',
     templateUrl: 'app/components/events/events.html',
     directives: [RdWidget, RdWidgetHeader, RdWidgetBody,
-        RdWidgetFooter, RdLoading, ServerListView, UserListView]
+        RdWidgetFooter, RdLoading]
 })
 export class Events implements OnInit {
     public domain: Event;
@@ -58,9 +53,12 @@ export class Events implements OnInit {
     public onDel(current:Event): boolean {
         let service = this._service;
         let _this = this;
-        bootbox.confirm("Você tem certeza que deseja excluir o evento selecionado?", function () {
-            service.del(current);
-            _this.subscribe();
+        bootbox.confirm({
+            message: "Você tem certeza que deseja excluir o evento selecionado?",
+            callback: function () {
+                service.del(current);
+                _this.subscribe();
+            }
         });
         return false;
     }

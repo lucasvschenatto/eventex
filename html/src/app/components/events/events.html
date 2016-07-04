@@ -48,11 +48,11 @@
             </div>
             <div class="col-sm-3">
               <label>Data</label>
-              <input type="text" class="form-control" [(ngModel)]="domain.date" required>
+              <input type="date" class="form-control" [(ngModel)]="domain.date" value="{{domain.date.split('-').reverse().join('/')}}" maxlength="10" required>
             </div>
             <div class="col-sm-3">
               <label>Horário</label>
-              <input type="text" class="form-control" [(ngModel)]="domain.time" required>
+              <input type="time" class="form-control" [(ngModel)]="domain.time" required>
             </div>
           </div>
           <div class="row">

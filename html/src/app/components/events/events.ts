@@ -10,7 +10,6 @@ import {RdWidgetFooter} from '../rd-widget-footer/rd-widget-footer';
 import {EventService} from '../../services/event/event-service';
 import {Event} from '../../domain/event/event';
 import {address} from '../../domain/address/address';
-import {TEST_SERVER_APPLICATION_PROVIDERS} from "angular2/platform/testing/server";
 
 /// <reference path="../../lib/bootbox.d.ts" />
 

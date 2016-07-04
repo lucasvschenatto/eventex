@@ -1,22 +1,25 @@
 <div class="jumbotron">
-	<div class="form-group" ng-show="false">
-		<label class="input-group" for="text" style="float:left;margin-right:5px;">Pesquise a sua categoria:</label>
-		<div class="input-group">
-		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Pesquisa de categorias">
+	<div class="form-group">
+		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
+		<div class="col-sm-10">
+		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Digite o filtro">
 		</div>
 	</div>
 	<table ng-show="categories.length > 0" class="table">
-		<th><a ng-click="orderBy('name')">Nome</th>
-		<th><a ng-click="orderBy('discount')">Desconto</th>
-		<th><a ng-click="orderBy('needCodeAtInscription')">Requer código na inscrição</th>
-		<th><a ng-click="orderBy('description')">Descrição</th>
+		<th><a href="" ng-click="orderBy('name')">Nome</th>
+		<th><a href="" ng-click="orderBy('discount')">Desconto</th>
+		<th><a href="" ng-click="orderBy('needCodeAtInscription')">Requer código na inscrição</th>
+		<th><a href="" ng-click="orderBy('description')">Descrição</th>
+		<th style="min-width:25px" width="100/%"></th>
 		<tr ng-repeat="category in categories | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
-			<td><a ui-sref="dashboard.categories.details({id: category.id})">{{::category.name | name}}</a></td>
+			<td>{{::category.name | name}}</a></td>
 			<td>{{::category.discount}}</td>
 			<td>{{::category.needCodeAtInscription}}</td>
 			<td>{{::category.description}}</td>
+			<td><a class="btn btn-primary btn-block" ui-sref="categories.details({id : category.id})">Visualizar </a></td>
+		</tr>
 	</table>
-	<button class="btn btn-primary btn-block" ng-click="newCategory()">Nova Categoria</button>
+	<button class="btn btn-primary btn-block" ng-click="new()">Nova Categoria</button>
 	<a ui-sref="dashboard" class="btn btn-default btn-block">Voltar</a>
 </div>
 <div ui-view></div>

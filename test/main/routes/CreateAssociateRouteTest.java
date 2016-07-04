@@ -5,7 +5,7 @@ import org.junit.*;
 public class CreateAssociateRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
-    	assertRouteResponse("POST", "/associates", 422);
+    	assertRouteResponse("POST", "/associates",200);
 	}
 
 	@Test@Ignore

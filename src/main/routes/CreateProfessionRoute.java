@@ -25,7 +25,7 @@ public class CreateProfessionRoute implements Route {
         if(output.success)
         	response.status(201);
         else
-        	response.status(422);
+        	response.status(200);
         return converter.toJson(output);
     }
 }

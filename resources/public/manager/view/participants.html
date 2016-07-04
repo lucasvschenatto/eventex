@@ -1,0 +1,26 @@
+<div class="jumbotron">
+	<div class="form-group">
+		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
+		<div class="col-sm-10">
+		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Digite o filtro">
+		</div>
+	</div>
+	<table ng-show="participants.length > 0" class="table">
+		<th><a href="" ng-click="orderBy('name')">Nome</th>
+		<th><a href="" ng-click="orderBy('homePhone')">Telefone residencial</th>
+		<th><a href="" ng-click="orderBy('cellPhone')">Celular</th>
+		<th><a href="" ng-click="orderBy('organization')">Empresa/organização</th>
+		<th><a href="" ng-click="orderBy('workEmail')">Email comercial</th>
+		<th style="min-width:25px" width="100/%"></th>
+		<tr ng-repeat="participant in participants | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
+			<td>{{::participant.name | name}}</td>
+			<td>{{::participant.homePhone  }}</td>
+			<td>{{::participant.cellPhone  }}</td>
+			<td>{{::participant.organization}}</td>
+			<td>{{::participant.workEmail   }}</td>
+			<td><a class="btn btn-primary btn-block" ui-sref="participants.details({id : participant.id})">Visualizar </a></td>
+		</tr>
+	</table>
+	<button class="btn btn-primary btn-block" ng-click="new()">Novo participante</button>
+	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
+</div>

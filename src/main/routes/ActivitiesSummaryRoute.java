@@ -23,7 +23,7 @@ public class ActivitiesSummaryRoute implements Route {
 
 	public Object handle(Request request, Response response) throws Exception {
 		ReadActivitiesFilterRequest filter = new ReadActivitiesFilterRequest();
-		filter.eventId = request.params(":event");
+		filter.eventId = request.queryParams("event");
 		Collection<ActivitySummary> output = new ArrayList<>();
 		if(filter.eventId != null)
 			new ReadActivitiesFilterUseCase(dependencies.getActivityRepository(), filter, output).execute();

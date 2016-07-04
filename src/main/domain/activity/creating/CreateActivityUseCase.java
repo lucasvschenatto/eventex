@@ -70,8 +70,8 @@ public class CreateActivityUseCase {
 	}
 
 	private boolean isValidFields() {
-		return name.isValid() && description.isValid() && date.isValid() && time.isValid() && place.isValid() &&
-	    		address.isValid() &&
+		return name.isValid() && description.isValid() && date.isValid() && time.isValid() &&
+				( place.isValid() || address.isValid() ) &&
 	    		eventId.isValid() &&
 	    		spots.isValid() && duration.isValid() && points.isValid() &&
 	    		groupDiscount.isValid() && voucher.isValid();

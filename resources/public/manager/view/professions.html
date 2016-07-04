@@ -1,17 +1,20 @@
 <div class="jumbotron">
-	<div class="form-group" ng-show="false">
-		<label class="input-group" for="text" style="float:left;margin-right:5px;">Pesquisa por profissão:</label>
-		<div class="input-group">
-		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Pesquisa de categorias">
+	<div class="form-group">
+		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
+		<div class="col-sm-10">
+		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Digite o filtro">
 		</div>
 	</div>
 	<table ng-show="professions.length > 0" class="table">
 		<th><a href="" ng-click="orderBy('name')">Nome</th>
 		<th><a href="" ng-click="orderBy('description')">Descrição</th>
+		<th style="min-width:25px" width="100/%"></th>
 		<tr ng-repeat="profession in professions | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
-			<td><a href="#/manager/professions/{{profession.id}}">{{::profession.name | name}}</a></td>
+			<td>{{::profession.name | name}}</a></td>
 			<td>{{::profession.description}}</td>
+			<td><a class="btn btn-primary btn-block" ui-sref="admins.details({id : profession.id})">Visualizar </a></td>
+		</tr>
 	</table>
-	<button class="btn btn-primary btn-block" ng-click="newProfession()">Nova Profissão</button>
+	<button class="btn btn-primary btn-block" ng-click="new()">Nova Profissão</button>
 	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
 </div>

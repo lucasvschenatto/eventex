@@ -1,0 +1,33 @@
+<div class="jumbotron">
+	<div class="row">
+		<p >Exibindo atividades do evento {{event.name}} <a href="" class=" btn btn-primary" ng-click="reload()">Outro evento</a></p>
+		
+	</div>
+	<div class="form-group">
+		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
+		<div class="col-sm-10">
+		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Digite o filtro">
+		</div>
+	</div>
+	<table ng-show="activities.length > 0" class="table">
+		<th><a href="" ng-click="orderBy('name')">Nome</th>
+		<th><a href="" ng-click="orderBy('date')">Data</th>
+		<th><a href="" ng-click="orderBy('place')">Local</th>
+		<th><a href="" ng-click="orderBy('description')">Descrição</th>
+		<th style="min-width:25px" width="100/%"></th>
+		<tr ng-repeat="activity in activities | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
+			<td>{{::activity.name | name}}</td>
+			<td>{{::activity.date | date:"dd/MM/yyyy"}}</td>
+			<td>{{::activity.place}}</td>
+			<td>{{::activity.description}}</td>
+			<td><a class="btn btn-primary btn-block" ng-click="details(activity)">Visualizar </a></td>
+		</tr>
+	</table>
+	<div class="form-group">
+		<div class="col-sm-offset-6 col-sm-10">
+		    <button class="btn btn-default" ng-click="back()">Voltar</button>
+		    <button class="btn btn-primary" ng-click="new()">Nova Atividade</button>
+		</div>
+	</div>
+</div>
+<div ui-view></div>

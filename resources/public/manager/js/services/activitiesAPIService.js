@@ -2,6 +2,9 @@ angular.module("eventex").factory("activitiesAPI", function ($http){
 	var _getActivities = function(){
 		return $http.get("/activities");
 	};
+	var _getActivitiesFilteredByEvent = function(event){
+		return $http.get("/activities?event="+event.id);
+	}
 	var _getActivity = function(id){
 		return $http.get("/activities/"+id);
 	}
@@ -20,6 +23,7 @@ angular.module("eventex").factory("activitiesAPI", function ($http){
 		getActivity: _getActivity,
 		createActivity: _createActivity,
 		updateActivity: _updateActivity,
-		deleteActivity: _deleteActivity
+		deleteActivity: _deleteActivity,
+		getActivitiesFilteredByEvent: _getActivitiesFilteredByEvent
 	};
 });

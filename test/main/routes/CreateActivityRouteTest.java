@@ -6,7 +6,7 @@ import org.junit.Test;
 public class CreateActivityRouteTest extends RouteTest {
 	
 	public void responseCodeForNoRequestBody() throws Exception {
-        assertRouteResponse("POST", "/activities", 422);
+        assertRouteResponse("POST", "/activities",200);
     }
 
 	@Test@Ignore

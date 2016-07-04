@@ -89,12 +89,12 @@ angular.module("eventex").controller("registerCtrl", function($scope, uiInputAPI
         $scope.status.password = '';
         $scope.status.passwordConfirmation = '';
 	};
-	var _setUserErrors = function(){
-		$scope.status.username = response.data.invalidUsername ? 'has-error' : '';
-		$scope.status.cpf = response.data.invalidCPF ? 'has-error' : '';
-		$scope.status.email = response.data.invalidEmail ? 'has-error' : '';
-        $scope.status.password = response.data.invalidPassword ? 'has-error' : '';
-        $scope.status.passwordConfirmation = response.data.invalidPasswordConfirmation ? 'has-error' : '';
+	var _setUserErrors = function(status){
+		$scope.status.username             = status.invalidUsername ? 'has-error' : '';
+		$scope.status.cpf                  = status.invalidCPF ? 'has-error' : '';
+		$scope.status.email                = status.invalidEmail ? 'has-error' : '';
+        $scope.status.password             = status.invalidPassword ? 'has-error' : '';
+        $scope.status.passwordConfirmation = status.invalidPasswordConfirmation ? 'has-error' : '';
 	};
 	$scope.createUser = function(user){
 		usersAPI.createUser(user).then(function(response){

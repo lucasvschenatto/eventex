@@ -4,78 +4,88 @@
 	<title>Eventex</title>
 	
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
-	
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<link rel="stylesheet" type="text/css" href="css/ui.css">
 	<link rel="stylesheet" type="text/css" href="css/spinner.css">
 
-	
-	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
+	<script src="https://use.fonticons.com/86198105.js"></script>
 
-	<!-- <script src="https://use.fonticons.com/86198105.js"></script> -->
-
-
-	<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
+	<!--
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/i18n/angular-locale_pt-br.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>-->
-
+	-->
+	<!--<script type="text/javascript" src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.4.min.js"></script>-->
 
 	<script src="lib/angular/angular.js"></script>
-	<script src="lib/angular/angular-route.js"></script>
 	<script src="lib/angular/angular-ui-router.js"></script>
+	<script src="lib/angular/angular-ui-bootstrap-tpls.js"></script>
 	<script src="lib/angular/angular-locale_pt-br.js"></script>
 
 	<script src="lib/ui/ui.js"></script>
+	<script src="lib/ui/uiBlocks.js"></script>
+	<script src="lib/ui/uiTables.js"></script>
 	<script src="lib/ui/uiInputs.js"></script>
 	<script src="lib/ui/cepMask.js"></script>
 	<script src="lib/ui/cnpjMask.js"></script>
 	<script src="lib/ui/cpfMask.js"></script>
 	<script src="lib/ui/dateMask.js"></script>
 	<script src="lib/ui/phoneMask.js"></script>
+	<script src="lib/ui/timeMask.js"></script>
 	
 	<script src="js/app.js"></script>
 
-	<script src="manager/js/controller/eventsCtrl.js"></script>
-	<script src="manager/js/controller/eventDetailsCtrl.js"></script>
-	<script src="manager/js/controller/eventNewCtrl.js"></script>
+	<script src="manager/js/controller/activitiesCtrl.js"></script>
+	<script src="manager/js/controller/activityCtrl.js"></script>
 
-	<script src="manager/js/controller/activityNewCtrl.js"></script>
-	<script src="manager/js/controller/activityDetailsCtrl.js"></script>
-	
+	<script src="manager/js/controller/adminsCtrl.js"></script>
+
+	<script src="manager/js/controller/associatesCtrl.js"></script>
+	<script src="manager/js/controller/associateNewCtrl.js"></script>
+	<script src="manager/js/controller/associateDetailsCtrl.js"></script>
+
 	<script src="manager/js/controller/categoriesCtrl.js"></script>
 	<script src="manager/js/controller/categoryDetailsCtrl.js"></script>
 	<script src="manager/js/controller/categoryNewCtrl.js"></script>
 
-	<script src="manager/js/controller/associateNewCtrl.js"></script>
-	<script src="manager/js/controller/associateDetailsCtrl.js"></script>
+	<script src="manager/js/controller/eventFilterCtrl.js"></script>
+	<script src="manager/js/controller/eventsCtrl.js"></script>
+	<script src="manager/js/controller/eventDetailsCtrl.js"></script>
+	<script src="manager/js/controller/eventNewCtrl.js"></script>
+	
+	<script src="manager/js/controller/inscriptionsCtrl.js"></script>
+
+	<script src="manager/js/controller/participantsCtrl.js"></script>
 
 	<script src="manager/js/controller/professionsCtrl.js"></script>
 	<script src="manager/js/controller/professionDetailsCtrl.js"></script>
 	<script src="manager/js/controller/professionNewCtrl.js"></script>
 
 	<script src="manager/js/services/activitiesAPIService.js"></script>
+	<script src="manager/js/services/adminsAPIService.js"></script>
 	<script src="manager/js/services/associatesAPIService.js"></script>
 	<script src="manager/js/services/categoriesAPIService.js"></script>
+	
+	
 	<script src="manager/js/services/eventsAPIService.js"></script>
 	<script src="manager/js/services/inscriptionsAPIService.js"></script>
 	<script src="manager/js/services/participantsAPIService.js"></script>
 	<script src="manager/js/services/professionsAPIService.js"></script>
 
-	<script src="js/services/certificatesAPIService.js"></script>
+	<!--<script src="js/services/certificatesAPIService.js"></script>
 	<script src="js/services/usersAPIService.js"></script>
-	<script src="js/services/participantsAPIService.js"></script>
+	<script src="js/services/participantsAPIService.js"></script>-->
 
-	<!-- <script src="js/config/routeConfig.js"></script> -->
 	<script src="js/config/stateConfig.js"></script>
 	<script src="js/config/interceptorsConfig.js"></script>
 
 	<script src="js/controller/registerCtrl.js"></script>
 	
-	<script src="js/filters/nameFilter.js"></script>
-	<script src="js/filters/ellipsisFilter.js"></script>	
+	<script src="js/services/modalService.js"></script>
+	<script src="js/services/usersAPIService.js"></script>
+	
+	<script src="js/filters/nameFilter.js"></script>	
 	
 	<script src="js/interceptors/timestampInterceptor.js"></script>
 	<script src="js/interceptors/errorInterceptor.js"></script>
@@ -83,12 +93,8 @@
 </head>
 <body ng-app="eventex">
 	<nav ng-include="'view/header.html'"></nav>
-	
-
 	<div class="jumbotron" ng-show="loading" ng-include="'view/loading.html'"></div>
-	
 	<div ng-hide="loading" ui-view></div>
-
 	<footer ng-include="'view/footer.html'"></footer>
 </body>
 </html>

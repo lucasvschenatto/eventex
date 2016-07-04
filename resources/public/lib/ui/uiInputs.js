@@ -1,7 +1,7 @@
 angular.module("ui").factory("uiInputAPI", function (){
-	var _makeField = function(required, disabled, help, label, placeholder, type){
+	var _makeField = function(required, editMode, help, label, placeholder, type){
 		return {
-	    	disabled: disabled,
+	    	editMode: editMode,
 	    	help: help, 
 			label: label,
 			placeholder: placeholder,
@@ -10,11 +10,21 @@ angular.module("ui").factory("uiInputAPI", function (){
 		};
 	};
 	return {
-		makeField: _makeField,
+		makeField:_makeField
 	};
 });
 
-
+angular.module("ui").directive("uiSelect",function(){
+	var _directive = {
+		templateUrl: "/lib/ui/view/select.html",
+		scope: {
+			field: "=",
+			options: "=",
+			model: "=ngModel"
+		}
+	};
+	return _directive;
+});
 
 angular.module("ui").directive("uiInput",function(){
 	var _directive = {
@@ -23,6 +33,19 @@ angular.module("ui").directive("uiInput",function(){
 			field: "=",
 			status: "=",
 			model: "=ngModel"
+		}
+	};
+	return _directive;
+});
+angular.module("ui").directive("uiInputAddress",function(){
+	var _directive = {
+		templateUrl: "/lib/ui/view/inputAddress.html",
+		scope: {
+			title: "@",
+			field: "=",
+			editMode: "=",
+			status: "=",
+			address: "=ngModel"
 		}
 	};
 	return _directive;
@@ -77,6 +100,27 @@ angular.module("ui").directive("uiInputPhone",function(){
 		scope: {
 			field: "=",
 			status: "=",
+			model: "=ngModel"
+		}
+	};
+	return _directive;
+});
+angular.module("ui").directive("uiInputTime",function(){
+	var _directive = {
+		templateUrl: "/lib/ui/view/inputTime.html",
+		scope: {
+			field: "=",
+			status: "=",
+			model: "=ngModel"
+		}
+	};
+	return _directive;
+});
+angular.module("ui").directive("uiInputCheck",function(){
+	var _directive = {
+		templateUrl: "/lib/ui/view/inputCheck.html",
+		scope: {
+			field: "=",
 			model: "=ngModel"
 		}
 	};

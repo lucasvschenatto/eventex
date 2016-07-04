@@ -5,7 +5,7 @@ import org.junit.*;
 public class CreateInscriptionRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
-    	assertRouteResponse("POST", "/inscriptions",422);
+    	assertRouteResponse("POST", "/inscriptions",200);
 	}
 
 	@Test@Ignore

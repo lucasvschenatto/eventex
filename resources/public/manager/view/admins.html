@@ -1,0 +1,18 @@
+<div class="jumbotron">
+	<div class="form-group">
+		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
+		<div class="col-sm-10">
+		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Digite o filtro">
+		</div>
+	</div>
+	<table ng-show="admins.length > 0" class="table">
+		<th><a href="" ng-click="orderBy('name')">Nome</th>
+		<th><a href="" ng-click="orderBy('role')">Função</th>
+		<tr ng-repeat="admin in admins | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
+			<td>{{::admin.name | name}}</td>
+			<td>{{::admin.role}}</td>
+		</tr>
+	</table>
+	<button class="btn btn-primary btn-block" ng-click="new()">Novo Usuário administrador</button>
+	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
+</div>

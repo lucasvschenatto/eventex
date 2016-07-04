@@ -1,1 +1,1 @@
-angular.module("eventex",["ui","ngRoute","ui.router"]);
+angular.module("eventex",["ui.router","ui.bootstrap","ui"]);

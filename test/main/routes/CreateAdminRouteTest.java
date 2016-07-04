@@ -5,7 +5,7 @@ import org.junit.*;
 public class CreateAdminRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
-    	assertRouteResponse("POST", "/admins",422);
+    	assertRouteResponse("POST", "/admins",200);
 	}
 
 	@Test@Ignore

@@ -1,0 +1,24 @@
+<div class="jumbotron">
+	<div class="form-group">
+		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
+		<div class="col-sm-10">
+		<input name="search" class="form-control" type="text" ng-model="searchCriteria" ng-model-options='{updateOn: "default blur", debounce:{default: 500, blur: 0}}' placeholder="Digite o filtro">
+		</div>
+	</div>
+	<table ng-show="associates.length > 0" class="table">
+		<th><a href="" ng-click="orderBy('code')">Código</th>
+		<th><a href="" ng-click="orderBy('name')">Nome</th>
+		<th><a href="" ng-click="orderBy('updateDate')">Data de atualização</th>
+		<th><a href="" ng-click="orderBy('active')">Ativo</th>
+		<th style="min-width:25px" width="100/%"></th>
+		<tr ng-repeat="associate in associates | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
+			<td>{{::associate.code}}</td>
+			<td>{{::associate.name}}</td>
+			<td>{{::associate.updateDate}}</td>
+			<td>{{::associate.active}}</td>
+			<td><a class="btn btn-primary btn-block" ui-sref="associates.details({id : associate.id})">Visualizar </a></td>
+		</tr>
+	</table>
+	<button class="btn btn-primary btn-block" ng-click="new()">Novo código de associado</button>
+	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
+</div>

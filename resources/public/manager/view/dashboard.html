@@ -1,52 +1,12 @@
 <div class="jumbotron">
     <div class="row">
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <div class="caption">
-                	<a ui-sref="events" style="color:#333333">
-	                    <h3>Eventos</h3>
-	                    <div class="text-center" style="font-size: 100px">
-	                    	<span class="icon icon-calendar"></span>
-                		</div >
-                    </a>
-                    <p style="margin-top:5px">
-                        <a class="btn btn-default" ui-sref="events" role="button">Ver Todos</a>
-                        <a class="btn btn-primary" ui-sref="events.new" role="button">Adicionar</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <div class="caption">
-                    <a ui-sref="professions" style="color:#333333">
-	                    <h3>Profissões</h3>
-	                    <div class="text-center" style="font-size: 100px">
-	                        <span class="icon icon-users"></span></a>
-	            		</div >
-            		</a>
-                    <p style="margin-top:5px">
-                        <a class="btn btn-default" ui-sref="professions" role="button">Ver Todas</a>
-                        <a class="btn btn-primary" ui-sref="#professions.new" role="button">Adicionar</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <div class="caption">
-                    <a ui-sref="categories" style="color:#333333">
-	                    <h3>Categorias </h3>
-	                    <div class="text-center" style="font-size: 100px">
-	                        <span class="icon icon-puzzle-piece"></span>
-	                    </div >
-                    </a>
-                    <p style="margin-top:5px">
-                        <a class="btn btn-default" ui-sref="categories"  role="button">Ver Todas</a>
-                        <a class="btn btn-primary" ui-sref="categories.new" role="button">Adicionar</a>
-                    </p>
-                </div>
-            </div>
-        </div>
+        <ui-block name="Administradores"   color="#333333" icon="icon icon-puzzle-piece" state="admins"       ></ui-block>
+        <ui-block name="Eventos"           color="#333333" icon="icon icon-calendar"     state="events"       ></ui-block>
+        <ui-block name="Participantes"     color="#333333" icon="icon icon-puzzle-piece" state="participants" ></ui-block>
+        <ui-block name="Categorias"        color="#333333" icon="icon icon-puzzle-piece" state="categories"   ></ui-block>
+        <ui-block name="Profissões"        color="#333333" icon="icon icon-puzzle-piece" state="professions"  ></ui-block>
+        <ui-block name="Atividades"        color="#333333" icon="icon icon-puzzle-piece" state="activities"   ></ui-block>
+        <ui-block name="Inscrições"        color="#333333" icon="icon icon-puzzle-piece" state="inscriptions" ></ui-block>
+        <ui-block name="Associados"        color="#333333" icon="icon icon-puzzle-piece" state="associates"   ></ui-block>
     </div>
 </div>

@@ -5,7 +5,7 @@ import org.junit.*;
 public class CreateEventRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
-    	assertRouteResponse("POST", "/events",422);
+    	assertRouteResponse("POST", "/events",200);
 	}
 
 	@Test@Ignore

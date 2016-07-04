@@ -5,7 +5,7 @@ import org.junit.*;
 public class CreateProfessionRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
-    	assertRouteResponse("POST", "/professions",422);
+    	assertRouteResponse("POST", "/professions",200);
 	}
 
 	@Test@Ignore

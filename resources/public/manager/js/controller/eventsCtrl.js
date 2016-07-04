@@ -1,11 +1,11 @@
-angular.module("eventex").controller("eventsCtrl", function($scope,$location, events){
+angular.module("eventex").controller("eventsCtrl", function($scope,$state, events){
 	$scope.events = events.data;
 
 	$scope.orderBy = function(field){
 		$scope.orderCriteria = field;
 		$scope.orderDirection = !$scope.orderDirection;
 	};
-	$scope.newEvent = function(){
-		$location.path($location.path()+"/new_event");
-	}
+	$scope.new = function(){
+		$state.go("events.new");
+	};
 } );

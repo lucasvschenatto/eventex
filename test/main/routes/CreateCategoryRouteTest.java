@@ -5,7 +5,7 @@ import org.junit.*;
 public class CreateCategoryRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
-    	assertRouteResponse("POST", "/categories", 422);
+    	assertRouteResponse("POST", "/categories",200);
 	}
 
 	@Test@Ignore

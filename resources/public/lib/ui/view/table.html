@@ -1,0 +1,8 @@
+<table ng-show="values.length > 0" class="table table-striped">
+	<th ng-repeat="column in columns">{{column.label}}</th>
+	<th style="min-width:25px" width="100/%"></th>
+	<tr ng-repeat="row in values">
+		<td ng-repeat="column in columns">{{::row[column.name]}}</td>
+		<td><a class="btn btn-primary btn-block" ui-sref="{{state}}.details({id : row.id})">Visualizar </a></td>
+	</tr>
+</table>

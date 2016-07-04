@@ -1,17 +1,19 @@
-﻿import {certificate} from "../../domain/certificate/certificate";
-import {Injectable} from "angular2/core";
-import {Http, Response, Headers, RequestOptions} from "angular2/http";
+import {Http} from "angular2/http";
 import {Observable} from "rxjs/Observable";
-import "rxjs/Rx";
-import {BaseService} from "../../lib/base-service";
+import {Injectable} from "angular2/core";
 
 @Injectable()
-export class CertificateService extends BaseService {
+export class BaseService {
+    protected _baseUrl: string;
     private _apiUrl: string;
+
+    constructor() {
+        this._baseUrl = "http://eventex.herokuapp.com";
+    }
 
     constructor(private _http: Http) {
         super();
-        this._apiUrl = this._baseUrl + "/certificates";
+        this._apiUrl = this._baseUrl + "/events";
     }
 
     public getList() {
@@ -20,12 +22,18 @@ export class CertificateService extends BaseService {
             .catch(this.throwError);
     }
 
-    public save(domain: certificate) {
+    public save(domain:Event) {
         let body = JSON.stringify(domain);
 
         return this._http.post(this._apiUrl, body)
             .toPromise()
             .then(res => res.json())
+            .catch(this.throwError);
+    }
+
+    public del(domain:Event) {
+        return this._http.delete(this._apiUrl + "/" + domain.id)
+            .toPromise()
             .catch(this.throwError);
     }
 

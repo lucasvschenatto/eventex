@@ -1,14 +1,12 @@
 import {Event} from "../../domain/event/event";
 import {Injectable} from "angular2/core";
-import {Http, Response, Headers, RequestOptions} from "angular2/http";
+import {Http} from "angular2/http";
 import {Observable} from "rxjs/Observable";
 import "rxjs/Rx";
-import {BaseService} from "../base-service";
+import {BaseService} from "../../lib/base-service";
 
 @Injectable()
 export class EventService extends BaseService {
-    private _apiUrl: string;
-
     constructor(private _http: Http) {
         super();
         this._apiUrl = this._baseUrl + "/events";

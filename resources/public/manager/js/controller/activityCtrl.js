@@ -81,6 +81,7 @@ var _createScopeFields = function(scope, uiInputAPI, editMode){
 };
 
 var _setErrors = function(scope, status){
+	scope.status                      = {};
 	scope.status.name                 = status.invalidName          ? "has-error" : "";
 	scope.status.description          = status.invalidDescription   ? "has-error" : "";
 	scope.status.spots                = status.invalidSpots         ? "has-error" : "";

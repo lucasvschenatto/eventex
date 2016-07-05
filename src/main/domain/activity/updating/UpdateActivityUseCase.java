@@ -35,6 +35,7 @@ public class UpdateActivityUseCase extends CreateActivityUseCase{
     }
     
     protected void sendErrors() {
+    	super.sendErrors();
         ((UpdateActivityResponse)response).invalidId = !idExists();
     }
 

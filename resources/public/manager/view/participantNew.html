@@ -1,0 +1,53 @@
+<div class ="modal-content">
+	<div class="modal-header">
+        <button class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Participante:</h4>
+    </div>
+    <div class="modal-body">
+		<form class="form-horizontal" name="entityForm">
+			<ui-input       field="name"                 status="status.name"                      ng-model="entity.name"        ></ui-input>
+			<ui-input       field="user"                 status="status.user"                      ng-model="entity.user"        ></ui-input>
+			<ui-input       field="nametag"              status="status.nametag"                   ng-model="entity.nametag"     ></ui-input>
+			<ui-input       field="nationality"          status="status.nationality"               ng-model="entity.nationality" ></ui-input>
+			<ui-input       field="gender"               status="status.gender"                    ng-model="entity.gender"      ></ui-input>
+			<ui-input       field="education"            status="status.education"                 ng-model="entity.education"   ></ui-input>
+			<ui-input       field="birth"                status="status.birth"                     ng-model="entity.birth"       ></ui-input>
+			<h4>Contato Pessoal</h4>
+			<hr>
+			<ui-input       field="address.street"       status="status.homeAddress.street"        ng-model="entity.homeAddress.street"       ></ui-input>
+			<ui-input       field="address.number"       status="status.homeAddress.number"        ng-model="entity.homeAddress.number"       ></ui-input>
+			<ui-input       field="address.complement"   status="status.homeAddress.complement"    ng-model="entity.homeAddress.complement"   ></ui-input>
+			<ui-input       field="address.neighborhood" status="status.homeAddress.neighborhood"  ng-model="entity.homeAddress.neighborhood" ></ui-input>
+			<ui-input       field="address.city"         status="status.homeAddress.city"          ng-model="entity.homeAddress.city"         ></ui-input>
+			<ui-input       field="address.state"        status="status.homeAddress.state"         ng-model="entity.homeAddress.state"        ></ui-input>
+			<ui-input       field="address.country"      status="status.homeAddress.country"       ng-model="entity.homeAddress.country"      ></ui-input>
+			<ui-input-cep   field="address.cep"          status="status.homeAddress.cep"           ng-model="entity.homeAddress.cep"          ></ui-input-cep>
+			<ui-input-phone field="phone"                status="status.homePhone"                 ng-model="entity.homePhone"                ></ui-input-phone>
+			<ui-input-phone field="phone"                status="status.cellPhone"                 ng-model="entity.cellPhone"                ></ui-input-phone>
+			<h4>Contato Comercial</h4>
+			<hr>
+			<ui-input       field="profession"           status="status.profession"                ng-model="entity.profession"               ></ui-input>
+			<ui-input       field="organization"         status="status.organization"              ng-model="entity.organization"             ></ui-input>
+			<ui-input       field="departiment"          status="status.department"                ng-model="entity.departiment"              ></ui-input>
+			<ui-input       field="role"                 status="status.role"                      ng-model="entity.role"                     ></ui-input>
+			<ui-input       field="address.street"       status="status.workAddress.street"        ng-model="entity.workAddress.street"       ></ui-input>
+			<ui-input       field="address.number"       status="status.workAddress.number"        ng-model="entity.workAddress.number"       ></ui-input>
+			<ui-input       field="address.complement"   status="status.workAddress.complement"    ng-model="entity.workAddress.complement"   ></ui-input>
+			<ui-input       field="address.neighborhood" status="status.workAddress.neighborhood"  ng-model="entity.workAddress.neighborhood" ></ui-input>
+			<ui-input       field="address.city"         status="status.workAddress.city"          ng-model="entity.workAddress.city"         ></ui-input>
+			<ui-input       field="address.state"        status="status.workAddress.state"         ng-model="entity.workAddress.state"        ></ui-input>
+			<ui-input       field="address.country"      status="status.workAddress.country"       ng-model="entity.workAddress.country"      ></ui-input>
+			<ui-input-cep   field="address.cep"          status="status.workAddress.cep"           ng-model="entity.workAddress.cep"          ></ui-input-cep>
+			<ui-input-phone field="phone"                status="status.workPhone"                 ng-model="entity.workPhone"                ></ui-input-phone>
+			<ui-input-phone field="phone"                status="status.workCellPhone"             ng-model="entity.workCellPhone"            ></ui-input-phone>
+			<ui-input       field="email"                status="status.workEmail"                 ng-model="entity.workEmail"                ></ui-input>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+				    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+				    <button class="btn btn-danger"  ng-click="delete(entity)" >Excluir</button>
+				    <button class="btn btn-primary" ng-click="submit(entity)" ng-disabled="entityForm.$error.required" >Salvar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

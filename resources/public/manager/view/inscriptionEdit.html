@@ -5,10 +5,10 @@
     </div>
     <div class="modal-body">
 		<form class="form-horizontal" name="entityForm">
-			<ui-input       field="name"                  status="status.name"        ng-model="entity.name"                  ></ui-input>
-			<ui-input       field="discount"              status="status.discount"    ng-model="entity.discount"              ></ui-input>
-			<ui-input-check field="needCodeAtInscription"                             ng-model="entity.needCodeAtInscription" ></ui-input-check>
-			<ui-input       field="description"           status="status.description" ng-model="entity.description"           ></ui-input>
+			<ui-input field="participant"    status="status.participant"    ng-model="entity.participantId"    ></ui-input>
+			<ui-input field="activity"       status="status.activity"       ng-model="entity.activityId"       ></ui-input>
+			<ui-input field="category"       status="status.category"       ng-model="entity.categoryId"       ></ui-input>
+			<ui-input field="associateCode"  status="status.associateCode"  ng-model="entity.associateCode"  ></ui-input>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 				    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>

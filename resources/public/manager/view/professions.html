@@ -1,4 +1,7 @@
 <div class="jumbotron">
+	<div class="row">
+		<p >Exibindo Profissões</p>
+	</div>
 	<div class="form-group">
 		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
 		<div class="col-sm-10">
@@ -12,9 +15,14 @@
 		<tr ng-repeat="profession in professions | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
 			<td>{{::profession.name | name}}</a></td>
 			<td>{{::profession.description}}</td>
-			<td><a class="btn btn-primary btn-block" ui-sref="admins.details({id : profession.id})">Visualizar </a></td>
+			<td><a class="btn btn-primary btn-block" ng-click="edit(profession)">Editar</a></td>
 		</tr>
 	</table>
-	<button class="btn btn-primary btn-block" ng-click="new()">Nova Profissão</button>
-	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
+	<div class="form-group">
+		<div class="col-sm-offset-6 col-sm-10">
+		    <button class="btn btn-default" ng-click="back()">Voltar</button>
+		    <button class="btn btn-primary" ng-click="new()">Nova Profissão</button>
+		</div>
+	</div>
 </div>
+<div ui-view></div>

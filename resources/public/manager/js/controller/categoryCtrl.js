@@ -31,7 +31,7 @@ angular.module("eventex").controller("categoryNewCtrl", function($scope,$modalIn
 		$modalInstance.dismiss();
 	};
 } );
-angular.module("eventex").controller("categoryEditCtrl", function($scope,$modalInstance,uiInputAPI, data){
+angular.module("eventex").controller("categoryEditCtrl", function($scope,$modalInstance,uiInputAPI, categoriesAPI, data){
 	$scope.entity = data;
 	_categoryScopeFields($scope, uiInputAPI, true);
 

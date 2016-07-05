@@ -22,7 +22,6 @@ public class UpdateParticipantRoute implements Route {
     	input.id = request.params(":id");
         UpdateParticipantResponse output = new UpdateParticipantResponse();
         new UpdateParticipantUseCase(dependencies.getParticipantRepository(), input, output).execute();
-        if(!output.success) response.status(404);
         return converter.toJson(output);
     }
 }

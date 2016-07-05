@@ -23,7 +23,6 @@ public class UpdateAssociateRoute implements Route {
         UpdateAssociateResponse output = new UpdateAssociateResponse();
         new UpdateAssociateUseCase(dependencies.getAssociateRepository(), dependencies.getCategoryRepository(),
         		input, output).execute();
-        if(!output.success) response.status(404);
         return converter.toJson(output);
     }
 }

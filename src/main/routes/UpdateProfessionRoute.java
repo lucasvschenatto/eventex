@@ -22,7 +22,6 @@ public class UpdateProfessionRoute implements Route {
     	input.id = request.params(":id");
         UpdateProfessionResponse output = new UpdateProfessionResponse();
         new UpdateProfessionUseCase(dependencies.getProfessionRepository(), input, output).execute();
-        if(!output.success) response.status(404);
         return converter.toJson(output);
     }
 }

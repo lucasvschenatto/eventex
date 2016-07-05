@@ -22,7 +22,6 @@ public class UpdateAdminRoute implements Route {
     	input.id = request.params(":id");
         UpdateAdminResponse output = new UpdateAdminResponse();
         new UpdateAdminUseCase(dependencies.getAdminRepository(), input, output).execute();
-        if(!output.success) response.status(404);
         return converter.toJson(output);
     }
 }

@@ -15,13 +15,21 @@
 			<ui-input-date    field="date"          status="status.date"        ng-model="entity.date"          ></ui-input-date>
 			<ui-input-time    field="time"          status="status.time"        ng-model="entity.time"          ></ui-input-time>
 			<ui-input         field="place"         status="status.place"       ng-model="entity.place"         ></ui-input>
-			<ui-input-address field="address"       status="status.address"     ng-model="entity.address"       ></ui-input-address>
+			<h4>Endereço</h4>
+			<hr>
+			<ui-input       field="address.street"       status="status.address.street"        ng-model="entity.address.street"       ></ui-input>
+			<ui-input       field="address.number"       status="status.address.number"        ng-model="entity.address.number"       ></ui-input>
+			<ui-input       field="address.complement"   status="status.address.complement"    ng-model="entity.address.complement"   ></ui-input>
+			<ui-input       field="address.neighborhood" status="status.address.neighborhood"  ng-model="entity.address.neighborhood" ></ui-input>
+			<ui-input       field="address.city"         status="status.address.city"          ng-model="entity.address.city"         ></ui-input>
+			<ui-input       field="address.state"        status="status.address.state"         ng-model="entity.address.state"        ></ui-input>
+			<ui-input       field="address.country"      status="status.address.country"       ng-model="entity.address.country"      ></ui-input>
+			<ui-input-cep   field="address.cep"          status="status.address.cep"           ng-model="entity.address.cep"          ></ui-input-cep>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 				    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
-				    <button class="btn btn-danger"  ng-click="delete(entity)" ng-show="editMode">Excluir</button>
-					<button class="btn btn-primary" ng-click="edit()"         ng-hide="editMode"><span aria-hidden="true">Editar</span></button>
-				    <button class="btn btn-primary" ng-click="submit(entity)" ng-show="editMode" ng-disabled="entityForm.$error.required" >Salvar</button>
+				    <button class="btn btn-danger"  ng-click="delete(entity)" >Excluir</button>
+				    <button class="btn btn-primary" ng-click="submit(entity)" ng-disabled="entityForm.$error.required" >Salvar</button>
 				</div>
 			</div>
 		</form>

@@ -22,7 +22,6 @@ public class UpdateActivityRoute implements Route {
 		UpdateActivityResponse output = new UpdateActivityResponse();
 		new UpdateActivityUseCase(dependencies.getActivityRepository(),dependencies.getEventRepository(),
 				input,output).execute();
-		if(!output.success) response.status(404);
 		return converter.toJson(output);
 	}
 

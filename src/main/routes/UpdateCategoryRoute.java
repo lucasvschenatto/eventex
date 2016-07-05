@@ -22,7 +22,6 @@ public class UpdateCategoryRoute implements Route {
     	input.id = request.params(":id");
         UpdateCategoryResponse output = new UpdateCategoryResponse();
         new UpdateCategoryUseCase(dependencies.getCategoryRepository(), input, output).execute();
-        if(!output.success) response.status(404);
         return converter.toJson(output);
     }
 }

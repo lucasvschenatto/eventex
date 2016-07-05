@@ -25,7 +25,6 @@ public class UpdateInscriptionRoute implements Route {
         		dependencies.getParticipantRepository(), dependencies.getActivityRepository(),
         		dependencies.getCategoryRepository(), dependencies.getAssociateRepository(),
         		input, output).execute();
-        if(!output.success) response.status(404);
         return converter.toJson(output);
     }
 }

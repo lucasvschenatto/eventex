@@ -1,16 +1,16 @@
 <div class ="modal-content">
 	<div class="modal-header">
         <button class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Profissão:</h4>
+        <h4 class="modal-title">Perfil de administrador:</h4>
     </div>
     <div class="modal-body">
 		<form class="form-horizontal" name="entityForm">
-			<ui-input field="name"        status="status.name"        ng-model="entity.name"     ></ui-input>
-			<ui-input field="description" status="status.description" ng-model="entity.description" ></ui-input>
+			<ui-input  field="user"  status="status.user"  ng-model="entity.user"  ></ui-input>
+			<ui-input  field="name"  status="status.name"  ng-model="entity.name"  ></ui-input>
+			<ui-input  field="role"  status="status.role"  ng-model="entity.role"  ></ui-input>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 				    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
-				    <button class="btn btn-danger"  ng-click="delete(entity)" >Excluir</button>
 				    <button class="btn btn-primary" ng-click="submit(entity)" ng-disabled="entityForm.$error.required" >Salvar</button>
 				</div>
 			</div>

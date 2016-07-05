@@ -77,12 +77,7 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
             parent: "eventFilter",
             url: "/inscriptions",
             templateUrl: "manager/view/inscriptions.html",
-            controller: "inscriptionsCtrl",
-            resolve: {
-                inscriptions: function(inscriptionsAPI, event){
-                    return inscriptionsAPI.getAll();
-                }
-            }
+            controller: "inscriptionsCtrl"
         })
         .state("participants",{
             url: _managerBase+"/participants",
@@ -97,12 +92,7 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
         .state("professions",{
             url: _managerBase+"/professions",
             templateUrl: "manager/view/professions.html",
-            controller: "professionsCtrl",
-            resolve: {
-                professions: function (professionsAPI){
-                    return professionsAPI.getAll();
-                }
-            }
+            controller: "professionsCtrl"
         })
     $urlRouterProvider.otherwise('/');    
 });

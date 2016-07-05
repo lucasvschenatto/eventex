@@ -1,20 +1,21 @@
-angular.module("eventex").controller("professionsCtrl", function($scope,$state, modal, professions){
-	$scope.professions = professions.data;
+angular.module("eventex").controller("professionsCtrl", function($scope,$state, modal, professionsAPI){
+	professionsAPI.getAll().then(function(result){
+		$scope.professions = result.data;
+	});
 
 	$scope.orderBy = function(field){
 		$scope.orderCriteria = field;
 		$scope.orderDirection = !$scope.orderDirection;
 	};
 	$scope.new = function(){
-		var _new = modal("manager/view/professionNew.html","professionNewCtrl").then(function(result){
-			$state.reload();
-		});
-	};
-	$scope.edit = function(profession){
-		modal("manager/view/professionEdit.html","professionEditCtrl", profession).then(function(changed){
-			if(changed)
+		var _new = modal("manager/view/professionNew.html","professionNewCtrl").then(function(created){
+			if(created)
 				$state.reload();
 		});
+	};
+	$scope.delete = function(profession){
+		professionsAPI.delete(profession);
+		$state.reload();
 	};
 	$scope.reload = function(){
 		$state.reload();

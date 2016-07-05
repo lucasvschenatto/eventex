@@ -1,5 +1,7 @@
-angular.module("eventex").controller("inscriptionsCtrl", function($scope,$state, modal, inscriptions){
-	$scope.inscriptions = inscriptions.data;
+angular.module("eventex").controller("inscriptionsCtrl", function($scope,$state, modal, inscriptionsAPI){
+	inscriptionsAPI.getAll().then(function(response){
+		$scope.inscriptions = response.data;
+	});
 
 	$scope.orderBy = function(field){
 		$scope.orderCriteria = field;
@@ -10,11 +12,9 @@ angular.module("eventex").controller("inscriptionsCtrl", function($scope,$state,
 			$state.reload();
 		});
 	};
-	$scope.edit = function(inscription){
-		modal("manager/view/inscriptionEdit.html","inscriptionEditCtrl", inscription).then(function(changed){
-			if(changed)
-				$state.reload();
-		});
+	$scope.delete = function(inscription){
+		inscriptionsAPI.delete(inscription);
+		$state.reload();
 	};
 	$scope.reload = function(){
 		$state.reload();

@@ -31,25 +31,3 @@ angular.module("eventex").controller("inscriptionNewCtrl", function($scope,$moda
 		$modalInstance.dismiss();
 	};
 } );
-angular.module("eventex").controller("inscriptionEditCtrl", function($scope,$modalInstance,uiInputAPI, inscriptionsAPI, data){
-	$scope.entity = data;
-	_inscriptionScopeFields($scope, uiInputAPI, true);
-
-	$scope.delete = function(inscription){
-		inscriptionsAPI.delete(inscription);
-		$modalInstance.close('deleted');
-	};
-	$scope.submit = function(inscription){
-		inscriptionsAPI.update(inscription).then(function(response){
-			if(response.data.success)
-				inscriptionsAPI.get(inscription.id).then(function(response){
-					$scope.entity = response.data;
-				});
-			else
-				_setInscriptionErrors($scope,response.data);
-		});
-	};
-	$scope.cancel = function(){
-		$modalInstance.dismiss();
-	};
-} );

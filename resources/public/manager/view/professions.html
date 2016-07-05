@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron">
 	<div class="row">
 		<p >Exibindo Profissões</p>
 	</div>
@@ -15,7 +15,7 @@
 		<tr ng-repeat="profession in professions | filter:searchCriteria | orderBy:orderCriteria:orderDirection">
 			<td>{{::profession.name | name}}</a></td>
 			<td>{{::profession.description}}</td>
-			<td><a class="btn btn-primary btn-block" ng-click="edit(profession)">Editar</a></td>
+			<td><a class="btn btn-danger btn-block" ng-click="delete(profession)">Excluir</a></td>
 		</tr>
 	</table>
 	<div class="form-group">

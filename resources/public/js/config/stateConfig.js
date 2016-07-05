@@ -14,19 +14,8 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
         .state("admins",{
             url: _managerBase+"/admins",
             templateUrl: "manager/view/admins.html",
-            controller: "adminsCtrl",
-            resolve: {
-                admins: function (adminsAPI){
-                    return adminsAPI.getAdmins();
-                }
-            }
+            controller: "adminsCtrl"
         })
-        .state("admins.new",{
-            url: "/new_admin",
-            templateUrl: "manager/view/adminNew.html",
-            controller: "adminNewCtrl"
-        })
-        
         .state("eventFilter",{
             abstract: true,
             url: _managerBase,
@@ -45,41 +34,20 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
         })
         
         .state("categoryFilter",{
+            abstract: true,
             url: _managerBase,
+            template: "<ui-view/>",
             resolve: {
-                category: function(categoriesAPI){
-                    return {id:"categoryId"};
+                category: function(modal){
+                    return modal('manager/view/categoryFilter.html','categoryFilterCtrl');
                 }
             }
         })
-        .state("categoryFilter.associates",{
+        .state("associates",{
+            parent: "categoryFilter",
             url: "/associates",
             templateUrl: "manager/view/associates.html",
-            controller: "associatesCtrl",
-            resolve: {
-                associates: function(associatesAPI, category){
-                    return associatesAPI.getAssociatesFilteredByCategory(category.id);
-                }
-            }
-        })
-        .state("categoryFilter.associates.new",{
-            url: "/new_associate",
-            templateUrl: "manager/view/associateNew.html",
-            controller: "associateNewController",
-            resolve: {
-                category: function(category){return category;}
-            }
-        })
-        .state("categoryFilter.associates.details",{
-            url: "/:id",
-            templateUrl: "manager/view/associateDetails.html",
-            controller: "associateDetailsCtrl",
-            resolve: {
-                associate: function(associatesAPI, $stateParams){
-                    return associatesAPI.getAssociate($stateParams.id);
-                },
-                category: function(category){return category;}
-            }
+            controller: "associatesCtrl"
         })
 
         .state("categories",{
@@ -88,29 +56,7 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
             controller: "categoriesCtrl",
             resolve: {
                 categories: function (categoriesAPI){
-                    return categoriesAPI.getCategories();
-                }
-            }
-        }).state("categories.new",{
-            url: "/new_category",
-            templateUrl: "manager/view/categoryNew.html",
-            controller: "categoryNewCtrl"
-        })
-        .state("categories.details",{
-            url: "/:id",
-            templateUrl: "manager/view/categoryDetails.html",
-            controller: "categoryDetailsCtrl",
-            resolve: {
-                category: function (categoriesAPI, $stateParams){
-                    return categoriesAPI.getCategory($stateParams.id);
-                },
-                associates: function(associatesAPI, $stateParams){
-                    return associatesAPI.getAssociates().then(function(response){
-                        response.data = response.data.filter(function(associate){
-                            return associate.categoryId == $stateParams.id;
-                        });
-                        return response;
-                    });
+                    return categoriesAPI.getAll();
                 }
             }
         })
@@ -120,7 +66,7 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
             controller: "eventsCtrl",
             resolve: {
                 events: function (eventsAPI){
-                    return eventsAPI.getEvents();
+                    return eventsAPI.getAll();
                 }
             }
         })

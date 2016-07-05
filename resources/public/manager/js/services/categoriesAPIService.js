@@ -16,10 +16,10 @@ angular.module("eventex").factory("categoriesAPI", function ($http){
 	}
 	
 	return {
-		getCategories: _getCategories,
-		getCategory: _getCategory,
-		createCategory: _createCategory,
-		updateCategory: _updateCategory,
-		deleteCategory: _deleteCategory
+		getAll: _getCategories,
+		get: _getCategory,
+		create: _createCategory,
+		update: _updateCategory,
+		delete: _deleteCategory
 	};
 });

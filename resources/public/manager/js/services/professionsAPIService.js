@@ -16,10 +16,10 @@ angular.module("eventex").factory("professionsAPI", function ($http){
 	}
 	
 	return {
-		getProfessions: _getProfessions,
-		getProfession: _getProfession,
-		createProfession: _createProfession,
-		updateProfession: _updateProfession,
-		deleteProfession: _deleteProfession
+		getAll: _getProfessions,
+		get: _getProfession,
+		create: _createProfession,
+		update: _updateProfession,
+		delete: _deleteProfession
 	};
 });

@@ -1,14 +1,20 @@
-<div class="jumbotron">
-	<form name="associateForm">
-		<input class="form-control" type="text" ng-model="associate.code" name="code" placeholder="código" ng-required="true" ng-minlength="6" />
-		<input class="form-control" type="text" ng-model="associate.name" name="name" placeholder="Nome" ng-required="true" ng-minlength="3" />
-		<input class="form-control" type="text" ng-model="associate.active" name="active" placeholder="Ativo" ng-required="true"/>
-		<input class="form-control" type="text" ng-model="associate.updateDate" name="updateDate" placeholder="Data de atualização"/>
-	</form>
-	<div ng-messages="associateForm.name.$error" class="alert-danger" ng-show="associateForm.name.$dirty">
-		<div ng-message="required"> por favor preencha o nome</div>
-		<div ng-message="minlength"> o campo nome deve ter no mpinimo 3 caracteres</div>
+<div class ="modal-content">
+	<div class="modal-header">
+        <button class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Código de associados e conveniados:</h4>
+    </div>
+    <div class="modal-body">
+		<form class="form-horizontal" name="entityForm">
+			<ui-input         field="name"       status="status.name"       ng-model="entity.name"       ></ui-input>
+			<ui-input         field="code"       status="status.code"       ng-model="entity.code"       ></ui-input>
+			<ui-input-date    field="updateDate" status="status.updateDate" ng-model="entity.updateDate" ></ui-input-date>
+			<ui-input-check   field="active"                                ng-model="entity.active"     ></ui-input-check>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+				    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+				    <button class="btn btn-primary" ng-click="submit(entity)" ng-disabled="entityForm.$error.required" >Salvar</button>
+				</div>
+			</div>
+		</form>
 	</div>
-	<button class="btn btn-primary btn-block" ng-click="createAssociate(associate)">Salvar</button>
-	<a href="#/manager/categories/{{associate.categoryId}}" class="btn btn-default btn-block">Cancelar</a>
 </div>

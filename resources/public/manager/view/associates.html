@@ -1,4 +1,8 @@
 <div class="jumbotron">
+	<div class="row">
+		<p >Exibindo códigos de associado/conveniado da categoria {{category.name}} <a href="" class=" btn btn-primary" ng-click="reload()">Outra categoria</a></p>
+		
+	</div>
 	<div class="form-group">
 		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
 		<div class="col-sm-10">
@@ -16,9 +20,14 @@
 			<td>{{::associate.name}}</td>
 			<td>{{::associate.updateDate}}</td>
 			<td>{{::associate.active}}</td>
-			<td><a class="btn btn-primary btn-block" ui-sref="associates.details({id : associate.id})">Visualizar </a></td>
+			<td><a class="btn btn-primary btn-block" ng-click="edit(associate)">Editar</a></td>
 		</tr>
 	</table>
-	<button class="btn btn-primary btn-block" ng-click="new()">Novo código de associado</button>
-	<a href="#/manager" class="btn btn-default btn-block">Voltar</a>
+	<div class="form-group">
+		<div class="col-sm-offset-6 col-sm-10">
+		    <button class="btn btn-default" ng-click="back()">Voltar</button>
+		    <button class="btn btn-primary" ng-click="new()">Novo código</button>
+		</div>
+	</div>
 </div>
+<div ui-view></div>

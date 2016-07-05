@@ -2,12 +2,12 @@ angular.module("eventex").controller("activitiesCtrl", function($scope,$state, a
 	$scope.event = event;
 
 	var loadFiltered = function(){
-		activitiesAPI.getActivitiesFilteredByEvent(event).then(function(result){
+		activitiesAPI.getFiltered(event).then(function(result){
 			$scope.activities = result.data;
 		});
 	};
 
-	activitiesAPI = loadFiltered();
+	loadFiltered();
 
 	$scope.orderBy = function(field){
 		$scope.orderCriteria = field;
@@ -18,8 +18,8 @@ angular.module("eventex").controller("activitiesCtrl", function($scope,$state, a
 			$state.reload();
 		});
 	};
-	$scope.details = function(activity){
-		modal("manager/view/activityDetails.html","activityDetailsCtrl", activity).then(function(changed){
+	$scope.edit = function(activity){
+		modal("manager/view/activityEdit.html","activityEditCtrl", activity).then(function(changed){
 			if(changed)
 				$state.reload();
 		});

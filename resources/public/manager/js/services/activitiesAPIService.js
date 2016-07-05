@@ -19,11 +19,11 @@ angular.module("eventex").factory("activitiesAPI", function ($http){
 	}
 	
 	return {
-		getActivities: _getActivities,
-		getActivity: _getActivity,
-		createActivity: _createActivity,
-		updateActivity: _updateActivity,
-		deleteActivity: _deleteActivity,
-		getActivitiesFilteredByEvent: _getActivitiesFilteredByEvent
+		getAll: _getActivities,
+		get: _getActivity,
+		create: _createActivity,
+		update: _updateActivity,
+		delete: _deleteActivity,
+		getFiltered: _getActivitiesFilteredByEvent
 	};
 });

@@ -5,7 +5,7 @@ angular.module("eventex").controller("eventFilterCtrl", function($scope,$modalIn
 		required:"true",
 	}
 	
-	eventsAPI.getEvents().then(function(response){
+	eventsAPI.getAll().then(function(response){
 		$scope.events = response.data;
 	});
 

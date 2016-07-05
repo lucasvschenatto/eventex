@@ -16,10 +16,10 @@ angular.module("eventex").factory("participantsAPI", function ($http){
 	};
 	
 	return {
-		getParticipants: _getParticipants,
-		getParticipant: _getParticipant,
-		createParticipant: _createParticipant,
-		updateParticipant: _updateParticipant,
-		deleteParticipant: _deleteParticipant
+		getAll: _getParticipants,
+		get: _getParticipant,
+		create: _createParticipant,
+		update: _updateParticipant,
+		delete: _deleteParticipant
 	};
 });

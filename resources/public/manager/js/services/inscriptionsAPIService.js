@@ -16,10 +16,10 @@ angular.module("eventex").factory("inscriptionsAPI", function ($http){
 	}
 	
 	return {
-		getInscriptions: _getInscriptions,
-		getInscription: _getInscription,
-		createInscription: _createInscription,
-		updateInscription: _updateInscription,
-		deleteInscription: _deleteInscription
+		getAll: _getInscriptions,
+		get: _getInscription,
+		create: _createInscription,
+		update: _updateInscription,
+		delete: _deleteInscription
 	};
 });

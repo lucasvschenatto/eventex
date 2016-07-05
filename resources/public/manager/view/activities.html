@@ -1,7 +1,6 @@
 <div class="jumbotron">
 	<div class="row">
 		<p >Exibindo atividades do evento {{event.name}} <a href="" class=" btn btn-primary" ng-click="reload()">Outro evento</a></p>
-		
 	</div>
 	<div class="form-group">
 		<label class="input-group control-label" for="text" style="float:left;margin-right:5px;">Pesquisa:</label>
@@ -20,7 +19,7 @@
 			<td>{{::activity.date | date:"dd/MM/yyyy"}}</td>
 			<td>{{::activity.place}}</td>
 			<td>{{::activity.description}}</td>
-			<td><a class="btn btn-primary btn-block" ng-click="details(activity)">Visualizar </a></td>
+			<td><a class="btn btn-primary btn-block" ng-click="edit(activity)">Editar</a></td>
 		</tr>
 	</table>
 	<div class="form-group">

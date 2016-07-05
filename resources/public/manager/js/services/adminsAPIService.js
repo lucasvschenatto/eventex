@@ -16,10 +16,10 @@ angular.module("eventex").factory("adminsAPI", function ($http){
 	}
 	
 	return {
-		getAdmins: _getAdmins,
-		getAdmin: _getAdmin,
-		createAdmin: _createAdmin,
-		updateAdmin: _updateAdmin,
-		deleteAdmin: _deleteAdmin
+		getAll: _getAdmins,
+		get: _getAdmin,
+		create: _createAdmin,
+		update: _updateAdmin,
+		delete: _deleteAdmin
 	};
 });

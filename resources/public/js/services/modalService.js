@@ -7,8 +7,9 @@ angular.module("eventex").service("modal", function ($modal){
             resolve:{
             	data:data
             }
-            }).result.then(function(result){
+        })
+        .result.then(function(result){
                 return result;
-            });
+        });
     };
 });

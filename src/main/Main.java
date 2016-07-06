@@ -7,8 +7,6 @@ import static spark.Spark.put;
 import static spark.SparkBase.externalStaticFileLocation;
 import static spark.SparkBase.port;
 
-import java.util.HashMap;
-
 import main.domain.RepositoryFactory;
 import main.persistence.mongo.MongoFactory;
 import main.routes.*;
@@ -27,18 +25,18 @@ public class Main {
 		setUpPort();
 		setUpStaticFiles();
 		setUpRoutes();
-		setUpCors();
+		//setUpCors();
 		setUpPDFResponses();
 	}
 
-    private void setUpCors() {
-    	HashMap<String, String> corsHeaders = new HashMap<String, String>();
-            corsHeaders.put("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-            corsHeaders.put("Access-Control-Allow-Origin", "*");
-            corsHeaders.put("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
-            corsHeaders.put("Access-Control-Allow-Credentials", "true");
-    	Spark.after((req, res) -> corsHeaders.forEach((key, value) -> res.header(key, value)));
-	}
+//    private void setUpCors() {
+//    	HashMap<String, String> corsHeaders = new HashMap<String, String>();
+//            corsHeaders.put("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+//            corsHeaders.put("Access-Control-Allow-Origin", "*");
+//            corsHeaders.put("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
+//            corsHeaders.put("Access-Control-Allow-Credentials", "true");
+//    	Spark.after((req, res) -> corsHeaders.forEach((key, value) -> res.header(key, value)));
+//	}
 	private void setUpPDFResponses() {
 		Spark.after("pdf/*", (req,res) -> { 
         	res.header("Content-type", "application/pdf");

@@ -6,7 +6,7 @@ public class CreateCertificateRouteTest extends RouteTest {
 
 	@Override
 	public void responseCodeForNoRequestBody() throws Exception {
-		assertRouteResponse("POST", "/certificates",200);
+		assertRouteResponse("POST", "/certificates",404);
 	}
 
 	@Test@Ignore

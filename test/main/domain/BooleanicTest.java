@@ -34,17 +34,13 @@ public class BooleanicTest {
     }
 
     @Test
-    public void givennotBoolean_itIsInvalid() {
-    	assertFalse(new Booleanic("not a boolean").isValid());
-        assertFalse(new Booleanic("1").isValid());
-        assertFalse(new Booleanic("").isValid());
-        assertFalse(new Booleanic(null).isValid());
-    }
-
-    @Test
-    public void givenBoolean_itIsValid() {
+    public void itIsAlwaysValid() {
     	assertTrue(new Booleanic("true").isValid());
-    	assertTrue(new Booleanic("false").isValid());;
+    	assertTrue(new Booleanic("false").isValid());
+    	assertTrue(new Booleanic("not a boolean").isValid());
+        assertTrue(new Booleanic("1").isValid());
+        assertTrue(new Booleanic("").isValid());
+        assertTrue(new Booleanic(null).isValid());
     }
 
     @Test

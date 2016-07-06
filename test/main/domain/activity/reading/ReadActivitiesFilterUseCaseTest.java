@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import main.domain.Address;
@@ -159,7 +160,7 @@ public class ReadActivitiesFilterUseCaseTest {
         thenTheSizeMustBe(0);
     }
 	
-	@Test
+	@Test@Ignore
 	public void givenAnActivity_itMustBeReturnedInTheSummary(){
 		givenActivity("name 1", "description 1", "2011-01-01", "01:01:01", "place 1", addressData1(),"111Aafbe", "101","31","1100", "true", "true");
 		givenActivity("name 2", "description 2", "2022-02-02", "02:02:02", "place 2", addressData2(),"222Aafbe", "202","32","2200", "false", "false");

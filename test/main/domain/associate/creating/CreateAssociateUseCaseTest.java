@@ -194,30 +194,6 @@ public class CreateAssociateUseCaseTest {
     }
     
     @Test
-    public void givenNullActive_itIsInvalid() {
-    	givenAssociateInformation(VALID_CATEGORY_ID, VALID_CODE, VALID_NAME, VALID_UPDATE_DATE, null);
-    	whenCreatingTheAssociate();
-    	thenItShouldNotBeCreated();
-    	andItShouldReturnTheErrors("invalidActive");
-    }
-    
-    @Test
-    public void givenEmptyActive_itIsInvalid() {
-    	givenAssociateInformation(VALID_CATEGORY_ID, VALID_CODE, VALID_NAME, VALID_UPDATE_DATE, "");
-    	whenCreatingTheAssociate();
-    	thenItShouldNotBeCreated();
-    	andItShouldReturnTheErrors("invalidActive");
-    }
-    
-    @Test
-    public void givenActiveWithOnlySpaces_itIsInvalid() {
-    	givenAssociateInformation(VALID_CATEGORY_ID, VALID_CODE, VALID_NAME, VALID_UPDATE_DATE, "    ");
-    	whenCreatingTheAssociate();
-    	thenItShouldNotBeCreated();
-    	andItShouldReturnTheErrors("invalidActive");
-    }
-
-    @Test
     public void givenAllValidInput_theAssociateMustBeCreated() {
         givenAssociateInformation(VALID_CATEGORY_ID, VALID_CODE, VALID_NAME, VALID_UPDATE_DATE, VALID_ACTIVE);
         whenCreatingTheAssociate();

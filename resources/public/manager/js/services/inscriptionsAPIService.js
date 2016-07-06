@@ -2,6 +2,9 @@ angular.module("eventex").factory("inscriptionsAPI", function ($http){
 	var _getInscriptions = function(){
 		return $http.get("/inscriptions");
 	};
+	var _getInscriptionsFilteredByActivity = function(activity){
+		return $http.get("/inscriptions?activity="+activity.id);
+	}
 	var _getInscription = function(id){
 		return $http.get("/inscriptions/"+id);
 	}
@@ -20,6 +23,7 @@ angular.module("eventex").factory("inscriptionsAPI", function ($http){
 		get: _getInscription,
 		create: _createInscription,
 		update: _updateInscription,
-		delete: _deleteInscription
+		delete: _deleteInscription,
+		getFiltered: _getInscriptionsFilteredByActivity
 	};
 });

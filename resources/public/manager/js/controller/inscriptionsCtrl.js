@@ -1,6 +1,6 @@
 angular.module("eventex").controller("inscriptionsCtrl", function($scope,$state, modal, activity, inscriptionsAPI){
 	$scope.activity = activity;
-	inscriptionsAPI.getAll().then(function(response){
+	inscriptionsAPI.getFiltered(activity).then(function(response){
 		$scope.inscriptions = response.data;
 	});
 

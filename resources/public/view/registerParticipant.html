@@ -35,14 +35,6 @@
     <ui-input-phone field="phone"                status="status.workPhone"                 ng-model="participant.workPhone"                ></ui-input-phone>
     <ui-input-phone field="cellPhone"            status="status.workCellPhone"             ng-model="participant.workCellPhone"            ></ui-input-phone>
     <ui-input       field="email"                status="status.workEmail"                 ng-model="participant.workEmail"                ></ui-input>
-
-
-
-
-
-
-
-
 </form>
 <div class="col-sm-offset-2 col-sm-10">
     <button ng-disabled="participantForm.$error.required" class="btn btn-primary" ng-click="createParticipant(participant)">Salvar perfil</button>

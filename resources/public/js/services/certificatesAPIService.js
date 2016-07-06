@@ -1,8 +1,8 @@
 angular.module("eventex").factory("certificatesAPI", function ($http){
-	var _getCertificate = function(){
+	var _get = function(){
 		return $http.get("/certificates");
 	};
 	return {
-		getCertificate: _getCertificate,
+		get: _get,
 	};
 });

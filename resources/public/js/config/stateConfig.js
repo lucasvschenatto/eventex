@@ -1,10 +1,13 @@
 angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-    var _managerBase = "/manager";
+    var _managerBase = "";
     $stateProvider
         .state("register", {
             url: "/register",
             templateUrl: "view/register.html",
             controller: "registerCtrl"
+        })
+        .state("adminValidation",{
+            abstract: true,
         })
         .state("dashboard",{
             url: _managerBase,
@@ -93,6 +96,6 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
             url: _managerBase+"/professions",
             templateUrl: "manager/view/professions.html",
             controller: "professionsCtrl"
-        })
+        });
     $urlRouterProvider.otherwise('/');    
 });

@@ -1,8 +1,8 @@
 angular.module("eventex").factory("participantsAPI", function ($http){
-	var _createParticipant = function(participant){
+	var _create = function(participant){
 		return $http.post("/participants", participant);
 	};
 	return {
-		createParticipant: _createParticipant,
+		create: _create,
 	};
 });

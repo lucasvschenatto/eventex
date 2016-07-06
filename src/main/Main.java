@@ -23,7 +23,6 @@ public class Main {
         new Main().startSparkServer();
     }
 
-
 	private void startSparkServer() {
 		setUpPort();
 		setUpStaticFiles();
@@ -53,7 +52,7 @@ public class Main {
     }
 
     private void setUpStaticFiles() {
-    	externalFolder = externalFolder != null? externalFolder : "html";
+    	externalFolder = externalFolder != null? externalFolder : "resources/public";
     	externalStaticFileLocation(externalFolder);
     }
     

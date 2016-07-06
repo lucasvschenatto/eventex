@@ -91,7 +91,7 @@ angular.module("eventex").controller("registerCtrl", function($scope, uiInputAPI
     _registerScopeFields($scope, uiInputAPI, true);
 	
 	$scope.createUser = function(user){
-		usersAPI.createUser(user).then(function(response){
+		usersAPI.create(user).then(function(response){
 			if(response.data.success){
 				userCreated = true;
 				_setUserNoErrors($scope);
@@ -103,7 +103,7 @@ angular.module("eventex").controller("registerCtrl", function($scope, uiInputAPI
 	};
 
 	$scope.createParticipant = function(participant){
-		participantsAPI.createParticipant(participant).then(function(response){
+		participantsAPI.create(participant).then(function(response){
 			if(response.data.success){
 				console.log(response.data);
 			}else

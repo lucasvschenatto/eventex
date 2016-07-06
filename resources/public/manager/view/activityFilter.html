@@ -1,0 +1,17 @@
+<div class ="modal-content">
+	<div class="modal-header">
+        <button class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Favor selecionar atividade:</h4>
+    </div>
+    <div class="modal-body">
+		<form class="form-horizontal" name="form">
+		    <ui-select options="activities"  field="field"  ng-model="activity" ></ui-select>    
+			<div class="form-group">
+				<div class="col-sm-offset-9 col-sm-10">
+				    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+				    <button ng-disabled="form.$error.required" class="btn btn-primary" ng-click="submit(activity)">Ok</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

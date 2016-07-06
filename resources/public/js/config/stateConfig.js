@@ -14,6 +14,16 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
             templateUrl: "manager/view/dashboard.html"
         })
 
+        .state("activityFilter",{
+            abstract: true,
+            url: _managerBase,
+            template: "<ui-view/>",
+            resolve: {
+                activity : function(modal){
+                    return modal('manager/view/activityFilter.html','activityFilterCtrl');
+                }
+            }
+        })
         .state("eventFilter",{
             abstract: true,
             url: _managerBase,
@@ -77,7 +87,7 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
             }
         })
         .state("inscriptions",{
-            parent: "eventFilter",
+            parent: "activityFilter",
             url: "/inscriptions",
             templateUrl: "manager/view/inscriptions.html",
             controller: "inscriptionsCtrl"

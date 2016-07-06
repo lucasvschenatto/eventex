@@ -15,6 +15,7 @@ var _participantScopeFields = function(scope, uiInputAPI, editMode){
 	scope.address.state         = uiInputAPI.makeField(true , editMode, _help.state         , _label.state        , _ph.state         ,"text");
 	scope.address.country       = uiInputAPI.makeField(true , editMode, _help.country       , _label.country      , _ph.country       ,"text");
 	scope.address.cep           = uiInputAPI.makeField(true , editMode, _help.cep           , _label.cep          , _ph.cep           ,"text");
+	scope.cellPhone             = uiInputAPI.makeField(true  ,editMode ,_help.cellPhone     ,_label.cellPhone     , _ph.cellPhone     ,"text");
 	scope.phone                 = uiInputAPI.makeField(true  ,editMode ,_help.phone         ,_label.phone         , _ph.phone         ,"text");
 	scope.profession            = uiInputAPI.makeField(true  ,editMode ,_help.profession    ,_label.profession    , _ph.profession    ,"text");
 	scope.organization          = uiInputAPI.makeField(true  ,editMode ,_help.organization  ,_label.organization  , _ph.organization  ,"text");

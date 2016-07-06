@@ -11,7 +11,7 @@ var _setCategoryErrors = function(scope, status){
 	scope.status.description           = status.invalidDescription           ? "has-error" : "";
 	scope.status.discount              = status.invalidDiscount              ? "has-error" : "";
 	scope.status.needCodeAtInscription = status.invalidNeedCodeAtInscription ? "has-error" : "";
-}
+};
 
 
 

@@ -1,5 +1,5 @@
 angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-    var _managerBase = "/";
+    var _managerBase = "";
     $stateProvider
         .state("register", {
             url: "/register",

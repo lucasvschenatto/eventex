@@ -13,7 +13,7 @@ import main.domain.participant.*;
 import main.domain.profession.*;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class NewFrontEndMain {
+public class DummyDataMain {
 	private static final String ACTIVITY_ID = "activityId";
 	private static final String ADMIN_ID = "adminId";
 	private static final String CATEGORY_ID = "categoryId";

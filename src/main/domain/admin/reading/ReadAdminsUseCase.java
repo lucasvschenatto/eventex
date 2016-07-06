@@ -5,11 +5,11 @@ import java.util.Collection;
 import main.domain.admin.Admin;
 import main.domain.admin.AdminRepository;
 
-public class ReadAdminsSummaryUseCase {
+public class ReadAdminsUseCase {
     private final AdminRepository repository;
     private final Collection<AdminSummary> response;
 
-    public ReadAdminsSummaryUseCase(AdminRepository repository, Collection<AdminSummary> response) {
+    public ReadAdminsUseCase(AdminRepository repository, Collection<AdminSummary> response) {
         this.repository = repository;
         this.response = response;
     }

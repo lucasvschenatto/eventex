@@ -6,7 +6,7 @@ import main.domain.Text;
 import main.domain.admin.Admin;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class AdminsSummaryRouteTest extends RouteTest {
+public class ReadAdminsRouteTest extends RouteTest {
 	@Override
 	public void responseCodeForNoRequestBody() throws Exception {
     	assertRouteResponse("GET", "/admins",200);

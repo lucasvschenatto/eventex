@@ -7,7 +7,7 @@ import main.domain.event.creating.CreateEventRequest;
 import main.domain.event.creating.CreateEventResponse;
 import main.domain.event.creating.CreateEventUseCase;
 import main.domain.event.reading.EventSummary;
-import main.domain.event.reading.ReadEventsSummaryUseCase;
+import main.domain.event.reading.ReadEventsUseCase;
 import main.persistence.inmemory.InMemoryEventRepository;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -83,7 +83,7 @@ public class ReadEventsSummaryUseCaseTest {
     }
 
     private void whenReadingSummaries() {
-        new ReadEventsSummaryUseCase(repository, response).execute();
+        new ReadEventsUseCase(repository, response).execute();
     }
 
     private void thenTheSizeMustBe(int size) {

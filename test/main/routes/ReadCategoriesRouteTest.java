@@ -8,7 +8,7 @@ import main.domain.Text;
 import main.domain.category.Category;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class CategoriesSummaryRouteTest extends RouteTest {
+public class ReadCategoriesRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
     	assertRouteResponse("GET", "/categories",200);

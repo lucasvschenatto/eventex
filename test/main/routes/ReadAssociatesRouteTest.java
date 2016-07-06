@@ -10,7 +10,7 @@ import main.domain.associate.Associate;
 import main.domain.category.Category;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class AssociatesSummaryRouteTest extends RouteTest {
+public class ReadAssociatesRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
     	assertRouteResponse("GET", "/associates",200);

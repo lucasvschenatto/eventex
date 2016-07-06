@@ -4,7 +4,7 @@ import main.domain.AddressData;
 import main.domain.AddressSummary;
 import main.domain.event.EventRepository;
 import main.domain.event.reading.EventSummary;
-import main.domain.event.reading.ReadEventsSummaryUseCase;
+import main.domain.event.reading.ReadEventsUseCase;
 import main.persistence.inmemory.InMemoryEventRepository;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -100,7 +100,7 @@ public class CreateEventUseCaseTest {
 
     private ArrayList<EventSummary> getSummaries() {
         ArrayList<EventSummary> summaries = new ArrayList<>();
-        new ReadEventsSummaryUseCase(repository, summaries).execute();
+        new ReadEventsUseCase(repository, summaries).execute();
         return summaries;
     }
 

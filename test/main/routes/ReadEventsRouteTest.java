@@ -10,7 +10,7 @@ import main.domain.Time;
 import main.domain.event.Event;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class EventsSummaryRouteTest extends RouteTest {
+public class ReadEventsRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
     	assertRouteResponse("GET", "/events",200);

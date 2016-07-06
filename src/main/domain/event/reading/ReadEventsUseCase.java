@@ -5,11 +5,11 @@ import java.util.Collection;
 import main.domain.event.Event;
 import main.domain.event.EventRepository;
 
-public class ReadEventsSummaryUseCase {
+public class ReadEventsUseCase {
     private final EventRepository repository;
     private final Collection<EventSummary> response;
 
-    public ReadEventsSummaryUseCase(EventRepository repository, Collection<EventSummary> response) {
+    public ReadEventsUseCase(EventRepository repository, Collection<EventSummary> response) {
         this.repository = repository;
         this.response = response;
     }

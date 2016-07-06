@@ -24,7 +24,7 @@ public class ReadProfessionsSummaryUseCaseTest {
     }
 
     private void whenReadingSummaries() {
-        new ReadProfessionsSummaryUseCase(repository, response).execute();
+        new ReadProfessionsUseCase(repository, response).execute();
     }
 
     private void thenTheSizeMustBe(int size) {

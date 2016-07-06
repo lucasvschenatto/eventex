@@ -7,7 +7,7 @@ import main.domain.associate.creating.CreateAssociateRequest;
 import main.domain.associate.creating.CreateAssociateResponse;
 import main.domain.associate.creating.CreateAssociateUseCase;
 import main.domain.associate.reading.AssociateSummary;
-import main.domain.associate.reading.ReadAssociatesSummaryUseCase;
+import main.domain.associate.reading.ReadAssociatesUseCase;
 import main.domain.category.Category;
 import main.domain.category.CategoryRepository;
 import main.persistence.inmemory.InMemoryAssociateRepository;
@@ -75,7 +75,7 @@ public class CreateAssociateUseCaseTest {
 
     private ArrayList<AssociateSummary> getSummaries() {
         ArrayList<AssociateSummary> summaries = new ArrayList<>();
-        new ReadAssociatesSummaryUseCase(associateRepository, summaries).execute();
+        new ReadAssociatesUseCase(associateRepository, summaries).execute();
         return summaries;
     }
 

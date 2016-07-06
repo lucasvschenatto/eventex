@@ -115,7 +115,7 @@ public class ReadActivitiesSummaryUseCaseTest {
 	}
 
 	private void whenReadingSummaries(){
-		new ReadActivitiesSummaryUseCase(activityRepository, response).execute();
+		new ReadActivitiesUseCase(activityRepository, response).execute();
 	}
 	
 	private void thenTheSizeMustBe(int size) {

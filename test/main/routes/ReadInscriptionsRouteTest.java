@@ -6,7 +6,7 @@ import main.domain.Text;
 import main.domain.inscription.Inscription;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class InscriptionsSummaryRouteTest extends RouteTest {
+public class ReadInscriptionsRouteTest extends RouteTest {
 	
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {

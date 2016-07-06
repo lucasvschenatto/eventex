@@ -15,7 +15,7 @@ import main.domain.Text;
 import main.domain.Time;
 import main.domain.activity.ActivityRepository;
 import main.domain.activity.reading.ActivitySummary;
-import main.domain.activity.reading.ReadActivitiesSummaryUseCase;
+import main.domain.activity.reading.ReadActivitiesUseCase;
 import main.domain.event.Event;
 import main.domain.event.EventRepository;
 import main.persistence.inmemory.InMemoryActivityRepository;
@@ -140,7 +140,7 @@ public class CreateActivityUseCaseTest{
 	
 	private ArrayList<ActivitySummary> getSummaries() {
         ArrayList<ActivitySummary> summaries = new ArrayList<>();
-        new ReadActivitiesSummaryUseCase(activityRepository, summaries).execute();
+        new ReadActivitiesUseCase(activityRepository, summaries).execute();
         return summaries;
     }
 	

@@ -2,7 +2,7 @@ package main.domain.profession.creating;
 
 import main.domain.profession.ProfessionRepository;
 import main.domain.profession.reading.ProfessionSummary;
-import main.domain.profession.reading.ReadProfessionsSummaryUseCase;
+import main.domain.profession.reading.ReadProfessionsUseCase;
 import main.persistence.inmemory.InMemoryProfessionRepository;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -53,7 +53,7 @@ public class CreateProfessionUseCaseTest {
 
     private ArrayList<ProfessionSummary> getSummaries() {
         ArrayList<ProfessionSummary> summaries = new ArrayList<>();
-        new ReadProfessionsSummaryUseCase(repository, summaries).execute();
+        new ReadProfessionsUseCase(repository, summaries).execute();
         return summaries;
     }
 

@@ -10,7 +10,7 @@ import main.domain.category.Category;
 import main.domain.category.CategoryRepository;
 import main.domain.inscription.InscriptionRepository;
 import main.domain.inscription.reading.InscriptionSummary;
-import main.domain.inscription.reading.ReadInscriptionsSummaryUseCase;
+import main.domain.inscription.reading.ReadInscriptionsUseCase;
 import main.domain.participant.Participant;
 import main.domain.participant.ParticipantRepository;
 import main.persistence.inmemory.InMemoryActivityRepository;
@@ -84,7 +84,7 @@ public class CreateInscriptionUseCaseTest {
 
     private ArrayList<InscriptionSummary> getSummaries() {
         ArrayList<InscriptionSummary> summaries = new ArrayList<>();
-        new ReadInscriptionsSummaryUseCase(inscriptionRepository, summaries).execute();
+        new ReadInscriptionsUseCase(inscriptionRepository, summaries).execute();
         return summaries;
     }
 

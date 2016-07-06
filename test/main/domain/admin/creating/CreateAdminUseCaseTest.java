@@ -2,7 +2,7 @@ package main.domain.admin.creating;
 
 import main.domain.admin.AdminRepository;
 import main.domain.admin.reading.AdminSummary;
-import main.domain.admin.reading.ReadAdminsSummaryUseCase;
+import main.domain.admin.reading.ReadAdminsUseCase;
 import main.persistence.inmemory.InMemoryAdminRepository;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -57,7 +57,7 @@ public class CreateAdminUseCaseTest {
 
     private ArrayList<AdminSummary> getSummaries() {
         ArrayList<AdminSummary> summaries = new ArrayList<>();
-        new ReadAdminsSummaryUseCase(repository, summaries).execute();
+        new ReadAdminsUseCase(repository, summaries).execute();
         return summaries;
     }
 

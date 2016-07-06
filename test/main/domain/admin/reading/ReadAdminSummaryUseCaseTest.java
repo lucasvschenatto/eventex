@@ -5,7 +5,7 @@ import main.domain.admin.creating.CreateAdminRequest;
 import main.domain.admin.creating.CreateAdminResponse;
 import main.domain.admin.creating.CreateAdminUseCase;
 import main.domain.admin.reading.AdminSummary;
-import main.domain.admin.reading.ReadAdminsSummaryUseCase;
+import main.domain.admin.reading.ReadAdminsUseCase;
 import main.persistence.inmemory.InMemoryAdminRepository;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -27,7 +27,7 @@ public class ReadAdminSummaryUseCaseTest {
     }
 
     private void whenReadingSummaries() {
-        new ReadAdminsSummaryUseCase(repository, response).execute();
+        new ReadAdminsUseCase(repository, response).execute();
     }
 
     private void thenTheSizeMustBe(int size) {

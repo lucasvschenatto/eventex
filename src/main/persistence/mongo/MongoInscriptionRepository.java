@@ -42,4 +42,12 @@ public class MongoInscriptionRepository extends MongoRepository<Inscription> imp
 	private Bson makeParticipantIdQuery(Text participantId) {
 		return new Document("participant_id", textConverter.to(participantId));
 	}
+
+	public Iterable<Inscription> getAllForActivityId(Text activityId) {
+		return getAllBy(makeActivityIdQuery(activityId));
+	}
+
+	private Bson makeActivityIdQuery(Text activityId) {
+		return new Document("activity_id",textConverter.to(activityId));
+	}
 }

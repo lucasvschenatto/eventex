@@ -28,4 +28,12 @@ public class MongoAssociateRepository extends MongoRepository<Associate> impleme
 	private Bson makeAssociateCodeQuery(Text code) {
 		return new Document("code", textConverter.to(code));
 	}
+	public Iterable<Associate> getAllForCategoryId(Text categoryId) {
+		return getAllBy(makeCategoryIdQuery(categoryId));
+	}
+
+	private Bson makeCategoryIdQuery(Text categoryId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

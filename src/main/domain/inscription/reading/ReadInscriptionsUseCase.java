@@ -5,11 +5,11 @@ import java.util.Collection;
 import main.domain.inscription.Inscription;
 import main.domain.inscription.InscriptionRepository;
 
-public class ReadInscriptionsSummaryUseCase {
+public class ReadInscriptionsUseCase {
     private final InscriptionRepository repository;
     private final Collection<InscriptionSummary> response;
 
-    public ReadInscriptionsSummaryUseCase(InscriptionRepository repository,
+    public ReadInscriptionsUseCase(InscriptionRepository repository,
     		Collection<InscriptionSummary> response) {
         this.repository = repository;
         this.response = response;

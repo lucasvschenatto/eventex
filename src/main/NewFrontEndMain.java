@@ -1,7 +1,5 @@
 package main;
 
-import com.sun.java.accessibility.util.EventID;
-
 import main.domain.*;
 import main.domain.account.*;
 import main.domain.activity.*;
@@ -40,9 +38,8 @@ public class NewFrontEndMain {
 	private static UserRepository ur;
 	
 	public static void main(String[] args) {
-		Main.setFactory(InMemoryFactory.getInstance());
-		Main.setStaticFilesLocation("resources/public");
 		createDummyData();
+		Main.setFactory(InMemoryFactory.getInstance());
 		Main.main();
 	}
 

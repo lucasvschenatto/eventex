@@ -5,11 +5,11 @@ import java.util.Collection;
 import main.domain.participant.Participant;
 import main.domain.participant.ParticipantRepository;
 
-public class ReadParticipantsSummaryUseCase {
+public class ReadParticipantsUseCase {
     private final ParticipantRepository repository;
     private final Collection<ParticipantSummary> response;
 
-    public ReadParticipantsSummaryUseCase(ParticipantRepository repository, Collection<ParticipantSummary> response) {
+    public ReadParticipantsUseCase(ParticipantRepository repository, Collection<ParticipantSummary> response) {
         this.repository = repository;
         this.response = response;
     }

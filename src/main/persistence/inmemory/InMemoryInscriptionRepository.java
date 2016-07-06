@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import main.domain.Text;
 import main.domain.inscription.Inscription;
@@ -43,5 +44,14 @@ public class InMemoryInscriptionRepository extends InMemoryRepository<Inscriptio
 			newAKey.put(saved.getActivityId(), saved);
 			participantKey.put(saved.getParticipantId(), newAKey);
 		}
+	}
+
+	public Iterable<Inscription> getAllForActivityId(Text activityId) {
+		Set<Inscription> filteredByActivityId = new HashSet<Inscription>();
+		getAll().forEach((inscription)->{
+			if(inscription.getActivityId().equals(activityId))
+				filteredByActivityId.add(inscription);
+		});
+		return filteredByActivityId;
 	}
 }

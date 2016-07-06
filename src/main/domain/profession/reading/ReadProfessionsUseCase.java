@@ -5,11 +5,11 @@ import java.util.Collection;
 import main.domain.profession.Profession;
 import main.domain.profession.ProfessionRepository;
 
-public class ReadProfessionsSummaryUseCase {
+public class ReadProfessionsUseCase {
     private final ProfessionRepository repository;
     private final Collection<ProfessionSummary> response;
 
-    public ReadProfessionsSummaryUseCase(ProfessionRepository repository,
+    public ReadProfessionsUseCase(ProfessionRepository repository,
     		Collection<ProfessionSummary> response) {
         this.repository = repository;
         this.response = response;

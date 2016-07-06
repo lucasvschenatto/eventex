@@ -65,7 +65,7 @@ public class ReadInscriptionsSummaryUseCaseTest {
     }
 
     private void whenReadingSummaries() {
-        new ReadInscriptionsSummaryUseCase(inscriptionRepository, response).execute();
+        new ReadInscriptionsUseCase(inscriptionRepository, response).execute();
     }
 
     private void thenTheSizeMustBe(int size) {

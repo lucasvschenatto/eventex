@@ -5,11 +5,11 @@ import java.util.Collection;
 import main.domain.category.Category;
 import main.domain.category.CategoryRepository;
 
-public class ReadCategoriesSummaryUseCase {
+public class ReadCategoriesUseCase {
     private final CategoryRepository repository;
     private final Collection<CategorySummary> response;
 
-    public ReadCategoriesSummaryUseCase(CategoryRepository repository,
+    public ReadCategoriesUseCase(CategoryRepository repository,
     		Collection<CategorySummary> response) {
         this.repository = repository;
         this.response = response;

@@ -7,7 +7,7 @@ import main.domain.participant.creating.CreateParticipantRequest;
 import main.domain.participant.creating.CreateParticipantResponse;
 import main.domain.participant.creating.CreateParticipantUseCase;
 import main.domain.participant.reading.ParticipantSummary;
-import main.domain.participant.reading.ReadParticipantsSummaryUseCase;
+import main.domain.participant.reading.ReadParticipantsUseCase;
 import main.persistence.inmemory.InMemoryParticipantRepository;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -97,7 +97,7 @@ public class ReadParticipantsSummaryUseCaseTest {
     }
 
     private void whenReadingSummaries() {
-        new ReadParticipantsSummaryUseCase(repository, response).execute();
+        new ReadParticipantsUseCase(repository, response).execute();
     }
 
     private void thenTheSizeMustBe(int size) {

@@ -26,7 +26,7 @@ public class ReadCategoriesSummaryUseCaseTest {
     }
 
     private void whenReadingSummaries() {
-        new ReadCategoriesSummaryUseCase(repository, response).execute();
+        new ReadCategoriesUseCase(repository, response).execute();
     }
 
     private void thenTheSizeMustBe(int size) {

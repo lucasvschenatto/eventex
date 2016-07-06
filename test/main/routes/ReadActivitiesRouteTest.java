@@ -14,7 +14,7 @@ import main.domain.activity.Minutes;
 import main.domain.event.Event;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class ActivitiesSummaryRouteTest extends RouteTest {
+public class ReadActivitiesRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
     	assertRouteResponse("GET", "/activities",200);

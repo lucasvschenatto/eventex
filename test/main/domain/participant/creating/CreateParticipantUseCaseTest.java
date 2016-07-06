@@ -4,7 +4,7 @@ import main.domain.AddressData;
 import main.domain.AddressSummary;
 import main.domain.participant.ParticipantRepository;
 import main.domain.participant.reading.ParticipantSummary;
-import main.domain.participant.reading.ReadParticipantsSummaryUseCase;
+import main.domain.participant.reading.ReadParticipantsUseCase;
 import main.persistence.inmemory.InMemoryParticipantRepository;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -152,7 +152,7 @@ public class CreateParticipantUseCaseTest {
 
     private ArrayList<ParticipantSummary> getSummaries() {
         ArrayList<ParticipantSummary> summaries = new ArrayList<>();
-        new ReadParticipantsSummaryUseCase(repository, summaries).execute();
+        new ReadParticipantsUseCase(repository, summaries).execute();
         return summaries;
     }
 

@@ -2,21 +2,24 @@ package main.domain.associate.reading;
 
 import java.util.Collection;
 
+import main.domain.Text;
 import main.domain.associate.Associate;
 import main.domain.associate.AssociateRepository;
 
-public class ReadAssociatesSummaryUseCase {
+public class ReadAssociatesFilterUseCase {
     private final AssociateRepository repository;
+    private final ReadAssociatesFilterRequest request;
     private final Collection<AssociateSummary> response;
 
-    public ReadAssociatesSummaryUseCase(AssociateRepository repository,
+    public ReadAssociatesFilterUseCase(AssociateRepository repository, ReadAssociatesFilterRequest request,
     		Collection<AssociateSummary> response) {
         this.repository = repository;
+        this.request = request;
         this.response = response;
     }
 
     public void execute() {
-        for (Associate associate : repository.getAll())
+        for (Associate associate : repository.getAllForCategoryId(new Text(request.categoryId)))
             response.add(makeCovenantSummary(associate));
     }
 

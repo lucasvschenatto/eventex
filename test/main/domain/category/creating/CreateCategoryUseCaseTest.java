@@ -2,7 +2,7 @@ package main.domain.category.creating;
 
 import main.domain.category.CategoryRepository;
 import main.domain.category.reading.CategorySummary;
-import main.domain.category.reading.ReadCategoriesSummaryUseCase;
+import main.domain.category.reading.ReadCategoriesUseCase;
 import main.persistence.inmemory.InMemoryCategoryRepository;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -63,7 +63,7 @@ public class CreateCategoryUseCaseTest {
 
     private ArrayList<CategorySummary> getSummaries() {
         ArrayList<CategorySummary> summaries = new ArrayList<>();
-        new ReadCategoriesSummaryUseCase(repository, summaries).execute();
+        new ReadCategoriesUseCase(repository, summaries).execute();
         return summaries;
     }
 

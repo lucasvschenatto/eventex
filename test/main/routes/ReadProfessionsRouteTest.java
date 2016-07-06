@@ -6,7 +6,7 @@ import main.domain.Text;
 import main.domain.profession.Profession;
 import main.persistence.inmemory.InMemoryFactory;
 
-public class ProfessionsSummaryRouteTest extends RouteTest {
+public class ReadProfessionsRouteTest extends RouteTest {
     @Override
 	public void responseCodeForNoRequestBody() throws Exception {
     	assertRouteResponse("GET", "/professions",200);

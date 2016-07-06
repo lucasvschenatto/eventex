@@ -7,7 +7,7 @@ import main.domain.associate.creating.CreateAssociateRequest;
 import main.domain.associate.creating.CreateAssociateResponse;
 import main.domain.associate.creating.CreateAssociateUseCase;
 import main.domain.associate.reading.AssociateSummary;
-import main.domain.associate.reading.ReadAssociatesSummaryUseCase;
+import main.domain.associate.reading.ReadAssociatesUseCase;
 import main.domain.category.Category;
 import main.domain.category.CategoryRepository;
 import main.persistence.inmemory.InMemoryAssociateRepository;
@@ -46,7 +46,7 @@ public class ReadAssociatesSummaryUseCaseTest {
 	}
 
 	private void whenReadingSummaries() {
-        new ReadAssociatesSummaryUseCase(associateRepository, response).execute();
+        new ReadAssociatesUseCase(associateRepository, response).execute();
     }
 
     private void thenTheSizeMustBe(int size) {

@@ -90,9 +90,13 @@
 	<script src="js/interceptors/loadingInterceptor.js"></script>
 </head>
 <body ng-app="eventex">
-	<nav ng-include="'view/header.html'"></nav>
-	<div class="jumbotron" ng-show="loading" ng-include="'view/loading.html'"></div>
-	<div ng-hide="loading" ui-view></div>
-	<footer ng-include="'view/footer.html'"></footer>
+	<div id="wrapper">
+		<nav id="header" ng-include="'view/header.html'"></nav>
+		<div id="content">
+			<div class="jumbotron" ng-show="loading" ng-include="'view/loading.html'"></div>
+			<div ng-hide="loading" class="container" ui-view></div>
+		</div>
+		<footer id="footer" class="footer" ng-include="'view/footer.html'"></footer>
+	</div>
 </body>
 </html>

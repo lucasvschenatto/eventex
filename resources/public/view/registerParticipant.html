@@ -1,21 +1,48 @@
 <form class="form-horizontal" name="participantForm">
-    <ui-input         field="name"          status="status.name"          ng-model="participant.name"          ></ui-input>
-    <ui-input         field="nametag"       status="status.nametag"       ng-model="participant.nametag"       ></ui-input>
-    <ui-input         field="nationality"   status="status.nationality"   ng-model="participant.nationality"   ></ui-input>
-    <ui-input         field="gender"        status="status.gender"        ng-model="participant.gender"        ></ui-input>
-    <ui-input         field="education"     status="status.education"     ng-model="participant.education"     ></ui-input>
-    <ui-input         field="birth"         status="status.birth"         ng-model="participant.birth"         ></ui-input>
-    <ui-input-address field="homeAddress"   status="status.homeAddress"   ng-model="participant.homeAddress"   ></ui-input-address>
-    <ui-input-phone   field="homePhone"     status="status.homePhone"     ng-model="participant.homePhone"     ></ui-input-phone>
-    <ui-input-phone   field="cellPhone"     status="status.cellPhone"     ng-model="participant.cellPhone"     ></ui-input-phone>
-    <ui-input         field="professionId"  status="status.professionId"  ng-model="participant.professionId"  ></ui-input>
-    <ui-input         field="organization"  status="status.organization"  ng-model="participant.organization"  ></ui-input>
-    <ui-input         field="department"    status="status.department"    ng-model="participant.department"    ></ui-input>
-    <ui-input         field="role"          status="status.role"          ng-model="participant.role"          ></ui-input>
-    <ui-input-address field="workAddress"   status="status.workAddress"   ng-model="participant.workAddress"   ></ui-input-address>
-    <ui-input-phone   field="workPhone"     status="status.workPhone"     ng-model="participant.workPhone"     ></ui-input-phone>
-    <ui-input-phone   field="workCellphone" status="status.workCellphone" ng-model="participant.workCellphone" ></ui-input-phone>
-    <ui-input         field="workEmail"     status="status.workEmail"     ng-model="participant.workEmail"     ></ui-input>
+
+    <ui-input       field="name"                 status="status.name"                      ng-model="participant.name"        ></ui-input>
+    <ui-input       field="nametag"              status="status.nametag"                   ng-model="participant.nametag"     ></ui-input>
+    <ui-input       field="nationality"          status="status.nationality"               ng-model="participant.nationality" ></ui-input>
+    <ui-input       field="gender"               status="status.gender"                    ng-model="participant.gender"      ></ui-input>
+    <ui-input       field="education"            status="status.education"                 ng-model="participant.education"   ></ui-input>
+    <ui-input       field="birth"                status="status.birth"                     ng-model="participant.birth"       ></ui-input>
+    <h4>Contato Pessoal</h4>
+    <hr>
+    <ui-input       field="address.street"       status="status.homeAddress.street"        ng-model="participant.homeAddress.street"       ></ui-input>
+    <ui-input       field="address.number"       status="status.homeAddress.number"        ng-model="participant.homeAddress.number"       ></ui-input>
+    <ui-input       field="address.complement"   status="status.homeAddress.complement"    ng-model="participant.homeAddress.complement"   ></ui-input>
+    <ui-input       field="address.neighborhood" status="status.homeAddress.neighborhood"  ng-model="participant.homeAddress.neighborhood" ></ui-input>
+    <ui-input       field="address.city"         status="status.homeAddress.city"          ng-model="participant.homeAddress.city"         ></ui-input>
+    <ui-input       field="address.state"        status="status.homeAddress.state"         ng-model="participant.homeAddress.state"        ></ui-input>
+    <ui-input       field="address.country"      status="status.homeAddress.country"       ng-model="participant.homeAddress.country"      ></ui-input>
+    <ui-input-cep   field="address.cep"          status="status.homeAddress.cep"           ng-model="participant.homeAddress.cep"          ></ui-input-cep>
+    <ui-input-phone field="phone"                status="status.homePhone"                 ng-model="participant.homePhone"                ></ui-input-phone>
+    <ui-input-phone field="cellPhone"            status="status.cellPhone"                 ng-model="participant.cellPhone"                ></ui-input-phone>
+    <h4>Contato Comercial</h4>
+    <hr>
+    <ui-input       field="profession"           status="status.profession"                ng-model="participant.profession"               ></ui-input>
+    <ui-input       field="organization"         status="status.organization"              ng-model="participant.organization"             ></ui-input>
+    <ui-input       field="department"           status="status.department"                ng-model="participant.department"               ></ui-input>
+    <ui-input       field="role"                 status="status.role"                      ng-model="participant.role"                     ></ui-input>
+    <ui-input       field="address.street"       status="status.workAddress.street"        ng-model="participant.workAddress.street"       ></ui-input>
+    <ui-input       field="address.number"       status="status.workAddress.number"        ng-model="participant.workAddress.number"       ></ui-input>
+    <ui-input       field="address.complement"   status="status.workAddress.complement"    ng-model="participant.workAddress.complement"   ></ui-input>
+    <ui-input       field="address.neighborhood" status="status.workAddress.neighborhood"  ng-model="participant.workAddress.neighborhood" ></ui-input>
+    <ui-input       field="address.city"         status="status.workAddress.city"          ng-model="participant.workAddress.city"         ></ui-input>
+    <ui-input       field="address.state"        status="status.workAddress.state"         ng-model="participant.workAddress.state"        ></ui-input>
+    <ui-input       field="address.country"      status="status.workAddress.country"       ng-model="participant.workAddress.country"      ></ui-input>
+    <ui-input-cep   field="address.cep"          status="status.workAddress.cep"           ng-model="participant.workAddress.cep"          ></ui-input-cep>
+    <ui-input-phone field="phone"                status="status.workPhone"                 ng-model="participant.workPhone"                ></ui-input-phone>
+    <ui-input-phone field="cellPhone"            status="status.workCellPhone"             ng-model="participant.workCellPhone"            ></ui-input-phone>
+    <ui-input       field="email"                status="status.workEmail"                 ng-model="participant.workEmail"                ></ui-input>
+
+
+
+
+
+
+
+
 </form>
 <div class="col-sm-offset-2 col-sm-10">
     <button ng-disabled="participantForm.$error.required" class="btn btn-primary" ng-click="createParticipant(participant)">Salvar perfil</button>

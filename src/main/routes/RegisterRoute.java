@@ -20,8 +20,10 @@ public class RegisterRoute implements Route {
     public Object handle(Request request, Response response) throws Exception {
         RegisterResponse output = executeUseCase(request);
         response.cookie("user-id", output.id);
-        if(!output.success) 
-        	response.status(400);
+        if(output.success) 
+        	response.status(201);
+        else
+        	response.status(200);
         return converter.toJson(output);
     }
 

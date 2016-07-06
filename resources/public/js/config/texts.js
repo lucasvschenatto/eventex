@@ -4,7 +4,7 @@ var _label = {};
 
 _help.cellPhone             = 'Digite o celular no formato (XX) XXXXX-XXXX';
 _help.cep                   = 'Digite o CEP no format XXXXX-XXX';
-_help.cpf                   = 'CPF inválido, use o seguinte formato: 000000000-00';
+_help.cpf                   = 'CPF inválido, use o seguinte formato: XXX.XXX.XXX-XX';
 _help.code                  = 'Digite um código com apenas letras e números';
 _help.date                  = 'Digite uma data válida';
 _help.discount              = 'Digite o desconto';
@@ -19,7 +19,7 @@ _help.points                = 'Digite o número de pontos';
 _help.spots                 = 'Digite um número inteiro';
 _help.time                  = 'Digite um horário válido';
 _help.updateDate            = 'Digite uma data válida';
-_help.username              = 'nome de usuário inválido, use apenas letras e números'
+_help.username              = 'nome de usuário inválido, deve conter ao menos 6 caracteres com apenas letras e números'
 
 _ph.activity              = 'Atividade';
 _ph.associateCode         = 'Código de associado/conveniado';

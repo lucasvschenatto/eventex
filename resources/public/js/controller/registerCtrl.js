@@ -81,19 +81,21 @@ var _setUserErrors = function(scope, status){
 
 
 
-angular.module("eventex").controller("registerCtrl", function($scope, uiInputAPI, usersAPI, participantsAPI, $location){
-	var userCreated;
+angular.module("eventex").controller("registerCtrl", function($scope, $state, uiInputAPI, usersAPI, participantsAPI, $location){
+	$scope.userCreated;
 	$scope.status = {};
 	$scope.user = {};
 	$scope.participant = {};
-    $scope.message = {userForm:'criando conta',participantForm:'criando perfil'};
+    $scope.message = {};
 
     _registerScopeFields($scope, uiInputAPI, true);
 	
 	$scope.createUser = function(user){
+		$scope.message.userForm = 'criando conta';
 		usersAPI.create(user).then(function(response){
+			$scope.message.userForm = "";
 			if(response.data.success){
-				userCreated = true;
+				$scope.userCreated = true;
 				_setUserNoErrors($scope);
 			}else
 				_setUserErrors($scope, response.data);
@@ -103,9 +105,12 @@ angular.module("eventex").controller("registerCtrl", function($scope, uiInputAPI
 	};
 
 	$scope.createParticipant = function(participant){
+		$scope.message.participantForm = 'criando perfil';
 		participantsAPI.create(participant).then(function(response){
+			$scope.message.participantForm = "";
 			if(response.data.success){
 				console.log(response.data);
+				$state.go("dashboard");
 			}else
 				_setParticipantErrors($scope, response.data);
 		});

@@ -1,12 +1,13 @@
 angular.module("ui").factory("uiInputAPI", function (){
-	var _makeField = function(required, editMode, help, label, placeholder, type){
+	var _makeField = function(required, editMode, help, label, placeholder, type, name){
 		return {
 	    	editMode: editMode,
 	    	help: help, 
 			label: label,
 			placeholder: placeholder,
 			required: required? "Campo obrigatório":"",
-			type: type
+			type: type,
+			name: name
 		};
 	};
 	return {
@@ -19,6 +20,19 @@ angular.module("ui").directive("uiSelect",function(){
 		templateUrl: "/lib/ui/view/select.html",
 		scope: {
 			field: "=",
+			status: "=",
+			options: "=",
+			model: "=ngModel"
+		}
+	};
+	return _directive;
+});
+angular.module("ui").directive("uiSelectId",function(){
+	var _directive = {
+		templateUrl: "/lib/ui/view/selectId.html",
+		scope: {
+			field: "=",
+			status: "=",
 			options: "=",
 			model: "=ngModel"
 		}

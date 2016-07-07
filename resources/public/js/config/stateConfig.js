@@ -39,7 +39,7 @@ angular.module('eventex').config(function ($stateProvider, $urlRouterProvider, $
             url: _managerBase,
             template: "<ui-view/>",
             resolve: {
-                category: function(modal){
+                category : function(modal){
                     return modal('manager/view/categoryFilter.html','categoryFilterCtrl');
                 }
             }

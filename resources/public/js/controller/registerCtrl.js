@@ -22,7 +22,7 @@ var _registerScopeFields = function(scope, uiInputAPI, editMode){
 	scope.address.cep           = uiInputAPI.makeField(true , editMode, _help.cep           , _label.cep          , _ph.cep           ,"text");
 	scope.cellPhone             = uiInputAPI.makeField(true  ,editMode ,_help.cellPhone     ,_label.cellPhone     , _ph.cellPhone     ,"text");
 	scope.phone                 = uiInputAPI.makeField(true  ,editMode ,_help.phone         ,_label.phone         , _ph.phone         ,"text");
-	scope.profession            = uiInputAPI.makeField(true  ,editMode ,_help.profession    ,_label.profession    , _ph.profession    ,"text");
+	scope.profession            = uiInputAPI.makeField(true  ,editMode ,_help.profession    ,_label.profession    , _ph.profession    ,"text", "profissão");
 	scope.organization          = uiInputAPI.makeField(true  ,editMode ,_help.organization  ,_label.organization  , _ph.organization  ,"text");
 	scope.department            = uiInputAPI.makeField(true  ,editMode ,_help.department    ,_label.department    , _ph.department    ,"text");
 	scope.role                  = uiInputAPI.makeField(true  ,editMode ,_help.role          ,_label.role          , _ph.role          ,"text");
@@ -46,7 +46,7 @@ var _setParticipantErrors = function(scope, status){
 	scope.status.homeAddress.country      = status.homeAddress.invalidCountry      ? "has-error" : "";
 	scope.status.homeAddress.cep          = status.homeAddress.invalidCEP          ? "has-error" : "";
 	scope.status.homePhone                = status.invalidHomePhone                ? "has-error" : "";
-	scope.status.cellphone                = status.invalidCellPhone                ? "has-error" : "";
+	scope.status.cellphone                = status.invalidCellphone                ? "has-error" : "";
 	scope.status.profession               = status.invalidProfessionId             ? "has-error" : "";
 	scope.status.organization             = status.invalidOrganization             ? "has-error" : "";
 	scope.status.department               = status.invalidDepartment               ? "has-error" : "";
@@ -81,12 +81,17 @@ var _setUserErrors = function(scope, status){
 
 
 
-angular.module("eventex").controller("registerCtrl", function($scope, $state, uiInputAPI, usersAPI, participantsAPI, $location){
+angular.module("eventex").controller("registerCtrl", function($scope, $state, uiInputAPI, usersAPI, participantsAPI, 
+	professionsAPI, $location){
 	$scope.userCreated;
 	$scope.status = {};
 	$scope.user = {};
 	$scope.participant = {};
     $scope.message = {};
+
+    professionsAPI.getAll().then(function(result){
+    	$scope.professions = result.data;
+    });
 
     _registerScopeFields($scope, uiInputAPI, true);
 	
@@ -96,7 +101,7 @@ angular.module("eventex").controller("registerCtrl", function($scope, $state, ui
 			$scope.message.userForm = "";
 			if(response.data.success){
 				$scope.userCreated = true;
-				_setUserNoErrors($scope);
+				$scope.participant.userId = response.data.id;
 			}else
 				_setUserErrors($scope, response.data);
             $scope.user.password = "";                
@@ -109,7 +114,6 @@ angular.module("eventex").controller("registerCtrl", function($scope, $state, ui
 		participantsAPI.create(participant).then(function(response){
 			$scope.message.participantForm = "";
 			if(response.data.success){
-				console.log(response.data);
 				$state.go("dashboard");
 			}else
 				_setParticipantErrors($scope, response.data);

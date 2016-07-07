@@ -19,8 +19,10 @@ angular.module("ui").directive("uiMaskCnpj", function(){
 				return cnpj;
 			}
 			element.bind("keyup", function(){
-				ctrl.$setViewValue(_formatCNPJ(ctrl.$viewValue));
-				ctrl.$render();
+				if(ctrl.$dirty){
+					ctrl.$setViewValue(_formatCNPJ(ctrl.$viewValue));
+					ctrl.$render();
+				}
 			});
 		}
 	};

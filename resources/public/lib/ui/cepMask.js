@@ -10,8 +10,10 @@ angular.module("ui").directive("uiMaskCep", function(){
 				return cep;
 			}
 			element.bind("keyup", function(){
-				ctrl.$setViewValue(_formatCEP(ctrl.$viewValue));
-				ctrl.$render();
+				if(ctrl.$dirty){
+					ctrl.$setViewValue(_formatCEP(ctrl.$viewValue));
+					ctrl.$render();
+				}
 			});
 		}
 	};

@@ -16,8 +16,10 @@ angular.module("ui").directive("uiMaskCpf", function(){
 				return cpf;
 			}
 			element.bind("keyup", function(){
-				ctrl.$setViewValue(_formatCPF(ctrl.$viewValue));
-				ctrl.$render();
+				if(ctrl.$dirty){
+					ctrl.$setViewValue(_formatCPF(ctrl.$viewValue));
+					ctrl.$render();
+				}
 			});
 			ctrl.$parsers.push(function(value){
 				if(value.length == 14){

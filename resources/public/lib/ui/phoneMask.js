@@ -17,7 +17,6 @@ angular.module("ui").directive("uiMaskPhone", function(){
 			}
 			element.bind("keyup", function(){
 				if(ctrl.$dirty){
-					console.log(ctrl);
 					ctrl.$setViewValue(_formatTelephone(ctrl.$viewValue));
 					ctrl.$render();
 				}

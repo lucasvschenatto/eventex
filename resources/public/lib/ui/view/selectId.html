@@ -1,7 +1,7 @@
 <div class="form-group {{status}}" >
     <label class="col-sm-3 control-label" for="input">{{field.label}}</label>
     <div class='col-sm-8'>
-    	<select class='form-control' ng-required='field.required' id='select' ng-model='model' ng-options="option.name for option in options">
+    	<select class='form-control' ng-required='field.required' id='select' ng-model='model' ng-options="option.id as option.name for option in options">
     		<option value="">Selecionar {{field.label | lowercase}}</option>
     	</select>
     	<span class='help-block' ng-show='status'>{{field.help}}</span>

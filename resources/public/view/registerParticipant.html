@@ -18,10 +18,10 @@
     <ui-input       field="address.country"      status="status.homeAddress.country"       ng-model="participant.homeAddress.country"      ></ui-input>
     <ui-input-cep   field="address.cep"          status="status.homeAddress.cep"           ng-model="participant.homeAddress.cep"          ></ui-input-cep>
     <ui-input-phone field="phone"                status="status.homePhone"                 ng-model="participant.homePhone"                ></ui-input-phone>
-    <ui-input-phone field="cellPhone"            status="status.cellPhone"                 ng-model="participant.cellPhone"                ></ui-input-phone>
+    <ui-input-phone field="cellPhone"            status="status.cellphone"                 ng-model="participant.cellphone"                ></ui-input-phone>
     <h4>Contato Comercial</h4>
     <hr>
-    <ui-input       field="profession"           status="status.profession"                ng-model="participant.profession"               ></ui-input>
+    <ui-select-id   field="profession"           status="status.profession" options="professions"  ng-model="participant.professionId"       ></ui-select-id>
     <ui-input       field="organization"         status="status.organization"              ng-model="participant.organization"             ></ui-input>
     <ui-input       field="department"           status="status.department"                ng-model="participant.department"               ></ui-input>
     <ui-input       field="role"                 status="status.role"                      ng-model="participant.role"                     ></ui-input>
@@ -34,7 +34,7 @@
     <ui-input       field="address.country"      status="status.workAddress.country"       ng-model="participant.workAddress.country"      ></ui-input>
     <ui-input-cep   field="address.cep"          status="status.workAddress.cep"           ng-model="participant.workAddress.cep"          ></ui-input-cep>
     <ui-input-phone field="phone"                status="status.workPhone"                 ng-model="participant.workPhone"                ></ui-input-phone>
-    <ui-input-phone field="cellPhone"            status="status.workCellPhone"             ng-model="participant.workCellPhone"            ></ui-input-phone>
+    <ui-input-phone field="cellPhone"            status="status.workCellphone"             ng-model="participant.workCellphone"            ></ui-input-phone>
     <ui-input       field="email"                status="status.workEmail"                 ng-model="participant.workEmail"                ></ui-input>
 </form>
 <div class="col-sm-offset-2 col-sm-10">

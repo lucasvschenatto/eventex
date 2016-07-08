@@ -1,4 +1,4 @@
-angular.module("eventex").controller("categoryFilterCtrl", function($scope,$modalInstance, $state, categoriesAPI){
+angular.module("eventex").controller("categoryFilterCtrl", function($scope,$uibModalInstance, $state, categoriesAPI){
 	$scope.field = {
 		label: "Categoria",
 		required:"Campo obrigatório",
@@ -9,10 +9,10 @@ angular.module("eventex").controller("categoryFilterCtrl", function($scope,$moda
 	});
 
 	$scope.submit = function(categoryId){
-		$modalInstance.close(categoryId);
+		$uibModalInstance.close(categoryId);
 	};
 	$scope.cancel = function(){
-		 $modalInstance.dismiss("cancel");
+		 $uibModalInstance.dismiss("cancel");
 		 $state.go("dashboard");
 	};
 } );

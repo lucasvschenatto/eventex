@@ -1,4 +1,4 @@
-angular.module("eventex").controller("eventFilterCtrl", function($scope,$modalInstance, $state, eventsAPI){
+angular.module("eventex").controller("eventFilterCtrl", function($scope,$uibModalInstance, $state, eventsAPI){
 	$scope.field = {
 		label: "Evento",
 		required:"Campo obrigatório",
@@ -9,10 +9,10 @@ angular.module("eventex").controller("eventFilterCtrl", function($scope,$modalIn
 	});
 
 	$scope.submit = function(eventId){
-		$modalInstance.close(eventId);
+		$uibModalInstance.close(eventId);
 	};
 	$scope.cancel = function(){
-		 $modalInstance.dismiss("cancel");
+		 $uibModalInstance.dismiss("cancel");
 		 $state.go("dashboard");
 	};
 } );

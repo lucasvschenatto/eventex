@@ -1,6 +1,6 @@
-angular.module("eventex").service("modal", function ($modal){
+angular.module("eventex").service("modal", function ($uibModal){
     return function(templateUrl,controller,data){
-        return $modal.open({
+        return $uibModal.open({
             backdrop: 'static',
             templateUrl: templateUrl,
             controller: controller,

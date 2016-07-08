@@ -64,6 +64,28 @@ angular.module("ui").directive("uiInputAddress",function(){
 	};
 	return _directive;
 });
+angular.module("ui").directive("uiInputNumber",function(){
+	var _directive = {
+		templateUrl: "/lib/ui/view/inputNumber.html",
+		scope: {
+			field: "=",
+			status: "=",
+			model: "=ngModel"
+		}
+	};
+	return _directive;
+});
+angular.module("ui").directive("uiInputDuration",function(){
+	var _directive = {
+		templateUrl: "/lib/ui/view/inputDuration.html",
+		scope: {
+			field: "=",
+			status: "=",
+			model: "=ngModel"
+		}
+	};
+	return _directive;
+});
 angular.module("ui").directive("uiInputCep",function(){
 	var _directive = {
 		templateUrl: "/lib/ui/view/inputCep.html",

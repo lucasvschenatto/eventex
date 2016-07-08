@@ -1,0 +1,9 @@
+<div class="form-group {{status}}" >
+    <label class="col-sm-3 control-label" for="input">{{field.label}}</label>
+    <div class='col-sm-8'>
+    	<p ng-hide='field.editMode'>{{model}}</p>
+    	<input ui-mask-number class='form-control' ng-required='field.required' type='{{field.type}}' id='input' ng-model='model' placeholder='{{field.placeholder}}' ng-show='field.editMode'>
+        <span class='help-block' ng-show='status'>{{field.help}}</span>
+        <span class='help-block' ng-show='!model'>{{field.required}}</span>
+    </div>
+</div>

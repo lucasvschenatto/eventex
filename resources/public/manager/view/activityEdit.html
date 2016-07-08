@@ -5,26 +5,26 @@
     </div>
     <div class="modal-body">
 		<form class="form-horizontal" name="entityForm">
-			<ui-input         field="name"          status="status.name"        ng-model="entity.name"          ></ui-input>
-			<ui-input         field="description"   status="status.description" ng-model="entity.description"   ></ui-input>
-			<ui-input-check   field="groupDiscount"                             ng-model="entity.groupDiscount" ></ui-input-check>
-			<ui-input-check   field="voucher"                                   ng-model="entity.voucher"       ></ui-input-check>
-			<ui-input         field="spots"         status="status.spots"       ng-model="entity.spots"         ></ui-input>
-			<ui-input         field="duration"      status="status.duration"    ng-model="entity.duration"      ></ui-input>
-			<ui-input         field="points"        status="status.points"      ng-model="entity.points"        ></ui-input>
-			<ui-input-date    field="date"          status="status.date"        ng-model="entity.date"          ></ui-input-date>
-			<ui-input-time    field="time"          status="status.time"        ng-model="entity.time"          ></ui-input-time>
-			<ui-input         field="place"         status="status.place"       ng-model="entity.place"         ></ui-input>
+			<ui-input          field="name"          status="status.name"        ng-model="entity.name"          ></ui-input>
+			<ui-input          field="description"   status="status.description" ng-model="entity.description"   ></ui-input>
+			<ui-input-check    field="groupDiscount"                             ng-model="entity.groupDiscount" ></ui-input-check>
+			<ui-input-check    field="voucher"                                   ng-model="entity.voucher"       ></ui-input-check>
+			<ui-input-number   field="spots"         status="status.spots"       ng-model="entity.spots"         ></ui-input-number>
+			<ui-input-duration field="duration"      status="status.duration"    ng-model="entity.duration"      ></ui-input-duration>
+			<ui-input-number   field="points"        status="status.points"      ng-model="entity.points"        ></ui-input-number>
+			<ui-input-date     field="date"          status="status.date"        ng-model="entity.date"          ></ui-input-date>
+			<ui-input-time     field="time"          status="status.time"        ng-model="entity.time"          ></ui-input-time>
+			<ui-input          field="place"         status="status.place"       ng-model="entity.place"         ></ui-input>
 			<h4>Endereço</h4>
 			<hr>
-			<ui-input       field="address.street"       status="status.address.street"        ng-model="entity.address.street"       ></ui-input>
-			<ui-input       field="address.number"       status="status.address.number"        ng-model="entity.address.number"       ></ui-input>
-			<ui-input       field="address.complement"   status="status.address.complement"    ng-model="entity.address.complement"   ></ui-input>
-			<ui-input       field="address.neighborhood" status="status.address.neighborhood"  ng-model="entity.address.neighborhood" ></ui-input>
-			<ui-input       field="address.city"         status="status.address.city"          ng-model="entity.address.city"         ></ui-input>
-			<ui-input       field="address.state"        status="status.address.state"         ng-model="entity.address.state"        ></ui-input>
-			<ui-input       field="address.country"      status="status.address.country"       ng-model="entity.address.country"      ></ui-input>
-			<ui-input-cep   field="address.cep"          status="status.address.cep"           ng-model="entity.address.cep"          ></ui-input-cep>
+			<ui-input        field="address.street"       status="status.address.street"       ng-model="entity.address.street"       ></ui-input>
+			<ui-input-number field="address.number"       status="status.address.number"       ng-model="entity.address.number"       ></ui-input-number>
+			<ui-input        field="address.complement"   status="status.address.complement"   ng-model="entity.address.complement"   ></ui-input>
+			<ui-input        field="address.neighborhood" status="status.address.neighborhood" ng-model="entity.address.neighborhood" ></ui-input>
+			<ui-input        field="address.city"         status="status.address.city"         ng-model="entity.address.city"         ></ui-input>
+			<ui-input        field="address.state"        status="status.address.state"        ng-model="entity.address.state"        ></ui-input>
+			<ui-input        field="address.country"      status="status.address.country"      ng-model="entity.address.country"      ></ui-input>
+			<ui-input-cep    field="address.cep"          status="status.address.cep"          ng-model="entity.address.cep"          ></ui-input-cep>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 				    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>

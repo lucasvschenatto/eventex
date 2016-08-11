@@ -13,19 +13,19 @@ var _setAdminErrors = function(scope, status){
 
 
 
-angular.module("eventex").controller("adminNewCtrl", function($scope,$modalInstance,uiInputAPI, adminsAPI){
+angular.module("eventex").controller("adminNewCtrl", function($scope,$uibModalInstance,uiInputAPI, adminsAPI){
 	$scope.entity = {};
 	_adminScopeFields($scope, uiInputAPI, true);
 
 	$scope.submit = function(admin){
 		adminsAPI.create(admin).then(function(response){
 			if(response.data.success)
-				$modalInstance.close(true);
+				$uibModalInstance.close(true);
 			else
 				_setAdminErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );

@@ -1,8 +1,13 @@
 <div class="form-group {{status}}" >
     <label class="col-sm-3 control-label" for="input">{{field.label}}</label>
-    <div class='col-sm-8'>
+    <div class='col-sm-8' >
     	<p ng-hide='field.editMode'>{{model}}</p>
-    	<input ui-mask-date class='form-control' ng-required='field.required' type='{{field.type}}' id='input' ng-model='model' placeholder='{{field.placeholder}}' ng-show='field.editMode'>
+    	<div style="display:flex">
+	    	<input ui-mask-date class='form-control' uib-datepicker-popup='dd/MM/yyyy' is-open="opened" popup-placement="auto bottom-right" ng-required='field.required' type='{{field.type}}' id='input' ng-model='model' placeholder='{{field.placeholder}}' ng-show='field.editMode'>
+		    <span class="input-group-btn" style="padding-left:5px">
+		      <button type="button" class="btn btn-default" ng-click="opened = !opened" ng-show='field.editMode'><i class="glyphicon glyphicon-calendar" style="font-size:20px"></i></button>
+		    </span>
+	    </div>
         <span class='help-block' ng-show='status'>{{field.help}}</span>
         <span class='help-block' ng-show='!model'>{{field.required}}</span>
     </div>

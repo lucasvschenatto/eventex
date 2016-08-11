@@ -45,7 +45,7 @@ var _setActivityErrors = function(scope, status){
 	scope.status.address.cep          = status.address.invalidCEP          ? "has-error" : "";
 }
 
-angular.module("eventex").controller("activityNewCtrl", function($scope,$modalInstance,uiInputAPI, activitiesAPI, data){
+angular.module("eventex").controller("activityNewCtrl", function($scope,$uibModalInstance,uiInputAPI, activitiesAPI, data){
 	$scope.entity = {};
 	$scope.entity.eventId = data.id;
 	$scope.entity.name = data.name;
@@ -60,39 +60,37 @@ angular.module("eventex").controller("activityNewCtrl", function($scope,$modalIn
 	$scope.submit = function(activity){
 		activitiesAPI.create(activity).then(function(response){
 			if(response.data.success)
-				$modalInstance.close(true);
+				$uibModalInstance.close(true);
 			else
 				_setActivityErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );
 
 
 
 
-angular.module("eventex").controller("activityEditCtrl", function($scope, $modalInstance,uiInputAPI, activitiesAPI, data){
+angular.module("eventex").controller("activityEditCtrl", function($scope, $uibModalInstance,uiInputAPI, activitiesAPI, data){
 	$scope.entity = data;
 	_activityScopeFields($scope, uiInputAPI, true);
 
 	
 	$scope.delete = function(activity){
 		activitiesAPI.delete(activity);
-		$modalInstance.close('deleted');
+		$uibModalInstance.close('deleted');
 	};
 	$scope.submit = function(activity){
 		activitiesAPI.update(activity).then(function(response){
 			if(response.data.success)
-				activitiesAPI.get(activity.id).then(function(response){
-					$scope.entity = response.data;
-				});
+				$uibModalInstance.close("updated");
 			else
 				_setActivityErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );

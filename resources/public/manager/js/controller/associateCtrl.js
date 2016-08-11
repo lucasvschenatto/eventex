@@ -15,7 +15,7 @@ var _setAssociateErrors = function(scope, status){
 	scope.status.active     = status.invalidActive     ? "has-error" : "";
 }
 
-angular.module("eventex").controller("associateNewCtrl", function($scope,$modalInstance,uiInputAPI, associatesAPI, data){
+angular.module("eventex").controller("associateNewCtrl", function($scope,$uibModalInstance,uiInputAPI, associatesAPI, data){
 	$scope.entity = {};
 	$scope.entity.categoryId = data.id;
 	_associateScopeFields($scope, uiInputAPI, true);
@@ -23,35 +23,33 @@ angular.module("eventex").controller("associateNewCtrl", function($scope,$modalI
 	$scope.submit = function(associate){
 		associatesAPI.create(associate).then(function(response){
 			if(response.data.success)
-				$modalInstance.close(true);
+				$uibModalInstance.close(true);
 			else
 				_setAssociateErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );
 
-angular.module("eventex").controller("associateEditCtrl", function($scope, $modalInstance,uiInputAPI, associatesAPI, data){
+angular.module("eventex").controller("associateEditCtrl", function($scope, $uibModalInstance,uiInputAPI, associatesAPI, data){
 	$scope.entity = data;
 	_associateScopeFields($scope, uiInputAPI, true);
 
 	$scope.delete = function(associate){
 		associatesAPI.delete(associate);
-		$modalInstance.close('deleted');
+		$uibModalInstance.close('deleted');
 	};
 	$scope.submit = function(associate){
 		associatesAPI.update(associate).then(function(response){
 			if(response.data.success)
-				associatesAPI.get(associate.id).then(function(response){
-					$scope.entity = response.data;
-				});
+				$uibModalInstance.close("updated");
 			else
 				_setAssociateErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );

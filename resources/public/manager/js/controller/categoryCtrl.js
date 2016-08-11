@@ -15,41 +15,39 @@ var _setCategoryErrors = function(scope, status){
 
 
 
-angular.module("eventex").controller("categoryNewCtrl", function($scope,$modalInstance,uiInputAPI, categoriesAPI){
+angular.module("eventex").controller("categoryNewCtrl", function($scope,$uibModalInstance,uiInputAPI, categoriesAPI){
 	$scope.entity = {};
 	_categoryScopeFields($scope, uiInputAPI, true);
 
 	$scope.submit = function(category){
 		categoriesAPI.create(category).then(function(response){
 			if(response.data.success)
-				$modalInstance.close(true);
+				$uibModalInstance.close(true);
 			else
 				_setCategoryErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );
-angular.module("eventex").controller("categoryEditCtrl", function($scope,$modalInstance,uiInputAPI, categoriesAPI, data){
+angular.module("eventex").controller("categoryEditCtrl", function($scope,$uibModalInstance,uiInputAPI, categoriesAPI, data){
 	$scope.entity = data;
 	_categoryScopeFields($scope, uiInputAPI, true);
 
 	$scope.delete = function(category){
 		categoriesAPI.delete(category);
-		$modalInstance.close('deleted');
+		$uibModalInstance.close('deleted');
 	};
 	$scope.submit = function(category){
 		categoriesAPI.update(category).then(function(response){
 			if(response.data.success)
-				categoriesAPI.get(category.id).then(function(response){
-					$scope.entity = response.data;
-				});
+				$uibModalInstance.close("updated");
 			else
 				_setCategoryErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );

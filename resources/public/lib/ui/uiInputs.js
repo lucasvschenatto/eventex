@@ -1,13 +1,12 @@
 angular.module("ui").factory("uiInputAPI", function (){
-	var _makeField = function(required, editMode, help, label, placeholder, type, name){
+	var _makeField = function(required, editMode, help, label, placeholder, type){
 		return {
 	    	editMode: editMode,
 	    	help: help, 
 			label: label,
 			placeholder: placeholder,
 			required: required? "Campo obrigatório":"",
-			type: type,
-			name: name
+			type: type
 		};
 	};
 	return {
@@ -122,6 +121,17 @@ angular.module("ui").directive("uiInputCpf",function(){
 angular.module("ui").directive("uiInputDate",function(){
 	var _directive = {
 		templateUrl: "/lib/ui/view/inputDate.html",
+		scope: {
+			field: "=",
+			status: "=",
+			model: "=ngModel"
+		}
+	};
+	return _directive;
+});
+angular.module("ui").directive("uiInputDateOld",function(){
+	var _directive = {
+		templateUrl: "/lib/ui/view/inputDateOld.html",
 		scope: {
 			field: "=",
 			status: "=",

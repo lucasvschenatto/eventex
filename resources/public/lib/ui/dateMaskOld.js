@@ -20,12 +20,10 @@ angular.module("ui").directive("uiMaskDate", function(){
 			});
 
 			ctrl.$parsers.push(function (value){
-				if(value instanceof Date)
-					return value.toISOString().substring(0,10);
-				// if(value.length === 10){
-				// 	var _dateArray = value.split("/");
-				// 	return new Date(_dateArray[2],_dateArray[1]-1,_dateArray[0]).toISOString().substring(0, 10);
-				// }
+				if(value.length === 10){
+					var _dateArray = value.split("/");
+					return new Date(_dateArray[2],_dateArray[1]-1,_dateArray[0]).toISOString().substring(0, 10);
+				}
 			})
 		}
 	};

@@ -36,42 +36,40 @@ var _setEventErrors = function(scope, status){
 
 
 
-angular.module("eventex").controller("eventNewCtrl", function($scope,$modalInstance,uiInputAPI, eventsAPI){
+angular.module("eventex").controller("eventNewCtrl", function($scope,$uibModalInstance,uiInputAPI, eventsAPI){
 	$scope.entity = {};
 	_eventScopeFields($scope, uiInputAPI, true);
 
 	$scope.submit = function(event){
 		eventsAPI.create(event).then(function(response){
 			if(response.data.success)
-				$modalInstance.close(true);
+				$uibModalInstance.close(true);
 			else
 				_setEventErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );
 
-angular.module("eventex").controller("eventEditCtrl", function($scope,$modalInstance,uiInputAPI, eventsAPI, data){
+angular.module("eventex").controller("eventEditCtrl", function($scope,$uibModalInstance,uiInputAPI, eventsAPI, data){
 	$scope.entity = data;
 	_eventScopeFields($scope, uiInputAPI, true);
 
 	$scope.delete = function(event){
 		eventsAPI.delete(event);
-		$modalInstance.close('deleted');
+		$uibModalInstance.close('deleted');
 	};
 	$scope.submit = function(event){
 		eventsAPI.update(event).then(function(response){
 			if(response.data.success)
-				eventsAPI.get(event.id).then(function(response){
-					$scope.entity = response.data;
-				});
+				$uibModalInstance.close("updated");
 			else
 				_setEventErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );

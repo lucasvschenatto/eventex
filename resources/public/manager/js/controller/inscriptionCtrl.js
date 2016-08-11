@@ -15,19 +15,19 @@ var _setInscriptionErrors = function(scope, status){
 
 
 
-angular.module("eventex").controller("inscriptionNewCtrl", function($scope,$modalInstance,uiInputAPI, inscriptionsAPI){
+angular.module("eventex").controller("inscriptionNewCtrl", function($scope,$uibModalInstance,uiInputAPI, inscriptionsAPI){
 	$scope.entity = {};
 	_inscriptionScopeFields($scope, uiInputAPI, true);
 
 	$scope.submit = function(inscription){
 		inscriptionsAPI.create(inscription).then(function(response){
 			if(response.data.success)
-				$modalInstance.close(true);
+				$uibModalInstance.close(true);
 			else
 				_setInscriptionErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );

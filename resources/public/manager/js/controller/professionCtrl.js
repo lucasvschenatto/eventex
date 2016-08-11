@@ -11,19 +11,19 @@ var _setProfessionErrors = function(scope, status){
 
 
 
-angular.module("eventex").controller("professionNewCtrl", function($scope,$modalInstance,uiInputAPI, professionsAPI){
+angular.module("eventex").controller("professionNewCtrl", function($scope,$uibModalInstance,uiInputAPI, professionsAPI){
 	$scope.entity = {};
 	_professionScopeFields($scope, uiInputAPI, true);
 
 	$scope.submit = function(profession){
 		professionsAPI.create(profession).then(function(response){
 			if(response.data.success)
-				$modalInstance.close(true);
+				$uibModalInstance.close(true);
 			else
 				_setProfessionErrors($scope,response.data);
 		});
 	};
 	$scope.cancel = function(){
-		$modalInstance.dismiss();
+		$uibModalInstance.dismiss();
 	};
 } );
